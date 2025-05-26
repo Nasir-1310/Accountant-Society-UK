@@ -1,0 +1,94 @@
+"use client";
+
+import Link from "next/link";
+import Image from "next/image";
+
+
+const featureCards = [
+  {
+    id: 1,
+    title: "Member sign in",
+    image: "/member_sing_in.png", // Replace with your actual image path
+    link: "/members/signin",
+    buttonText: "Sign in",
+    bgColor: "bg-red-300",
+    titleColor: "text-purple-600"
+  },
+  {
+    id: 2,
+    title: "CPD & Training",
+    image: "/cpd&Training.png", // Replace with your actual image path
+    link: "/education/cpd",
+    buttonText: "Find out more",
+    bgColor: "bg-orange-400",
+    titleColor: "text-green-600"
+  },
+  {
+    id: 3,
+    title: "Rules and guidance",
+    image: "/Rules and Guidance.png", // Replace with your actual image path
+    link: "Rules and Guidance.png",
+    buttonText: "Read more",
+    bgColor: "bg-teal-500",
+    titleColor: "text-blue-600"
+  },
+  {
+    id: 4,
+    title: "Journal",
+    image: "/journal.png", // Replace with your actual image path
+    link: "/publications/journal",
+    buttonText: "Read more",
+    bgColor: "bg-blue-500",
+    titleColor: "text-red-600"
+  }
+];
+
+const FeatureSection = () => {
+  return (
+    <section className="w-full bg-gray-50 py-10">
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-[80px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+          {featureCards.map((card) => (
+            <div
+              key={card.id}
+              className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden group"
+            >
+              {/* Image Section */}
+              <div className={`relative h-48 ${card.bgColor} flex items-center justify-center overflow-hidden`}>
+                {/* Uncomment below when you have actual images */}
+                
+                <Image
+                  src={card.image}
+                  alt={card.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                
+              </div>
+
+              {/* Content Section */}
+              <div className="p-6">
+                {/* Title with Link */}
+                <h3 className="mb-4">
+                  <Link
+                    href={card.link}
+                    className={`text-xl font-semibold ${card.titleColor} hover:underline transition-colors duration-200`}
+                  >
+                    {card.title}
+                  </Link>
+                </h3>
+
+                {/* Button */}
+                <button className="w-full px-4 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-300 hover:border-gray-400 transition-colors duration-200 font-medium">
+                  {card.buttonText}
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default FeatureSection;
