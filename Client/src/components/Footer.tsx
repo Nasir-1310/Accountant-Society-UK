@@ -25,7 +25,7 @@ const Footer: React.FC = () => {
   ];
 
   const usefulLinks = [
-    { name: 'Find a Solicitor', href: '/find-solicitor', external: true },
+    { name: 'Find an Accountant', href: '/find-accountant', external: true },
     { name: 'Sign in', href: '/sign-in' },
     { name: 'CPD & Training', href: '/cpd-training' },
     { name: 'Rules and guidance', href: '/rules-guidance' },
@@ -54,8 +54,8 @@ const Footer: React.FC = () => {
                 <Scale className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h3 className="text-xl font-bold text-white">Law Society</h3>
-                <p className="text-sm text-slate-300">of Scotland</p>
+                <h3 className="text-xl font-bold text-white">Accountants Society</h3>
+                <p className="text-sm text-slate-300">of United Kingdom</p>
               </div>
             </div>
             
@@ -92,14 +92,14 @@ const Footer: React.FC = () => {
 
             <div className="pt-4">
               <p className="text-slate-400 text-sm leading-relaxed">
-                If you're looking for a solicitor, visit{' '}
+                If you're looking for an Accountant, visit{' '}
                 <a 
                   href="https://findasolicitor.scot" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-blue-400 hover:text-blue-300 transition-colors inline-flex items-center"
                 >
-                  FindaSolicitor.scot
+                  FindAccountant.scot
                   <ExternalLink className="w-3 h-3 ml-1" />
                 </a>
               </p>
@@ -175,7 +175,7 @@ const Footer: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
             <div className="text-slate-400 text-sm">
-              © {currentYear} Law Society of Scotland. All rights reserved.
+              © {currentYear} Accountant Society United Kingdom. All rights reserved.
             </div>
             <div className="text-slate-500 text-xs">
               Made by{' '}

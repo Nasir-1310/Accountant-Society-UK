@@ -5,6 +5,7 @@ import SearchBar from "./SearchBar";
 import SignIn from "./SignIn";
 import ContactUs from "./ContactUs";
 import AboutUs from "./AboutUs";
+import HomePage from "./HomePage";
 
 const Navbar=()=>{
     return(
@@ -31,6 +32,7 @@ const Navbar=()=>{
         </div>
         {/* Right */}
         <div className="w-2/4 flex items-center justify-between gap-4">
+            <HomePage></HomePage>
             <SearchBar></SearchBar>
             <ContactUs></ContactUs>
             <AboutUs></AboutUs>

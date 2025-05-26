@@ -8,7 +8,6 @@ import NewsAndBlogsSection from "@/components/NewsAndBlogsSection";
 export default function Home() {
   return (
     <div className=" ">
-      <TopNews></TopNews>
       <Slider></Slider>
       <FindAccountant></FindAccountant>
       <FeatureSection></FeatureSection>

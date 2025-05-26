@@ -71,7 +71,7 @@ const TopNews = () => {
               onMouseLeave={handleMouseLeave}
             >
               {/* Title */}
-              <div className="text-gray-800 font-medium hover:text-green-600 cursor-pointer py-2 px-4">
+              <div className="text-gray-800 font-medium hover:text-blue-800 cursor-pointer py-2 px-4">
                 {item.title}
               </div>
 
