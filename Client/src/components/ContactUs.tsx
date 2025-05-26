@@ -1,8 +1,7 @@
+import Link from "next/link";
 const ContactUs=()=>{
     return(
-        <div className="cursor-pointer">
-            Contact us
-        </div>
+        <Link href="/contactUs" className="">Contact us</Link>
     )
 }
 export default ContactUs;
