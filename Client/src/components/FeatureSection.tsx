@@ -8,7 +8,7 @@ const featureCards = [
   {
     id: 1,
     title: "Member sign in",
-    image: "/member_sing_in.png", // Replace with your actual image path
+    image: "/log-in-400px-250px.jpg", // Replace with your actual image path
     link: "/members/signin",
     buttonText: "Sign in",
     bgColor: "bg-red-300",
@@ -17,7 +17,7 @@ const featureCards = [
   {
     id: 2,
     title: "CPD & Training",
-    image: "/cpd&Training.png", // Replace with your actual image path
+    image: "/light-400px-250px.jpg", // Replace with your actual image path
     link: "/education/cpd",
     buttonText: "Find out more",
     bgColor: "bg-orange-400",
@@ -26,7 +26,7 @@ const featureCards = [
   {
     id: 3,
     title: "Rules and guidance",
-    image: "/Rules and Guidance.png", // Replace with your actual image path
+    image: "/tir-400px-250px.jpg", // Replace with your actual image path
     link: "Rules and Guidance.png",
     buttonText: "Read more",
     bgColor: "bg-teal-500",

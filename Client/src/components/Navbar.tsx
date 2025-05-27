@@ -28,7 +28,7 @@ const Navbar=()=>{
              {/* Left */}
              <div className="w-1/3 ">
                   <Link href="/" className="flex items-center gap-3">
-                         <Image src="/logo2.jpg" alt="Logo" height={100} width={150} className="cursor-pointer"/>
+                         <Image src="/logo1.jpg" alt="Logo" height={100} width={150} className="cursor-pointer"/>
                  </Link>
              </div>
              {/* Right */}
