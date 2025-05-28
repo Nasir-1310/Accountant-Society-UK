@@ -30,37 +30,40 @@ interface NewsAndBlogsSectionProps {
   userRole?: string;
 }
 
+
+
+
 const initialNewsBlogs: NewsItem[] = [
   {
     id: 1,
     type: "news",
-    title: "UK signing of international treaty a major step for lawyer protection",
-    category: "Accountant Society News",
+    title: "Concerned about a compliance check? Use our new tool to find support and what to do next.",
+    category: "Government News",
     date: "23rd May 2025",
-    description: "The Law Society of Scotland has hailed the signing of a new international treaty offering protection to legal professions and legal professional bodies in recognition of the vital work they do. The United Kingdom is one of 17 Council of Europe member states that have now signed the Convention for the Protection of the Profession of Lawyer.",
+    description: "HMRCs new free online Interactive Compliance Guidance tool can help businesses and individuals understand HMRC compliance checks.",
     icon: "📄",
-    link: "/news/uk-signing-international-treaty"
+    link: "https://www.gov.uk/government/news/hmrc-launches-new-online-interactive-help-for-compliance-checks"
   },
   {
     id: 2,
     type: "blog",
-    title: "Civil Aid Inquiry: A much needed conversation",
-    category: "Blogs & opinions",
+    title: "Sole traders and landlords urged to act now, with one year until Making Tax Digital for Income Tax launches",
+    category: "News",
     date: "20th May 2025",
-    description: "Pat Thom, Co-Convener of our Legal Aid Committee and Vice President of the Law Society of Scotland, reflects on her experience of giving evidence to the Scottish Parliament's Equalities, Human Rights and Civil Justice Committee's Inquiry on Civil Legal Aid and the implications of this important and much needed discussion.",
+    description: "Making Tax Digital for Income Tax starts in April 2026 for sole traders and landlords with qualifying income over £50,000.",
     icon: "✏️",
-    link: "/blogs/civil-aid-inquiry"
+    link: "https://www.gov.uk/government/news/one-year-until-making-tax-digital-for-income-tax-launches"
   },
   {
     id: 3,
     type: "event",
-    title: "Wills, Trusts and Executries Conference 2025",
-    category: "Event",
+    title: "Child Benefit boost for millions of families",
+    category: "News",
     date: "27th May 2025 09:30 - 12:00",
     description: "Join us this May for our annual Wills, Trusts and Executries Conference.",
     tags: ["CPD & training events", "Conference", "Wills, executries and trusts", "Civil court work"],
     icon: "📅",
-    link: "/events/wills-trusts-executries-2025"
+    link: "https://www.gov.uk/government/news/child-benefit-boost-for-millions-of-families"
   }
 ];
 
@@ -327,7 +330,7 @@ const NewsAndBlogsSection: React.FC<NewsAndBlogsSectionProps> = ({
               <div className="flex flex-col lg:flex-row lg:items-start gap-4">
                 {/* Icon */}
                 <div className="flex-shrink-0">
-                  <div className="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center text-2xl">
+                  <div className="w-16 h-16 bg-blue-400 rounded-lg flex items-center justify-center text-2xl">
                     {item.icon}
                   </div>
                 </div>

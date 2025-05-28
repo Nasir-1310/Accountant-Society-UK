@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { 
   Phone, 
   Mail, 
@@ -50,12 +51,12 @@ const Footer: React.FC = () => {
           {/* Organization Info Section */}
           <div className="space-y-6">
             <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-green-500 rounded-lg flex items-center justify-center">
-                <Scale className="w-6 h-6 text-white" />
+              <div className="w-150 h-120  from-blue-500 to-green-500 rounded-lg flex items-center justify-center">
+                <Image src="/logo2.jpg"  alt='Logo' width={150} height={120}/>
               </div>
               <div>
-                <h3 className="text-xl font-bold text-white">Accountants Society</h3>
-                <p className="text-sm text-slate-300">of United Kingdom</p>
+                {/* <h3 className="text-xl font-bold text-white">Accountants Society</h3>
+                <p className="text-sm text-slate-300">of United Kingdom</p> */}
               </div>
             </div>
             
