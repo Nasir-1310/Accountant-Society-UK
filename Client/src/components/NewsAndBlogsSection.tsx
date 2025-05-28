@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+ import { ChangeEvent } from 'react';
 
 const initialNewsBlogs = [
   {
@@ -61,18 +62,22 @@ const NewsAndBlogsSection = ({ isAdmin = false, userRole = "user" }) => {
     { value: "event", label: "Event", icon: "📅" }
   ];
 
-  const getIcon = (type) => {
-    const typeOption = typeOptions.find(option => option.value === type);
-    return typeOption ? typeOption.icon : "📄";
-  };
+  const getIcon = (type: string) => {
+  const typeOption = typeOptions.find(option => option.value === type);
+  return typeOption ? typeOption.icon : "📄";
+};
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
+
+ 
+
+const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const { name, value } = e.target;
+  setFormData(prev => ({
+    ...prev,
+    [name]: value,
+  }));
+};
+
 
   const handleAddItem = () => {
     if (!formData.title || !formData.category || !formData.date || !formData.description) return;
