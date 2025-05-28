@@ -1,9 +1,36 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, ChangeEvent } from "react";
 
-const initialNewsBlogs = [
+interface NewsItem {
+  id: number;
+  type: "news" | "blog" | "event";
+  title: string;
+  category: string;
+  date: string;
+  description: string;
+  icon: string;
+  link: string;
+  tags?: string[];
+}
+
+interface FormData {
+  type: "news" | "blog" | "event";
+  title: string;
+  category: string;
+  date: string;
+  description: string;
+  tags: string;
+  link: string;
+}
+
+interface NewsAndBlogsSectionProps {
+  isAdmin?: boolean;
+  userRole?: string;
+}
+
+const initialNewsBlogs: NewsItem[] = [
   {
     id: 1,
     type: "news",
@@ -37,12 +64,15 @@ const initialNewsBlogs = [
   }
 ];
 
-const NewsAndBlogsSection = ({ isAdmin = false, userRole = "user" }) => {
-  const [newsBlogs, setNewsBlogs] = useState(initialNewsBlogs);
-  const [showAddForm, setShowAddForm] = useState(false);
-  const [editingItem, setEditingItem] = useState(null);
+const NewsAndBlogsSection: React.FC<NewsAndBlogsSectionProps> = ({ 
+  isAdmin = false, 
+  userRole = "user" 
+}) => {
+  const [newsBlogs, setNewsBlogs] = useState<NewsItem[]>(initialNewsBlogs);
+  const [showAddForm, setShowAddForm] = useState<boolean>(false);
+  const [editingItem, setEditingItem] = useState<number | null>(null);
   
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     type: "news",
     title: "",
     category: "",
@@ -56,17 +86,17 @@ const NewsAndBlogsSection = ({ isAdmin = false, userRole = "user" }) => {
   const hasAdminAccess = isAdmin || userRole === "admin" || userRole === "super_admin";
 
   const typeOptions = [
-    { value: "news", label: "News", icon: "📄" },
-    { value: "blog", label: "Blog", icon: "✏️" },
-    { value: "event", label: "Event", icon: "📅" }
+    { value: "news" as const, label: "News", icon: "📄" },
+    { value: "blog" as const, label: "Blog", icon: "✏️" },
+    { value: "event" as const, label: "Event", icon: "📅" }
   ];
 
-  const getIcon = (type) => {
+  const getIcon = (type: string): string => {
     const typeOption = typeOptions.find(option => option.value === type);
     return typeOption ? typeOption.icon : "📄";
   };
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -77,7 +107,7 @@ const NewsAndBlogsSection = ({ isAdmin = false, userRole = "user" }) => {
   const handleAddItem = () => {
     if (!formData.title || !formData.category || !formData.date || !formData.description) return;
     
-    const newItem = {
+    const newItem: NewsItem = {
       ...formData,
       id: Date.now(),
       icon: getIcon(formData.type),
@@ -88,7 +118,7 @@ const NewsAndBlogsSection = ({ isAdmin = false, userRole = "user" }) => {
     resetForm();
   };
 
-  const handleEditItem = (item) => {
+  const handleEditItem = (item: NewsItem) => {
     setEditingItem(item.id);
     setFormData({
       ...item,
@@ -98,6 +128,8 @@ const NewsAndBlogsSection = ({ isAdmin = false, userRole = "user" }) => {
   };
 
   const handleUpdateItem = () => {
+    if (editingItem === null) return;
+    
     setNewsBlogs(prev => 
       prev.map(item => 
         item.id === editingItem 
@@ -113,7 +145,7 @@ const NewsAndBlogsSection = ({ isAdmin = false, userRole = "user" }) => {
     resetForm();
   };
 
-  const handleDeleteItem = (id) => {
+  const handleDeleteItem = (id: number) => {
     if (window.confirm("Are you sure you want to delete this item?")) {
       setNewsBlogs(prev => prev.filter(item => item.id !== id));
     }
@@ -133,7 +165,7 @@ const NewsAndBlogsSection = ({ isAdmin = false, userRole = "user" }) => {
     });
   };
 
-  const formatDate = (dateString) => {
+  const formatDate = (dateString: string): string => {
     // Handle both simple dates and date ranges
     return dateString.includes('-') ? dateString : dateString;
   };

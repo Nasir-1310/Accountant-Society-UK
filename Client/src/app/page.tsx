@@ -1,6 +1,5 @@
 import FindAccountant from "@/components/FindAccountant";
 import Slider from "@/components/Slider";
-import TopNews from "@/components/TopNews";
 import FeatureSection from "@/components/FeatureSection";
 import NewsAndBlogsSection from "@/components/NewsAndBlogsSection";
 

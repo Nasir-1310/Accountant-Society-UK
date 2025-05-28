@@ -1,18 +1,20 @@
 "use client"
-import { Pen, Users, Handshake, Trophy, Heart, Phone, Mail, MapPin, Clock, ChevronDown } from "lucide-react";
+import { Pen, Users, Trophy, Phone, Mail, MapPin, Clock, ChevronDown } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-const contactUs = () => {
-  const [expandedSections, setExpandedSections] = useState({});
+const ContactUs = () => {
+ const [expandedSections, setExpandedSections] = useState<{ [key: string]: boolean }>({});
 
-  const toggleSection = (sectionName) => {
-    setExpandedSections(prev => ({
-      ...prev,
-      [sectionName]: !prev[sectionName]
-    }));
-  };
+
+ const toggleSection = (sectionName: string) => {
+  setExpandedSections(prev => ({
+    ...prev,
+    [sectionName]: !prev[sectionName]
+  }));
+};
+
 
   const collapsibleSections = [
     {
@@ -27,7 +29,10 @@ const contactUs = () => {
                 Email: <a href="mailto:member.registration@profaccountants.org.uk" className="text-teal-600 hover:underline">member.registration@profaccountants.org.uk</a>
               </p>
               <p className="text-gray-700">
-                <a href="/membership-fees" className="text-teal-600 hover:underline">Visit the 'Membership and fees' pages</a>
+               <a href="/membership-fees" className="text-teal-600 hover:underline">
+                     Visit the &#39;Membership and fees&#39; pages
+</a>
+
               </p>
             </div>
           </div>
@@ -246,7 +251,7 @@ const contactUs = () => {
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
                     <textarea 
-                      rows="5"
+                      rows={5}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent resize-vertical"
                       placeholder="Enter your message here..."
                     ></textarea>
@@ -453,4 +458,4 @@ const contactUs = () => {
   );
 };
 
-export default contactUs;
+export default ContactUs;

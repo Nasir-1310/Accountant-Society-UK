@@ -92,7 +92,7 @@ const Footer: React.FC = () => {
 
             <div className="pt-4">
               <p className="text-slate-400 text-sm leading-relaxed">
-                If you're looking for an Accountant, visit{' '}
+                If you&rsquo;re looking for an Accountant, visit{' '}
                 <a 
                   href="https://findasolicitor.scot" 
                   target="_blank" 
