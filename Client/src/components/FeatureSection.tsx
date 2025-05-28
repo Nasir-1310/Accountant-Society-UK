@@ -35,7 +35,7 @@ const featureCards = [
   {
     id: 4,
     title: "Journal",
-    image: "/journal.png", // Replace with your actual image path
+    image: "/journal.jpg", // Replace with your actual image path
     link: "/publications/journal",
     buttonText: "Read more",
     bgColor: "bg-blue-500",

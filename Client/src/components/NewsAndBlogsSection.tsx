@@ -1,49 +1,86 @@
 "use client";
 
 import Link from "next/link";
+<<<<<<< HEAD
 import { useState } from "react";
  import { ChangeEvent } from 'react';
+=======
+import { useState, ChangeEvent } from "react";
+>>>>>>> 70f07fa7e0caf949b6a23b80ed723c61d9a09c84
 
-const initialNewsBlogs = [
+interface NewsItem {
+  id: number;
+  type: "news" | "blog" | "event";
+  title: string;
+  category: string;
+  date: string;
+  description: string;
+  icon: string;
+  link: string;
+  tags?: string[];
+}
+
+interface FormData {
+  type: "news" | "blog" | "event";
+  title: string;
+  category: string;
+  date: string;
+  description: string;
+  tags: string;
+  link: string;
+}
+
+interface NewsAndBlogsSectionProps {
+  isAdmin?: boolean;
+  userRole?: string;
+}
+
+
+
+
+const initialNewsBlogs: NewsItem[] = [
   {
     id: 1,
     type: "news",
-    title: "UK signing of international treaty a major step for lawyer protection",
-    category: "Accountant Society News",
+    title: "Concerned about a compliance check? Use our new tool to find support and what to do next.",
+    category: "Government News",
     date: "23rd May 2025",
-    description: "The Law Society of Scotland has hailed the signing of a new international treaty offering protection to legal professions and legal professional bodies in recognition of the vital work they do. The United Kingdom is one of 17 Council of Europe member states that have now signed the Convention for the Protection of the Profession of Lawyer.",
+    description: "HMRCs new free online Interactive Compliance Guidance tool can help businesses and individuals understand HMRC compliance checks.",
     icon: "📄",
-    link: "/news/uk-signing-international-treaty"
+    link: "https://www.gov.uk/government/news/hmrc-launches-new-online-interactive-help-for-compliance-checks"
   },
   {
     id: 2,
     type: "blog",
-    title: "Civil Aid Inquiry: A much needed conversation",
-    category: "Blogs & opinions",
+    title: "Sole traders and landlords urged to act now, with one year until Making Tax Digital for Income Tax launches",
+    category: "News",
     date: "20th May 2025",
-    description: "Pat Thom, Co-Convener of our Legal Aid Committee and Vice President of the Law Society of Scotland, reflects on her experience of giving evidence to the Scottish Parliament's Equalities, Human Rights and Civil Justice Committee's Inquiry on Civil Legal Aid and the implications of this important and much needed discussion.",
+    description: "Making Tax Digital for Income Tax starts in April 2026 for sole traders and landlords with qualifying income over £50,000.",
     icon: "✏️",
-    link: "/blogs/civil-aid-inquiry"
+    link: "https://www.gov.uk/government/news/one-year-until-making-tax-digital-for-income-tax-launches"
   },
   {
     id: 3,
     type: "event",
-    title: "Wills, Trusts and Executries Conference 2025",
-    category: "Event",
+    title: "Child Benefit boost for millions of families",
+    category: "News",
     date: "27th May 2025 09:30 - 12:00",
     description: "Join us this May for our annual Wills, Trusts and Executries Conference.",
     tags: ["CPD & training events", "Conference", "Wills, executries and trusts", "Civil court work"],
     icon: "📅",
-    link: "/events/wills-trusts-executries-2025"
+    link: "https://www.gov.uk/government/news/child-benefit-boost-for-millions-of-families"
   }
 ];
 
-const NewsAndBlogsSection = ({ isAdmin = false, userRole = "user" }) => {
-  const [newsBlogs, setNewsBlogs] = useState(initialNewsBlogs);
-  const [showAddForm, setShowAddForm] = useState(false);
-  const [editingItem, setEditingItem] = useState(null);
+const NewsAndBlogsSection: React.FC<NewsAndBlogsSectionProps> = ({ 
+  isAdmin = false, 
+  userRole = "user" 
+}) => {
+  const [newsBlogs, setNewsBlogs] = useState<NewsItem[]>(initialNewsBlogs);
+  const [showAddForm, setShowAddForm] = useState<boolean>(false);
+  const [editingItem, setEditingItem] = useState<number | null>(null);
   
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     type: "news",
     title: "",
     category: "",
@@ -57,11 +94,12 @@ const NewsAndBlogsSection = ({ isAdmin = false, userRole = "user" }) => {
   const hasAdminAccess = isAdmin || userRole === "admin" || userRole === "super_admin";
 
   const typeOptions = [
-    { value: "news", label: "News", icon: "📄" },
-    { value: "blog", label: "Blog", icon: "✏️" },
-    { value: "event", label: "Event", icon: "📅" }
+    { value: "news" as const, label: "News", icon: "📄" },
+    { value: "blog" as const, label: "Blog", icon: "✏️" },
+    { value: "event" as const, label: "Event", icon: "📅" }
   ];
 
+<<<<<<< HEAD
   const getIcon = (type: string) => {
   const typeOption = typeOptions.find(option => option.value === type);
   return typeOption ? typeOption.icon : "📄";
@@ -78,11 +116,25 @@ const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement
   }));
 };
 
+=======
+  const getIcon = (type: string): string => {
+    const typeOption = typeOptions.find(option => option.value === type);
+    return typeOption ? typeOption.icon : "📄";
+  };
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+>>>>>>> 70f07fa7e0caf949b6a23b80ed723c61d9a09c84
 
   const handleAddItem = () => {
     if (!formData.title || !formData.category || !formData.date || !formData.description) return;
     
-    const newItem = {
+    const newItem: NewsItem = {
       ...formData,
       id: Date.now(),
       icon: getIcon(formData.type),
@@ -93,7 +145,7 @@ const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement
     resetForm();
   };
 
-  const handleEditItem = (item) => {
+  const handleEditItem = (item: NewsItem) => {
     setEditingItem(item.id);
     setFormData({
       ...item,
@@ -103,6 +155,8 @@ const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement
   };
 
   const handleUpdateItem = () => {
+    if (editingItem === null) return;
+    
     setNewsBlogs(prev => 
       prev.map(item => 
         item.id === editingItem 
@@ -118,7 +172,7 @@ const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement
     resetForm();
   };
 
-  const handleDeleteItem = (id) => {
+  const handleDeleteItem = (id: number) => {
     if (window.confirm("Are you sure you want to delete this item?")) {
       setNewsBlogs(prev => prev.filter(item => item.id !== id));
     }
@@ -138,7 +192,7 @@ const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement
     });
   };
 
-  const formatDate = (dateString) => {
+  const formatDate = (dateString: string): string => {
     // Handle both simple dates and date ranges
     return dateString.includes('-') ? dateString : dateString;
   };
@@ -300,7 +354,7 @@ const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement
               <div className="flex flex-col lg:flex-row lg:items-start gap-4">
                 {/* Icon */}
                 <div className="flex-shrink-0">
-                  <div className="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center text-2xl">
+                  <div className="w-16 h-16 bg-blue-400 rounded-lg flex items-center justify-center text-2xl">
                     {item.icon}
                   </div>
                 </div>

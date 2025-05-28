@@ -1,7 +1,7 @@
 const search=()=>{
     return(
         <div className="">
-            alert("This page is under construction")
+            Search
         </div>
     )
 }
