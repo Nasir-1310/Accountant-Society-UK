@@ -1,12 +1,7 @@
 "use client";
 
 import Link from "next/link";
-<<<<<<< HEAD
-import { useState } from "react";
- import { ChangeEvent } from 'react';
-=======
 import { useState, ChangeEvent } from "react";
->>>>>>> 70f07fa7e0caf949b6a23b80ed723c61d9a09c84
 
 interface NewsItem {
   id: number;
@@ -99,24 +94,6 @@ const NewsAndBlogsSection: React.FC<NewsAndBlogsSectionProps> = ({
     { value: "event" as const, label: "Event", icon: "📅" }
   ];
 
-<<<<<<< HEAD
-  const getIcon = (type: string) => {
-  const typeOption = typeOptions.find(option => option.value === type);
-  return typeOption ? typeOption.icon : "📄";
-};
-
-
- 
-
-const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-  const { name, value } = e.target;
-  setFormData(prev => ({
-    ...prev,
-    [name]: value,
-  }));
-};
-
-=======
   const getIcon = (type: string): string => {
     const typeOption = typeOptions.find(option => option.value === type);
     return typeOption ? typeOption.icon : "📄";
@@ -129,7 +106,6 @@ const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement
       [name]: value
     }));
   };
->>>>>>> 70f07fa7e0caf949b6a23b80ed723c61d9a09c84
 
   const handleAddItem = () => {
     if (!formData.title || !formData.category || !formData.date || !formData.description) return;

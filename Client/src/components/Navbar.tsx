@@ -1,7 +1,7 @@
 import Menu from "./Menu";
 import Link from "next/link";
 import Image from "next/image";
-import SearchBar from "./SearchBar";
+// import SearchBar from "./SearchBar";
 import SignIn from "./SignIn";
 import ContactUs from "./ContactUs";
 import AboutUs from "./AboutUs";
@@ -34,10 +34,9 @@ const Navbar=()=>{
              {/* Right */}
              <div className="w-2/3 flex items-center justify-between gap-1">
                 <HomePage></HomePage>
-                <SearchBar></SearchBar>
+                <AboutUs></AboutUs>
                 <FindAccountantNavbar></FindAccountantNavbar>
                 <ContactUs></ContactUs>
-                <AboutUs></AboutUs>
                 <SignIn></SignIn>
               </div>
             </div>

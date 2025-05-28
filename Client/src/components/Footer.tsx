@@ -9,15 +9,15 @@ import {
   Twitter, 
   Linkedin,
   ExternalLink,
-  Scale
+  // Scale
 } from 'lucide-react';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
-    { name: 'About us', href: '/about' },
-    { name: 'Contact us', href: '/contact' },
+    { name: 'About us', href: '/aboutUs' },
+    { name: 'Contact us', href: '/contactUs' },
     { name: 'Who we are', href: '/who-we-are' },
     { name: 'Strategy reports plans', href: '/strategy' },
     { name: 'Help and advice', href: '/help' },
@@ -27,7 +27,7 @@ const Footer: React.FC = () => {
 
   const usefulLinks = [
     { name: 'Find an Accountant', href: '/find-accountant', external: true },
-    { name: 'Sign in', href: '/sign-in' },
+    { name: 'Sign in', href: '/signIn' },
     { name: 'CPD & Training', href: '/cpd-training' },
     { name: 'Rules and guidance', href: '/rules-guidance' },
     { name: 'Website terms and conditions', href: '/terms' }
@@ -64,29 +64,29 @@ const Footer: React.FC = () => {
               <div className="flex items-start space-x-3 group cursor-pointer">
                 <MapPin className="w-5 h-5 text-slate-400 mt-0.5 group-hover:text-blue-400 transition-colors" />
                 <address className="not-italic text-slate-300 group-hover:text-white transition-colors">
-                  Atria One, 144 Morrison Street<br />
-                  Edinburgh<br />
-                  EH3 8EX
+                  513 London Road, Cheam,<br />
+                   Sutton, SM3 8JR<br />
+                  
                 </address>
               </div>
               
               <div className="flex items-center space-x-3 group cursor-pointer">
                 <Phone className="w-5 h-5 text-slate-400 group-hover:text-blue-400 transition-colors" />
                 <a 
-                  href="tel:+44(0)1312267411" 
+                  href="tel:07988 834395" 
                   className="text-slate-300 hover:text-white transition-colors"
                 >
-                  +44(0) 131 226 7411
+                  07988 834395
                 </a>
               </div>
               
               <div className="flex items-center space-x-3 group cursor-pointer">
                 <Mail className="w-5 h-5 text-slate-400 group-hover:text-blue-400 transition-colors" />
                 <a 
-                  href="mailto:lawscot@lawscot.org.uk" 
+                  href="admin@accountantssociety.org" 
                   className="text-slate-300 hover:text-white transition-colors"
                 >
-                  lawscot@lawscot.org.uk
+                  admin@accountantssociety.org
                 </a>
               </div>
             </div>
@@ -95,7 +95,7 @@ const Footer: React.FC = () => {
               <p className="text-slate-400 text-sm leading-relaxed">
                 If you&rsquo;re looking for an Accountant, visit{' '}
                 <a 
-                  href="https://findasolicitor.scot" 
+                  href="https://accountants-society-uk.vercel.app/" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-blue-400 hover:text-blue-300 transition-colors inline-flex items-center"

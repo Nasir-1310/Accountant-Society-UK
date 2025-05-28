@@ -1,16 +1,11 @@
 "use client"
-import { Pen, Users, Trophy, Phone, Mail, MapPin, Clock, ChevronDown } from "lucide-react";
-import { useState } from "react";
-import Link from "next/link";
+import { ChevronDown, Clock, Mail, MapPin, Pen, Phone, Trophy, Users } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
 
-<<<<<<< HEAD
-const contactUs = () => {
-  const [expandedSections, setExpandedSections] = useState<{ [key: string]: boolean }>({});
-=======
 const ContactUs = () => {
  const [expandedSections, setExpandedSections] = useState<{ [key: string]: boolean }>({});
->>>>>>> 70f07fa7e0caf949b6a23b80ed723c61d9a09c84
 
 
  const toggleSection = (sectionName: string) => {
@@ -31,7 +26,7 @@ const ContactUs = () => {
             <div className="space-y-2">
               <p className="flex items-center gap-2 text-gray-700">
                 <Mail className="w-4 h-4 text-teal-600" />
-                Email: <a href="mailto:member.registration@profaccountants.org.uk" className="text-teal-600 hover:underline">member.registration@profaccountants.org.uk</a>
+                Email: <a href="mailto:admin@accountantssociety.org" className="text-teal-600 hover:underline">admin@accountantssociety.org</a>
               </p>
               <p className="text-gray-700">
                <a href="/membership-fees" className="text-teal-600 hover:underline">
@@ -53,11 +48,11 @@ const ContactUs = () => {
             <div className="space-y-2">
               <p className="flex items-center gap-2 text-gray-700">
                 <Phone className="w-4 h-4 text-teal-600" />
-                Phone: <a href="tel:+441234567890" className="text-teal-600 hover:underline">+44 123 456 7890</a>
+                Phone: <a href="tel:07988 834395" className="text-teal-600 hover:underline">07988 834395</a>
               </p>
               <p className="flex items-center gap-2 text-gray-700">
                 <Mail className="w-4 h-4 text-teal-600" />
-                Email: <a href="mailto:practice@profaccountants.org.uk" className="text-teal-600 hover:underline">practice@profaccountants.org.uk</a>
+                Email: <a href="mailto:practice@profaccountants.org.uk" className="text-teal-600 hover:underline">admin@accountantssociety.org</a>
               </p>
             </div>
           </div>
@@ -73,11 +68,11 @@ const ContactUs = () => {
             <div className="space-y-2">
               <p className="flex items-center gap-2 text-gray-700">
                 <Phone className="w-4 h-4 text-teal-600" />
-                Phone: <a href="tel:+441234567891" className="text-teal-600 hover:underline">+44 123 456 7891</a>
+                Phone: <a href="tel:07988 834395" className="text-teal-600 hover:underline">07988 834395</a>
               </p>
               <p className="flex items-center gap-2 text-gray-700">
                 <Mail className="w-4 h-4 text-teal-600" />
-                Email: <a href="mailto:compliance@profaccountants.org.uk" className="text-teal-600 hover:underline">compliance@profaccountants.org.uk</a>
+                Email: <a href="mailto:admin@accountantssociety.org" className="text-teal-600 hover:underline">mailto:admin@accountantssociety.org</a>
               </p>
             </div>
           </div>

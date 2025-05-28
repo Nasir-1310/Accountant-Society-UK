@@ -8,8 +8,8 @@ const menuItems = [
     title: "For members",
     links: [
       { label: "Member benefits", href: "/members/benefits" },
-      { label: "Join us", href: "/members/join" },
-      { label: "Guidance", href: "/members/guidance" },
+      { label: "Join us", href: "/contactUs" },
+      { label: "Member sign In", href: "/members/guidance" },
     ],
   },
   {
@@ -21,27 +21,18 @@ const menuItems = [
     ],
   },
   {
-    title: "Qualifying and education",
-    links: [
-      { label: "Legal education", href: "/education/legal" },
-      { label: "Training", href: "/education/training" },
-      { label: "Exams", href: "/education/exams" },
-    ],
+    title: "CPD & Training",
+    links: [{ label: "Mentoring", href: "/mentoring" }],
   },
   {
-    title: "Research and policy",
-    links: [
-      { label: "Reports", href: "/research/reports" },
-      { label: "Consultations", href: "/research/consultations" },
-      { label: "Surveys", href: "/research/surveys" },
-    ],
+    title: "Policies",
+    links: [{ label: "Rules & Guidance", href: "/research/report" }],
   },
   {
     title: "For the public",
     links: [
-      { label: "Find a solicitor", href: "/public/find" },
-      { label: "Legal info", href: "/public/info" },
-      { label: "Complaints", href: "/public/complaints" },
+      { label: "Find an Accountants", href: "/public/find" },
+      { label: "Make a Query", href: "/contactUs" },
     ],
   },
 ];
@@ -62,7 +53,7 @@ const TopNews = () => {
       <div className="flex justify-between items-center text-center relative">
         {/* First separator */}
         <div className="w-px h-8 bg-gray-300"></div>
-        
+
         {menuItems.map((item, index) => (
           <React.Fragment key={index}>
             <div
@@ -93,7 +84,7 @@ const TopNews = () => {
                 </div>
               )}
             </div>
-            
+
             {/* Separator line after each menu item */}
             <div className="w-px h-8 bg-gray-300"></div>
           </React.Fragment>

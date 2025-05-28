@@ -63,7 +63,7 @@ const Slider = () => {
             {slides[current].description}
           </p>
           <Link href={slides[current].url}>
-            <button className="border border-green-500 text-green-600 px-5 py-2 rounded hover:bg-green-100 transition w-fit">
+            <button className="border border-green-500 text-green-600 px-5 py-2 rounded hover:bg-yellow-600 transition w-fit">
               Read more
             </button>
           </Link>
