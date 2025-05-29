@@ -22,7 +22,10 @@ const menuItems = [
   },
   {
     title: "CPD & Training",
-    links: [{ label: "Mentoring", href: "/mentoring" }],
+    links: [
+      { label: "Mentoring", href: "/mentoring" },
+      { label: "CPD", href: "/cpd" },
+    ],
   },
   {
     title: "Policies",
@@ -49,46 +52,69 @@ const TopNews = () => {
   };
 
   return (
-    <div className="hidden lg:block bg-white w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-[100px] py-3">
-      <div className="flex justify-between items-center text-center relative">
-        {/* First separator */}
-        <div className="w-px h-8 bg-gray-300"></div>
+    <div
+      className="
+        hidden lg:block
+        bg-white 
+        border-b
+        border-gray-200
+        sm:max-w-[425px] sm:mx-8
+        md:max-w-[768px] md:mx-10 
+        lg:max-w-[1024px] lg:mx-20 lg:px-[20px]
+        xl:max-w-[1440px] xl:mx-[100px] xl:px-[30px]
+        2xl:max-w-[2560px] 2xl:mx-[620px] 2xl:px-[40px]
+        py-3
+      "
+    >
+      <div
+        className="
+          h-full
+          px-3
+          mx-auto
+          w-full
+          max-w-full
+        "
+      >
+        <div className="flex justify-between items-center text-center relative">
+          {/* First separator */}
+          <div className="w-px h-8 bg-gray-300"></div>
 
-        {menuItems.map((item, index) => (
-          <React.Fragment key={index}>
-            <div
-              className="relative group flex-1"
-              onMouseEnter={() => handleMouseEnter(index)}
-              onMouseLeave={handleMouseLeave}
-            >
-              {/* Title */}
-              <div className="text-gray-800 font-medium hover:text-blue-800 cursor-pointer py-2 px-4">
-                {item.title}
+          {menuItems.map((item, index) => (
+            <React.Fragment key={index}>
+              <div
+                className="relative group flex-1"
+                onMouseEnter={() => handleMouseEnter(index)}
+                onMouseLeave={handleMouseLeave}
+              >
+                {/* Title */}
+                <div className="text-gray-800 font-medium hover:text-blue-900 cursor-pointer py-2 px-4 transition-colors duration-150">
+                  {item.title}
+                </div>
+
+                {/* Dropdown */}
+                {activeIndex === index && (
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full bg-white border rounded shadow-lg z-50 w-52 transition-all duration-200">
+                    <ul className="flex flex-col text-left py-2">
+                      {item.links.map((link, idx) => (
+                        <li key={idx}>
+                          <Link
+                            href={link.href}
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-200 transition-colors duration-150"
+                          >
+                            {link.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
 
-              {/* Dropdown */}
-              {activeIndex === index && (
-                <div className="absolute left-1/2 -translate-x-1/2 top-full bg-white border rounded shadow-md z-50 w-52 transition-all duration-200">
-                  <ul className="flex flex-col text-left py-2">
-                    {item.links.map((link, idx) => (
-                      <li key={idx}>
-                        <Link
-                          href={link.href}
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-150"
-                        >
-                          {link.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </div>
-
-            {/* Separator line after each menu item */}
-            <div className="w-px h-8 bg-gray-300"></div>
-          </React.Fragment>
-        ))}
+              {/* Separator line after each menu item */}
+              <div className="w-0.5 h-8 bg-gray-300"></div>
+            </React.Fragment>
+          ))}
+        </div>
       </div>
     </div>
   );
