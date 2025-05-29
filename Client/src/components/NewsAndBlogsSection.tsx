@@ -186,7 +186,7 @@ const NewsAndBlogsSection: React.FC<NewsAndBlogsSectionProps> = ({
       <div className="max-w-screen-xl
       2xl:max-w-[2560px] 2xl:mx-[595px] 2xl:px-[10px]
       xl:max-w-[1440px] xl:mx-[90px] xl:px-[5px]
-      lg:max-w-[1024px] lg:mx-[60px] lg:px-[25px]
+      lg:max-w-[1024px] lg:mx-[40px] lg:px-[25px]
       mx-auto px-4 sm:px-6 lg:px-[100px]">
         
         {/* Section Header */}

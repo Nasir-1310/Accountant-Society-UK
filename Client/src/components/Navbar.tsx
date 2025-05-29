@@ -14,14 +14,15 @@ const Navbar = () => {
         h-20 
         relative 
         bg-white 
-        shadow-lg
-        border-b
+       
+      
         border-gray-200
-        sm:max-w-[425px] sm:mx-8
-        md:max-w-[768px] md:mx-10 
-        lg:max-w-[1024px] lg:mx-20 lg:px-[20px]
-        xl:max-w-[1440px] xl:mx-[100px] xl:px-[30px]
-        2xl:max-w-[2560px] 2xl:mx-[620px] 2xl:px-[40px]
+        w-full
+        sm:max-w-[425px] sm:mx-auto sm:px-8
+        md:max-w-[768px] md:mx-auto md:px-10 
+        lg:max-w-[1024px] lg:mx-auto lg:px-[20px]
+        xl:max-w-[1440px] xl:mx-auto xl:px-[100px]
+        2xl:max-w-[2560px] 2xl:mx-auto 2xl:px-[620px]
         z-50
       "
     >
@@ -34,41 +35,37 @@ const Navbar = () => {
           max-w-full
         "
       >
-        {/* Mobile and Laptop (lg and below) */}
+        {/* Mobile and Tablet (lg and below) */}
         <div className="h-full flex items-center justify-between lg:hidden">
           <Menu />
           <Link href="/">
-           
-              <Image
-                src="/logo.jpg"
-                alt="Company Logo"
-                height={50}
-                width={114}
-                className="cursor-pointer"
-              />
-           
+            <Image
+              src="/logo.jpg"
+              alt="Company Logo"
+              height={50}
+              width={114}
+              className="cursor-pointer"
+            />
           </Link>
         </div>
 
-        {/* Extra Large Screens (lg and above) */}
-        <div className="hidden lg:flex items-center justify-between gap-8 h-full">
+        {/* Desktop (lg and above) */}
+        <div className="hidden lg:flex items-center justify-between gap-4 xl:gap-8 h-full">
           {/* Left */}
-          <div className="w-1/3">
+          <div className="flex-shrink-0">
             <Link href="/">
-              
-                <Image
-                  src="/logo4.jpg"
-                  alt="Company Logo"
-                  height={80}
-                  width={190}
-                  className="cursor-pointer"
-                />
-            
+              <Image
+                src="/logo4.jpg"
+                alt="Company Logo"
+                height={80}
+                width={190}
+                className="cursor-pointer"
+              />
             </Link>
           </div>
 
           {/* Right */}
-          <div className="w-2/3 flex items-center justify-between gap-1">
+          <div className="flex items-center justify-end gap-2 lg:gap-4 xl:gap-10 flex-1">
             <HomePage />
             <AboutUs />
             <FindAccountantNavbar />

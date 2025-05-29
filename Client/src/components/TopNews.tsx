@@ -56,13 +56,13 @@ const TopNews = () => {
       className="
         hidden lg:block
         bg-white 
-        border-b
-        border-gray-200
-        sm:max-w-[425px] sm:mx-8
-        md:max-w-[768px] md:mx-10 
-        lg:max-w-[1024px] lg:mx-20 lg:px-[20px]
-        xl:max-w-[1440px] xl:mx-[100px] xl:px-[30px]
-        2xl:max-w-[2560px] 2xl:mx-[620px] 2xl:px-[40px]
+       
+        w-full
+        sm:max-w-[425px] sm:mx-auto sm:px-8
+        md:max-w-[768px] md:mx-auto md:px-10 
+        lg:max-w-[1024px] lg:mx-auto lg:px-[20px]
+        xl:max-w-[1440px] xl:mx-auto xl:px-[100px]
+        2xl:max-w-[2560px] 2xl:mx-auto 2xl:px-[620px]
         py-3
       "
     >
@@ -82,24 +82,24 @@ const TopNews = () => {
           {menuItems.map((item, index) => (
             <React.Fragment key={index}>
               <div
-                className="relative group flex-1"
+                className="relative group flex-1 min-w-0"
                 onMouseEnter={() => handleMouseEnter(index)}
                 onMouseLeave={handleMouseLeave}
               >
                 {/* Title */}
-                <div className="text-gray-800 font-medium hover:text-blue-900 cursor-pointer py-2 px-4 transition-colors duration-150">
+                <div className="text-gray-800 font-medium hover:text-blue-900 cursor-pointer py-2 px-2 lg:px-3 xl:px-4 transition-colors duration-150 text-sm lg:text-base truncate">
                   {item.title}
                 </div>
 
                 {/* Dropdown */}
                 {activeIndex === index && (
-                  <div className="absolute left-1/2 -translate-x-1/2 top-full bg-white border rounded shadow-lg z-50 w-52 transition-all duration-200">
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full bg-white border rounded shadow-lg z-50 w-48 lg:w-52 transition-all duration-200">
                     <ul className="flex flex-col text-left py-2">
                       {item.links.map((link, idx) => (
                         <li key={idx}>
                           <Link
                             href={link.href}
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-200 transition-colors duration-150"
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-200 transition-colors duration-150 whitespace-nowrap"
                           >
                             {link.label}
                           </Link>
@@ -111,7 +111,7 @@ const TopNews = () => {
               </div>
 
               {/* Separator line after each menu item */}
-              <div className="w-0.5 h-8 bg-gray-300"></div>
+              <div className="w-0.5 h-8 bg-gray-300 flex-shrink-0"></div>
             </React.Fragment>
           ))}
         </div>
