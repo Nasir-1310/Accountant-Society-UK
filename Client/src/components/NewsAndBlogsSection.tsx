@@ -350,7 +350,7 @@ const NewsAndBlogsSection: React.FC<NewsAndBlogsSectionProps> = ({
                 {/* Content */}
                 <div className="flex-1">
                   {/* Title */}
-                  <h3 className="text-xl md:text-2xl font-bold text-blue-600 hover:text-blue-800 mb-2">
+                  <h3 className="text-xl md:text-2xl font-bold text-blue-600 hover:text-blue-900 mb-2">
                     <Link href={item.link} className="hover:underline">
                       {item.title}
                     </Link>

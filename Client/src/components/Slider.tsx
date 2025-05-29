@@ -8,25 +8,25 @@ import { useEffect, useState } from "react";
 const slides = [
   {
     id: 1,
-    title: "Ben Kemp appointed new Law Society CEO",
+    title: "Connecting the Excellence of British Bangladeshi Chartered Accountants",
     description:
-      "General Counsel, Executive Director and dual-qualified Scotland as Chief Executive Officer in August.",
+      "Empowering a community of finance professionals through networking, mentorship, and recognition.",
     img: "/slide1.jpg",
     url: "/news/ceo-appointment",
     dotColor: "bg-purple-500",
   },
   {
     id: 2,
-    title: "Second Slide Title",
-    description: "Description for the second slide.",
+    title: "Driving Impact Through Collaboration and Innovation ",
+    description: "Uniting expertise and forward-thinking to shape the future of accountancy and empower our professional community.",
     img: "/slide2.jpg",
     url: "/news/second",
     dotColor: "bg-green-500",
   },
   {
     id: 3,
-    title: "Third Slide Title",
-    description: "Description for the third slide.",
+    title: "Find an Accountant Near You",
+    description: "No matter what you're facing—tax, business, or personal finance—use our trusted directory to connect with a qualified, regulated accountant who can guide you through it. Bottom Logo need to be changed with same colour background",
     img: "/slide3.jpg",
     url: "/news/third",
     dotColor: "bg-blue-500",
@@ -73,7 +73,7 @@ const Slider = () => {
           max-w-full
         "
       >
-        <div className="w-full group flex flex-col lg:flex-row bg-white shadow-lg overflow-hidden relative min-h-[280px] sm:min-h-[320px] md:min-h-[350px] lg:min-h-[350px] xl:min-h-[350px]">
+        <div className="w-full group flex flex-col-reverse lg:flex-row bg-white shadow-lg overflow-hidden relative min-h-[280px] sm:min-h-[320px] md:min-h-[350px] lg:min-h-[350px] xl:min-h-[350px]">
           {/* Text Section */}
           <div className="w-full lg:w-2/5 px-3 sm:px-4 md:px-6 py-4 sm:py-6 flex bg-gray-100 flex-col justify-center relative order-2 lg:order-1">
             <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-gray-800 mb-2 sm:mb-3 leading-tight break-words hyphens-auto">

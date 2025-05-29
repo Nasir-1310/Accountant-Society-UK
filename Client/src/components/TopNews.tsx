@@ -23,8 +23,9 @@ const menuItems = [
   {
     title: "CPD & Training",
     links: [
-      { label: "Mentoring", href: "/mentoring" },
       { label: "CPD", href: "/cpd" },
+      { label: "Mentoring", href: "/mentoring" },
+      
     ],
   },
   {

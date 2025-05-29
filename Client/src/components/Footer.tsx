@@ -9,7 +9,6 @@ import {
   Twitter, 
   Linkedin,
   ExternalLink,
-  // Scale
 } from 'lucide-react';
 
 const Footer: React.FC = () => {
@@ -40,7 +39,7 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 text-white relative overflow-hidden">
+    <footer className="bg-[#0a0e17] text-white relative overflow-hidden">
       {/* Decorative top border */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-green-500 via-yellow-500 to-red-500"></div>
       
@@ -51,12 +50,8 @@ const Footer: React.FC = () => {
           {/* Organization Info Section */}
           <div className="space-y-6">
             <div className="flex items-center space-x-3">
-              <div className="w-150 h-120  from-blue-500 to-green-500 rounded-lg flex items-center justify-center">
-                <Image src="/logo2.jpg"  alt='Logo' width={150} height={120}/>
-              </div>
-              <div>
-                {/* <h3 className="text-xl font-bold text-white">Accountants Society</h3>
-                <p className="text-sm text-slate-300">of United Kingdom</p> */}
+              <div className="w-200 h-160 rounded-lg flex items-center justify-center">
+                <Image src="/logo_footer2.png" alt='Logo' width={200} height={160}/>
               </div>
             </div>
             
@@ -66,7 +61,6 @@ const Footer: React.FC = () => {
                 <address className="not-italic text-slate-300 group-hover:text-white transition-colors">
                   513 London Road, Cheam,<br />
                    Sutton, SM3 8JR<br />
-                  
                 </address>
               </div>
               
@@ -159,7 +153,7 @@ const Footer: React.FC = () => {
                       key={index}
                       href={social.href}
                       aria-label={social.label}
-                      className="w-10 h-10 bg-slate-700 hover:bg-gradient-to-br hover:from-blue-500 hover:to-green-500 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg"
+                      className="w-10 h-10 bg-slate-800 hover:bg-gradient-to-br hover:from-blue-500 hover:to-green-500 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg"
                     >
                       <IconComponent className="w-5 h-5" />
                     </a>
@@ -172,7 +166,7 @@ const Footer: React.FC = () => {
       </div>
 
       {/* Bottom section */}
-      <div className="border-t border-slate-600/50 bg-slate-900/50">
+      <div className="border-t border-slate-700/50 bg-slate-900/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
             <div className="text-slate-400 text-sm">
