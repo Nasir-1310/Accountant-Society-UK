@@ -7,12 +7,13 @@ const FindAccountant = () => {
     <div
       className="
         bg-teal-500 
-        sm:max-w-[445px] sm:mx-8
-        md:max-w-[788px] md:mx-10 
-        lg:max-w-[1044px] lg:mx-20 lg:px-[40px]
-        xl:max-w-[1460px] xl:mx-[100px] xl:px-[50px]
-        2xl:max-w-[2580px] 2xl:mx-[620px] 2xl:px-[60px]
+        sm:max-w-[425px] sm:mx-8
+        md:max-w-[768px] md:mx-[52px]
+        lg:max-w-[1024px] lg:mx-[78px] lg:px-[25px]
+        xl:max-w-[1440px] xl:mx-[97px] xl:px-[5px]
+        2xl:max-w-[2560px] 2xl:mx-[620px] 2xl:px-[10px]
         py-6
+
       "
     >
       <div className="w-full px-3 mx-auto">

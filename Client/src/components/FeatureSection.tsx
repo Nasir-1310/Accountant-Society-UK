@@ -43,10 +43,23 @@ const featureCards = [
   }
 ];
 
+// bg-white 
+//         sm:max-w-[425px] sm:mx-8
+//         md:max-w-[768px] md:mx-10 
+//         lg:max-w-[1024px] lg:mx-15 lg:px-[25px]
+//         xl:max-w-[1440px] xl:mx-[80px] xl:px-[5px]
+//         2xl:max-w-[2560px] 2xl:mx-[600px] 2xl:px-[10px]
+//         py-0
+
 const FeatureSection = () => {
   return (
-    <section className="w-full bg-gray-50 py-10">
-      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-[80px]">
+    <section className="w-full bg-white py-10">
+      <div className="max-w-screen-xl
+      2xl:max-w-[2560px] 2xl:mx-[610px] 2xl:px-[10px]
+      xl:max-w-[1440px] xl:mx-[90px] xl:px-[5px]
+      lg:max-w-[1024px] lg:mx-[1px] lg:px-[20px]
+      md:max-w-[768px] md:mx-[30px]
+      mx-auto px-4 sm:px-6 lg:px-[80px]">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {featureCards.map((card) => (
             <div

@@ -173,9 +173,21 @@ const NewsAndBlogsSection: React.FC<NewsAndBlogsSectionProps> = ({
     return dateString.includes('-') ? dateString : dateString;
   };
 
+  // bg-white 
+//         sm:max-w-[425px] sm:mx-8
+//         md:max-w-[768px] md:mx-10 
+//         lg:max-w-[1024px] lg:mx-15 lg:px-[25px]
+//         xl:max-w-[1440px] xl:mx-[80px] xl:px-[5px]
+//         2xl:max-w-[2560px] 2xl:mx-[600px] 2xl:px-[10px]
+//         py-0
+
   return (
-    <section className="w-full bg-white py-16">
-      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-[100px]">
+    <section className="bg-white py-10">
+      <div className="max-w-screen-xl
+      2xl:max-w-[2560px] 2xl:mx-[595px] 2xl:px-[10px]
+      xl:max-w-[1440px] xl:mx-[90px] xl:px-[5px]
+      lg:max-w-[1024px] lg:mx-[60px] lg:px-[25px]
+      mx-auto px-4 sm:px-6 lg:px-[100px]">
         
         {/* Section Header */}
         <div className="text-center mb-12">

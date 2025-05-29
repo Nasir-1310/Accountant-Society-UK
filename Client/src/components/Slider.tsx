@@ -72,7 +72,7 @@ const Slider = () => {
           max-w-full
         "
       >
-        <div className="w-full group flex flex-col lg:flex-row bg-white shadow-lg rounded-lg overflow-hidden relative min-h-[300px] sm:min-h-[350px] lg:min-h-[400px]">
+        <div className="w-full group flex flex-col lg:flex-row bg-white shadow-lg overflow-hidden relative min-h-[300px] sm:min-h-[350px] lg:min-h-[400px]">
           {/* Text Section */}
           <div className="w-full lg:w-2/5 px-4 sm:px-6 py-4 sm:py-6 flex bg-gray-50 flex-col justify-center relative">
             <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-800 mb-2 sm:mb-3 leading-tight">
