@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import TopNews from "@/components/TopNews";
+import TopBanner from "@/components/TopBanner";
 
 const notoSans = Noto_Sans({
   variable: "--font-noto-sans",
@@ -24,6 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${notoSans.variable} font-sans antialiased`}>
+        <TopBanner/>
         <Navbar />
         <TopNews />
         {children}
