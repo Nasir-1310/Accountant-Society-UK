@@ -7,6 +7,7 @@ const FindAccountant = () => {
     <div
       className="
         w-full 
+        bg-white
         sm:max-w-[425px] sm:px-12 sm:mx-auto
         md:max-w-[768px] md:px-12 md:mx-auto
         lg:max-w-[1024px] lg:px-[35px] lg:mx-auto
