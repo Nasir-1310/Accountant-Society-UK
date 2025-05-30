@@ -29,6 +29,7 @@ const Navbar = () => {
       <div
         className="
           h-full
+          text-black
           px-3 py-3
           mx-auto
           w-full
@@ -65,7 +66,7 @@ const Navbar = () => {
           </div>
 
           {/* Right */}
-          <div className="flex items-center justify-end gap-2 lg:gap-4 xl:gap-10 flex-1">
+          <div className="flex items-center justify-end gap-2 lg:gap-4 xl:gap-10 flex-1 text-black">
             <HomePage />
             <AboutUs />
             <FindAccountantNavbar />
