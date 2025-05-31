@@ -43,7 +43,7 @@ const Footer: React.FC = () => {
     <Container>
 
   
-    <footer className="bg-[#0a0e17] text-white relative overflow-hidden mx-0">
+    <footer className="bg-[#000080] text-white relative overflow-hidden mx-0">
       {/* Decorative top border */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-green-500 via-yellow-500 to-red-500"></div>
       
@@ -90,15 +90,15 @@ const Footer: React.FC = () => {
             </div>
 
             <div className="pt-4">
-              <p className="text-slate-400 text-sm leading-relaxed">
-                If you&rsquo;re looking for an Accountant, visit{' '}
+              <p className="text-slate-400 text-sm text-black leading-relaxed">
+                NOT MEMBER YET ? &nbsp;
                 <a 
-                  href="https://accountants-society-uk.vercel.app/" 
+                  href="/contactUs" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-blue-400 hover:text-blue-300 transition-colors inline-flex items-center"
+                  className="text-blue-400 hover:text-black transition-colors inline-flex items-center"
                 >
-                  FindAccountant.scot
+                  JOIN US
                   <ExternalLink className="w-3 h-3 ml-1" />
                 </a>
               </p>
@@ -174,7 +174,7 @@ const Footer: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
             <div className="text-slate-400 text-sm">
-              © {currentYear} Accountant Society United Kingdom. All rights reserved.
+              © {currentYear} The Professional Accountants Society United Kingdom. All rights reserved.
             </div>
             <div className="text-slate-500 text-xs">
               Made by{' '}

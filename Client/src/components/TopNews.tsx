@@ -76,7 +76,7 @@ const TopNews = () => {
           max-w-full
         "
       >
-        <div className="flex justify-between items-center text-center relative">
+        <div className="flex justify-between items-center text-center relative ">
           {/* First separator */}
           <div className="w-px h-8 bg-gray-300"></div>
 
@@ -88,19 +88,19 @@ const TopNews = () => {
                 onMouseLeave={handleMouseLeave}
               >
                 {/* Title */}
-                <div className="text-gray-800 font-medium hover:text-blue-900 cursor-pointer py-2 px-2 lg:px-3 xl:px-4 transition-colors duration-150 text-sm lg:text-base truncate">
+                <div className="text-gray-800 font-large font-bold hover:text-blue-900 cursor-pointer py-2 px-2 lg:px-3 xl:px-4 transition-colors duration-150 text-sm lg:text-base truncate">
                   {item.title}
                 </div>
 
                 {/* Dropdown */}
                 {activeIndex === index && (
-                  <div className="absolute left-1/2 -translate-x-1/2 top-full bg-white border rounded shadow-lg z-50 w-48 lg:w-52 transition-all duration-200">
-                    <ul className="flex flex-col text-left py-2">
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full bg-white border rounded shadow-lg z-50 w-48 lg:w-52 transition-all duration-200 font-large">
+                    <ul className="flex flex-col text-left py-2 font-large font-bold">
                       {item.links.map((link, idx) => (
-                        <li key={idx}>
+                        <li key={idx} >
                           <Link
                             href={link.href}
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-200 transition-colors duration-150 whitespace-nowrap"
+                            className="block px-4 py-2  text-gray-700 hover:bg-blue-200 transition-colors duration-150 whitespace-nowrap font-large font bold"
                           >
                             {link.label}
                           </Link>

@@ -141,7 +141,7 @@ const ContactUs = () => {
           {/* Page Title */}
           <div className="border-b border-gray-200 pb-6 mb-8">
             <h1 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-2">Contact Us</h1>
-            <p className="text-lg text-gray-600">Get in touch with Professional Accountants Society</p>
+            <p className="text-lg text-gray-600">Get in touch with The Professional Accountants Society</p>
           </div>
 
           {/* Main Contact Information */}
@@ -159,10 +159,11 @@ const ContactUs = () => {
                     <div>
                       <h3 className="font-semibold text-gray-800 mb-1">Address</h3>
                       <p className="text-gray-700 leading-relaxed">
-                        Professional Accountants Society<br />
-                        123 Business District<br />
-                        London, EC1A 1BB<br />
-                        United Kingdom
+                       The Professional Accountants Society<br />
+                        513 London Road,<br />
+                        Cheam,
+                        Sutton, SM3 8JR<br />
+                      
                       </p>
                     </div>
                   </div>
@@ -172,7 +173,7 @@ const ContactUs = () => {
                     <div>
                       <h3 className="font-semibold text-gray-800 mb-1">Phone</h3>
                       <p className="text-gray-700">
-                        <a href="tel:+442071234567" className="hover:text-teal-600 transition-colors">+44 20 7123 4567</a>
+                        <a href="tel:07988834395" className="text-black hover:text-teal-500 transition-colors">07988 834395</a>
                       </p>
                     </div>
                   </div>
@@ -184,12 +185,12 @@ const ContactUs = () => {
                     <div>
                       <h3 className="font-semibold text-gray-800 mb-1">Email</h3>
                       <p className="text-gray-700">
-                        <a href="mailto:info@profaccountants.org.uk" className="hover:text-teal-600 transition-colors">info@profaccountants.org.uk</a>
+                        <a href="admin@accountantssociety.org" className=" text-black hover:text-teal-500 transition-colors">admin@accountantssociety.org</a>
                       </p>
                     </div>
                   </div>
                   
-                  <div className="flex items-start gap-3">
+                  {/* <div className="flex items-start gap-3">
                     <Clock className="text-teal-600 w-5 h-5 mt-1 flex-shrink-0" />
                     <div>
                       <h3 className="font-semibold text-gray-800 mb-1">Office Hours</h3>
@@ -199,7 +200,7 @@ const ContactUs = () => {
                         Sunday: Closed
                       </p>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </section>
@@ -446,7 +447,7 @@ const ContactUs = () => {
               <div className="p-4">
                 <h3 className="text-xl font-bold text-gray-800 mb-2">About us</h3>
                 <p className="text-gray-600 text-sm leading-relaxed mb-3">
-                  The Professional Accountants Society is the professional body for British Bangladeshi Chartered Accountants. We promote excellence among accountants through support and regulation of our members.
+                  The Professional Accountants Society is British Bangladeshi Chartered Accountants. We promote excellence among accountants through support and regulation of our members.
                 </p>
                 <a href="/about" className="text-teal-600 hover:text-teal-700 font-semibold text-sm hover:underline transition-colors">
                   Read more

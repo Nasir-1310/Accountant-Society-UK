@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Root variables for light/dark themes */
+/* Light/Dark Theme Variables */
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -9,13 +11,24 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #ffffff; /* ✅ Keep background white even in dark mode */
+    --foreground: #171717;
   }
 }
 
-
-
+/* ✅ Apply background to the entire viewport */
+html,
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  width: 100%;
+  @apply font-sans;
+}
+/* Utility: fluid margin container */
 @layer utilities {
   .container-wrapper {
     margin-left: auto;
@@ -23,50 +36,40 @@
     padding-left: 12px;
     padding-right: 12px;
 
-    /* Main dynamic width logic */
+    /* Fluid max-width: content + margin space */
     max-width: calc(100vw - clamp(0px, var(--fluid-margin) * 2, 1240px));
   }
 
+  /* Default margin for mobile */
   :root {
     --fluid-margin: 0px;
   }
 
-  /* 768px to 1023px — fluid between 24px to 32px */
+  /* 768px to 1023px — 24px to 32px margin */
   @media (min-width: 768px) {
     :root {
       --fluid-margin: calc(24px + (8 * ((100vw - 768px) / 256)));
     }
   }
 
-  /* 1024px to 1439px — fluid between 32px to 60px */
+  /* 1024px to 1439px — 32px to 60px margin */
   @media (min-width: 1024px) {
     :root {
       --fluid-margin: calc(32px + (28 * ((100vw - 1024px) / 416)));
     }
   }
 
-  /* 1440px to 2559px — fluid between 60px to 620px */
+  /* 1440px to 2559px — 60px to 620px margin */
   @media (min-width: 1440px) {
     :root {
       --fluid-margin: calc(60px + (560 * ((100vw - 1440px) / 1120)));
     }
   }
 
-  /* ≥2560px — lock margin at 620px */
+  /* ≥2560px — fixed 620px margin */
   @media (min-width: 2560px) {
     :root {
       --fluid-margin: 620px;
     }
   }
 }
-
-
-
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  @apply font-sans;
-}
-

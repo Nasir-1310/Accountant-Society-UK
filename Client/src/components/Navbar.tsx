@@ -39,7 +39,7 @@ const Navbar = () => {
         "
       >
         {/* Mobile and Tablet (lg and below) */}
-        <div className="h-full flex items-center justify-between lg:hidden">
+        <div className="h-full flex items-center justify-between xl:hidden">
           <Menu />
           <Link href="/">
             <Image
@@ -53,7 +53,7 @@ const Navbar = () => {
         </div>
 
         {/* Desktop (lg and above) */}
-        <div className="hidden lg:flex items-center justify-between gap-4 xl:gap-8 h-full">
+        <div className="hidden xl:flex items-center justify-between gap-4 xl:gap-8 h-full">
           {/* Left */}
           <div className="flex-shrink-0">
             <Link href="/">
@@ -68,7 +68,7 @@ const Navbar = () => {
           </div>
 
           {/* Right */}
-          <div className="flex items-center justify-end gap-2 lg:gap-4 xl:gap-10 flex-1 text-black">
+          <div className="flex items-center justify-end gap-4 lg:gap-4 xl:gap-10 flex-1 text-black ">
             <HomePage />
             <AboutUs />
             <FindAccountantNavbar />

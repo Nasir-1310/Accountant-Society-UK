@@ -309,7 +309,7 @@ const NewsAndBlogsSection: React.FC<NewsAndBlogsSectionProps> = ({
           {newsBlogs.map((item, index) => (
             <article 
               key={item.id}
-              className="relative bg-white border border-gray-300 rounded-lg p-6 hover:shadow-lg transition-shadow duration-300 group"
+              className="relative bg-white border border-gray-300 rounded-lg p-3 hover:shadow-lg transition-shadow duration-300 group"
             >
               {/* Admin Controls */}
               {hasAdminAccess && (
@@ -344,14 +344,14 @@ const NewsAndBlogsSection: React.FC<NewsAndBlogsSectionProps> = ({
                 {/* Content */}
                 <div className="flex-1">
                   {/* Title */}
-                  <h3 className="text-xl md:text-2xl font-bold text-blue-600 hover:text-blue-900 mb-2">
+                  <h3 className="text-xl md:text-2xl font-bold text-blue-600 hover:text-blue-900 mb-0.5">
                     <Link href={item.link} className="hover:underline">
                       {item.title}
                     </Link>
                   </h3>
 
                   {/* Meta Information */}
-                  <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 mb-3">
+                  <div className="flex flex-wrap items-center gap-2 text-sm text-gray-600 mb-0.5">
                     <span className="font-medium">{item.category}</span>
                     <span className="flex items-center gap-1">
                       📅 {formatDate(item.date)}
@@ -359,7 +359,7 @@ const NewsAndBlogsSection: React.FC<NewsAndBlogsSectionProps> = ({
                   </div>
 
                   {/* Description */}
-                  <p className="text-gray-700 leading-relaxed mb-4">
+                  <p className="text-gray-700 leading-relaxed mb-0">
                     {item.description}
                   </p>
 
@@ -369,7 +369,7 @@ const NewsAndBlogsSection: React.FC<NewsAndBlogsSectionProps> = ({
                       {item.tags.map((tag, tagIndex) => (
                         <span
                           key={tagIndex}
-                          className="px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full font-medium"
+                          className="px-3 py-0.5 bg-blue-100 text-blue-800 text-xs rounded-full font-medium"
                         >
                           {tag}
                         </span>
