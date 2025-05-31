@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-const ContactUs = () => {
+const ContactUsPage = () => {
  const [expandedSections, setExpandedSections] = useState<{ [key: string]: boolean }>({});
 
 
@@ -464,4 +464,4 @@ const ContactUs = () => {
   );
 };
 
-export default ContactUs;
+export default ContactUsPage;

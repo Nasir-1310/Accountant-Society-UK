@@ -2,7 +2,7 @@ import Container from "@/components/Container";
 import { Pen, Users, Handshake, Trophy, Heart } from "lucide-react";
 import Link from "next/link";
 
-const AboutUs = () => {
+const AboutUsPage = () => {
   return (
     <Container>
 
@@ -248,4 +248,4 @@ const AboutUs = () => {
   );
 };
 
-export default AboutUs;
+export default AboutUsPage;

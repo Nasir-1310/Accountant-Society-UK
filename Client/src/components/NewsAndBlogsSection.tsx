@@ -41,7 +41,7 @@ const initialNewsBlogs: NewsItem[] = [
     title: "Concerned about a compliance check? Use our new tool to find support and what to do next.",
     category: "Government News",
     date: "23rd May 2025",
-    description: "HMRCs new free online Interactive Compliance Guidance tool can help businesses and individuals understand HMRC compliance checks.",
+    description: "HMRC’s new free online Interactive Compliance Guidance tool can help businesses and individuals understand HMRC compliance checks. It provides information and support about compliance checks - supporting the government’s Plan for Change to deliver economic growth.",
     icon: "📄",
     link: "https://www.gov.uk/government/news/hmrc-launches-new-online-interactive-help-for-compliance-checks"
   },
@@ -51,7 +51,7 @@ const initialNewsBlogs: NewsItem[] = [
     title: "Sole traders and landlords urged to act now, with one year until Making Tax Digital for Income Tax launches",
     category: "News",
     date: "20th May 2025",
-    description: "Making Tax Digital for Income Tax starts in April 2026 for sole traders and landlords with qualifying income over £50,000.",
+    description: "Making Tax Digital for Income Tax goes live on 6 April 2026 – supporting the government’s Plan for Change to deliver economic growth Eligible taxpayers encouraged to sign up to a testing programme now to get ahead of the changes Digital record-keeping will deliver time-saving benefits for taxpayers",
     icon: "✏️",
     link: "https://www.gov.uk/government/news/one-year-until-making-tax-digital-for-income-tax-launches"
   },
@@ -61,7 +61,7 @@ const initialNewsBlogs: NewsItem[] = [
     title: "Child Benefit boost for millions of families",
     category: "News",
     date: "27th May 2025 09:30 - 12:00",
-    description: "Join us this May for our annual Wills, Trusts and Executries Conference.",
+    description: "Child Benefit payments to increase from next week Parents encouraged to claim and manage Child Benefit via the HMRC app 1.2 million parents have used the digital service to claim their Child Benefit",
     tags: ["CPD & training events", "Conference", "Wills, executries and trusts", "Civil court work"],
     icon: "📅",
     link: "https://www.gov.uk/government/news/child-benefit-boost-for-millions-of-families"
