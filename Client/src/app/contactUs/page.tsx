@@ -1,6 +1,6 @@
 "use client"
 import Container from "@/components/Container";
-import { ChevronDown, Clock, Mail, MapPin, Pen, Phone, Trophy, Users } from "lucide-react";
+import { ChevronDown, Mail, MapPin, Pen, Phone, Trophy, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
