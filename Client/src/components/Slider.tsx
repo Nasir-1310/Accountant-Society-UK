@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Container from "./Container";
 
 const slides = [
   {
@@ -52,15 +53,14 @@ const Slider = () => {
   };
 
   return (
+    <Container>
+
+   
     <div
       className="
         bg-white 
         w-full
-        sm:max-w-[425px] sm:mx-auto sm:px-8
-        md:max-w-[768px] md:mx-auto md:px-10 
-        lg:max-w-[1024px] lg:mx-auto lg:px-[25px]
-        xl:max-w-[1440px] xl:mx-auto xl:px-[80px]
-        2xl:max-w-[2560px] 2xl:mx-auto 2xl:px-[600px]
+        
         py-0
       "
     >
@@ -162,6 +162,7 @@ const Slider = () => {
         </div>
       </div>
     </div>
+     </Container>
   );
 };
 

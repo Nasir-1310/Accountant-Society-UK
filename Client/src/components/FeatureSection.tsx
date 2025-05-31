@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import Container from "./Container";
 
 const featureCards = [
   {
@@ -44,15 +45,14 @@ const featureCards = [
 
 const FeatureSection = () => {
   return (
+    <Container>
+
+   
     <section className="w-full bg-white py-10">
       <div
         className="
           w-full 
-          sm:max-w-[425px] sm:px-8 sm:mx-auto
-          md:max-w-[768px] md:px-10 md:mx-auto
-          lg:max-w-[1024px] lg:px-[25px] lg:mx-auto
-          xl:max-w-[1440px] xl:px-[80px] xl:mx-auto
-          2xl:max-w-[2560px] 2xl:px-[600px] 2xl:mx-auto
+          px-2
         "
       >
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
@@ -93,6 +93,7 @@ const FeatureSection = () => {
         </div>
       </div>
     </section>
+     </Container>
   );
 };
 

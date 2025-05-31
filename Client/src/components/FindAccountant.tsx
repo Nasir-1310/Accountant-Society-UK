@@ -1,23 +1,23 @@
 "use client";
 
 import { FaPen } from "react-icons/fa";
+import Container from "./Container";
 
 const FindAccountant = () => {
   return (
+    <Container>
+
+    
     <div
       className="
         w-full 
         bg-white
-        sm:max-w-[425px] sm:px-12 sm:mx-auto
-        md:max-w-[768px] md:px-12 md:mx-auto
-        lg:max-w-[1024px] lg:px-[35px] lg:mx-auto
-        xl:max-w-[1440px] xl:px-[90px] xl:mx-auto
-        2xl:max-w-[2560px] 2xl:px-[610px] 2xl:mx-auto
+        px-3
       "
     >
       {/* Inner Container with Teal Background */}
-      <div className="bg-teal-500 py-6 rounded-md">
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between w-full px-4">
+      <div className="bg-teal-500 py-6 px-10  ">
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between w-full ">
           {/* Title Section */}
           <div className="flex items-center gap-2 text-white font-semibold text-lg sm:text-xl lg:text-2xl whitespace-nowrap">
             <FaPen className="text-white text-base lg:text-lg" />
@@ -81,6 +81,7 @@ const FindAccountant = () => {
         </div>
       </div>
     </div>
+    </Container>
   );
 };
 

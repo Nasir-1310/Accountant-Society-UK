@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState, ChangeEvent } from "react";
+import Container from "./Container";
 
 interface NewsItem {
   id: number;
@@ -173,21 +174,14 @@ const NewsAndBlogsSection: React.FC<NewsAndBlogsSectionProps> = ({
     return dateString.includes('-') ? dateString : dateString;
   };
 
-  // bg-white 
-//         sm:max-w-[425px] sm:mx-8
-//         md:max-w-[768px] md:mx-10 
-//         lg:max-w-[1024px] lg:mx-15 lg:px-[25px]
-//         xl:max-w-[1440px] xl:mx-[80px] xl:px-[5px]
-//         2xl:max-w-[2560px] 2xl:mx-[600px] 2xl:px-[10px]
-//         py-0
 
   return (
+    <Container>
+
+    
     <section className="bg-white py-10">
-      <div className="max-w-screen-xl
-      2xl:max-w-[2560px] 2xl:mx-[595px] 2xl:px-[10px]
-      xl:max-w-[1440px] xl:mx-[90px] xl:px-[5px]
-      lg:max-w-[1024px] lg:mx-[40px] lg:px-[25px]
-      mx-auto px-4 sm:px-6 lg:px-[100px]">
+      <div className="
+      ">
         
         {/* Section Header */}
         <div className="text-center mb-12">
@@ -311,11 +305,11 @@ const NewsAndBlogsSection: React.FC<NewsAndBlogsSectionProps> = ({
         )}
 
         {/* News and Blogs List */}
-        <div className="space-y-8">
+        <div className="space-y-2">
           {newsBlogs.map((item, index) => (
             <article 
               key={item.id}
-              className="relative bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow duration-300 group"
+              className="relative bg-white border border-gray-300 rounded-lg p-6 hover:shadow-lg transition-shadow duration-300 group"
             >
               {/* Admin Controls */}
               {hasAdminAccess && (
@@ -342,7 +336,7 @@ const NewsAndBlogsSection: React.FC<NewsAndBlogsSectionProps> = ({
               <div className="flex flex-col lg:flex-row lg:items-start gap-4">
                 {/* Icon */}
                 <div className="flex-shrink-0">
-                  <div className="w-16 h-16 bg-blue-400 rounded-lg flex items-center justify-center text-2xl">
+                  <div className="w-12 h-12 bg-blue-400 rounded-lg flex items-center justify-center text-2xl">
                     {item.icon}
                   </div>
                 </div>
@@ -387,7 +381,7 @@ const NewsAndBlogsSection: React.FC<NewsAndBlogsSectionProps> = ({
 
               {/* Separator line (except for last item) */}
               {index < newsBlogs.length - 1 && (
-                <div className="mt-8 border-b border-gray-200"></div>
+                <div className="mt-8 border-b border-gray-300"></div>
               )}
             </article>
           ))}
@@ -407,17 +401,9 @@ const NewsAndBlogsSection: React.FC<NewsAndBlogsSectionProps> = ({
             )}
           </div>
         )}
-
-        {/* Load More Button (for future pagination) */}
-        {/* {newsBlogs.length > 0 && !hasAdminAccess && (
-          <div className="text-center mt-12">
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-md transition-colors duration-200 font-medium">
-              Load More News
-            </button>
-          </div>
-        )} */}
       </div>
     </section>
+    </Container>
   );
 };
 

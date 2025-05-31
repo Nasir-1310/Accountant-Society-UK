@@ -1,17 +1,11 @@
-// components/Container.tsx
-
-import { ReactNode } from "react";
+import React from "react";
 
 interface ContainerProps {
-  children: ReactNode;
+  children: React.ReactNode;
 }
 
-const Container = ({ children }: ContainerProps) => {
-  return (
-    <div className="px-3 md:px-6 lg:px-8 xl:px-[60px] 2xl:px-[620px] py-3">
-      {children}
-    </div>
-  );
+const Container: React.FC<ContainerProps> = ({ children }) => {
+  return <div className="container-wrapper">{children}</div>;
 };
 
 export default Container;

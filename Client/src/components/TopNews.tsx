@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import React, { useState } from "react";
+import Container from "./Container";
 
 const menuItems = [
   {
@@ -53,17 +54,16 @@ const TopNews = () => {
   };
 
   return (
+    <Container>
+
+   
     <div
       className="
         hidden lg:block
         bg-white 
        
         w-full
-        sm:max-w-[425px] sm:mx-auto sm:px-8
-        md:max-w-[768px] md:mx-auto md:px-10 
-        lg:max-w-[1024px] lg:mx-auto lg:px-[20px]
-        xl:max-w-[1440px] xl:mx-auto xl:px-[100px]
-        2xl:max-w-[2560px] 2xl:mx-auto 2xl:px-[620px]
+        
         py-3
       "
     >
@@ -118,6 +118,7 @@ const TopNews = () => {
         </div>
       </div>
     </div>
+     </Container>
   );
 };
 

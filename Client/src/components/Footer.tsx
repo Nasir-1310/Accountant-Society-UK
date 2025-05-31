@@ -10,6 +10,7 @@ import {
   Linkedin,
   ExternalLink,
 } from 'lucide-react';
+import Container from './Container';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -39,7 +40,10 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="bg-[#0a0e17] text-white relative overflow-hidden">
+    <Container>
+
+  
+    <footer className="bg-[#0a0e17] text-white relative overflow-hidden mx-4">
       {/* Decorative top border */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-green-500 via-yellow-500 to-red-500"></div>
       
@@ -186,6 +190,7 @@ const Footer: React.FC = () => {
       <div className="absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-blue-500/5 to-green-500/5 rounded-full blur-3xl pointer-events-none"></div>
       <div className="absolute bottom-0 left-0 transform -translate-x-1/2 translate-y-1/2 w-64 h-64 bg-gradient-to-tr from-yellow-500/5 to-red-500/5 rounded-full blur-3xl pointer-events-none"></div>
     </footer>
+    </Container>
   );
 };
 

@@ -1,10 +1,14 @@
+import Container from "@/components/Container";
 import { Pen, Users, Handshake, Trophy, Heart } from "lucide-react";
 import Link from "next/link";
 
 const AboutUs = () => {
   return (
-    <div className="w-full flex justify-center mt-12 px-4 lg:px-[100px]">
-      <div className="w-full flex flex-col lg:flex-row bg-white shadow-lg rounded-lg overflow-hidden">
+    <Container>
+
+    
+    <div className="w-full flex justify-center mt-12 px-4">
+      <div className="w-full flex flex-col lg:flex-row bg-white shadow-lg  overflow-hidden">
         
         {/* Main Content Section - First on mobile/tablet */}
         <div className="w-full lg:w-3/4 order-1 lg:order-2 px-6 lg:px-10 py-8">
@@ -240,6 +244,7 @@ const AboutUs = () => {
         </div>
       </div>
     </div>
+    </Container>
   );
 };
 

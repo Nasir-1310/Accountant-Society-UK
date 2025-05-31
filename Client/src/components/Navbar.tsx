@@ -6,23 +6,25 @@ import ContactUs from "./ContactUs";
 import AboutUs from "./AboutUs";
 import HomePage from "./HomePage";
 import FindAccountantNavbar from "./FindAccountantNavbar";
+import Container from "./Container";
 
 const Navbar = () => {
   return (
-    <nav
+    <Container>
+    
+    <nav 
       className="
         h-20 
         relative 
         bg-white 
-       
+       border-b
+       border-l
+       border-r
       
         border-gray-200
-        w-full
-        sm:max-w-[425px] sm:mx-auto sm:px-8
-        md:max-w-[768px] md:mx-auto md:px-10 
-        lg:max-w-[1024px] lg:mx-auto lg:px-[20px]
-        xl:max-w-[1440px] xl:mx-auto xl:px-[100px]
-        2xl:max-w-[2560px] 2xl:mx-auto 2xl:px-[620px]
+        mx-3
+        
+       px-5 py-3
         z-50
       "
     >
@@ -30,7 +32,7 @@ const Navbar = () => {
         className="
           h-full
           text-black
-          px-3 py-3
+         
           mx-auto
           w-full
           max-w-full
@@ -56,10 +58,10 @@ const Navbar = () => {
           <div className="flex-shrink-0">
             <Link href="/">
               <Image
-                src="/logo4.jpg"
+                src="/logo11.jpg"
                 alt="Company Logo"
-                height={80}
-                width={190}
+                height={70}
+                width={200}
                 className="cursor-pointer"
               />
             </Link>
@@ -76,6 +78,7 @@ const Navbar = () => {
         </div>
       </div>
     </nav>
+    </Container>
   );
 };
 
