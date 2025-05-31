@@ -52,7 +52,7 @@ const FindAccountant = () => {
 
                 {/* Search Button */}
                 <button
-                  className="px-4 lg:px-6 py-2 text-sm sm:text-base 
+                  className=" w-full sm:w-auto px-4 lg:px-6 py-2 text-sm sm:text-base 
                     bg-transparent border border-white text-gray-600 rounded bg-white
                     hover:bg-green-500 hover:text-white transition-all duration-200 whitespace-nowrap"
                 >

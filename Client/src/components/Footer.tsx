@@ -178,9 +178,9 @@ const Footer: React.FC = () => {
             </div>
             <div className="text-slate-500 text-xs">
               Made by{' '}
-              <span className="text-slate-400 hover:text-white transition-colors cursor-pointer">
-                Md Nasir Uddin
-              </span>
+              <Link href ="https://mdnasiruddin.netlify.app/"className="text-slate-400 hover:text-white transition-colors cursor-pointer">
+                N3 Journey
+              </Link>
             </div>
           </div>
         </div>
