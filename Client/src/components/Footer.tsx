@@ -43,7 +43,7 @@ const Footer: React.FC = () => {
     <Container>
 
   
-    <footer className="bg-[#0a0e17] text-white relative overflow-hidden mx-4">
+    <footer className="bg-[#0a0e17] text-white relative overflow-hidden mx-0">
       {/* Decorative top border */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-green-500 via-yellow-500 to-red-500"></div>
       
