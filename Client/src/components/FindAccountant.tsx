@@ -16,7 +16,7 @@ const FindAccountant = () => {
             </div>
 
             {/* Responsive Layout for Large vs Small Screens */}
-            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-2 w-full">
+            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-2 xl:gap-10 w-full">
               {/* Title for Large Screens */}
               <div className="hidden  lg:flex items-center gap-2 text-gray-700 font-semibold text-xl lg:text-2xl whitespace-nowrap">
                 <FaPen className="text-white text-lg" />
@@ -29,7 +29,7 @@ const FindAccountant = () => {
                 <input
                   type="text"
                   placeholder="Postcode"
-                  className="w-full sm:w-auto flex-grow min-w-[120px] px-3 py-2 rounded-md 
+                  className="w-full sm:w-auto flex-grow min-w-[120px] xl:max-w-[270px]  px-3 py-2 rounded-md 
                     text-sm sm:text-base border border-gray-300 
                     focus:outline-none focus:ring-2 text-gray-100 focus:ring-white transition-all duration-200"
                 />
@@ -37,7 +37,7 @@ const FindAccountant = () => {
                 {/* Area Dropdown */}
                 <select
                   defaultValue=""
-                  className="w-full sm:w-auto flex-grow min-w-[120px] px-3 py-2 rounded-md 
+                  className="w-full sm:w-auto flex-grow min-w-[120px] xl:max-w-[270px] px-3 py-2 rounded-md 
                     text-sm sm:text-base border border-gray-300 
                     bg-white text-gray-600 focus:outline-none focus:ring-2 focus:ring-white 
                     hover:border-teal-600 hover:ring-teal-700 transition-all duration-200"
@@ -52,7 +52,7 @@ const FindAccountant = () => {
 
                 {/* Search Button */}
                 <button
-                  className=" w-full sm:w-auto px-4 lg:px-6 py-2 text-sm sm:text-base 
+                  className=" w-full sm:w-auto px-4 lg:px-6 py-2 text-sm sm:text-base  xs:text-xs
                     bg-transparent border border-white text-gray-600 rounded bg-white
                     hover:bg-green-500 hover:text-white transition-all duration-200 whitespace-nowrap"
                 >

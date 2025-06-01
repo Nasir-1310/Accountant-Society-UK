@@ -13,30 +13,9 @@ const Navbar = () => {
     <Container>
     
     <nav 
-      className="
-        h-20 
-        relative 
-        bg-white 
-       border-b
-       border-l
-       border-r
-      
-        border-gray-200
-        mx-3
-        
-       px-5 py-3
-        z-50
-      "
-    >
+      className=" h-20 relative bg-white border-b border-l border-r border-gray-200 mx-3 px-5 py-3 z-50 ">
       <div
-        className="
-          h-full
-          text-black
-         
-          mx-auto
-          w-full
-          max-w-full
-        "
+        className=" h-full text-black mx-auto w-full max-w-full"
       >
         {/* Mobile and Tablet (lg and below) */}
         <div className="h-full flex items-center justify-between xl:hidden">
@@ -53,7 +32,7 @@ const Navbar = () => {
         </div>
 
         {/* Desktop (lg and above) */}
-        <div className="hidden xl:flex items-center justify-between gap-4 xl:gap-8 h-full">
+        <div className="hidden xl:block xl:flex items-center justify-between gap-4 xl:gap-8 h-full">
           {/* Left */}
           <div className="flex-shrink-0">
             <Link href="/">
