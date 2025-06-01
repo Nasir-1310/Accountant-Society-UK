@@ -43,7 +43,7 @@ const Footer: React.FC = () => {
     <Container>
 
   
-    <footer className="bg-[#000080] text-white relative overflow-hidden mx-0">
+    <footer className="bg-[#060914] text-white relative overflow-hidden mx-0">
       {/* Decorative top border */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-green-500 via-yellow-500 to-red-500"></div>
       
@@ -96,7 +96,7 @@ const Footer: React.FC = () => {
                   href="/contactUs" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-blue-400 hover:text-black transition-colors inline-flex items-center"
+                  className="text-blue-400 hover:text-white transition-colors inline-flex items-center"
                 >
                   JOIN US
                   <ExternalLink className="w-3 h-3 ml-1" />
