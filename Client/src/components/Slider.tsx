@@ -76,7 +76,7 @@ const Slider = () => {
         <div className="w-full group flex flex-col-reverse lg:flex-row bg-white shadow-lg overflow-hidden relative min-h-[280px] sm:min-h-[320px] md:min-h-[350px] lg:min-h-[350px] xl:min-h-[350px]">
           {/* Text Section */}
           <div className="w-full lg:w-2/5 px-3 sm:px-4 md:px-6 py-4 sm:py-6 flex bg-gray-200 flex-col justify-center relative order-2 lg:order-1">
-            <h2 className="text-3xl  font-bold text-gray-700 mb-2 sm:mb-3 leading-tight break-words hyphens-auto">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-700 mb-2 sm:mb-3 leading-tight break-words hyphens-auto">
               {slides[current].title}
             </h2>
             <p className="text-xs hidden md:block sm:hidden xm:text-sm md:text-base text-gray-700 mb-3 sm:mb-4 md:mb-5 line-clamp-2 sm:line-clamp-3 lg:line-clamp-none leading-relaxed break-words">

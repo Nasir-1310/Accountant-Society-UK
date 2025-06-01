@@ -185,7 +185,7 @@ const NewsAndBlogsSection: React.FC<NewsAndBlogsSectionProps> = ({
         
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
             Latest news and blogs
           </h2>
           <div className="w-24 h-1 bg-blue-600 mx-auto"></div>
@@ -307,7 +307,7 @@ const NewsAndBlogsSection: React.FC<NewsAndBlogsSectionProps> = ({
         {/* News and Blogs List */}
         <div className="space-y-2">
           {newsBlogs.map((item, index) => (
-            <article 
+            <article
               key={item.id}
               className="relative bg-white border border-gray-300 rounded-lg p-3 hover:shadow-lg transition-shadow duration-300 group"
             >
