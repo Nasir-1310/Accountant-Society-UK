@@ -19,7 +19,7 @@ const TopNews = () => {
 
   return (
     <Container>
-      <div
+      <div 
         className="
         hidden xl:block bg-white w-full py-3">
         <div

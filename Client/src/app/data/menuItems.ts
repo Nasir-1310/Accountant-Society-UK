@@ -11,8 +11,9 @@ export const menuItems = [
     title: "News and events",
     links: [
       { label: "Latest news", href: "/news/latest" },
-      { label: "Events", href: "/news/events" },
+      { label: "Latest Events", href: "/news/events" },
       { label: "Webinars", href: "/news/webinars" },
+      { label: "Gallery", href: "/news/gallery" },
     ],
   },
   {
@@ -27,10 +28,10 @@ export const menuItems = [
     links: [{ label: "Rules & Guidance", href: "/research/report" }],
   },
   {
-    title: "For the public",
+    title: "Founding Members",
     links: [
-      { label: "Find an Accountants", href: "/public/find" },
-      { label: "Make a Query", href: "/contactUs" },
+      { label: "Members", href: "/public/find" },
+      // { label: "Make a Query", href: "/contactUs" },
     ],
   },
 ];

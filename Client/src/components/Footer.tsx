@@ -43,7 +43,7 @@ const Footer: React.FC = () => {
     <Container>
 
   
-    <footer className="bg-[#060914] text-white relative overflow-hidden mx-0">
+    <footer data-aos="fade-up" className="bg-[#060914] text-white relative overflow-hidden mx-0">
       {/* Decorative top border */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-green-500 via-yellow-500 to-red-500"></div>
       
@@ -52,7 +52,7 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
           
           {/* Organization Info Section */}
-          <div className="space-y-6">
+          <div data-aos="fade-up" className="space-y-6">
             <div className="flex items-center space-x-3">
               <div className="w-200 h-160 rounded-lg flex items-center justify-center">
                 <Image src="/logo_footer2.png" alt='Logo' width={200} height={160}/>
@@ -106,7 +106,7 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Quick Links Section */}
-          <div className="space-y-6">
+          <div data-aos="fade-up" className="space-y-6">
             <h3 className="text-lg font-semibold text-white relative pb-3">
               About us
               <span className="absolute bottom-0 left-0 w-10 h-0.5 bg-gradient-to-r from-blue-500 to-green-500 rounded-full"></span>
@@ -125,7 +125,7 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Useful Links Section */}
-          <div className="space-y-6">
+          <div data-aos="fade-up" className="space-y-6">
             <h3 className="text-lg font-semibold text-white relative pb-3">
               Useful links
               <span className="absolute bottom-0 left-0 w-10 h-0.5 bg-gradient-to-r from-green-500 to-yellow-500 rounded-full"></span>

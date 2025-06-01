@@ -6,7 +6,7 @@ import Container from "./Container";
 const FindAccountant = () => {
   return (
     <Container>
-      <div className="w-full bg-white px-3">
+      <div  className="w-full bg-white px-3">
         <div className="bg-green-500 py-4 px-4 sm:px-3 lg:px-3">
           <div className="w-full">
             {/* Title Line - Always on Top in Tablet & Mobile */}
@@ -45,8 +45,20 @@ const FindAccountant = () => {
                   <option value="" disabled>
                     Choose an area of Accountant...
                   </option>
-                  <option value="option 01">Option 01</option>
-                  <option value="option 02">Option 02</option>
+                  <option value="Personal Tax Return">Bookkeeping & Accounts Preparatio</option>
+                  <option value="option 02">Corporation Tax Return</option>
+                  <option value="option 02">Capital Gains Tax</option>
+                  <option value="option 02">Inheritance Tax</option>
+                  <option value="option 02">VAT & Indirect Taxes</option>
+                  <option value="option 02">Self-Assessment</option>
+                  <option value="option 02">Payroll Services</option>
+                  <option value="option 02">Business Start-up & Advisory</option>
+                  <option value="option 02">HMRC Investigations & Disputes</option>
+                  <option value="option 02">R&D Tax Credits</option>
+                  <option value="option 02">Tax Planning & Consultancy</option>
+                  <option value="option 02">Trust & Estate Planning</option>
+                  <option value="option 02">International Tax</option>
+                  <option value="option 02">Transfer Pricing </option>
                   
                 </select>
 

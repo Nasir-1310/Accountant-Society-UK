@@ -13,114 +13,114 @@ const AboutUsPage = () => {
         {/* Main Content Section - First on mobile/tablet */}
         <div className="w-full lg:w-3/4 order-1 lg:order-2 px-6 lg:px-10 py-8">
           {/* Breadcrumb */}
-          <div className="text-sm text-gray-500 mb-6">
+          <div data-aos="fade-up" className="text-sm text-gray-500 mb-6">
             <Link href="/" className="hover:text-teal-600 transition-colors">Home</Link> 
             <span className="mx-2">|</span> 
             <span className="text-gray-700">About us</span>
           </div>
 
           {/* Page Title */}
-          <div className="border-b border-gray-200 pb-6 mb-8">
+          <div data-aos="fade-up" className="border-b border-gray-200 pb-6 mb-8">
             <h1 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-2">About Us</h1>
             <p className="text-lg text-gray-600">The Professional Accountants Society</p>
           </div>
 
           {/* Content Sections */}
-          <div className="space-y-8 mb-10">
+          <div data-aos="fade-up" className="space-y-8 mb-10">
             {/* Vision Section */}
-            <section id="vision">
+            <section data-aos="fade-up" id="vision">
               <h2 className="text-2xl font-bold text-teal-700 mb-4 flex items-center gap-2">
-                <Trophy className="text-teal-600 w-6 h-6" />
+                <Trophy data-aos="fade-up" className="text-teal-600 w-6 h-6" />
                 Our Vision
               </h2>
-              <p className="text-gray-700 leading-relaxed text-lg">
+              <p data-aos="fade-up" className="text-gray-700 leading-relaxed text-lg">
                 To build a thriving, collaborative community that celebrates and connects the excellence of British Bangladeshi Chartered Accountants, empowering them to lead, inspire, and shape the future of the accounting profession.
               </p>
             </section>
 
             {/* Mission Section */}
-            <section id="mission">
+            <section data-aos="fade-up" id="mission">
               <h2 className="text-2xl font-bold text-teal-700 mb-4">Our Mission</h2>
               <div className="space-y-3 text-gray-700 leading-relaxed">
                 <p className="flex items-start gap-2">
-                  <span className="text-teal-600 mt-1 font-bold ">•</span>
+                  <span data-aos="fade-up" className="text-teal-600 mt-1 font-bold ">•</span>
                   To foster a strong network of British Bangladeshi Chartered Accountants in UK.
                 </p>
                 <p className="flex items-start gap-2">
-                  <span className="text-teal-600 mt-1 font-bold">•</span>
+                  <span data-aos="fade-up" className="text-teal-600 mt-1 font-bold">•</span>
                   To promote professional development, mentorship, and mutual support.
                 </p>
-                <p className="flex items-start gap-2">
-                  <span className="text-teal-600 mt-1 font-bold">•</span>
+                <p  className="flex items-start gap-2">
+                  <span data-aos="fade-up" className="text-teal-600 mt-1 font-bold">•</span>
                   To highlight the achievements and contributions of our members across the UK and beyond.
                 </p>
                 <p className="flex items-start gap-2">
-                  <span className="text-teal-600 mt-1 font-bold">•</span>
+                  <span data-aos="fade-up" className="text-teal-600 mt-1 font-bold">•</span>
                   To act as a bridge between generations of finance professionals, encouraging innovation, diversity, and integrity in accounting practices.
                 </p>
               </div>
             </section>
 
             {/* Who We Are Section */}
-            <section id="who-we-are">
+            <section data-aos="fade-up" id="who-we-are">
               <h2 className="text-2xl font-bold text-teal-700 mb-4 flex items-center gap-2">
                 <Users className="text-teal-600 w-6 h-6" />
                 Who We Are
               </h2>
-              <p className="text-gray-700 leading-relaxed">
+              <p data-aos="fade-up" className="text-gray-700 leading-relaxed">
                 The <strong>Professional Accountants Society</strong> is a platform formed by and for British Bangladeshi Chartered Accountants and finance professionals. We are a collective of individuals who share a commitment to professional excellence, ethical leadership, and community upliftment. Our members come from a wide range of industries — public practice, corporate finance, public sector, academia, and entrepreneurship — united by a shared heritage and a passion for financial stewardship.
               </p>
             </section>
 
             {/* What We Do Section */}
-            <section id="what-we-do">
+            <section data-aos="fade-up" id="what-we-do">
               <h2 className="text-2xl font-bold text-teal-700 mb-4 flex items-center gap-2">
                 <Handshake className="text-teal-600 w-6 h-6" />
                 What We Do
               </h2>
               <div className="space-y-4 text-gray-700">
                 <div>
-                  <h3 className="font-semibold text-gray-800 mb-2">Networking & Collaboration</h3>
-                  <p className="leading-relaxed">We organise professional meet-ups, seminars, and virtual forums to create opportunities for meaningful connections and collaborations.</p>
+                  <h3 data-aos="fade-up" className="font-semibold text-gray-800 mb-2">Networking & Collaboration</h3>
+                  <p data-aos="fade-up" className="leading-relaxed">We organise professional meet-ups, seminars, and virtual forums to create opportunities for meaningful connections and collaborations.</p>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-800 mb-2">Mentorship & Guidance</h3>
-                  <p className="leading-relaxed">Through structured mentorship programs, we support young professionals and students on their path to qualification and career success.</p>
+                  <h3 data-aos="fade-up" className="font-semibold text-gray-800 mb-2">Mentorship & Guidance</h3>
+                  <p data-aos="fade-up" className="leading-relaxed">Through structured mentorship programs, we support young professionals and students on their path to qualification and career success.</p>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-800 mb-2">Recognition & Representation</h3>
-                  <p className="leading-relaxed">We spotlight the success stories and impact of British Bangladeshi accountants to inspire the next generation and elevate our collective voice in the profession.</p>
+                  <h3 data-aos="fade-up" className="font-semibold text-gray-800 mb-2">Recognition & Representation</h3>
+                  <p data-aos="fade-up" className="leading-relaxed">We spotlight the success stories and impact of British Bangladeshi accountants to inspire the next generation and elevate our collective voice in the profession.</p>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-800 mb-2">Community Engagement</h3>
-                  <p className="leading-relaxed">We engage in social responsibility initiatives, encouraging our members to give back to the community and act as role models for others.</p>
+                  <h3 data-aos="fade-up" className="font-semibold text-gray-800 mb-2">Community Engagement</h3>
+                  <p data-aos="fade-up" className="leading-relaxed">We engage in social responsibility initiatives, encouraging our members to give back to the community and act as role models for others.</p>
                 </div>
               </div>
             </section>
 
             {/* Why We Exist Section */}
-            <section id="why-we-exist">
-              <h2 className="text-2xl font-bold text-teal-700 mb-4 flex items-center gap-2">
+            <section data-aos="fade-up" id="why-we-exist">
+              <h2 data-aos="fade-up" className="text-2xl font-bold text-teal-700 mb-4 flex items-center gap-2">
                 <Heart className="text-teal-600 w-6 h-6" />
                 Why We Exist
               </h2>
-              <p className="text-gray-700 leading-relaxed">
+              <p data-aos="fade-up" className="text-gray-700 leading-relaxed">
                 Despite growing numbers of British Bangladeshi professionals in the accounting field, there has long been a gap in representation, recognition, and structured support. This society aims to fill that gap — to connect, uplift, and showcase the immense talent within our community, and to ensure that our voices are heard at every level of the profession.
               </p>
             </section>
           </div>
 
           {/* Cards Section - Responsive grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
+          <div data-aos="fade-up" className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
             {/* Professional Development Card */}
-            <div className="bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6 flex flex-col">
+            <div data-aos="fade-up" className="bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6 flex flex-col">
               <div className="flex items-center gap-3 mb-4">
                 <Trophy className="text-teal-600 w-8 h-8" />
                 <a href="/professional-development" className="hover:text-teal-600 transition-colors">
                   <h2 className="text-xl font-bold text-gray-800 hover:underline">Professional Development</h2>
                 </a>
               </div>
-              <p className="text-gray-600 leading-relaxed flex-1 mb-4">
+              <p data-aos="fade-up" className="text-gray-600 leading-relaxed flex-1 mb-4">
                 Access exclusive training programs, workshops, and certification courses designed to advance your career in accounting and finance.
               </p>
               <a href="/professional-development" className="text-teal-600 hover:text-teal-700 font-semibold hover:underline transition-colors">
@@ -129,7 +129,7 @@ const AboutUsPage = () => {
             </div>
 
             {/* Networking Events Card */}
-            <div className="bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6 flex flex-col">
+            <div data-aos="fade-up" className="bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6 flex flex-col">
               <div className="flex items-center gap-3 mb-4">
                 <Users className="text-teal-600 w-8 h-8" />
                 <a href="/networking-events" className="hover:text-teal-600 transition-colors">
@@ -145,7 +145,7 @@ const AboutUsPage = () => {
             </div>
 
             {/* Membership Benefits Card */}
-            <div className="bg-gradient-to-br from-teal-50 to-green-50 border border-teal-200 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6 flex flex-col md:col-span-2 xl:col-span-1">
+            <div data-aos="fade-up" className="bg-gradient-to-br from-teal-50 to-green-50 border border-teal-200 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6 flex flex-col md:col-span-2 xl:col-span-1">
               <div className="flex items-center gap-3 mb-4">
                 <Pen className="text-teal-600 w-8 h-8" />
                 <a href="/membership" className="hover:text-teal-600 transition-colors">
@@ -165,7 +165,7 @@ const AboutUsPage = () => {
         </div>
 
         {/* Sidebar Section - Second on mobile/tablet, first on desktop */}
-        <div className="w-full lg:w-1/4 order-2 lg:order-1 bg-gradient-to-br from-gray-50 to-gray-100 border-t lg:border-t-0 lg:border-r border-gray-200">
+        <div data-aos="fade-up" className="w-full lg:w-1/4 order-2 lg:order-1 bg-gradient-to-br from-gray-50 to-gray-100 border-t lg:border-t-0 lg:border-r border-gray-200">
           <div className="px-6 py-8">
             {/* In this section - Mobile/Tablet */}
             <div className="lg:hidden mb-8">
@@ -187,7 +187,7 @@ const AboutUsPage = () => {
             </div>
 
             {/* In this section - Desktop */}
-            <div className="hidden lg:block mb-8">
+            <div data-aos="fade-up" className="hidden lg:block mb-8">
               <h3 className="text-2xl font-bold text-gray-800 mb-6 border-b border-gray-300 pb-3">
                 In this section
               </h3>
@@ -208,7 +208,7 @@ const AboutUsPage = () => {
             </div>
 
             {/* Find Accountant */}
-            <div className="bg-gradient-to-r from-teal-500 to-teal-600 rounded-lg shadow-md overflow-hidden">
+            <div data-aos="fade-up" className="bg-gradient-to-r from-teal-500 to-teal-600 rounded-lg shadow-md overflow-hidden">
               <div className="p-4 lg:p-6">
                 <div className="flex items-center gap-2 text-white text-lg font-semibold mb-4">
                   <Pen className="text-white w-5 h-5" />
@@ -227,11 +227,20 @@ const AboutUsPage = () => {
                     defaultValue=""
                   >
                     <option value="" disabled>Choose area...</option>
-                    <option value="audit">Audit & Assurance</option>
-                    <option value="tax">Tax Advisory</option>
-                    <option value="corporate">Corporate Finance</option>
-                    <option value="forensic">Forensic Accounting</option>
-                    <option value="management">Management Accounting</option>
+                    <option value="Personal Tax Return">Bookkeeping & Accounts Preparatio</option>
+                  <option value="option 02">Corporation Tax Return</option>
+                  <option value="option 02">Capital Gains Tax</option>
+                  <option value="option 02">Inheritance Tax</option>
+                  <option value="option 02">VAT & Indirect Taxes</option>
+                  <option value="option 02">Self-Assessment</option>
+                  <option value="option 02">Payroll Services</option>
+                  <option value="option 02">Business Start-up & Advisory</option>
+                  <option value="option 02">HMRC Investigations & Disputes</option>
+                  <option value="option 02">R&D Tax Credits</option>
+                  <option value="option 02">Tax Planning & Consultancy</option>
+                  <option value="option 02">Trust & Estate Planning</option>
+                  <option value="option 02">International Tax</option>
+                  <option value="option 02">Transfer Pricing </option>
                   </select>
                   
                   <button className="w-full px-4 py-3 border border-white text-white rounded-md hover:bg-white hover:text-teal-600 transition-all duration-200 font-semibold">

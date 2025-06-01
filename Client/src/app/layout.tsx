@@ -1,11 +1,10 @@
-import type { Metadata } from "next";
-import { Noto_Sans } from "next/font/google"; // ✅ Use Noto Sans
-import "./globals.css";
-import Navbar from "@/components/Navbar";
+import AOSInitializer from "@/components/AOSInitealizer";
 import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 import TopNews from "@/components/TopNews";
-
-// import TopBanner from "@/components/TopBanner";
+import type { Metadata } from "next";
+import { Noto_Sans } from "next/font/google";
+import "./globals.css";
 
 const notoSans = Noto_Sans({
   variable: "--font-noto-sans",
@@ -25,11 +24,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-       <head>
-  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-</head>
+      <head>
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+      </head>
       <body className={`${notoSans.variable} font-sans antialiased`}>
-       
+        {/* 👇 Mount AOS globally as client-side component */}
+        <AOSInitializer />
         <Navbar />
         <TopNews />
         {children}

@@ -56,7 +56,7 @@ const Slider = () => {
     <Container>
 
    
-    <div
+    <div 
       className="
         bg-white 
         w-full

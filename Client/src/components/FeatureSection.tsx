@@ -48,7 +48,7 @@ const FeatureSection = () => {
     <Container>
 
    
-    <section className="w-full bg-white py-10">
+    <section data-aos="fade-up" className="w-full bg-white py-10">
       <div
         className="
           w-full 

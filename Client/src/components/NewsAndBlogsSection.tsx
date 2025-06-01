@@ -179,7 +179,7 @@ const NewsAndBlogsSection: React.FC<NewsAndBlogsSectionProps> = ({
     <Container>
 
     
-    <section className="bg-white py-10">
+    <section data-aos="fade-up" className="bg-white py-10">
       <div className="
       ">
         
@@ -333,7 +333,7 @@ const NewsAndBlogsSection: React.FC<NewsAndBlogsSectionProps> = ({
                 </div>
               )}
 
-              <div className="flex flex-col lg:flex-row lg:items-start gap-4">
+              <div data-aos="fade-up" className="flex flex-col lg:flex-row lg:items-start gap-4">
                 {/* Icon */}
                 <div className="flex-shrink-0">
                   <div className="w-12 h-12 bg-blue-400 rounded-lg flex items-center justify-center text-2xl">
