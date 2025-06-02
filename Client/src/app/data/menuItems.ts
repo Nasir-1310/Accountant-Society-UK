@@ -11,9 +11,9 @@ export const menuItems = [
     title: "News and events",
     links: [
       { label: "Latest news", href: "/news/latest" },
-      { label: "Latest Events", href: "/news/events" },
-      { label: "Webinars", href: "/news/webinars" },
+      { label: "Upcoming Events", href: "/news/events" },
       { label: "Gallery", href: "/news/gallery" },
+       { label: "CPD & Networking", href: "/news/cpd" },
     ],
   },
   {

@@ -22,7 +22,7 @@ const Navbar = () => {
           <Menu />
           <Link href="/">
             <Image
-              src="/logo.jpg"
+              src="/logo2.2.1.jpg"
               alt="Company Logo"
               height={50}
               width={114}
@@ -37,7 +37,7 @@ const Navbar = () => {
           <div className="flex-shrink-0">
             <Link href="/">
               <Image
-                src="/logo11.jpg"
+                src="/logo2.2.1.jpg"
                 alt="Company Logo"
                 height={70}
                 width={200}

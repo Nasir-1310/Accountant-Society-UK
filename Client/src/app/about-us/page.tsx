@@ -22,7 +22,7 @@ const AboutUsPage = () => {
           {/* Page Title */}
           <div data-aos="fade-up" className="border-b border-gray-200 pb-6 mb-8">
             <h1 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-2">About Us</h1>
-            <p className="text-lg text-gray-600">The Professional Accountants Society</p>
+            <p className="text-lg text-gray-600">The Professional Accountants’ Society has been established to connect the excellence of the British Bangladeshi Chartered Accountants.</p>
           </div>
 
           {/* Content Sections */}
