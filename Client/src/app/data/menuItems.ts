@@ -5,6 +5,13 @@ export const menuItems = [
       { label: "Member benefits", href: "/members/benefits" },
       { label: "Join us", href: "/contactUs" },
       { label: "Member sign In", href: "/members/guidance" },
+      { label: "CPD & Training", href: "/members/guidance" },
+      { label: "Membership and fees", href: "/members/guidance" },
+      { label: "Rules & guidance", href: "/members/guidance" },
+      { label: "Journal", href: "/members/guidance" },
+      { label: "Professional support", href: "/members/guidance" },
+      { label: "TPAS Wellbeing", href: "/members/guidance" },
+      
     ],
   },
   {
