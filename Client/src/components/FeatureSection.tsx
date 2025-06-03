@@ -9,7 +9,7 @@ const featureCards = [
     id: 1,
     title: "Member sign in",
     image: "/log-in-400px-250px.jpg",
-    link: "/members/signin",
+    link: "/signin",
     buttonText: "Sign in",
     bgColor: "bg-red-300",
     titleColor: "text-purple-600",
@@ -85,7 +85,10 @@ const FeatureSection = () => {
                   </Link>
                 </h3>
                 <button className=" px-4 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-green-300 hover:border-gray-900 transition-colors duration-200 font-medium">
+                  <Link href={card.link}>
                   {card.buttonText}
+                  </Link>
+                  
                 </button>
               </div>
             </div>
