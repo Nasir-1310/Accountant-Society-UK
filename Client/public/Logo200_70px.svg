@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="uuid-956b04ac-aa66-46c6-a60f-8491edae2085" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 59">
+  <defs>
+    <style>
+      .uuid-4d0ae7ea-105a-4daa-b198-c11abd0a06f9 {
+        fill: #fff;
+      }
+
+      .uuid-b57df9a3-6c9b-4833-af20-a418cf766ca1 {
+        font-size: 11.33px;
+      }
+
+      .uuid-6eebdffc-5d7f-4d02-be55-56d0a095e333 {
+        fill: #221e59;
+        font-family: Bahnschrift-Bold, Bahnschrift;
+        font-variation-settings: 'wght' 700, 'wdth' 100;
+        font-weight: 700;
+      }
+
+      .uuid-104aa010-40ad-48fd-85c3-d55cdf2acbf5 {
+        font-size: 15.62px;
+      }
+
+      .uuid-88893961-9b79-4afc-9cb1-b1d00b489cad {
+        fill: #ec2227;
+      }
+    </style>
+  </defs>
+  <g id="uuid-f100838a-c39a-433b-b373-6b9818dc99e1" data-name="Rectangle 4">
+    <rect class="uuid-88893961-9b79-4afc-9cb1-b1d00b489cad" x="85.91" y="8.22" width="107.76" height="1.38"/>
+  </g>
+  <g id="uuid-854d803e-ad3c-4279-8f37-68c41f458069" data-name="Rectangle 1">
+    <rect class="uuid-88893961-9b79-4afc-9cb1-b1d00b489cad" x="0" y="1.42" width="55.98" height="55.98"/>
+  </g>
+  <g id="uuid-6e8ea05e-ccda-4270-86da-6e40976afd05" data-name="Rectangle 3">
+    <rect class="uuid-4d0ae7ea-105a-4daa-b198-c11abd0a06f9" x="12.46" y="11.78" width="3.07" height="4.21"/>
+  </g>
+  <g id="uuid-f6b57316-040b-4dbd-b759-60589d19c044" data-name="Rectangle 3 copy">
+    <rect class="uuid-4d0ae7ea-105a-4daa-b198-c11abd0a06f9" x="39.64" y="11.86" width="3.07" height="4.21"/>
+  </g>
+  <g id="uuid-f6bdd375-e6a4-4af0-a11c-578bbfffd472" data-name="Rectangle 2">
+    <rect class="uuid-4d0ae7ea-105a-4daa-b198-c11abd0a06f9" x="15.53" y="10.16" width="24.11" height="3.32"/>
+  </g>
+  <g id="uuid-93238cd8-b06c-476a-acea-ef37aa7ed9d0" data-name="Rectangle 2 copy">
+    <rect class="uuid-4d0ae7ea-105a-4daa-b198-c11abd0a06f9" x="19.17" y="15.34" width="3.32" height="33.9"/>
+  </g>
+  <g id="uuid-3dff01a2-c133-4b14-8e07-cd76cad5e694" data-name="Rectangle 2 copy 2">
+    <rect class="uuid-4d0ae7ea-105a-4daa-b198-c11abd0a06f9" x="25.89" y="15.34" width="3.32" height="28.56"/>
+  </g>
+  <g id="uuid-1bedc22c-51d0-4c4f-888a-c4436f125e9f" data-name="Rectangle 2 copy 3">
+    <rect class="uuid-4d0ae7ea-105a-4daa-b198-c11abd0a06f9" x="32.76" y="15.34" width="3.32" height="25.16"/>
+  </g>
+  <text id="uuid-2c82e2d4-0441-4090-a53c-f557d81c8237" data-name="THE PROFESSIONAL  ACCOUNTANTS SOCIETY" class="uuid-6eebdffc-5d7f-4d02-be55-56d0a095e333" transform="translate(61.65 9.69)"><tspan class="uuid-b57df9a3-6c9b-4833-af20-a418cf766ca1"><tspan x="0" y="0">THE</tspan></tspan><tspan class="uuid-104aa010-40ad-48fd-85c3-d55cdf2acbf5"><tspan x="0" y="15.87">PROFESSIONAL </tspan></tspan><tspan class="uuid-104aa010-40ad-48fd-85c3-d55cdf2acbf5"><tspan x="0" y="32.64">ACCOUNTANTS</tspan></tspan><tspan class="uuid-b57df9a3-6c9b-4833-af20-a418cf766ca1"><tspan x="0" y="46.24">SOCIETY</tspan></tspan></text>
+  <g id="uuid-d0a66acc-6ce8-48ef-986b-e66888bde9ae" data-name="Rectangle 5">
+    <rect class="uuid-88893961-9b79-4afc-9cb1-b1d00b489cad" x="117.38" y="48.02" width="16.75" height="8.33"/>
+  </g>
+</svg>

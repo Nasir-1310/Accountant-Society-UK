@@ -22,10 +22,10 @@ const Navbar = () => {
           <Menu />
           <Link href="/">
             <Image
-              src="/logo2.2.1.jpg"
+                src="/Logo200_70px.svg"
               alt="Company Logo"
-              height={50}
-              width={114}
+              width={120}
+               height={60}
               className="cursor-pointer"
             />
           </Link>
@@ -37,10 +37,10 @@ const Navbar = () => {
           <div className="flex-shrink-0">
             <Link href="/">
               <Image
-                src="/logo2.2.1.jpg"
+                src="/Logo200_70px.svg"
                 alt="Company Logo"
                 height={70}
-                width={200}
+                width={180}
                 className="cursor-pointer"
               />
             </Link>

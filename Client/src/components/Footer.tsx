@@ -54,8 +54,8 @@ const Footer: React.FC = () => {
           {/* Organization Info Section */}
           <div data-aos="fade-up" className="space-y-6">
             <div className="flex items-center space-x-3">
-              <div className="w-200 h-160 rounded-lg flex items-center justify-center">
-                <Image src="/logo_footer2.png" alt='Logo' width={200} height={160}/>
+              <div className="w-180 h-70 px-2  rounded-lg flex items-center justify-center">
+                <Image src="/Logofooter114_50px.svg" alt='Logo' width={180} height={70}/>
               </div>
             </div>
             
