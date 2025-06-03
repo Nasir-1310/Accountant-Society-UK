@@ -3,8 +3,8 @@ export const menuItems = [
     title: "For members",
     links: [
       { label: "Member benefits", href: "/members/benefits" },
-      { label: "Join us", href: "/contactUs" },
-      { label: "Member sign In", href: "/members/guidance" },
+      { label: "Why Join us", href: "/contact-us" },
+      { label: "Member sign In", href: "/signin" },
       { label: "CPD & Training", href: "/members/guidance" },
       { label: "Membership and fees", href: "/members/guidance" },
       { label: "Rules & guidance", href: "/members/guidance" },
