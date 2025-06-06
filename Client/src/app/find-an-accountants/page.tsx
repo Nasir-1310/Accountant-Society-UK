@@ -8,11 +8,11 @@ export const metadata: Metadata = {
   description: "Locate qualified professional accountants by name, postcode, or area of expertise.",
 };
 
-export default function FindPage() {
+const FindPage=()=> {
   return (
     <Container>
-<div className="mx-3 px-5 border-l border-r border-gray-200 bg-white">
-      <main className="py-12 w-full max-w-full">
+    <div className="mx-3 px-5  border-l border-r border-gray-200 bg-white">
+      <main data-aos="fade-up"   className="py-20 w-full max-w-full">
         <h1 className="text-xs sm:text-sm font-semibold text-gray-500 tracking-widest uppercase mb-2">
           Home | Find an Accountant
         </h1>
@@ -23,3 +23,4 @@ export default function FindPage() {
     
   );
 }
+export default FindPage;

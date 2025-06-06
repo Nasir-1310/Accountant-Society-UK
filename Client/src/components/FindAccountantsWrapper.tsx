@@ -42,7 +42,7 @@ export default function FindAccountantWrapper() {
   };
 
   return (
-    <div>
+    <div data-aos="fade-up">
       <FindAccountantForm onSearch={handleSearch} />
       <SearchResults results={results} hasSearched={hasSearched} />
     </div>

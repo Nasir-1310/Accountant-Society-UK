@@ -8,11 +8,11 @@ import "aos/dist/aos.css";
 export default function AOSInitializer() {
   useEffect(() => {
     AOS.init({
-      duration: 500,
+      duration: 700,
       easing: "ease-in-out",
-      once: false,
+      once: true,
       mirror: false,
-      offset: 0,
+      offset: 80,
     });
      AOS.refresh();
   }, []);

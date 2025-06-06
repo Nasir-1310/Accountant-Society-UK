@@ -49,12 +49,7 @@ const FeatureSection = () => {
 
    
     <section data-aos="fade-up" className="w-full bg-white py-10">
-      <div
-        className="
-          w-full 
-          px-2
-        "
-      >
+      <div className="w-full px-2">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {featureCards.map((card) => (
             <div

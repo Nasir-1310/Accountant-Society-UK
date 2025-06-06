@@ -130,17 +130,17 @@ const ContactUsPage = () => {
       <div className="w-full flex flex-col lg:flex-row bg-white shadow-lg  overflow-hidden">
         
         {/* Main Content Section - First on mobile/tablet */}
-        <div className="w-full lg:w-3/4 order-1 lg:order-2 px-6 lg:px-10 py-8">
+        <div  className="w-full lg:w-3/4 order-1 lg:order-2 px-6 lg:px-10 py-8">
           {/* Breadcrumb */}
-          <div className="text-sm text-gray-500 mb-6">
+          <div data-aos="fade-up" className="text-sm text-gray-500 mb-6">
             <Link href="/" className="hover:text-teal-600 transition-colors">Home</Link> 
             <span className="mx-2">|</span> 
             <span className="text-gray-700">Contact us</span>
           </div>
 
           {/* Page Title */}
-          <div className="border-b border-gray-200 pb-6 mb-8">
-            <h1 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-2">Contact Us</h1>
+          <div data-aos="fade-up" className="border-b border-gray-200 pb-6 mb-8">
+            <h1  className="text-3xl lg:text-4xl font-bold text-gray-800 mb-2">Contact Us</h1>
             <p className="text-lg text-gray-600">Get in touch with The Professional Accountants Society</p>
           </div>
 
@@ -148,13 +148,13 @@ const ContactUsPage = () => {
           <div className="space-y-8 mb-10">
             {/* General Contact Section */}
             <section>
-              <h2 className="text-2xl font-bold text-teal-700 mb-6 flex items-center gap-2">
+              <h2  data-aos="fade-up" className="text-2xl font-bold text-teal-700 mb-6 flex items-center gap-2">
                 <Phone className="text-teal-600 w-6 h-6" />
                 General Contact Information
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div  className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-4">
-                  <div className="flex items-start gap-3">
+                  <div data-aos="fade-up" className="flex items-start gap-3">
                     <MapPin className="text-teal-600 w-5 h-5 mt-1 flex-shrink-0" />
                     <div>
                       <h3 className="font-semibold text-gray-800 mb-1">Address</h3>
@@ -168,7 +168,7 @@ const ContactUsPage = () => {
                     </div>
                   </div>
                   
-                  <div className="flex items-start gap-3">
+                  <div data-aos="fade-up" className="flex items-start gap-3">
                     <Phone className="text-teal-600 w-5 h-5 mt-1 flex-shrink-0" />
                     <div>
                       <h3 className="font-semibold text-gray-800 mb-1">Phone</h3>
@@ -180,7 +180,7 @@ const ContactUsPage = () => {
                 </div>
 
                 <div className="space-y-4">
-                  <div className="flex items-start gap-3">
+                  <div data-aos="fade-up" className="flex items-start gap-3">
                     <Mail className="text-teal-600 w-5 h-5 mt-1 flex-shrink-0" />
                     <div>
                       <h3 className="font-semibold text-gray-800 mb-1">Email</h3>
@@ -207,14 +207,14 @@ const ContactUsPage = () => {
 
             {/* Contact Form Section */}
             <section>
-              <h2 className="text-2xl font-bold text-teal-700 mb-6 flex items-center gap-2">
+              <h2 data-aos="fade-up" className="text-2xl font-bold text-teal-700 mb-6 flex items-center gap-2">
                 <Mail className="text-teal-600 w-6 h-6" />
                 Send us a Message
               </h2>
               <div className="bg-gray-50 rounded-lg p-6">
                 <div className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
+                    <div data-aos="fade-up" >
                       <label className="block text-sm font-medium text-gray-700 mb-2">First Name</label>
                       <input 
                         type="text" 
@@ -222,8 +222,8 @@ const ContactUsPage = () => {
                         placeholder="Enter your first name"
                       />
                     </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                    <div data-aos="fade-up">
+                      <label  className="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
                       <input 
                         type="text" 
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
@@ -232,8 +232,8 @@ const ContactUsPage = () => {
                     </div>
                   </div>
                   
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                  <div data-aos="fade-up">
+                    <label data-aos="fade-up" className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
                     <input 
                       type="email" 
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
@@ -241,7 +241,7 @@ const ContactUsPage = () => {
                     />
                   </div>
                   
-                  <div>
+                  <div data-aos="fade-up">
                     <label className="block text-sm font-medium text-gray-700 mb-2">Subject</label>
                     <select className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-white">
                       <option value="">Select a subject</option>
@@ -253,7 +253,7 @@ const ContactUsPage = () => {
                     </select>
                   </div>
                   
-                  <div>
+                  <div data-aos="fade-up">
                     <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
                     <textarea 
                       rows={5}
@@ -262,7 +262,7 @@ const ContactUsPage = () => {
                     ></textarea>
                   </div>
                   
-                  <button 
+                  <button data-aos="fade-up"
                     type="button"
                     className="bg-teal-600 text-white px-8 py-3 rounded-lg hover:bg-teal-700 transition-colors font-semibold"
                     onClick={() => alert('Message sent successfully!')}
@@ -276,7 +276,7 @@ const ContactUsPage = () => {
 
 
            {/* Collapsible Sections */}
-            <div className="space-y-3">
+            <div data-aos="fade-up" className="space-y-3">
               {collapsibleSections.map((section, index) => (
                 <div key={index} className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
                   <button
@@ -304,7 +304,7 @@ const ContactUsPage = () => {
           {/* Cards Section - Responsive grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
             {/* Professional Development Card */}
-            <div className="bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6 flex flex-col">
+            <div data-aos="fade-up" className="bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6 flex flex-col">
               <div className="flex items-center gap-3 mb-4">
                 <Trophy className="text-teal-600 w-8 h-8" />
                 <a href="/professional-development" className="hover:text-teal-600 transition-colors">
@@ -320,7 +320,7 @@ const ContactUsPage = () => {
             </div>
 
             {/* Networking Events Card */}
-            <div className="bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6 flex flex-col">
+            <div data-aos="fade-up"  className="bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6 flex flex-col">
               <div className="flex items-center gap-3 mb-4">
                 <Users className="text-teal-600 w-8 h-8" />
                 <a href="/networking-events" className="hover:text-teal-600 transition-colors">
@@ -336,7 +336,7 @@ const ContactUsPage = () => {
             </div>
 
             {/* Membership Benefits Card */}
-            <div className="bg-gradient-to-br from-teal-50 to-green-50 border border-teal-200 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6 flex flex-col md:col-span-2 xl:col-span-1">
+            <div data-aos="fade-up"  className="bg-gradient-to-br from-teal-50 to-green-50 border border-teal-200 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6 flex flex-col md:col-span-2 xl:col-span-1">
               <div className="flex items-center gap-3 mb-4">
                 <Pen className="text-teal-600 w-8 h-8" />
                 <a href="/membership" className="hover:text-teal-600 transition-colors">
@@ -362,7 +362,7 @@ const ContactUsPage = () => {
         <div className="w-full lg:w-1/4 order-2 lg:order-1 pt-10 pl-1 bg-gradient-to-br from-gray-50 to-gray-100 border-t lg:border-t-0 lg:border-r border-gray-200">
 
         {/* In this section */}
-            <div className="lg:hidden mb-8">
+            <div data-aos="fade-up"  className="lg:hidden mb-8">
               <h3 className="text-xl font-bold text-gray-800 mb-4">In this section</h3>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                 {[
@@ -381,7 +381,7 @@ const ContactUsPage = () => {
             </div>
 
             {/* In this section - Desktop */}
-            <div className="hidden lg:block mb-8">
+            <div data-aos="fade-up"  className="hidden lg:block mb-8">
               <h3 className="text-2xl font-bold text-gray-800 mb-6 border-b border-gray-300 pb-3">
                 In this section
               </h3>
@@ -406,7 +406,7 @@ const ContactUsPage = () => {
           <div className="px-6 py-8">
             {/* Find Accountant */}
             <div className="bg-gradient-to-r from-teal-500 to-teal-600 rounded-lg shadow-md overflow-hidden mb-8">
-              <div className="p-4 lg:p-6">
+              <div data-aos="fade-up"  className="p-4 lg:p-6">
                 <div className="flex items-center gap-2 text-white text-lg font-semibold mb-4">
                   <Pen className="text-white w-5 h-5" />
                   <span>Find an Accountant</span>
@@ -439,7 +439,7 @@ const ContactUsPage = () => {
             </div>
 
             {/* About Us Card */}
-            <div className="bg-white rounded-lg shadow-md overflow-hidden mb-8">
+            <div data-aos="fade-up"  className="bg-white rounded-lg shadow-md overflow-hidden mb-8">
               <div className="relative">
                 <Image src="/accountant.jpg" alt="image" width={400} height={250}></Image>
                 <div className="absolute inset-0 bg-black bg-opacity-20"></div>

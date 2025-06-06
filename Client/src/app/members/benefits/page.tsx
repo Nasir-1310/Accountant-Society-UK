@@ -52,8 +52,8 @@ export default function MemberBenefitsPage() {
   return (
     <Container>
       <div className="mx-3 px-5 border-l border-r border-gray-200 bg-white">
-        <main className="w-full py-12 max-w-full">
-          <div className="mb-10">
+        <main className="w-full py-20 max-w-full">
+          <div data-aos="fade-up" className="mb-10">
             <h1 className="text-xs sm:text-sm font-semibold text-gray-500 tracking-widest uppercase mb-2">
               Home | Member Benefits
             </h1>
@@ -74,7 +74,7 @@ export default function MemberBenefitsPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 mb-12">
             {benefits.map((benefit, idx) => (
-              <div key={idx} className="text-center px-4">
+              <div data-aos="fade-up" key={idx} className="text-center px-4">
                 <Image
                   src={benefit.icon}
                   alt={benefit.title}
@@ -93,7 +93,7 @@ export default function MemberBenefitsPage() {
             ))}
           </div>
 
-          <div className="text-center">
+          <div data-aos="fade-up" className="text-center">
             <Link href="/contact-us">
               <button className="bg-green-600 hover:bg-green-700 text-white font-semibold uppercase px-6 py-3 rounded-md transition duration-200">
                 Register
