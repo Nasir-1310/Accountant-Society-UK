@@ -3,7 +3,7 @@ export const menuItems = [
     title: "For members",
     links: [
       { label: "Member benefits", href: "/members/benefits" },
-      { label: "Why Join us", href: "/contact-us" },
+      { label: "Join us", href: "/contact-us" },
       { label: "Member sign In", href: "/signin" },
       { label: "CPD & Training", href: "/members/guidance" },
       { label: "Membership and fees", href: "/members/guidance" },
@@ -11,6 +11,10 @@ export const menuItems = [
       { label: "Journal", href: "/members/guidance" },
       { label: "Professional support", href: "/members/guidance" },
       { label: "TPAS Wellbeing", href: "/members/guidance" },
+      { label: "Strategic Partners", href: "/strategic_Partners" },
+
+      
+      
       
     ],
   },
@@ -27,11 +31,11 @@ export const menuItems = [
     title: "CPD & Training",
     links: [
       { label: "CPD", href: "/cpd" },
-      { label: "Mentoring", href: "/mentoring" },
+      { label: "Inspiring Future", href: "/mentoring" },
     ],
   },
   {
-    title: "Policies",
+    title: "Rules & Guidance",
     links: [{ label: "Rules & Guidance", href: "/research/report" }],
   },
   {
