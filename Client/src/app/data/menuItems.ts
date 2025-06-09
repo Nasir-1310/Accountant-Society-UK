@@ -5,7 +5,7 @@ export const menuItems = [
       { label: "Member benefits", href: "/members/benefits" },
       { label: "Join us", href: "/contact-us" },
       { label: "Member sign In", href: "/signin" },
-      { label: "CPD & Training", href: "/members/guidance" },
+      { label: "CPD & Training", href: "/members/cpd-training" },
       { label: "Membership and fees", href: "/members/guidance" },
       { label: "Rules & guidance", href: "/members/guidance" },
       { label: "Journal", href: "/members/guidance" },
@@ -30,8 +30,8 @@ export const menuItems = [
   {
     title: "CPD & Training",
     links: [
-      { label: "CPD", href: "/cpd" },
-      { label: "Inspiring Future", href: "/mentoring" },
+      { label: "CPD", href: "/members/cpd-training" },
+      { label: "Inspiring Futures", href: "/mentoring" },
     ],
   },
   {

@@ -165,7 +165,7 @@ const AboutUsPage = () => {
         </div>
 
         {/* Sidebar Section - Second on mobile/tablet, first on desktop */}
-        <div data-aos="fade-up" className="w-full lg:w-1/4 order-2 lg:order-1 bg-gradient-to-br from-gray-50 to-gray-100 border-t lg:border-t-0 lg:border-r border-gray-200">
+        <div data-aos="fade-up" className="w-full lg:w-1/4 order-2 lg:order-1 bg-gradient-to-br from-gray-200 to-gray-100 border-t lg:border-t-0 lg:border-r border-gray-200">
           <div className="px-6 py-8">
             {/* In this section - Mobile/Tablet */}
             <div className="lg:hidden mb-8">
@@ -178,7 +178,7 @@ const AboutUsPage = () => {
                   { label: "What We Do", href: "#what-we-do" }
                 ].map((item, index) => (
                   <a key={index} href={item.href} className="block">
-                    <button className="w-full text-center text-sm border border-green-500 text-green-600 px-3 py-2 rounded-md hover:bg-green-50 hover:border-green-600 transition-all duration-200 font-medium">
+                    <button className="w-full text-center text-sm border border-green-500 text-green-900 hover:text-white px-3 py-2 rounded-md bg-green-200 hover:bg-green-600 hover:border-green-600 transition-all duration-200 font-medium">
                       {item.label}
                     </button>
                   </a>
@@ -199,7 +199,7 @@ const AboutUsPage = () => {
                   { label: "What We Do", href: "#what-we-do" }
                 ].map((item, index) => (
                   <a key={index} href={item.href} className="block w-full">
-                    <button className="w-full text-left border border-green-500 text-green-600 px-4 py-3 rounded-md hover:bg-green-50 hover:border-green-600 transition-all duration-200 font-medium">
+                    <button className="w-full text-left border border-green-500 text-green-900 hover:text-white px-4 py-3 rounded-md bg-green-200 hover:bg-green-600 hover:border-green-600 transition-all duration-200 font-medium">
                       {item.label}
                     </button>
                   </a>

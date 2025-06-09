@@ -93,7 +93,7 @@ const Footer: React.FC = () => {
               <p className="text-slate-400 text-sm text-black leading-relaxed">
                 NOT MEMBER YET ? &nbsp;
                 <a 
-                  href="/contactUs" 
+                  href="/contact-us" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-blue-400 hover:text-white transition-colors inline-flex items-center"

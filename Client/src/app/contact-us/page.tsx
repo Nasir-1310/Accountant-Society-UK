@@ -372,7 +372,7 @@ const ContactUsPage = () => {
                   { label: "What We Do", href: "#what-we-do" }
                 ].map((item, index) => (
                   <a key={index} href={item.href} className="block">
-                    <button className="w-full text-center text-sm border border-green-500 text-green-600 px-3 py-2 rounded-md hover:bg-green-50 hover:border-green-600 transition-all duration-200 font-medium">
+                    <button className="w-full text-center text-sm border border-green-500 text-green-900 hover:text-white px-3 py-2 rounded-md bg-green-200 hover:bg-green-600 hover:border-green-600 transition-all duration-200 font-medium">
                       {item.label}
                     </button>
                   </a>
@@ -393,7 +393,7 @@ const ContactUsPage = () => {
                   { label: "What We Do", href: "#what-we-do" }
                 ].map((item, index) => (
                   <a key={index} href={item.href} className="block w-full">
-                    <button className="w-full text-left border border-green-500 text-green-600 px-4 py-3 rounded-md hover:bg-green-50 hover:border-green-600 transition-all duration-200 font-medium">
+                    <button className="w-full text-left border border-green-500 text-green-900 hover:text-white px-4 py-3 rounded-mdbg-green-200 hover:bg-green-600 hover:border-green-600 transition-all duration-200 font-medium">
                       {item.label}
                     </button>
                   </a>
@@ -405,7 +405,7 @@ const ContactUsPage = () => {
 
           <div className="px-6 py-8">
             {/* Find Accountant */}
-            <div className="bg-gradient-to-r from-teal-500 to-teal-600 rounded-lg shadow-md overflow-hidden mb-8">
+            <div className="bg-gradient-to-r from-teal-500 to-teal-600  rounded-lg shadow-md overflow-hidden mb-8">
               <div data-aos="fade-up"  className="p-4 lg:p-6">
                 <div className="flex items-center gap-2 text-white text-lg font-semibold mb-4">
                   <Pen className="text-white w-5 h-5" />
