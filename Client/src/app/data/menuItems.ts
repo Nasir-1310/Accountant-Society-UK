@@ -31,7 +31,7 @@ export const menuItems = [
     title: "CPD & Training",
     links: [
       { label: "CPD", href: "/members/cpd-training" },
-      { label: "Inspiring Futures", href: "/mentoring" },
+      { label: "Inspiring Futures...", href: "/cpd-and-training/inspiring-futures-changing-lives" },
     ],
   },
   {
