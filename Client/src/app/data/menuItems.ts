@@ -7,7 +7,7 @@ export const menuItems = [
       { label: "Member sign In", href: "/signin" },
       { label: "CPD & Training", href: "/members/cpd-training" },
       { label: "Membership and fees", href: "/members/guidance" },
-      { label: "Rules & guidance", href: "/members/guidance" },
+      { label: "Rules & guidance", href: "/members/rules-and-guidance" },
       { label: "Journal", href: "/members/guidance" },
       { label: "Professional support", href: "/members/guidance" },
       { label: "TPAS Wellbeing", href: "/members/guidance" },
@@ -36,7 +36,7 @@ export const menuItems = [
   },
   {
     title: "Rules & Guidance",
-    links: [{ label: "Rules & Guidance", href: "/research/report" }],
+    links: [{ label: "Rules & Guidance", href: "/members/rules-and-guidance" }],
   },
   {
     title: "Founding Members",
