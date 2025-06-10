@@ -1,5 +1,4 @@
 import Container from "@/components/Container";
-import { Pen, Users, Handshake, Trophy, Heart } from "lucide-react";
 import Link from "next/link";
 
 const AboutUsPage = () => {
@@ -39,11 +38,14 @@ const AboutUsPage = () => {
 
             {/* Content Sections */}
             <div data-aos="fade-up" className="space-y-8 mb-10 pb-10 border-b  border-gray-400">
-              {/* Vision Section */}
-              <section data-aos="fade-up" id="professional_conduction" className="border-b  border-gray-400 pb-6 mb-8">
+              {/* Professional Conduct Section */}
+              <section data-aos="fade-up" id="professional_conduction" className="border-b  border-gray-400 pb-6 mb-8 ">
                 <h2 className="text-xl sm:text-3xl font-bold text-blue-900 mb-5 mt-8" >
                   2. Professional Conduct
                 </h2>
+                <div className="border px-2 py-3 sm:px-4 sm:py-5 mb-4">
+
+                
                 <h2 className=" text-[18px] text-center font-bold text-teal-700 mb-3 mt-2">
                   Uphold Integrity
                 </h2>
@@ -53,7 +55,8 @@ const AboutUsPage = () => {
                 >
                  Members must act honestly, ethically, and transparently, avoiding any conflict of interest or misleading conduct.
                 </p>
-
+                </div>
+                <div className="border px-2 py-3 sm:px-4 sm:py-5 mb-4">
                 <h2 className="text-[18px] text-center font-bold text-teal-700 mb-5 mt-2">
                   Maintain Confidentiality
                 </h2>
@@ -63,7 +66,8 @@ const AboutUsPage = () => {
                 >
                 All information shared within TPAS platforms must be treated as confidential unless explicit consent is given or disclosure is legally required.
                 </p>
-
+                </div>
+                <div className="border px-2 py-3 sm:px-4 sm:py-5 mb-4">
                 <h2 className="text-[18px] text-center font-bold text-teal-700 mb-5 mt-2">
                    Respect for Peers
                 </h2>
@@ -73,6 +77,8 @@ const AboutUsPage = () => {
                 >
                  All members must treat others with dignity, fairness, and respect. Discrimination, harassment, and bullying are strictly prohibited.
                 </p>
+                </div>
+                <div className="border px-2 py-3 sm:px-4 sm:py-5 mb-4">
                 <h2 className="text-[18px] text-center font-bold text-teal-700 mb-2 mt-1">
                   Professional Behaviour
                 </h2>
@@ -82,13 +88,17 @@ const AboutUsPage = () => {
                 >
                  Members are expected to maintain professional decorum in all engagements, including events, forums, and digital platforms.
                 </p>
+                </div>
+                
               </section>
 
               {/*. Practice Standards Section */}
               <section data-aos="fade-up" id="practice_standards" className="border-b  border-gray-400 pb-6 mb-8">
+                
                 <h2 className="text-xl sm:text-3xl font-bold text-blue-900 mb-5 mt-8">
                   3. Practice Standards
                 </h2>
+                <div className="border px-2 py-3 sm:px-4 sm:py-5 mb-4">
                 <h2 className=" text-[18px] text-center font-bold text-teal-700 mb-3 mt-2">
                   Promote Best Practices
                 </h2>
@@ -98,7 +108,8 @@ const AboutUsPage = () => {
                 >
                  Members should demonstrate commitment to excellence by adhering to recognised standards in accounting, auditing, taxation, and related disciplines.
                 </p>
-
+                </div>
+                <div className="border px-2 py-3 sm:px-4 sm:py-5 mb-4">
                 <h2 className="text-[18px] text-center font-bold text-teal-700 mb-5 mt-2">
                   Avoid Misrepresentation
                 </h2>
@@ -108,6 +119,8 @@ const AboutUsPage = () => {
                 >
                 False claims regarding qualifications, experience, or status are prohibited. Members must ensure their professional profiles remain accurate.
                 </p>
+                </div>
+                <div className="border px-2 py-3 sm:px-4 sm:py-5 mb-4">
 
                 <h2 className="text-[18px] text-center font-bold text-teal-700 mb-5 mt-2">
                    Commitment to CPD
@@ -118,7 +131,7 @@ const AboutUsPage = () => {
                 >
                  Ongoing professional development is required. Members are expected to stay updated with current laws, standards, and industry changes.
                 </p>
-                
+                </div>
               </section>
 
               {/* 4. Community Participation Section */}
@@ -126,6 +139,7 @@ const AboutUsPage = () => {
                 <h2 className="text-xl sm:text-3xl font-bold text-blue-900 mb-5 mt-8">
                  4. Community Participation
                 </h2>
+                <div className="border px-2 py-3 sm:px-4 sm:py-5 mb-4">
                 <h2 className=" text-[18px] text-center font-bold text-teal-700 mb-3 mt-2">
                   Constructive Engagement
                 </h2>
@@ -135,7 +149,8 @@ const AboutUsPage = () => {
                 >
                  All participation should be constructive, respectful, and aligned with TPAS values.
                 </p>
-
+                </div>
+                <div className="border px-2 py-3 sm:px-4 sm:py-5 mb-4">
                 <h2 className="text-[18px] text-center font-bold text-teal-700 mb-5 mt-2">
                   No Unauthorised Promotion
                 </h2>
@@ -145,7 +160,8 @@ const AboutUsPage = () => {
                 >
                 Members must not use TPAS platforms to promote services or products without prior approval.
                 </p>
-
+                </div>
+                <div className="border px-2 py-3 sm:px-4 sm:py-5 mb-4">
                 <h2 className="text-[18px] text-center font-bold text-teal-700 mb-5 mt-2">
                    Protection of TPAS Identity
                 </h2>
@@ -155,7 +171,7 @@ const AboutUsPage = () => {
                 >
                  Use of the TPAS name or logo requires written permission and must align with brand guidelines.
                 </p>
-                
+                </div>
               </section>
 
 
@@ -164,6 +180,7 @@ const AboutUsPage = () => {
                 <h2 className="text-xl sm:text-3xl font-bold text-blue-900 mb-5 mt-8">
                  5. Reporting Misconduct
                 </h2>
+                <div className="border px-2 py-3 sm:px-4 sm:py-5 mb-4">
                 <h2 className=" text-[18px] text-center font-bold text-teal-700 mb-3 mt-2">
                   Confidential Reporting
                 </h2>
@@ -173,7 +190,8 @@ const AboutUsPage = () => {
                 >
                  Members are encouraged to report misconduct by contacting <span className="text-bold text-blue-900" >ethics@accountantssociety.org.</span> All reports are handled confidentially.
                 </p>
-
+                </div>
+                <div className="border px-2 py-3 sm:px-4 sm:py-5 mb-4">
                 <h2 className="text-[18px] text-center font-bold text-teal-700 mb-5 mt-2">
                  Disciplinary Action
                 </h2>
@@ -183,7 +201,7 @@ const AboutUsPage = () => {
                 >
                 Breaches of these rules may lead to warnings, suspension, or termination of membership following due process.
                 </p>
-
+                </div>
                 
                 
               </section>
