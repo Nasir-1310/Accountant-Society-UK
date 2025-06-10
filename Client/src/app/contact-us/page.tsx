@@ -362,7 +362,7 @@ const ContactUsPage = () => {
         <div className="w-full lg:w-1/4 order-2 lg:order-1 pt-10 pl-1 bg-gradient-to-br from-gray-50 to-gray-100 border-t lg:border-t-0 lg:border-r border-gray-200">
 
         {/* In this section */}
-            <div data-aos="fade-up"  className="lg:hidden mb-8">
+            {/* <div data-aos="fade-up"  className="lg:hidden mb-8">
               <h3 className="text-xl font-bold text-gray-800 mb-4">In this section</h3>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                 {[
@@ -378,14 +378,14 @@ const ContactUsPage = () => {
                   </a>
                 ))}
               </div>
-            </div>
+            </div> */}
 
             {/* In this section - Desktop */}
-            <div data-aos="fade-up"  className="hidden lg:block mb-8">
+            <div data-aos="fade-up"  className="hidden lg:block mb-8 px-6">
               <h3 className="text-2xl font-bold text-gray-800 mb-6 border-b border-gray-300 pb-3">
                 In this section
               </h3>
-              <div className="space-y-3">
+              {/* <div className="space-y-3">
                 {[
                   { label: "Our Vision", href: "#vision" },
                   { label: "Our Mission", href: "#mission" },
@@ -398,7 +398,7 @@ const ContactUsPage = () => {
                     </button>
                   </a>
                 ))}
-              </div>
+              </div> */}
             </div>
 
 
