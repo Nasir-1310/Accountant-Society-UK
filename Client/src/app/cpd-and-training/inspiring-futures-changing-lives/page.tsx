@@ -1,36 +1,78 @@
-// src/app/cpd and training/inspiring future ahanging lives/page.tsx
+"use client"
 import inspiring_futures_changing_livesCarts from "@/app/data/inspiring-futures-changing-livesCarts";
 import Container from "@/components/Container";
-import { Handshake, Trophy } from "lucide-react";
-import { Metadata } from "next";
+import { ChevronDown, Handshake, Trophy } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import realStories from "@/app/data/realStories";
+import getInvolved from "@/app/data/getInvolved";
+import { useState } from "react";
 
-export const metadata: Metadata = {
-  title: "CPD & Training | The Professional Accountants Society",
-  description:
-    "Advance your accounting career with CPD and training programs from the Society of Professional Accountants. Access expert-led courses, webinars, and up-to-date industry knowledge to meet your professional development goals.",
-  keywords: [
-    "CPD for accountants",
-    "TPAC",
-    "accounting training",
-    "continuing professional development",
-    "professional development for accountants",
-    "accounting webinars",
-    "accounting courses",
-    "Society of Professional Accountants CPD",
-  ],
-  openGraph: {
-    title: "CPD & Training | Society of Professional Accountants",
-    description:
-      "Advance your accounting career with CPD and training programs from the Society of Professional Accountants. Access expert-led courses, webinars, and up-to-date industry knowledge to meet your professional development goals.",
-    url: "https://accountantssociety.org/members/cpd-and-training",
-    siteName: "Society of Professional Accountants",
-    type: "website",
-  },
-};
+
+
+
 
 const CPD_and_Training = () => {
+
+       const [expandedSections, setExpandedSections] = useState<{ [key: string]: boolean }>({});
+      
+      
+       const toggleSection = (sectionName: string) => {
+        setExpandedSections(prev => ({
+          ...prev,
+          [sectionName]: !prev[sectionName]
+        }));
+      };
+      
+
+      const faqs = [
+    {
+      title: "Who can apply?",
+      content: (
+        <div className="space-y-4">
+          <div>
+           
+            <div className="space-y-2">
+              <p className="flex items-center gap-2 text-gray-700">
+               Any school leaver interested in accountancy aged 16–19 in the UK.
+              </p>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      title: "Is the programme free?",
+      content: (
+        <div className="space-y-4">
+          <div> 
+            <div className="space-y-2">
+              <p className="flex items-center gap-2 text-gray-700">
+                Yes, our support and mentorship are offered at no cost.
+              </p>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      title: "How do I become a mentor?",
+      content: (
+        <div className="space-y-4">
+          <div>
+            <div className="space-y-2">
+              <p className="flex items-center gap-2 text-gray-700">
+                Click “Become a Mentor” and fill in the registration form. We’ll get in touch with next steps.
+              </p>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    
+  ];
+
+
   return (
     <Container>
       <div className="w-full flex justify-center mt-12 px-4">
@@ -116,8 +158,8 @@ const CPD_and_Training = () => {
                 <h2 className="text-2xl font-bold text-teal-700 mb-4 flex items-center gap-2">
                   <Handshake className="text-teal-600 w-6 h-6" /> How We Help
                 </h2>
-                <div className="w-full px-2">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 3xl:grid-cols-4 gap-6 lg:gap-8">
+                <div className="w-full ">
+                  <div className="grid grid-cols-1 md:grid-cols-2    gap-6 ">
                     {inspiring_futures_changing_livesCarts.map((card) => (
                       <div
                         key={card.id}
@@ -141,7 +183,7 @@ const CPD_and_Training = () => {
                         </div>
 
                         {/* Content Section */}
-                        <div className="p-6">
+                        <div className="py-2 p-2">
                           <h3 data-aos="fade-up" className="mb-4">
                             <p
                               className={`text-lg  font-semibold ${card.titleColor} transition-colors duration-200 line-clamp-2`}
@@ -152,7 +194,7 @@ const CPD_and_Training = () => {
                           <div>
                             <p
                               data-aos="fade-up"
-                              className="text-base px-4 py-0  text-gray-700"
+                              className="text-base px-4 pb-4 py-0  text-gray-700"
                             >
                               {card.description}
                             </p>
@@ -163,6 +205,117 @@ const CPD_and_Training = () => {
                   </div>
                 </div>
               </section>
+            </div>
+            {/* Real stories and impacts section */}
+            <section className="bg-white py-16 sm:px-6 ">
+              <h2 className="text-xl sm:text-3xl font-bold text-center text-blue-900 mb-10">
+                Real Stories, Real Impact
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {realStories.map((item) => (
+                  <div
+                    key={item.id}
+                    className="relative rounded-lg overflow-hidden shadow-lg group"
+                  >
+                    {/* Background image */}
+                    <div className="relative h-[300px] w-full">
+                      <Image
+                        src={item.image}
+                        alt={`${item.name} - ${item.role}`}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        priority
+                      />
+                      {/* Overlay */}
+                      <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+                      {/* Text Content */}
+                      <div className="absolute bottom-0 w-full p-6 text-white bg-gradient-to-t from-black/60 to-transparent">
+                        <p className="text-[12px] xs:text-xl 2xl:text-[17px] leading-relaxed mb-2">
+                          “{item.text}”
+                        </p>
+                        <p className="font-semibold text-sm 2xl:text-lg">
+                          - {item.name}, {item.role}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Get Involved */}
+            <section className="bg-white py-5  sm:px-6 ">
+              <h2 className="text-xl sm:text-3xl font-bold text-center text-blue-900 mb-10">
+                Get Involved
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {getInvolved.map((item) => (
+                  <div
+                    key={item.id}
+                    className="relative rounded-lg overflow-hidden shadow-lg group"
+                  >
+                    {/* Background image */}
+                    <div className="relative h-[300px] w-full">
+                      <Image
+                        src={item.image}
+                        alt={`${item.title}`}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        priority
+                      />
+                      {/* Overlay */}
+                      <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+                      {/* Text Content */}
+                      <div className="absolute bottom-0 w-full p-6 text-white bg-gradient-to-t from-black/60 to-transparent">
+                       <p className="font-bold text-lg  sm:text-lg 2xl:text-2xl ">
+                          {item.title}
+                        </p>
+                        <p className="text-[12px] xs:text-xl 2xl:text-[17px]  leading-relaxed mb-2">
+                          “{item.text}”
+                        </p>
+                        <button data-aos="fade-up" className=" px-4 py-2 border border-gray-700 text-gray-900 bg-green-50 hover:bg-green-700  hover:text-white hover:border-yellow-900 transition-colors duration-200 font-medium">
+                      <Link href={item.link}>
+                        {item.buttonText}
+                       </Link>
+                  
+                </button>
+                       
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+             {/* Collapsible Sections */}
+            <div data-aos="fade-up" className="space-y-3">
+              <h2 className="text-xl sm:text-3xl font-bold text-center text-blue-900 mb-10 mt-8">
+                FAQs
+              </h2>
+              {faqs.map((section, index) => (
+                <div key={index} className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+                  <button
+                    onClick={() => toggleSection(section.title)}
+                    className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50 transition-colors"
+                  >
+                    <span className="font-semibold text-gray-800 text-sm lg:text-base">{section.title}</span>
+                    <ChevronDown 
+                      className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${
+                        expandedSections[section.title] ? 'rotate-180' : ''
+                      }`}
+                    />
+                  </button>
+                  {expandedSections[section.title] && (
+                    <div className="px-4 pb-4 border-t border-gray-100">
+                      <div className="pt-3">
+                        {section.content}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
 

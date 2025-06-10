@@ -43,7 +43,7 @@ const FeatureSection = () => {
                     {card.title}
                   </Link>
                 </h3>
-                <button data-aos="fade-up" className=" px-4 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-green-300 hover:border-gray-900 transition-colors duration-200 font-medium">
+                <button data-aos="fade-up" className=" px-4 py-2 border border-gray-700 text-gray-900 bg-white hover:bg-green-700  hover:text-white hover:border-yellow-900 transition-colors duration-200 font-medium">
                   <Link href={card.link}>
                   {card.buttonText}
                   </Link>

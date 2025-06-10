@@ -68,7 +68,7 @@ const AboutUsPage = () => {
                 Who We Are
               </h2>
               <p data-aos="fade-up" className="text-gray-700 leading-relaxed">
-                The <strong>Professional Accountants Society</strong> is a platform formed by and for British Bangladeshi Chartered Accountants and finance professionals. We are a collective of individuals who share a commitment to professional excellence, ethical leadership, and community upliftment. Our members come from a wide range of industries — public practice, corporate finance, public sector, academia, and entrepreneurship — united by a shared heritage and a passion for financial stewardship.
+                The <strong>Professional Accountants&apos; Society</strong> is a platform formed by and for British Bangladeshi Chartered Accountants and finance professionals. We are a collective of individuals who share a commitment to professional excellence, ethical leadership, and community upliftment. Our members come from a wide range of industries — public practice, corporate finance, public sector, academia, and entrepreneurship — united by a shared heritage and a passion for financial stewardship.
               </p>
             </section>
 
@@ -156,7 +156,7 @@ const AboutUsPage = () => {
                 Become a member today and unlock exclusive benefits, resources, and opportunities to grow your professional network.
               </p>
               <a href="/membership" className="inline-block">
-                <button className="bg-teal-600 text-white px-6 py-3 rounded-lg hover:bg-black transition-colors font-semibold">
+                <button className="bg-blue-300 text-gray-800 border rounded-md  px-6 py-3 rounded-lg hover:bg-green-900 hover:text-white transition-colors font-semibold">
                   Join Now →
                 </button>
               </a>
