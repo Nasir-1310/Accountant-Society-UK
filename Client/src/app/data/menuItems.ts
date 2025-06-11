@@ -6,7 +6,7 @@ export const menuItems = [
       { label: "Join us", href: "/contact-us" },
       { label: "Member sign In", href: "/signin" },
       { label: "CPD & Training", href: "/members/cpd-training" },
-      { label: "Membership and fees", href: "/members/guidance" },
+      { label: "Membership and fees", href: "/members/membership-and-fees" },
       { label: "Rules & guidance", href: "/members/rules-and-guidance" },
       { label: "Journal", href: "/members/guidance" },
       { label: "Professional support", href: "/members/professional-support" },

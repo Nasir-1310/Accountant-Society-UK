@@ -19,7 +19,7 @@ const Navbar = () => {
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeInOut" }}
-        className="h-20 relative bg-white border-b border-l border-r border-gray-200 mx-3 px-5 py-3 z-50"
+        className="h-20 relative bg-white border-b border-l border-r border-gray-200 mx-3  px-1 sm:px-5 py-3 z-50"
       >
         <div className="h-full text-black mx-auto w-full max-w-full">
           {/* Mobile and Tablet (xl and below) */}
