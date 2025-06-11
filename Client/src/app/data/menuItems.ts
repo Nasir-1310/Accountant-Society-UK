@@ -23,7 +23,7 @@ export const menuItems = [
     links: [
       { label: "Latest news", href: "/news/latest" },
       { label: "Upcoming Events", href: "/news/events" },
-      { label: "Gallery", href: "/news/gallery" },
+      { label: "Gallery", href: "/news-and-events/gallery" },
        { label: "CPD & Networking", href: "/news/cpd" },
     ],
   },

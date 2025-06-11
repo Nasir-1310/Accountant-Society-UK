@@ -41,7 +41,7 @@ const MembershipAndFees = () => {
       <div className="w-full flex justify-center mt-12 px-4">
         <div className="w-full flex flex-col lg:flex-row bg-white shadow-lg overflow-hidden">
           {/* Main Content */}
-          <main className="w-full lg:w-3/4 order-1 lg:order-2 px-6 lg:px-10 py-8">
+          <main className="w-full lg:w-3/4 order-1 lg:order-2 px-4 sm:px-6 lg:px-10 py-8">
             {/* Breadcrumb */}
             <nav aria-label="Breadcrumb" data-aos="fade-up" className="text-sm text-gray-500 mb-6">
               <Link href="/" className="hover:text-teal-600">Home</Link>
