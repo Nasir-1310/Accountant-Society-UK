@@ -1,7 +1,50 @@
 import Container from "@/components/Container";
 import Link from "next/link";
+import { Metadata } from "next";
 
-const AboutUsPage = () => {
+// SEO Metadata
+export const metadata: Metadata = {
+  title: "Rules and Guidance | The Professional Accountants' Society (TPAS)",
+  description:
+    "Explore the rules and ethical guidance for members of TPAS. Upholding integrity, professionalism, and community values for a trusted accounting network.",
+  keywords: [
+    "TPAS Rules",
+    "Professional conduct",
+    "Accounting ethics",
+    "Accountants guidance",
+    "Practice standards",
+    "Community participation",
+    "TPAS members",
+  ],
+  openGraph: {
+    title: "Rules and Guidance | The Professional Accountants' Society",
+    description:
+      "Discover TPAS's guidelines on professional conduct, practice standards, and community participation.",
+    url: "https://professionalssocitey.org/members/rules-and-guidance",
+    siteName: "The Professional Accountants' Society",
+    images: [
+      {
+        url: "https://professionalssocitey.org/images/tpas-cover.png",
+        width: 1200,
+        height: 630,
+        alt: "TPAS Rules and Guidance Cover Image",
+      },
+    ],
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Rules and Guidance | TPAS",
+    description:
+      "Read the rules and ethical standards members of TPAS follow to promote trust and excellence.",
+    images: ["https://professionalssocitey.org/images/tpas-cover.png"],
+  },
+  alternates: {
+    canonical: "https://professionalssocitey.org/members/rules-and-guidance",
+  },
+};
+
+const RulesAndGuidance = () => {
   return (
     <Container>
       <div className="w-full flex justify-center mt-12 px-4">
@@ -206,13 +249,9 @@ const AboutUsPage = () => {
                 
               </section>
 
-              {/* Why We Exist Section */}
-              <section data-aos="fade-up" id="member_agreement">
-                <h2
-                  data-aos="fade-up"
-                  className="text-xl sm:text-3xl font-bold text-blue-900 mb-5 mt-8"
-                >
-                  
+              {/* Member Agreement Section */}
+              <section  id="member_agreement">
+                <h2 className="text-xl sm:text-3xl font-bold text-blue-900 mb-5 mt-8">
                  6. Member Agreement
                 </h2>
                 <p data-aos="fade-up" className="text-gray-700 leading-relaxed">
@@ -276,62 +315,6 @@ const AboutUsPage = () => {
                   ))}
                 </div>
               </div>
-
-              {/* Find Accountant */}
-              {/* <div
-                data-aos="fade-up"
-                className="bg-gradient-to-r from-teal-500 to-teal-600 rounded-lg shadow-md overflow-hidden"
-              >
-                <div className="p-4 lg:p-6">
-                  <div className="flex items-center gap-2 text-white text-lg font-semibold mb-4">
-                    <Pen className="text-white w-5 h-5" />
-                    <span>Find an Accountant</span>
-                  </div>
-
-                  <div className="space-y-3">
-                    <input
-                      type="text"
-                      placeholder="Postcode"
-                      className="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-300 text-gray-800"
-                    />
-
-                    <select
-                      className="w-full px-4 py-3 rounded-md border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-teal-300 text-gray-800"
-                      defaultValue=""
-                    >
-                      <option value="" disabled>
-                        Choose area...
-                      </option>
-                      <option value="Personal Tax Return">
-                        Bookkeeping & Accounts Preparatio
-                      </option>
-                      <option value="option 02">Corporation Tax Return</option>
-                      <option value="option 02">Capital Gains Tax</option>
-                      <option value="option 02">Inheritance Tax</option>
-                      <option value="option 02">VAT & Indirect Taxes</option>
-                      <option value="option 02">Self-Assessment</option>
-                      <option value="option 02">Payroll Services</option>
-                      <option value="option 02">
-                        Business Start-up & Advisory
-                      </option>
-                      <option value="option 02">
-                        HMRC Investigations & Disputes
-                      </option>
-                      <option value="option 02">R&D Tax Credits</option>
-                      <option value="option 02">
-                        Tax Planning & Consultancy
-                      </option>
-                      <option value="option 02">Trust & Estate Planning</option>
-                      <option value="option 02">International Tax</option>
-                      <option value="option 02">Transfer Pricing </option>
-                    </select>
-
-                    <button className="w-full px-4 py-3 border border-white text-white rounded-md hover:bg-white hover:text-teal-600 transition-all duration-200 font-semibold">
-                      Search for an Accountant
-                    </button>
-                  </div>
-                </div>
-              </div> */}
             </div>
           </div>
         </div>
@@ -340,4 +323,4 @@ const AboutUsPage = () => {
   );
 };
 
-export default AboutUsPage;
+export default RulesAndGuidance;

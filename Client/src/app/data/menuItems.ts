@@ -9,7 +9,7 @@ export const menuItems = [
       { label: "Membership and fees", href: "/members/guidance" },
       { label: "Rules & guidance", href: "/members/rules-and-guidance" },
       { label: "Journal", href: "/members/guidance" },
-      { label: "Professional support", href: "/members/guidance" },
+      { label: "Professional support", href: "/members/professional-support" },
       { label: "TPAS Wellbeing", href: "/members/guidance" },
       { label: "Strategic Partners", href: "/strategic_Partners" },
 

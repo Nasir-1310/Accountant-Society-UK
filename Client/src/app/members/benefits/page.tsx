@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Member Benefits | Society of Professional Accountants",
+  title: "Member Benefits | The Professionals' Accountants",
   description:
     "Explore the exclusive member benefits of the Society of Professional Accountants including webinars, tax resources, networking, and expert advice.",
 };

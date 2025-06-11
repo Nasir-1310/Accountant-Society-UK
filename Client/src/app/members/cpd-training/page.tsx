@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "CPD & Training | The Professional Accountants Society",
+  title: "CPD & Training | The Professional Accountants' Society",
   description:
     "Advance your accounting career with CPD and training programs from the Society of Professional Accountants. Access expert-led courses, webinars, and up-to-date industry knowledge to meet your professional development goals.",
   keywords: [

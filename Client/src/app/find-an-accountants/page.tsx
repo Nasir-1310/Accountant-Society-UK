@@ -4,7 +4,7 @@ import FindAccountantWrapper from "@/components/FindAccountantsWrapper";
 import Container from "@/components/Container";
 
 export const metadata: Metadata = {
-  title: "Find an Accountant | Society of Professional Accountants",
+  title: "Find an Accountant | the Professional Accountants' Society",
   description: "Locate qualified professional accountants by name, postcode, or area of expertise.",
 };
 
