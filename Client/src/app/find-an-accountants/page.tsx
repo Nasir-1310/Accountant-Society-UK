@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const FindPage=()=> {
   return (
     <Container>
-    <div className="mx-3 px-5  border-l border-r border-gray-200 bg-white">
+    <div className="mx-3 px-2 sm:px-6 border  border-t border-gray-200 bg-white">
       <main data-aos="fade-up"   className="py-20 w-full max-w-full">
         <h1 className="text-xs sm:text-sm font-semibold text-gray-500 tracking-widest uppercase mb-2">
           Home | Find an Accountant

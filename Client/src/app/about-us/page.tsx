@@ -8,7 +8,8 @@ const AboutUsPage = () => {
       <div className="w-full flex justify-center mt-12 px-4">
         <div className="w-full flex flex-col lg:flex-row bg-white shadow-lg ">
           {/* Main Content Section - First on mobile/tablet */}
-          <div className="w-full lg:w-3/4 order-1 lg:order-2 px-6 lg:px-10 py-8">
+          <div className="w-full lg:w-3/4 order-1 lg:order-2 px-1 sm:px-6 lg:px-10 py-8">
+          <div className="px-4 sm:px-0">
             {/* Breadcrumb */}
             <div data-aos="fade-up" className="text-sm text-gray-500 mb-6">
               <Link href="/" className="hover:text-teal-600 transition-colors">
@@ -206,6 +207,7 @@ const AboutUsPage = () => {
                 </p>
               </section>
             </div>
+            </div>
 
             {/* Cards Section - Responsive grid */}
             <div
@@ -308,7 +310,7 @@ const AboutUsPage = () => {
             data-aos="fade-up"
             className="w-full lg:w-1/4 order-2 lg:order-1 bg-gradient-to-br from-gray-200 to-gray-100 border-t lg:border-t-0 lg:border-r border-gray-200"
           >
-            <div className="px-6 py-8">
+            <div className=" px-2 sm:px-6 py-8">
               {/* In this section - Mobile/Tablet */}
               <div className="lg:hidden mb-8">
                 <h3 className="text-lg font-bold text-gray-800 mb-4">
