@@ -10,7 +10,7 @@ export const menuItems = [
       { label: "Rules & guidance", href: "/members/rules-and-guidance" },
       { label: "Journal", href: "/members/guidance" },
       { label: "Professional support", href: "/members/professional-support" },
-      { label: "TPAS Wellbeing", href: "/members/guidance" },
+      { label: "TPAS Wellbeing", href: "/members/wellbeing" },
       { label: "Strategic Partners", href: "/strategic_Partners" },
 
       
@@ -35,8 +35,12 @@ export const menuItems = [
     ],
   },
   {
-    title: "Rules & Guidance",
-    links: [{ label: "Rules & Guidance", href: "/members/rules-and-guidance" }],
+    title: "Policies",
+    links: [
+            { label: "Rules & Guidance", href: "/members/rules-and-guidance" },
+            {label: "Constitution", href: "/members/constitution" },
+           ],
+          
   },
   {
     title: "Founding Members",
