@@ -11,7 +11,7 @@ export const menuItems = [
       { label: "Journal", href: "/members/guidance" },
       { label: "Professional support", href: "/members/professional-support" },
       { label: "TPAS Wellbeing", href: "/members/wellbeing" },
-      { label: "Strategic Partners", href: "/strategic_Partners" },
+      { label: "Strategic Partners", href: "/members/strategic-partners" },
 
       
       
