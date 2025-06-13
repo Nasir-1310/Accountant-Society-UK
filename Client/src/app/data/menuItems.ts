@@ -45,7 +45,7 @@ export const menuItems = [
   {
     title: "Founding Members",
     links: [
-      { label: "Members", href: "/public/find" },
+      { label: "Members", href: "/founding-members/members" },
       // { label: "Make a Query", href: "/contactUs" },
     ],
   },
