@@ -43,9 +43,10 @@ export default function FoundingMembersPage() {
         </div>
 
         {/* Page Title */}
-        <h1 data-aos="fade-up" className="text-2xl md:text-4xl font-bold  text-gray-900 mb-12">
-          Founding Members
+        <h1 data-aos="fade-up" className="text-2xl md:text-4xl font-bold  text-gray-900 mb-2">
+         Our Founding Members
         </h1>
+        <p className="mb-12 text-[14px] md:text-base">Introducing the individuals who laid the cornerstone of our mission.</p>
 
         {/* Members Grid */}
         <div data-aos="fade-up" className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
