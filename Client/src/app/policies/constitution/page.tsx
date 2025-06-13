@@ -309,7 +309,7 @@ const ConstitutionPage = () => {
                   <li>The Chartered Accountants of Ireland (CAI)</li>
                   <li>
                     The Institute of Chartered Accountants of Bangladesh (ICAB)
-                    – members/affiliates residing in the UK only
+                    –members/affiliates residing in the UK only
                   </li>
                 </ul>
                 <p className="mt-2">
@@ -478,11 +478,11 @@ const ConstitutionPage = () => {
               </li>
               <li>
                 <strong>Dispose of Property:</strong> Sell, lease, or otherwise
-                dispose of any part or all of the Society's property.
+                dispose of any part or all of the Society&apos;s property.
               </li>
               <li>
                 <strong>Employ and Remunerate Staff:</strong> Hire and pay staff
-                as necessary to carry out the Society's activities.
+                as necessary to carry out the Society&apos;s activities.
               </li>
               <li>
                 <strong>Manage Investments:</strong> Deposit or invest funds,
@@ -634,7 +634,7 @@ const ConstitutionPage = () => {
                 </h3>
                 <ol className="list-[lower-alpha] pl-6 space-y-3">
                   <li>
-                    "the Society&quot; includes any organization in which the
+                    &quot;the Society&quot; includes any organization in which the
                     Society:
                     <ol className="list-[lower-roman] pl-6 mt-2 space-y-1">
                       <li>holds more than 50% of the shares; or</li>
@@ -649,7 +649,7 @@ const ConstitutionPage = () => {
                     </ol>
                   </li>
                   <li>
-                    "connected person" includes any person within the definition
+                    &quot;connected person&quot; includes any person within the definition
                     set out in clause [30] (Interpretation).
                   </li>
                 </ol>
@@ -827,7 +827,7 @@ const ConstitutionPage = () => {
                     A copy of the current version of this constitution; and
                   </li>
                   <li>
-                    A copy of the society's latest Trustees' Annual Report and
+                    A copy of the society&apos;s latest Trustees&apos; Annual Report and
                     statement of accounts.
                   </li>
                 </ol>
@@ -1468,7 +1468,7 @@ const ConstitutionPage = () => {
                 <p className="mb-3">
                   The financial year of the Society shall end on 31 March and
                   financial statements shall be prepared in accordance with UK
-                  Companies act within 3 months after the year's end each year
+                  Companies act within 3 months after the year&apos;s end each year
                   for submission to the AGM. Such accounts shall be subject to
                   examination and reported on by the independent honorary
                   reporting accountant.
@@ -1508,7 +1508,7 @@ const ConstitutionPage = () => {
                 </h3>
                 <p className="mb-3">
                   The annual budgets shall identify the planned elements of
-                  income and expenditure relating to the Society's functions.
+                  income and expenditure relating to the Society&apos;s functions.
                 </p>
               </div>
 
