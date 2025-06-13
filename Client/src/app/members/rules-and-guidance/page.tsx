@@ -48,7 +48,7 @@ const RulesAndGuidance = () => {
   return (
     <Container>
       <div className="w-full flex justify-center mt-12 px-4">
-        <div className="w-full flex flex-col lg:flex-row bg-white shadow-lg ">
+        <div className="w-full flex flex-col-reverse lg:flex-row bg-white shadow-lg ">
           {/* Main Content Section - First on mobile/tablet */}
           <div className="w-full lg:w-3/4 order-1 lg:order-2 px-6 lg:px-10 py-8">
             {/* Breadcrumb */}

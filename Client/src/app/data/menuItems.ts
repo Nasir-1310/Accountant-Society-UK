@@ -38,7 +38,7 @@ export const menuItems = [
     title: "Policies",
     links: [
             { label: "Rules & Guidance", href: "/members/rules-and-guidance" },
-            {label: "Constitution", href: "/members/constitution" },
+            {label: "Constitution", href: "/policies/constitution" },
            ],
           
   },
