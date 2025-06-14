@@ -24,7 +24,7 @@ export const menuItems = [
       { label: "Latest news", href: "/news/latest" },
       { label: "Upcoming Events", href: "/news/events" },
       { label: "Gallery", href: "/news-and-events/gallery" },
-       { label: "CPD & Networking", href: "/news/cpd" },
+       { label: "CPD & Networking", href: "/members/cpd-training" },
     ],
   },
   {
@@ -43,9 +43,9 @@ export const menuItems = [
           
   },
   {
-    title: "Founding Members",
+    title: "About the Founders",
     links: [
-      { label: "Members", href: "/founding-members/members" },
+      { label: "Founding Members", href: "/founding-members/members" },
       // { label: "Make a Query", href: "/contactUs" },
     ],
   },

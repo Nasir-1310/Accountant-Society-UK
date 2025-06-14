@@ -202,10 +202,7 @@ const CPD_and_Training = () => {
                         About us
                       </h3>
                       <p className="text-gray-600 text-sm leading-relaxed mb-3 flex-grow">
-                        The Professional Accountants Society is British
-                        Bangladeshi Chartered Accountants. We promote excellence
-                        among accountants through support and regulation of our
-                        members.
+                        The Professional Accountants’ Society is a vibrant network of British Bangladeshi Chartered Accountants dedicated to collaboration, professional growth, and community impact. We aim to support members through shared knowledge, networking opportunities, and initiatives that inspire excellence in the accounting profession.
                       </p>
                       <Link href="/about-us">
                         <button className="inline-flex items-center text-teal-600 hover:text-white hover:bg-teal-600 font-semibold text-sm px-3 py-2 rounded-md border border-teal-600 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-opacity-50">

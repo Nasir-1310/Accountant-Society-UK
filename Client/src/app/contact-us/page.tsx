@@ -447,7 +447,7 @@ const ContactUsPage = () => {
               <div className="p-4">
                 <h3 className="text-xl font-bold text-gray-800 mb-2">About us</h3>
                 <p className="text-gray-600 text-sm leading-relaxed mb-3">
-                  The Professional Accountants Society is British Bangladeshi Chartered Accountants. We promote excellence among accountants through support and regulation of our members.
+                  The Professional Accountants’ Society is a vibrant network of British Bangladeshi Chartered Accountants dedicated to collaboration, professional growth, and community impact. We aim to support members through shared knowledge, networking opportunities, and initiatives that inspire excellence in the accounting profession.
                 </p>
                 <a href="/about" className="text-teal-600 hover:text-teal-700 font-semibold text-sm hover:underline transition-colors">
                   Read more
