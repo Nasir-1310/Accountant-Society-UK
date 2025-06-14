@@ -12,14 +12,10 @@ export const menuItems = [
       { label: "Professional support", href: "/members/professional-support" },
       { label: "TPAS Wellbeing", href: "/members/wellbeing" },
       { label: "Strategic Partners", href: "/members/strategic-partners" },
-
-      
-      
-      
     ],
   },
   {
-    title: "News and events",
+    title: "News and Events",
     links: [
       { label: "Latest news", href: "/news/latest" },
       { label: "Upcoming Events", href: "/news/events" },

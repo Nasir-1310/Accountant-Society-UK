@@ -195,7 +195,7 @@ const ConstitutionPage = () => {
           </div>
           <div className="border-b border-gray-400 pb-6 mb-8 flex flex-col items-center text-center">
             <h1 className="text-lg sm:text-2xl lg:text-3xl font-bold text-gray-800 mb-2">
-                THE PROFESSIONAL ACCOUNTANTS’ SOCIETY(TPAC)
+                THE PROFESSIONAL ACCOUNTANTS’ SOCIETY(TPAS)
             </h1>
             <p><strong className="text-[14px] sm:text-base">Articles of association and memorandum</strong> </p>
             
