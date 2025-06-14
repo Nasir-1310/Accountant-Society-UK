@@ -55,88 +55,117 @@ const ConstitutionPage = () => {
           </h3>
           <div className="space-y-3">
             <a href="#definitions" className=" block mb-2">
-              <Square_Button className="w-full">Definitions</Square_Button>
+              <Square_Button className="w-full">1) Definitions</Square_Button>
             </a>
             <a href="#Name_and_Official_Registration" className="block mb-2">
               <Square_Button className="w-full  ">
-                Name and Official Registration
+                2) Name and Official Registration
               </Square_Button>
             </a>
             <a href="#Aims" className="block mb-2">
-              <Square_Button className="w-full  ">Aims</Square_Button>
+              <Square_Button className="w-full  ">3) Aims</Square_Button>
             </a>
             <a href="#Objectives" className="block mb-2">
-              <Square_Button className="w-full  ">Objectives</Square_Button>
+              <Square_Button className="w-full  ">4) Objectives</Square_Button>
             </a>
             <a href="#Powers" className="block mb-2">
-              <Square_Button className="w-full  "> Powers</Square_Button>
+              <Square_Button className="w-full  ">5) Powers</Square_Button>
             </a>
             <a
               href="#Application_of_Income_and_Property"
               className="block mb-2"
             >
               <Square_Button className="w-full  ">
-                Application of Income and Property
+                6) Application of Income and Property
               </Square_Button>
             </a>
             <a href="#Benefits_and_payments" className="block mb-2">
               <Square_Button className="w-full  ">
-                Benefits and payments
+                7) Benefits and payments
               </Square_Button>
             </a>
             <a href="#Conflicts_of_interest" className="block mb-2">
               <Square_Button className="w-full  ">
-                Conflicts of interest and conflicts of loyalty
+                8) Conflicts of interest and conflicts of loyalty
               </Square_Button>
             </a>
             <a href="#Executive_Committee" className="block mb-2">
               <Square_Button className="w-full  ">
-                Executive Committee
+                9) Executive Committee
               </Square_Button>
             </a>
             <a href="#Founding_Members" className="block mb-2">
               <Square_Button className="w-full  ">
-                Founding Members
+                10) Founding Members
               </Square_Button>
             </a>
             <a href="#Office_Bearers" className="block mb-2">
-              <Square_Button className="w-full  ">Office Bearers</Square_Button>
+              <Square_Button className="w-full  ">
+                11) Office Bearers
+              </Square_Button>
             </a>
             <a href="#Membership" className="block mb-2">
-              <Square_Button className="w-full  ">Membership</Square_Button>
+              <Square_Button className="w-full  ">12) Membership</Square_Button>
             </a>
             <a href="#Modus_Operandi" className="block mb-2">
-              <Square_Button className="w-full  ">Modus Operandi</Square_Button>
+              <Square_Button className="w-full  ">
+                13) Modus Operandi
+              </Square_Button>
             </a>
             <a href="#Year_End_Accounts" className="block mb-2">
               <Square_Button className="w-full  ">
-                Year End Accounts
+                14) Year End Accounts
               </Square_Button>
             </a>
             <a href="#Annual_General_Meeting_(AGM)" className="block mb-2">
               <Square_Button className="w-full  ">
-                Annual General Meeting (AGM)
+                15) Annual General Meeting (AGM)
               </Square_Button>
             </a>
-            <a href="#Year_End_Accounts" className="block mb-2">
-              <Square_Button className="w-full  ">
-                Year End Accounts
-              </Square_Button>
-            </a>
+
             <a href="#Executive_Committee_Meeting" className="block mb-2">
               <Square_Button className="w-full  ">
-                Executive Committee Meeting
+                15) Executive Committee Meeting
               </Square_Button>
             </a>
-            <a href="#Year_End_Accounts" className="block mb-2">
+            <a href="#Quorum" className="block mb-2">
+              <Square_Button className="w-full  ">17) Quorum</Square_Button>
+            </a>
+            <a href="#Extraordinary_General_Meeting" className="block mb-2">
               <Square_Button className="w-full  ">
-                Year End Accounts
+                18) Extraordinary General Meeting (EGM)
               </Square_Button>
             </a>
-            <a href="#Year_End_Accounts" className="block mb-2">
+            <a href="#Votes_at_the_Meeting" className="block mb-2">
               <Square_Button className="w-full  ">
-                Year End Accounts
+                19) Votes at the Meeting
               </Square_Button>
+            </a>
+            <a href="#Amendments_to_the_Constitution" className="block mb-2">
+              <Square_Button className="w-full  ">
+                20) Amendments to the Constitution
+              </Square_Button>
+            </a>
+            <a href="#Interpretation_of_Rules" className="block mb-2">
+              <Square_Button className="w-full  ">
+                21) Interpretation of Rules
+              </Square_Button>
+            </a>
+            <a href="#Dissolutions_&_winding_up" className="block mb-2">
+              <Square_Button className="w-full  ">
+                22) Dissolutions & winding up
+              </Square_Button>
+            </a>
+            <a href="#Internal_Procedures" className="block mb-2">
+              <Square_Button className="w-full  ">
+                23) Internal Procedures
+              </Square_Button>
+            </a>
+            <a href="#Bank" className="block mb-2">
+              <Square_Button className="w-full  ">24) Bank</Square_Button>
+            </a>
+            <a href="#Disclaimer" className="block mb-2">
+              <Square_Button className="w-full  ">25) Disclaimer</Square_Button>
             </a>
 
             {/* Add more buttons here */}
@@ -146,7 +175,7 @@ const ConstitutionPage = () => {
         {/* Main Content */}
         <div className="w-full lg:w-3/4 px-6 lg:px-10 py-8">
           {/* Breadcrumb */}
-          <div className="text-sm text-gray-500 mb-6">
+          <div className=" text-[10px] sm:text-sm text-gray-500 mb-6 ">
             <Link href="/" className="hover:text-teal-600 transition-colors">
               Home
             </Link>
@@ -160,101 +189,143 @@ const ConstitutionPage = () => {
 
           {/* Page Title */}
           <div className="border-b border-gray-400 pb-6 mb-8">
-            <h1 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-2">
+            <h1 className=" text-xl sm:text-3xl lg:text-4xl font-bold text-gray-800 mb-2">
               Constitution
             </h1>
+          </div>
+          <div className="border-b border-gray-400 pb-6 mb-8 flex flex-col items-center text-center">
+            <h1 className="text-lg sm:text-2xl lg:text-3xl font-bold text-gray-800 mb-2">
+                THE PROFESSIONAL ACCOUNTANTS’ SOCIETY(TPAC)
+            </h1>
+            <p><strong className="text-[14px] sm:text-base">Articles of association and memorandum</strong> </p>
+            
           </div>
 
           {/* Mobile Menu (Above Definition Section) */}
           <div className="block lg:hidden mb-8">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4 border-b border-gray-300 pb-2">
+            <h3 className="text-lg sm:text-2xl font-bold text-gray-800 mb-4 border-b border-gray-300 pb-2">
               Constitution Menu
             </h3>
             <div className="space-y-3">
               <a href="#definitions" className=" block mb-2">
-              <Square_Button className="w-full">Definitions</Square_Button>
-            </a>
-            <a href="#Name_and_Official_Registration" className="block mb-2">
-              <Square_Button className="w-full  ">
-                Name and Official Registration
-              </Square_Button>
-            </a>
-            <a href="#Aims" className="block mb-2">
-              <Square_Button className="w-full  ">Aims</Square_Button>
-            </a>
-            <a href="#Objectives" className="block mb-2">
-              <Square_Button className="w-full  ">Objectives</Square_Button>
-            </a>
-            <a href="#Powers" className="block mb-2">
-              <Square_Button className="w-full  "> Powers</Square_Button>
-            </a>
-            <a
-              href="#Application_of_Income_and_Property"
-              className="block mb-2"
-            >
-              <Square_Button className="w-full  ">
-                Application of Income and Property
-              </Square_Button>
-            </a>
-            <a href="#Benefits_and_payments" className="block mb-2">
-              <Square_Button className="w-full  ">
-                Benefits and payments
-              </Square_Button>
-            </a>
-            <a href="#Conflicts_of_interest" className="block mb-2">
-              <Square_Button className="w-full  ">
-                Conflicts of interest and conflicts of loyalty
-              </Square_Button>
-            </a>
-            <a href="#Executive_Committee" className="block mb-2">
-              <Square_Button className="w-full  ">
-                Executive Committee
-              </Square_Button>
-            </a>
-            <a href="#Founding_Members" className="block mb-2">
-              <Square_Button className="w-full  ">
-                Founding Members
-              </Square_Button>
-            </a>
-            <a href="#Office_Bearers" className="block mb-2">
-              <Square_Button className="w-full  ">Office Bearers</Square_Button>
-            </a>
-            <a href="#Membership" className="block mb-2">
-              <Square_Button className="w-full  ">Membership</Square_Button>
-            </a>
-            <a href="#Modus_Operandi" className="block mb-2">
-              <Square_Button className="w-full  ">Modus Operandi</Square_Button>
-            </a>
-            <a href="#Year_End_Accounts" className="block mb-2">
-              <Square_Button className="w-full  ">
-                Year End Accounts
-              </Square_Button>
-            </a>
-            <a href="#Annual_General_Meeting_(AGM)" className="block mb-2">
-              <Square_Button className="w-full  ">
-                Annual General Meeting (AGM)
-              </Square_Button>
-            </a>
-            <a href="#Year_End_Accounts" className="block mb-2">
-              <Square_Button className="w-full  ">
-                Year End Accounts
-              </Square_Button>
-            </a>
-            <a href="#Executive_Committee_Meeting" className="block mb-2">
-              <Square_Button className="w-full  ">
-                Executive Committee Meeting
-              </Square_Button>
-            </a>
-            <a href="#Year_End_Accounts" className="block mb-2">
-              <Square_Button className="w-full  ">
-                Year End Accounts
-              </Square_Button>
-            </a>
-            <a href="#Year_End_Accounts" className="block mb-2">
-              <Square_Button className="w-full  ">
-                Year End Accounts
-              </Square_Button>
-            </a>
+                <Square_Button className="w-full">1) Definitions</Square_Button>
+              </a>
+              <a href="#Name_and_Official_Registration" className="block mb-2">
+                <Square_Button className="w-full  ">
+                  2) Name and Official Registration
+                </Square_Button>
+              </a>
+              <a href="#Aims" className="block mb-2">
+                <Square_Button className="w-full  ">3) Aims</Square_Button>
+              </a>
+              <a href="#Objectives" className="block mb-2">
+                <Square_Button className="w-full  ">
+                  4) Objectives
+                </Square_Button>
+              </a>
+              <a href="#Powers" className="block mb-2">
+                <Square_Button className="w-full  ">5) Powers</Square_Button>
+              </a>
+              <a
+                href="#Application_of_Income_and_Property"
+                className="block mb-2"
+              >
+                <Square_Button className="w-full  ">
+                  6) Application of Income and Property
+                </Square_Button>
+              </a>
+              <a href="#Benefits_and_payments" className="block mb-2">
+                <Square_Button className="w-full  ">
+                  7) Benefits and payments
+                </Square_Button>
+              </a>
+              <a href="#Conflicts_of_interest" className="block mb-2">
+                <Square_Button className="w-full  ">
+                  8) Conflicts of interest and conflicts of loyalty
+                </Square_Button>
+              </a>
+              <a href="#Executive_Committee" className="block mb-2">
+                <Square_Button className="w-full  ">
+                  9) Executive Committee
+                </Square_Button>
+              </a>
+              <a href="#Founding_Members" className="block mb-2">
+                <Square_Button className="w-full  ">
+                  10) Founding Members
+                </Square_Button>
+              </a>
+              <a href="#Office_Bearers" className="block mb-2">
+                <Square_Button className="w-full  ">
+                  11) Office Bearers
+                </Square_Button>
+              </a>
+              <a href="#Membership" className="block mb-2">
+                <Square_Button className="w-full  ">
+                  12) Membership
+                </Square_Button>
+              </a>
+              <a href="#Modus_Operandi" className="block mb-2">
+                <Square_Button className="w-full  ">
+                  13) Modus Operandi
+                </Square_Button>
+              </a>
+              <a href="#Year_End_Accounts" className="block mb-2">
+                <Square_Button className="w-full  ">
+                  14) Year End Accounts
+                </Square_Button>
+              </a>
+              <a href="#Annual_General_Meeting_(AGM)" className="block mb-2">
+                <Square_Button className="w-full  ">
+                  15) Annual General Meeting (AGM)
+                </Square_Button>
+              </a>
+
+              <a href="#Executive_Committee_Meeting" className="block mb-2">
+                <Square_Button className="w-full  ">
+                  15) Executive Committee Meeting
+                </Square_Button>
+              </a>
+              <a href="#Quorum" className="block mb-2">
+                <Square_Button className="w-full  ">17) Quorum</Square_Button>
+              </a>
+              <a href="#Extraordinary_General_Meeting" className="block mb-2">
+                <Square_Button className="w-full  ">
+                  18) Extraordinary General Meeting (EGM)
+                </Square_Button>
+              </a>
+              <a href="#Votes_at_the_Meeting" className="block mb-2">
+                <Square_Button className="w-full  ">
+                  19) Votes at the Meeting
+                </Square_Button>
+              </a>
+              <a href="#Amendments_to_the_Constitution" className="block mb-2">
+                <Square_Button className="w-full  ">
+                  20) Amendments to the Constitution
+                </Square_Button>
+              </a>
+              <a href="#Interpretation_of_Rules" className="block mb-2">
+                <Square_Button className="w-full  ">
+                  21) Interpretation of Rules
+                </Square_Button>
+              </a>
+              <a href="#Dissolutions_&_winding_up" className="block mb-2">
+                <Square_Button className="w-full  ">
+                  22) Dissolutions & winding up
+                </Square_Button>
+              </a>
+              <a href="#Internal_Procedures" className="block mb-2">
+                <Square_Button className="w-full  ">
+                  23) Internal Procedures
+                </Square_Button>
+              </a>
+              <a href="#Bank" className="block mb-2">
+                <Square_Button className="w-full  ">24) Bank</Square_Button>
+              </a>
+              <a href="#Disclaimer" className="block mb-2">
+                <Square_Button className="w-full  ">
+                  25) Disclaimer
+                </Square_Button>
+              </a>
               {/* Add more mobile buttons if needed */}
             </div>
           </div>
@@ -265,7 +336,7 @@ const ConstitutionPage = () => {
             className="mb-10 border-b border-gray-300 pb-10 scroll-mt-20"
           >
             <h2 className="text-2xl font-bold text-blue-900 mb-6">
-              1. Definitions
+              1) Definitions
             </h2>
             <p className="text-md text-gray-700 leading-relaxed mb-4">
               In this constitution, the following terms and phrases shall have
@@ -353,7 +424,7 @@ const ConstitutionPage = () => {
             className="mb-10 border-b border-gray-300 pb-10 scroll-mt-20"
           >
             <h2 className="text-2xl font-bold text-blue-900 mb-6">
-              2. Name and Official Registration
+              2) Name and Official Registration
             </h2>
 
             <ul className="list-[lower-alpha] pl-6 mt-2 space-y-1">
@@ -634,8 +705,8 @@ const ConstitutionPage = () => {
                 </h3>
                 <ol className="list-[lower-alpha] pl-6 space-y-3">
                   <li>
-                    &quot;the Society&quot; includes any organization in which the
-                    Society:
+                    &quot;the Society&quot; includes any organization in which
+                    the Society:
                     <ol className="list-[lower-roman] pl-6 mt-2 space-y-1">
                       <li>holds more than 50% of the shares; or</li>
                       <li>
@@ -649,8 +720,8 @@ const ConstitutionPage = () => {
                     </ol>
                   </li>
                   <li>
-                    &quot;connected person&quot; includes any person within the definition
-                    set out in clause [30] (Interpretation).
+                    &quot;connected person&quot; includes any person within the
+                    definition set out in clause [30] (Interpretation).
                   </li>
                 </ol>
               </div>
@@ -827,8 +898,8 @@ const ConstitutionPage = () => {
                     A copy of the current version of this constitution; and
                   </li>
                   <li>
-                    A copy of the society&apos;s latest Trustees&apos; Annual Report and
-                    statement of accounts.
+                    A copy of the society&apos;s latest Trustees&apos; Annual
+                    Report and statement of accounts.
                   </li>
                 </ol>
               </div>
@@ -1468,9 +1539,9 @@ const ConstitutionPage = () => {
                 <p className="mb-3">
                   The financial year of the Society shall end on 31 March and
                   financial statements shall be prepared in accordance with UK
-                  Companies act within 3 months after the year&apos;s end each year
-                  for submission to the AGM. Such accounts shall be subject to
-                  examination and reported on by the independent honorary
+                  Companies act within 3 months after the year&apos;s end each
+                  year for submission to the AGM. Such accounts shall be subject
+                  to examination and reported on by the independent honorary
                   reporting accountant.
                 </p>
               </div>
@@ -1508,7 +1579,8 @@ const ConstitutionPage = () => {
                 </h3>
                 <p className="mb-3">
                   The annual budgets shall identify the planned elements of
-                  income and expenditure relating to the Society&apos;s functions.
+                  income and expenditure relating to the Society&apos;s
+                  functions.
                 </p>
               </div>
 
@@ -1594,6 +1666,286 @@ const ConstitutionPage = () => {
             <p className="mb-3">
               There shall be a regular board of trustees meeting for the
               day-to-day operation of the Society.
+            </p>
+          </section>
+          {/*Quorum Section */}
+          <section
+            id="Quorum"
+            className="mb-10 border-b border-gray-300 pb-10 scroll-mt-20"
+          >
+            <h2 className="text-2xl font-bold text-blue-900 mb-6">
+              17) Quorum:
+            </h2>
+
+            <p className="mb-3">
+              For any decision made at the AGM or EGM, 75% of the registered
+              attendees must vote in favor. However, a quorum for the Executive
+              Committee will require only a simple majority. If a quorum is not
+              present when the meeting moves to business, no decisions or
+              business may be conducted at the Executive Committee meeting, AGM,
+              or EGM. Any absence that is preceded by written notice (electronic
+              or paper) may still be counted towards the Executive Committee
+              meeting quorum.
+            </p>
+          </section>
+
+          {/*Extraordinary General Meeting Section */}
+          <section
+            id="Extraordinary_General_Meeting"
+            className="mb-10 border-b border-gray-300 pb-10 scroll-mt-20"
+          >
+            <h2 className="text-2xl font-bold text-blue-900 mb-6">
+              18) Extraordinary General Meeting (EGM):
+            </h2>
+
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-lg font-semibold text-gray-800 mb-3">
+                  18.1. Calling an EGM
+                </h3>
+                <p className="mb-3">
+                  The Executive Committee may call an extraordinary general
+                  meeting at any time by giving fourteen days&apos; notice in writing
+                  or other means and shall convince such a meeting on the
+                  written requisition of a simple majority of members present at
+                  a quorum meeting. The objectives of the meeting shall be
+                  specified in the notice.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-semibold text-gray-800 mb-3">
+                  18.2. Constitutional Amendments
+                </h3>
+                <p className="mb-3">
+                  If an extraordinary general meeting is called to approve or
+                  rectify amendments to the Society&apos;s constitution, the
+                  resolutions must be passed by a simple majority of the members
+                  present, including all general registered members. The
+                  Executive Committee will delegate responsibilities for
+                  constitutional amendment works.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/*Votes at the Meeting Section */}
+          <section
+            id="Votes_at_the_Meeting"
+            className="mb-10 border-b border-gray-300 pb-10 scroll-mt-20"
+          >
+            <h2 className="text-2xl font-bold text-blue-900 mb-6">
+              19) Votes at the Meeting:
+            </h2>
+
+            <p className="mb-3">
+              Every registered member/attendees present at a general meeting
+              that calls for a vote is entitled to one vote. The meeting&apos;s
+              president will cast a casting vote in the event of an equal number
+              of votes.
+            </p>
+          </section>
+
+          {/*Amendments to the Constitution Section */}
+          <section
+            id="Amendments_to_the_Constitution"
+            className="mb-10 border-b border-gray-300 pb-10 scroll-mt-20"
+          >
+            <h2 className="text-2xl font-bold text-blue-900 mb-6">
+              20) Amendments to the Constitution:
+            </h2>
+
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-lg font-semibold text-gray-800 mb-3">
+                  20.1. Meeting Requirements
+                </h3>
+                <p className="mb-3">
+                  No additions to or alterations of this constitution shall be
+                  made other than at any annual general meeting or at an
+                  extraordinary general meeting was called for that purpose.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-semibold text-gray-800 mb-3">
+                  20.2. Proposal Process
+                </h3>
+                <p className="mb-3">
+                  Any member wishing to propose such alterations or additions
+                  must send the proposal, duly seconded, in writing to the
+                  President of the Society for submission to the Committee. The
+                  Executive committee shall, if possible, bring the proposal at
+                  least 30 calendar days before the next AGM, or, if it thinks
+                  it desirable, may convene an extraordinary general meeting.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/*Interpretation of Rules Section */}
+          <section
+            id="Interpretation_of_Rules"
+            className="mb-10 border-b border-gray-300 pb-10 scroll-mt-20"
+          >
+            <h2 className="text-2xl font-bold text-blue-900 mb-6">
+              21) Interpretation of Rules:
+            </h2>
+
+            <p className="mb-3">
+              The Executive committee and founding members shall be the sole
+              authority for the interpretation of this constitution, and the
+              decision of the committee upon any question of interpretation or
+              any matter affecting the Society and not provided for by this
+              constitution shall be final and binding on the members except for
+              where it clashes with Companies House act and Other UK Law.
+            </p>
+          </section>
+          {/*Dissolutions & Winding Up Section */}
+          <section
+            id="Dissolutions_&_Winding_Up"
+            className="mb-10 border-b border-gray-300 pb-10 scroll-mt-20"
+          >
+            <h2 className="text-2xl font-bold text-blue-900 mb-6">
+              22) Dissolutions & Winding Up:
+            </h2>
+
+            <p className="mb-3">
+              A resolution passed at an extraordinary general meeting may
+              dissolve the Society. In that case, any property left over after
+              the Society&apos;s debts and liabilities have been paid off or
+              transferred to charitable organizations that support the welfare
+              of any British Bangladeshi registered charity organization in the
+              UK, as decided by the founding members. All registered
+              members&apos; shares equal liabilities limited to £1 each in the
+              event of winding up. But subject to that, the members of the
+              Society have no liability to contribute to its assets if it is
+              wound up, and accordingly have no personal responsibility for the
+              settlement of its debts and liabilities beyond the amount that
+              they are liable to contribute.
+            </p>
+          </section>
+
+          {/*Internal Procedures Section */}
+          <section
+            id="Internal_Procedures"
+            className="mb-10 border-b border-gray-300 pb-10 scroll-mt-20"
+          >
+            <h2 className="text-2xl font-bold text-blue-900 mb-6">
+              23) Internal Procedures:
+            </h2>
+
+            <div className="space-y-6">
+              <div>
+                <p className="mb-3">
+                  a) The management of the Society is vested upon the Executive
+                  committee and is a collective responsibility. Each committee
+                  member shall play his/her part properly. There shall be utmost
+                  cooperation amongst the members. Each member shall undertake
+                  his/her duties with a missionary zeal. Rules and procedures,
+                  though there will be some as a safeguard, there are no
+                  substitute for the spirit of co-operation and zeal.
+                </p>
+              </div>
+
+              <div>
+                <p className="mb-3">
+                  b) Members shall approach the duties in their respective areas
+                  in a business-like manner.
+                </p>
+              </div>
+
+              <div>
+                <p className="mb-3">
+                  c) Members shall innovate and improvise ways and means to
+                  discharge their duties effectively, efficiently, and
+                  economically. They shall devise procedures appropriate to the
+                  areas of their duties and strengthen communication with other
+                  members.
+                </p>
+              </div>
+
+              <div>
+                <p className="mb-3">
+                  d) Members shall strive to achieve transparency in any dealing
+                  and financial transactions carried out on behalf of the
+                  Society in an official capacity. They shall not use the names
+                  of their practice or their franking machines, calendars, tax
+                  tables etc, in any correspondence, which could give the
+                  impression of advertising their practice and any other
+                  business.
+                </p>
+              </div>
+
+              <div>
+                <p className="mb-3">
+                  e) The Society disclaims all liability for any financial
+                  transactions or expenses that a member may incur while acting
+                  in their personal capacity at any event that the Society
+                  organises.
+                </p>
+              </div>
+
+              <div>
+                <p className="mb-3">
+                  f) Members shall maintain records of activities undertaken in
+                  their areas and keep evidence or explanations of any
+                  expenditure wholly and exclusively defrayed in the performance
+                  of their duties.
+                </p>
+              </div>
+
+              <div>
+                <p className="mb-3">
+                  g) Members shall submit claims for reimbursement of any
+                  expenditure as soon as practicable, normally within two weeks
+                  of defraying them on the Society&apos;s business.
+                </p>
+              </div>
+
+              <div>
+                <p className="mb-3">
+                  h) The Treasurer shall reimburse members&apos; expenses after
+                  approval by the executive committee, being satisfied, based on
+                  documentary evidence and/or explanations, that these have been
+                  incurred on the Society&apos;s business.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/*Bank Section */}
+          <section
+            id="Bank"
+            className="mb-10 border-b border-gray-300 pb-10 scroll-mt-20"
+          >
+            <h2 className="text-2xl font-bold text-blue-900 mb-6">24) Bank:</h2>
+
+            <p className="mb-3">
+              The Society shall have UK registered bank account. Bank
+              signatories/mandate holders of three individuals from the founding
+              members. Any bank payment must be reviewed and authorised at least
+              by two signatories out of three signatories/mandate holders. Any
+              single invoice of more than £1,000 must be approved by the three
+              signatories. The Society will hold a maximum £100 petty cash float
+              at any time. A bank signatory can be replaced/terminated by a
+              simple majority vote of a present member of the founding members.
+            </p>
+          </section>
+
+          {/*Disclaimer Section */}
+          <section
+            id="Disclaimer"
+            className="mb-10 border-b border-gray-300 pb-10 scroll-mt-20"
+          >
+            <h2 className="text-2xl font-bold text-blue-900 mb-6">
+              25) Disclaimer
+            </h2>
+
+            <p className="mb-3">
+              It is strictly forbidden to promote, discuss, suggest, or debate
+              any contentious political, religious or any other controversial
+              issues on any of our platforms or at any of our gatherings.
             </p>
           </section>
         </div>
