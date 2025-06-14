@@ -32,11 +32,11 @@ const GalleryPage = () => {
         </div>
 
         {/* Gallery Grid */}
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className=" grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {galleryData.map((item) => (
             <div
               key={item.slug}
-              className="bg-white border rounded-lg shadow-sm hover:shadow-lg transition duration-300"
+              className="bg-gray-300 border rounded-lg shadow-sm hover:shadow-lg transition duration-300"
             >
               {/* Fixed aspect ratio container */}
               <div className="relative w-full aspect-video overflow-hidden rounded-t-lg">

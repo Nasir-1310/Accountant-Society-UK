@@ -30,21 +30,20 @@ export const metadata: Metadata = {
 const partners = [
   {
     id: 1,
-    image: "/images/partner1.jpg",
-    title: "Trusted Health Insurance",
+    image: "/partners/tide_bank.jpg",
+    title: "TIDE PARTNER PROGRAMME: Boost your earnings by partnering with Tide",
     description:
-      "Affordable health plans tailored for accounting professionals, with exclusive TPAS member rates.",
-    link: "/partners/health-insurance",
-    buttonText: "Explore Health Plan",
+      "Join the Tide referral partner programme and earn top commission. Drive customer acquisition and grow retention with partner perks. We’ll help your clients spend less time on finance admin and more time running their business.",
+    link: "https://www.tide.co/partners",
+    buttonText: "Explore More",
   },
   {
     id: 2,
-    image: "/images/partner2.jpg",
-    title: "Professional Indemnity Insurance",
-    description:
-      "Safeguard your practice with PII plans designed specifically for accountants.",
-    link: "/partners/indemnity-insurance",
-    buttonText: "View PII Options",
+    image: "/partners/cornor_i.jpg",
+    title: "In partnership with ACCOUNTANTS MILLIONAIRES club, Croder-i Lite. Register for your login details to Croner-i Lite",
+    description: "Croner-i are the experts in providing accountants with the most current guidance, tools, mind-maps and model documents on Tax, Accounting, Auditing, HR, and Health & Safety. As an AMC member, you can claim your login details, plus, you get an onboarding call from Croner-i to access a great starting point on market-leading advice regarding tax, accounting news and earning CPD points!",
+    link: "/signin",
+    buttonText: "Find More Information",
   },
 ];
 
@@ -172,7 +171,7 @@ export default function StrategicPartnersPage() {
                   {partner.title}
                 </h3>
                 <p className="text-gray-600 pb-10">{partner.description}</p>
-                <Square_Button className="w-auto px-6 self-start">
+                <Square_Button href={partner.link} className="w-auto px-6 self-start">
                   {partner.buttonText}
                 </Square_Button>
               </div>
