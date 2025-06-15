@@ -1,13 +1,134 @@
 const FoundingMembers = [
   {
-    name: "Md Khasruzzaman Polash",
-    title: "IT Expert",
-    image: "/founding_members/polash.jpg",
+    name: "Mohammed Iftekharul Islam Chowdhury",
+    title: "Designation will be updated",
+    image: "/founding_members/zakir.jpg",
+    linkedin: "https://www.linkedin.com/in/example-iftekharul/",
   },
   {
-    name: "Iftekhar Chowdhury Zakir",
-    title: "Entrepreneur and technology innovator",
-    image: "/founding_members/zakir.jpg",
+    name: "Suraiya Khatun Haque",
+    title: "Designation will be updated",
+    image: "/founding_members/zakr.jpg",
+    linkedin: "https://www.linkedin.com/in/example-iftekharul/",
+
+  },
+  {
+    name: "Mohammed Ali Ashraf Chowdhury",
+    title: "Designation will be updated",
+    image: "/founding_members/z.jpg",
+    linkedin: "https://www.linkedin.com/in/example-iftekharul/",
+
+  },
+  {
+    name: "MD Khasruzzaman",
+    title: "Designation will be updated",
+    image: "/founding_members/polash.jpg",
+    linkedin: "https://www.linkedin.com/in/example-iftekharul/",
+
+  },
+  {
+    name: "Hossain Al-Mamun",
+    title: "Designation will be updated",
+    image: "/founding_members/ir.jpg",
+    linkedin: "https://www.linkedin.com/in/example-iftekharul/",
+
+  },
+    {
+    name: "Kazi Farhana Akhter",
+    title: "Designation will be update.",
+    image: "/founding_members/",
+    linkedin: "https://www.linkedin.com/in/example-iftekharul/",
+
+  },
+      {
+    name: "Afroza Amin Jhuma",
+    title: "Designation will be updated.",
+    image: "/founding_members/",
+    linkedin: "https://www.linkedin.com/in/example-iftekharul/",
+
+  },
+       {
+    name: "Nazmul Hossain",
+    title: "Designation will be update.",
+    image: "/founding_members/",
+    linkedin: "https://www.linkedin.com/in/example-iftekharul/",
+
+  },
+       {
+    name: "Md Mijanur Rahman",
+    title: "Designation will be updated.",
+    image: "/founding_members/",
+    linkedin: "https://www.linkedin.com/in/example-iftekharul/",
+
+  },
+      {
+    name: "Mohammed Kamrul Aziz",
+    title: "Designation will be updated.",
+    image: "/founding_members/",
+    linkedin: "https://www.linkedin.com/in/example-iftekharul/",
+
+  },
+      {
+    name: "Harisa Islam",
+    title: "Designation will be updated.",
+    image: "/founding_members/",
+    linkedin: "https://www.linkedin.com/in/example-iftekharul/",
+
+  },
+       {
+    name: "Md Tofazzel Hossain",
+    title: "Designation will be updated.",
+    image: "/founding_members/",
+    linkedin: "https://www.linkedin.com/in/example-iftekharul/",
+
+  },
+       {
+    name: "Anam Mahmud",
+    title: "Designation will be updated.",
+    image: "/founding_members/",
+    linkedin: "https://www.linkedin.com/in/example-iftekharul/",
+
+  },
+       {
+    name: "Md Mahmudul Haque",
+    title: "Designation will be updated.",
+    image: "/founding_members/",
+    linkedin: "https://www.linkedin.com/in/example-iftekharul/",
+
+  },
+       {
+    name: "MD Sultanul Abedin",
+    title: "Designation will be updated.",
+    image: "/founding_members/",
+    linkedin: "https://www.linkedin.com/in/example-iftekharul/",
+
+  },
+      {
+    name: "Mohammad Sarfaraz Ninad",
+    title: "Designation will be updated.",
+    image: "/founding_members/",
+    linkedin: "https://www.linkedin.com/in/example-iftekharul/",
+
+  },
+   {
+    name: "Md Alinur Rahman",
+    title: "Designation will be updated.",
+    image: "/founding_members/",
+    linkedin: "https://www.linkedin.com/in/example-iftekharul/",
+
+  },
+   {
+    name: "F M Raisul Ferdous",
+    title: "Designation will be updated.",
+    image: "/founding_members/",
+    linkedin: "https://www.linkedin.com/in/example-iftekharul/",
+
+  },
+   {
+    name: "Dabir Uddin Ahmed",
+    title: "Designation will be updated.",
+    image: "/founding_members/",
+    linkedin: "https://www.linkedin.com/in/example-iftekharul/",
 
   },
   

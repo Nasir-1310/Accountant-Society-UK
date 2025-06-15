@@ -3,6 +3,8 @@ import Container from "@/components/Container";
 import { Metadata } from "next";
 import FoundingMembers from "@/app/data/foundingMembers";
 import Link from "next/link"; // ✅ Use next/link instead of lucide-react
+import { FaLinkedin } from "react-icons/fa";
+
 
 export const metadata: Metadata = {
   title: "Founding Members | Society of Professional Accountants",
@@ -25,30 +27,25 @@ export const metadata: Metadata = {
   },
 };
 
+
 export default function FoundingMembersPage() {
   return (
     <Container>
-      <div className="max-w-7xl  py-12 px-4 sm:px-6 lg:px-8 border-l border-r border-b mx-[12px] ">
+      <div className="max-w-7xl py-12 px-4 sm:px-6 lg:px-8 border-l border-r border-b mx-[12px]">
         {/* Breadcrumb */}
-        <div data-aos="fade-up" className=" text-[10px] md:text-sm text-gray-500 mb-6">
-          <Link href="/" className=" hover:text-teal-600 transition-colors">
-            Home
-          </Link>
+        <div data-aos="fade-up" className="text-[10px] md:text-sm text-gray-500 mb-6">
+          <Link href="/" className="hover:text-teal-600 transition-colors">Home</Link>
           <span className="mx-2">|</span>
-          <Link href="/members" className="hover:text-teal-600 transition-colors">
-           Founding Members
-          </Link>
+          <Link href="/members" className="hover:text-teal-600 transition-colors">Founding Members</Link>
           <span className="mx-2">|</span>
-          <span className="text-gray-700"> Members</span>
+          <span className="text-gray-700">Members</span>
         </div>
 
-        {/* Page Title */}
-        <h1 data-aos="fade-up" className="text-2xl md:text-4xl font-bold  text-gray-900 mb-2">
-         Our Founding Members
-        </h1>
+        {/* Title */}
+        <h1 data-aos="fade-up" className="text-2xl md:text-4xl font-bold text-gray-900 mb-2">Our Founding Members</h1>
         <p className="mb-12 text-[14px] md:text-base">Introducing the individuals who laid the cornerstone of our mission.</p>
 
-        {/* Members Grid */}
+        {/* Grid */}
         <div data-aos="fade-up" className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
           {FoundingMembers.map((member, index) => (
             <div
@@ -68,6 +65,19 @@ export default function FoundingMembersPage() {
               </div>
               <h3 className="text-lg font-semibold text-gray-800">{member.name}</h3>
               <p className="text-sm text-gray-600">{member.title}</p>
+              
+              {/* LinkedIn Button */}
+              {member.linkedin && (
+                <a
+                  href={member.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 inline-flex items-center text-blue-600 hover:text-blue-800 text-sm bg-pink-400 rounded-md hover:bg-blue-300 px-1 py-1 font-medium"
+                >
+                  <FaLinkedin className="text-2xl" />
+                    Profile
+                </a>
+              )}
             </div>
           ))}
         </div>
