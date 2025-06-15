@@ -8,7 +8,7 @@ export const menuItems = [
       { label: "CPD & Training", href: "/members/cpd-training" },
       { label: "Membership and fees", href: "/members/membership-and-fees" },
       { label: "Rules & guidance", href: "/members/rules-and-guidance" },
-      { label: "Journal", href: "/members/guidance" },
+      { label: "Journal", href: "/members/journal" },
       { label: "Professional support", href: "/members/professional-support" },
       { label: "TPAS Wellbeing", href: "/members/wellbeing" },
       { label: "Strategic Partners", href: "/members/strategic-partners" },

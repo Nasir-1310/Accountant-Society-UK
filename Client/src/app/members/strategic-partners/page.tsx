@@ -122,7 +122,7 @@ export default function StrategicPartnersPage() {
               </p>
             </div>
             <div className="flex justify-center mt-auto">
-              <Rounded_Button href="members/find-id"> Find Membership ID</Rounded_Button>
+              <Rounded_Button href="/signin"> Find Membership ID</Rounded_Button>
             </div>
           </div>
 
