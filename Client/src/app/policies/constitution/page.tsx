@@ -151,7 +151,7 @@ const ConstitutionPage = () => {
                 21) Interpretation of Rules
               </Square_Button>
             </a>
-            <a href="#Dissolutions_&_winding_up" className="block mb-2">
+            <a href="#discussion" className="block mb-2">
               <Square_Button className="w-full  ">
                 22) Dissolutions & winding up
               </Square_Button>
@@ -308,7 +308,7 @@ const ConstitutionPage = () => {
                   21) Interpretation of Rules
                 </Square_Button>
               </a>
-              <a href="#Dissolutions_&_winding_up" className="block mb-2">
+              <a href="#discussion" className="block mb-2">
                 <Square_Button className="w-full  ">
                   22) Dissolutions & winding up
                 </Square_Button>
@@ -461,8 +461,7 @@ const ConstitutionPage = () => {
 
           {/*Objectives Section */}
           <section
-            id="Aims"
-            className="mb-10 border-b border-gray-300 pb-10 scroll-mt-20"
+            id="Objectives" className="mb-10 border-b border-gray-300 pb-10 scroll-mt-20"
           >
             <h2 className="text-2xl font-bold text-blue-900 mb-6">
               4) Objectives:
@@ -1803,7 +1802,7 @@ const ConstitutionPage = () => {
           </section>
           {/*Dissolutions & Winding Up Section */}
           <section
-            id="Dissolutions_&_Winding_Up"
+            id="discussion"
             className="mb-10 border-b border-gray-300 pb-10 scroll-mt-20"
           >
             <h2 className="text-2xl font-bold text-blue-900 mb-6">

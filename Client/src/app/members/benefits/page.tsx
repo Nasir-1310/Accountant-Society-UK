@@ -1,5 +1,6 @@
 // src/app/members/benefits/page.tsx
 import Container from "@/components/Container";
+import { Square_Button } from "@/components/Square_Button";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -95,9 +96,11 @@ export default function MemberBenefitsPage() {
 
           <div data-aos="fade-up" className="text-center">
             <Link href="/contact-us">
-              <button className="bg-green-600 hover:bg-green-700 text-white font-semibold uppercase px-6 py-3 rounded-md transition duration-200">
-                Register
-              </button>
+              <Square_Button className="px-9">
+                  Register
+            
+              </Square_Button>
+            
             </Link>
           </div>
         </main>
