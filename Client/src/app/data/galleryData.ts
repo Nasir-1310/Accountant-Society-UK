@@ -7,6 +7,14 @@ const galleryData = [
     imageUrl: "/gallery/cpd_and_networking_event_june_2025/cover.jpg",
     imageCount:22,
   },
+    {
+    slug: "meet_the_press",
+    title: "Meet the press, 04 April 2025",
+    description: "Connecting to the excellence of British Bangladeshi Chartered Accountatns.",
+    date: "04 April, 2025",
+    imageUrl: "/gallery/meet_the_press/cover.jpg",
+    imageCount:23,
+  },
 
   // Add more gallery items here
 ];
