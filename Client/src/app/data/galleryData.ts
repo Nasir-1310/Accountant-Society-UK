@@ -15,6 +15,15 @@ const galleryData = [
     imageUrl: "/gallery/cpd_and_networking_event_june_2025/cover.jpg",
     imageCount:37,
   },
+   {
+    slug: "we-were-at-accountex-london-2025",
+    title: "We were at ACCOUNTEX LONDON, 2025",
+    description: "We proudly participated in ACCOUNTEX London 2025, connecting with industry leaders and showcasing our commitment to the accounting profession.",
+    date: "July, 2025",
+    imageUrl: "/gallery/we-were-at-accountex-london-2025/cover.jpg",
+    imageCount:7,
+  },
+
 
   // Add more gallery items here
 ];

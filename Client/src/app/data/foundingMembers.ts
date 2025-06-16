@@ -21,9 +21,9 @@ const FoundingMembers = [
   },
   {
     name: "MD Khasruzzaman",
-    title: "Designation will be updated",
+    title: "FCCA, MAAT, MBA",
     image: "/founding_members/polash.jpg",
-    linkedin: "https://www.linkedin.com/in/example-iftekharul/",
+    linkedin: "https://www.linkedin.com/in/md-khasruzzaman-fcca-10874851?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BE62gTxlrQBGnD9Gq235pPw%3D%3D ",
 
   },
   {
@@ -91,8 +91,8 @@ const FoundingMembers = [
   },
        {
     name: "Md Mahmudul Haque",
-    title: "Designation will be updated.",
-    image: "/founding_members/",
+    title: "ACCA Affiliate.",
+    image: "/founding_members/mahmudul.jpg",
     linkedin: "https://www.linkedin.com/in/example-iftekharul/",
 
   },
@@ -106,7 +106,7 @@ const FoundingMembers = [
       {
     name: "Mohammad Sarfaraz Ninad",
     title: "Designation will be updated.",
-    image: "/founding_members/",
+    image: "/founding_members/ninad.jpg",
     linkedin: "https://www.linkedin.com/in/example-iftekharul/",
 
   },

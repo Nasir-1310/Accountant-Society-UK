@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 export default function FoundingMembersPage() {
   return (
     <Container>
-      <div className="max-w-7xl py-12 px-4 sm:px-6 lg:px-8 border border-gray-200 mx-[12px] rounded-xl shadow-sm bg-white">
+      <div className="max-w-7xl py-12 px-4 sm:px-6 lg:px-8 border-l border-r border-b border-gray-200 mx-[12px] rounded-xl shadow-sm bg-white">
         {/* Breadcrumb */}
         <div data-aos="fade-up" className="text-[10px] md:text-sm text-gray-500 mb-6">
           <Link href="/" className="hover:text-teal-600 transition-colors">Home</Link>
