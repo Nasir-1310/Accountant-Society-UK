@@ -1,4 +1,5 @@
 import Container from "@/components/Container";
+import { Square_Button } from "@/components/Square_Button";
 import { Pen, Users, Handshake, Trophy, Heart } from "lucide-react";
 import Link from "next/link";
 
@@ -222,7 +223,7 @@ const AboutUsPage = () => {
                 <div className="flex items-center gap-3 mb-4">
                   <Trophy className="text-teal-600 w-8 h-8" />
                   <a
-                    href="/professional-development"
+                    href="/members/cpd-training"
                     className="hover:text-teal-600 transition-colors"
                   >
                     <h2 className="text-xl font-bold text-gray-800 hover:underline">
@@ -238,12 +239,9 @@ const AboutUsPage = () => {
                   certification courses designed to advance your career in
                   accounting and finance.
                 </p>
-                <a
-                  href="/professional-development"
-                  className="text-teal-600 hover:text-teal-700 font-semibold hover:underline transition-colors"
-                >
-                  Read more →
-                </a>
+                <Square_Button href="/members/cpd-training" className="text-center">
+                  Read more
+                </Square_Button>
               </div>
 
               {/* Networking Events Card */}
@@ -254,7 +252,7 @@ const AboutUsPage = () => {
                 <div className="flex items-center gap-3 mb-4">
                   <Users className="text-teal-600 w-8 h-8" />
                   <a
-                    href="/networking-events"
+                    href="/members/cpd-training"
                     className="hover:text-teal-600 transition-colors"
                   >
                     <h2 className="text-xl font-bold text-gray-800 hover:underline">
@@ -267,15 +265,12 @@ const AboutUsPage = () => {
                   to connect with like-minded professionals and expand your
                   network.
                 </p>
-                <a
-                  href="/networking-events"
-                  className="text-teal-600 hover:text-teal-700 font-semibold hover:underline transition-colors"
-                >
-                  Read more →
-                </a>
+                <Square_Button href="/members/cpd-training" className="text-center ">
+                  Read more
+                </Square_Button>
               </div>
 
-              {/* Membership Benefits Card */}
+              {/* Join our community Card */}
               <div
                 data-aos="fade-up"
                 className="bg-gradient-to-br from-teal-50 to-green-50 border border-teal-200 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6 flex flex-col md:col-span-2 xl:col-span-1"
@@ -283,7 +278,7 @@ const AboutUsPage = () => {
                 <div className="flex items-center gap-3 mb-4">
                   <Pen className="text-teal-600 w-8 h-8" />
                   <a
-                    href="/membership"
+                    href="/contact-us"
                     className="hover:text-teal-600 transition-colors"
                   >
                     <h2 className="text-xl font-bold text-gray-800 hover:underline">
@@ -296,7 +291,7 @@ const AboutUsPage = () => {
                   resources, and opportunities to grow your professional
                   network.
                 </p>
-                <a href="/membership" className="inline-block">
+                <a href="/contact-us" className="inline-block">
                   <button className="bg-blue-300 text-gray-800 border rounded-md  px-6 py-3 rounded-lg hover:bg-green-900 hover:text-white transition-colors font-semibold">
                     Join Now →
                   </button>

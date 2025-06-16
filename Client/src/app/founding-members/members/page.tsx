@@ -2,9 +2,8 @@ import Image from "next/image";
 import Container from "@/components/Container";
 import { Metadata } from "next";
 import FoundingMembers from "@/app/data/foundingMembers";
-import Link from "next/link"; // ✅ Use next/link instead of lucide-react
+import Link from "next/link";
 import { FaLinkedin } from "react-icons/fa";
-
 
 export const metadata: Metadata = {
   title: "Founding Members | Society of Professional Accountants",
@@ -15,7 +14,7 @@ export const metadata: Metadata = {
     description:
       "Meet the founding members of the Society of Professional Accountants. Learn about their experience, expertise, and dedication to ethical finance and leadership.",
     type: "website",
-    url: "https://yourdomain.com/founding-members",
+    url: "https://www.accountantssoceity.org/founding-members",
     images: [
       {
         url: "https://yourdomain.com/og/founding-members.jpg",
@@ -27,11 +26,10 @@ export const metadata: Metadata = {
   },
 };
 
-
 export default function FoundingMembersPage() {
   return (
     <Container>
-      <div className="max-w-7xl py-12 px-4 sm:px-6 lg:px-8 border-l border-r border-b mx-[12px]">
+      <div className="max-w-7xl py-12 px-4 sm:px-6 lg:px-8 border border-gray-200 mx-[12px] rounded-xl shadow-sm bg-white">
         {/* Breadcrumb */}
         <div data-aos="fade-up" className="text-[10px] md:text-sm text-gray-500 mb-6">
           <Link href="/" className="hover:text-teal-600 transition-colors">Home</Link>
@@ -43,40 +41,47 @@ export default function FoundingMembersPage() {
 
         {/* Title */}
         <h1 data-aos="fade-up" className="text-2xl md:text-4xl font-bold text-gray-900 mb-2">Our Founding Members</h1>
-        <p className="mb-12 text-[14px] md:text-base">Introducing the individuals who laid the cornerstone of our mission.</p>
+        <p className="mb-12 text-[14px] md:text-base text-gray-600">Introducing the individuals who laid the cornerstone of our mission.</p>
 
         {/* Grid */}
-        <div data-aos="fade-up" className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+        <div data-aos="fade-up" className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {FoundingMembers.map((member, index) => (
             <div
               key={index}
               data-aos="fade-up"
-              className="text-center flex flex-col items-center"
+              className="flex flex-col justify-between text-center border border-gray-200 rounded-lg p-6 shadow hover:shadow-md transition-shadow duration-300 bg-gray-50 min-h-[340px]"
             >
-              <div className="w-32 h-32 relative mb-4">
-                <Image
-                  src={member.image}
-                  alt={`Portrait of ${member.name}`}
-                  width={200}
-                  height={200}
-                  className="rounded-full border-4 border-gray-300 object-cover bg-gray-100 shadow-sm"
-                  priority
-                />
+              {/* Image and Info */}
+              <div className="flex flex-col items-center">
+                <div className="w-32 h-32 relative mb-6">
+                  <Image
+                    src={member.image}
+                    alt={`Portrait of ${member.name}`}
+                    width={128}
+                    height={128}
+                    className="rounded-full border-4 border-white object-cover shadow-md bg-gray-100"
+                    priority
+                  />
+                </div>
+                <h3 className="text-lg font-semibold text-gray-800">{member.name}</h3>
+                <p className="text-sm text-gray-600 px-2">{member.title}</p>
               </div>
-              <h3 className="text-lg font-semibold text-gray-800">{member.name}</h3>
-              <p className="text-sm text-gray-600">{member.title}</p>
-              
+
               {/* LinkedIn Button */}
               {member.linkedin && (
-                <a
-                  href={member.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-2 inline-flex items-center text-blue-600 hover:text-blue-800 text-sm bg-pink-400 rounded-md hover:bg-blue-300 px-1 py-1 font-medium"
-                >
-                  <FaLinkedin className="text-2xl" />
-                    Profile
-                </a>
+                <div className="mt-6">
+                  <a
+                    href={member.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-md text-sm font-medium text-white bg-blue-600 border border-gray-300 shadow-sm transition-all duration-200 hover:bg-green-200 hover:text-black hover:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-opacity-50"
+
+                  >
+                    <FaLinkedin className="text-base" />
+                    
+                    LinkedIn
+                  </a>
+                </div>
               )}
             </div>
           ))}

@@ -47,6 +47,14 @@ const benefits = [
     description:
       "To improve communities through activities like supporting education and awareness campaigns.",
   },
+
+  {
+  icon: "/icons/offer.gif",
+  title: "Exclusive Member Deals",
+  description:
+    "Enjoy special discounts and offers from our trusted supplier network — helping you save on software, services, and essentials tailored for accounting professionals."
+},
+
 ];
 
 export default function MemberBenefitsPage() {
@@ -73,14 +81,14 @@ export default function MemberBenefitsPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 mb-12">
+          <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 mb-12">
             {benefits.map((benefit, idx) => (
-              <div data-aos="fade-up" key={idx} className="text-center px-4">
+              <div data-aos="fade-up" key={idx} className=" border border-green-200 p-6 text-center px-4">
                 <Image
                   src={benefit.icon}
                   alt={benefit.title}
-                  width={96}
-                  height={96}
+                  width={120}
+                  height={120}
                   className="mx-auto mb-4"
                   priority
                 />
