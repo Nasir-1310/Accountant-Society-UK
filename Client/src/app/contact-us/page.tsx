@@ -4,6 +4,8 @@ import { ChevronDown, Mail, MapPin, Pen, Phone, Trophy, Users } from "lucide-rea
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import collapsibleSections from "../data/faqsForContactUsPage";
+import { Square_Button } from "@/components/Square_Button";
 
 const ContactUsPage = () => {
  const [expandedSections, setExpandedSections] = useState<{ [key: string]: boolean }>({});
@@ -17,110 +19,7 @@ const ContactUsPage = () => {
 };
 
 
-  const collapsibleSections = [
-    {
-      title: "Membership enquires",
-      content: (
-        <div className="space-y-4">
-          <div>
-            <h4 className="font-semibold text-gray-800 mb-2">Member Registration team:</h4>
-            <div className="space-y-2">
-              <p className="flex items-center gap-2 text-gray-700">
-                <Mail className="w-4 h-4 text-teal-600" />
-                Email: <a href="mailto:admin@accountantssociety.org" className="text-teal-600 hover:underline">admin@accountantssociety.org</a>
-              </p>
-              <p className="text-gray-700">
-               <a href="/membership-fees" className="text-teal-600 hover:underline">
-                     Visit the &#39;Membership and fees&#39; pages
-</a>
-
-              </p>
-            </div>
-          </div>
-        </div>
-      )
-    },
-    {
-      title: "Professional Practice",
-      content: (
-        <div className="space-y-4">
-          <div>
-            <h4 className="font-semibold text-gray-800 mb-2">Professional Practice Support:</h4>
-            <div className="space-y-2">
-              <p className="flex items-center gap-2 text-gray-700">
-                <Phone className="w-4 h-4 text-teal-600" />
-                Phone: <a href="tel:07988 834395" className="text-teal-600 hover:underline">07988 834395</a>
-              </p>
-              <p className="flex items-center gap-2 text-gray-700">
-                <Mail className="w-4 h-4 text-teal-600" />
-                Email: <a href="mailto:practice@profaccountants.org.uk" className="text-teal-600 hover:underline">admin@accountantssociety.org</a>
-              </p>
-            </div>
-          </div>
-        </div>
-      )
-    },
-    {
-      title: "Financial compliance",
-      content: (
-        <div className="space-y-4">
-          <div>
-            <h4 className="font-semibold text-gray-800 mb-2">Compliance Team:</h4>
-            <div className="space-y-2">
-              <p className="flex items-center gap-2 text-gray-700">
-                <Phone className="w-4 h-4 text-teal-600" />
-                Phone: <a href="tel:07988 834395" className="text-teal-600 hover:underline">07988 834395</a>
-              </p>
-              <p className="flex items-center gap-2 text-gray-700">
-                <Mail className="w-4 h-4 text-teal-600" />
-                Email: <a href="mailto:admin@accountantssociety.org" className="text-teal-600 hover:underline">mailto:admin@accountantssociety.org</a>
-              </p>
-            </div>
-          </div>
-        </div>
-      )
-    },
-    {
-      title: "Education and careers",
-      content: (
-        <div className="space-y-4">
-          <div>
-            <h4 className="font-semibold text-gray-800 mb-2">Education Support Team:</h4>
-            <div className="space-y-2">
-              <p className="flex items-center gap-2 text-gray-700">
-                <Phone className="w-4 h-4 text-teal-600" />
-                Phone: <a href="tel:+441234567892" className="text-teal-600 hover:underline">+44 123 456 7892</a>
-              </p>
-              <p className="flex items-center gap-2 text-gray-700">
-                <Mail className="w-4 h-4 text-teal-600" />
-                Email: <a href="mailto:education@profaccountants.org.uk" className="text-teal-600 hover:underline">education@profaccountants.org.uk</a>
-              </p>
-            </div>
-          </div>
-        </div>
-      )
-    },
-    {
-      title: "Research and policy",
-      content: (
-        <div className="space-y-4">
-          <div>
-            <h4 className="font-semibold text-gray-800 mb-2">Research Team:</h4>
-            <div className="space-y-2">
-              <p className="flex items-center gap-2 text-gray-700">
-                <Phone className="w-4 h-4 text-teal-600" />
-                Phone: <a href="tel:+441234567893" className="text-teal-600 hover:underline">+44 123 456 7893</a>
-              </p>
-              <p className="flex items-center gap-2 text-gray-700">
-                <Mail className="w-4 h-4 text-teal-600" />
-                Email: <a href="mailto:research@profaccountants.org.uk" className="text-teal-600 hover:underline">research@profaccountants.org.uk</a>
-              </p>
-            </div>
-          </div>
-        </div>
-      )
-    }
-  ];
+  
 
   return (
     <Container>
@@ -262,13 +161,13 @@ const ContactUsPage = () => {
                     ></textarea>
                   </div>
                   
-                  <button data-aos="fade-up"
+                  <Square_Button data-aos="fade-up"
                     type="button"
-                    className="bg-teal-600 text-white px-8 py-3 rounded-lg hover:bg-teal-700 transition-colors font-semibold"
+                    
                     onClick={() => alert('Message sent successfully!')}
                   >
                     Send Message
-                  </button>
+                  </Square_Button>
                 </div>
               </div>
             </section>
@@ -302,7 +201,7 @@ const ContactUsPage = () => {
             </div>
 
           {/* Cards Section - Responsive grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mb-8 mt-8">
             {/* Professional Development Card */}
             <div data-aos="fade-up" className="bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6 flex flex-col">
               <div className="flex items-center gap-3 mb-4">
