@@ -24,7 +24,7 @@ export default function LandingPage() {
 
   return (
     <Container>
-      <div className="relative h-[90vh] mx-3 overflow-hidden  shadow-lg bg-black">
+      <div className="relative h-[90vh] mx-3 overflow-hidden  shadow-lg bg-black mb-4">
         {/* Background Images */}
         {images.map((src, index) => {
           const isActive = index === currentIndex;
@@ -69,7 +69,7 @@ export default function LandingPage() {
             <Rounded_Button href="/members/benefits" className="bg-transparent border-white text-white hover:text-[#0b0b5b]">
               Member Benefits
             </Rounded_Button>
-            <Rounded_Button href="/contact-us" className="bg-transparent border-white text-white hover:text-[#0b0b5b]">
+            <Rounded_Button href="/contact-us" className="bg-transparent border-white text-white hover:text-black">
               Join Us
             </Rounded_Button>
           </div>
