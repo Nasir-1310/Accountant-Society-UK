@@ -24,7 +24,7 @@ export default function LandingPage() {
 
   return (
     <Container>
-      <div className="relative h-[90vh] mx-3 overflow-hidden  shadow-lg bg-black mb-4">
+      <div className="relative h-[70vh] md:h-[90vh] mx-3 overflow-hidden  shadow-lg bg-black mb-4">
         {/* Background Images */}
         {images.map((src, index) => {
           const isActive = index === currentIndex;
@@ -52,24 +52,24 @@ export default function LandingPage() {
             The Professional Accountants&apos; Society
           </h1>
 
-          <p className="text-xs sm:text-lg text-white max-w-3xl mb-4 leading-relaxed">
+          <p className="text-xs  md:text-md  lg:text-lg text-white max-w-3xl mb-4 leading-relaxed">
             A UK-based organisation representing British Bangladeshi Chartered and Chartered Certified Accountants.
           </p>
 
-          <p className="text-xs sm:text-lg text-white max-w-3xl mb-4 leading-relaxed">
+          <p className="text-xs md:text-md  lg:text-lg text-white max-w-3xl mb-4 leading-relaxed">
             We create an environment where members share knowledge, skills, and experience — empowering individuals while
             contributing positively to the UK’s wider business and professional community.
           </p>
 
           {/* Buttons */}
           <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 ">
-            <Rounded_Button href="/members/membership-and-fees" className=" text-xs sm:text-lg bg-transparent border-white text-white hover:text-[#0b0b5b]">
+            <Rounded_Button href="/members/membership-and-fees" className=" text-xs md:text-md  lg:text-lg bg-transparent border-white text-white hover:text-[#0b0b5b]">
               Membership & Fees
             </Rounded_Button>
-            <Rounded_Button href="/members/benefits" className="text-xs sm:text-lg bg-transparent border-white text-white hover:text-[#0b0b5b]">
+            <Rounded_Button href="/members/benefits" className="text-xs md:text-md  lg:text-lg bg-transparent border-white text-white hover:text-[#0b0b5b]">
               Member Benefits
             </Rounded_Button>
-            <Rounded_Button href="/contact-us" className="text-xs sm:text-lg bg-transparent border-white text-white hover:text-black">
+            <Rounded_Button href="/contact-us" className="text-xs md:text-md  lg:text-lg bg-transparent border-white text-white hover:text-black">
               Join Us
             </Rounded_Button>
           </div>
