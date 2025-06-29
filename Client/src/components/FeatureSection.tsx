@@ -2,14 +2,14 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import Container from "./Container";
+// import Container from "./Container";
 import featureCards from "@/app/data/featureCards";
 
 
 
 const FeatureSection = () => {
   return (
-    <Container>
+   
 
    
     <section data-aos="fade-up" className="w-full bg-white py-10">
@@ -55,8 +55,7 @@ const FeatureSection = () => {
         </div>
       </div>
     </section>
-     </Container>
-  );
+     );
 };
 
 export default FeatureSection;

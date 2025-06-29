@@ -9,13 +9,13 @@ import SignIn from "./SignIn";
 import ContactUs from "./ContactUs";
 import AboutUs from "./AboutUs";
 import HomePage from "./HomePage";
+// import FindAccountantNavbar from "./FindAccountantNavbar";
+// import Container from "./Container";
 import FindAccountantNavbar from "./FindAccountantNavbar";
-import Container from "./Container";
 
 const Navbar = () => {
   return (
-    <Container>
-      <motion.nav
+        <motion.nav
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeInOut" }}
@@ -55,14 +55,14 @@ const Navbar = () => {
             <div className="flex items-center justify-end gap-4 lg:gap-4 xl:gap-10 flex-1 text-black">
               <HomePage />
               <AboutUs />
-              <FindAccountantNavbar />
+              <FindAccountantNavbar/>
               <ContactUs />
               <SignIn />
             </div>
           </div>
         </div>
       </motion.nav>
-    </Container>
+  
   );
 };
 

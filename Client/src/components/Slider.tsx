@@ -4,7 +4,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import Container from "./Container";
+// import Container from "./Container";
 
 const slides = [
   {
@@ -24,14 +24,14 @@ const slides = [
     url: "/news/second",
     dotColor: "bg-green-500",
   },
-  {
-    id: 3,
-    title: "Find an Accountant Near You",
-    description: "No matter what you're facing—tax, business, or personal finance—use our trusted directory to connect with a qualified, regulated accountant who can guide you through it. Bottom Logo need to be changed with same colour background",
-    img: "/slide3.jpg",
-    url: "/news/third",
-    dotColor: "bg-blue-500",
-  },
+  // {
+  //   id: 3,
+  //   title: "Find an Accountant Near You",
+  //   description: "No matter what you're facing—tax, business, or personal finance—use our trusted directory to connect with a qualified, regulated accountant who can guide you through it. Bottom Logo need to be changed with same colour background",
+  //   img: "/slide3.jpg",
+  //   url: "/news/third",
+  //   dotColor: "bg-blue-500",
+  // },
 ];
 
 const Slider = () => {
@@ -53,7 +53,7 @@ const Slider = () => {
   };
 
   return (
-    <Container>
+   
 
    
     <div 
@@ -162,7 +162,7 @@ const Slider = () => {
         </div>
       </div>
     </div>
-     </Container>
+   
   );
 };
 
