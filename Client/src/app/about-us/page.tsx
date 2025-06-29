@@ -28,10 +28,11 @@ const AboutUsPage = () => {
               <h1 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-2">
                 About Us
               </h1>
+              <p className="text-lg text-gray-600 pb-6">
+               The Professional Accountants Society is a UK-based organisation representing British Bangladeshi Accountants. Our mission is to unite professionals of Bangladeshi heritage into one cohesive network that fosters collaboration, professional excellence, and community impact.
+              </p>
               <p className="text-lg text-gray-600">
-                The Professional Accountants’ Society has been established to
-                connect the excellence of the British Bangladeshi Chartered
-                Accountants.
+                We are committed to creating an environment where members can share technical knowledge, skills, and experiences to support one another professionally and personally. Through this collaboration, we aim to not only empower our members but also contribute positively to the wider business and professional community across the UK.
               </p>
             </div>
 
