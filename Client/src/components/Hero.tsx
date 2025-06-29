@@ -8,7 +8,7 @@ export default function Hero() {
       <section
         className="relative h-[75vh]  md:h-[95vh]  mx-3 bg-black/60 bg-blend-overlay text-white flex items-center"
         style={{
-          backgroundImage: "url('/hero_section_image/hero_image.jpg')",
+          backgroundImage: "url('/hero_image/hero.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
@@ -34,7 +34,7 @@ export default function Hero() {
         </div>
 
         {/* Optional: Overlay dark background for better readability */}
-        <div className="absolute inset-0 bg-black opacity-40 z-0" />
+        <div className="absolute inset-0  opacity-40 z-0" />
       </section>
     </Container>
   );
