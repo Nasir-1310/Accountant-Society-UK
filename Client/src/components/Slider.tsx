@@ -4,7 +4,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-// import Container from "./Container";
+import Container from "./Container";
 
 const slides = [
   {
@@ -53,7 +53,7 @@ const Slider = () => {
   };
 
   return (
-   
+    <Container>
 
    
     <div 
@@ -162,7 +162,7 @@ const Slider = () => {
         </div>
       </div>
     </div>
-   
+     </Container>
   );
 };
 

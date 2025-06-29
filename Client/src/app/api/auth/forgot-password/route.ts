@@ -1,9 +1,9 @@
-import { connectDB } from "@/lib/mongoose";
+import { dbConnect } from "@/lib/dbConnect";
 import User from "@/models/User";
 import crypto from "crypto";
 
 export async function POST(req: Request) {
-  await connectDB();
+  await dbConnect();
   const { email } = await req.json();
 
   const user = await User.findOne({ email });

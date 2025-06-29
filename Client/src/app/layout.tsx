@@ -1,3 +1,4 @@
+// src/app/layout.tsx
 import AOSInitializer from "@/components/AOSInitealizer";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
@@ -6,29 +7,31 @@ import type { Metadata } from "next";
 import { Noto_Sans } from "next/font/google";
 import "./globals.css";
 
+// Configure the font
 const notoSans = Noto_Sans({
   variable: "--font-noto-sans",
   subsets: ["latin"],
   weight: ["400", "700"],
 });
 
+// ✅ Metadata export with proper type
 export const metadata: Metadata = {
-  title: "Accountants Society",
-  description: "The professional Accountants Society.",
+  metadataBase: new URL("https://accountantssociety.org"),
+  title: "The Professional Accountants' Society",
+  description: "Official site of the society...",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <head>
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
       </head>
       <body className={`${notoSans.variable} font-sans antialiased`}>
-        {/* 👇 Mount AOS globally as client-side component */}
         <AOSInitializer />
         <Navbar />
         <TopNews />

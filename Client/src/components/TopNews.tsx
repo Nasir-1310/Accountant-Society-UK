@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import React, { useState } from "react";
-// import Container from "./Container";
+import Container from "./Container";
 import { menuItems } from "@/app/data/menuItems";
 
 
@@ -18,7 +18,7 @@ const TopNews = () => {
   };
 
   return (
-    
+    <Container>
       <div 
         className="
         hidden xl:block bg-white w-full py-3">
@@ -66,7 +66,7 @@ const TopNews = () => {
           </div>
         </div>
       </div>
- 
+    </Container>
   );
 };
 

@@ -10,12 +10,13 @@ import ContactUs from "./ContactUs";
 import AboutUs from "./AboutUs";
 import HomePage from "./HomePage";
 // import FindAccountantNavbar from "./FindAccountantNavbar";
-// import Container from "./Container";
+import Container from "./Container";
 import FindAccountantNavbar from "./FindAccountantNavbar";
 
 const Navbar = () => {
   return (
-        <motion.nav
+    <Container>
+      <motion.nav
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeInOut" }}
@@ -62,7 +63,7 @@ const Navbar = () => {
           </div>
         </div>
       </motion.nav>
-  
+    </Container>
   );
 };
 
