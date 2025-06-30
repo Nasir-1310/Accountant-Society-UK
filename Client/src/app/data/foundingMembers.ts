@@ -7,9 +7,9 @@ const FoundingMembers = [
   },
   {
     name: "Suraiya Khatun Haque",
-    title: "Designation will be updated",
-    image: "/founding_members/zakr.jpg",
-    linkedin: "https://www.linkedin.com/in/example-iftekharul/",
+    title: "MCCA Chartered Accountants",
+    image: "/founding_members/suraiya.jpg",
+    linkedin: "https://www.linkedin.com/in/suraiya-khatun-843758157",
 
   },
   {
