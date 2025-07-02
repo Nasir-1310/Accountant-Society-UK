@@ -7,6 +7,7 @@ import { useState } from "react";
 import collapsibleSections from "../data/faqsForContactUsPage";
 import { Square_Button } from "@/components/Square_Button";
 
+
 const ContactUsPage = () => {
  const [expandedSections, setExpandedSections] = useState<{ [key: string]: boolean }>({});
 
@@ -19,12 +20,68 @@ const ContactUsPage = () => {
 };
 
 
-  
+const [form, setForm] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
 
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState(false);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const validate = () => {
+    const { firstName, lastName, email, subject, message } = form;
+    if (!firstName || !lastName || !email || !subject || !message) {
+      return "All fields are required.";
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return "Invalid email address.";
+    }
+    return null;
+  };
+
+  const handleSubmit = async () => {
+    const validationError = validate();
+    if (validationError) {
+      setError(validationError);
+      return;
+    }
+
+    setLoading(true);
+    setError("");
+    setSuccess(false);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Something went wrong");
+
+      setSuccess(true);
+      setForm({ firstName: "", lastName: "", email: "", subject: "", message: "" });
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An unexpected error occurred.");
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <Container>
-
-    
     <div className="w-full flex justify-center mt-12 px-4">
       <div className="w-full flex flex-col lg:flex-row bg-white shadow-lg  overflow-hidden">
         
@@ -88,89 +145,94 @@ const ContactUsPage = () => {
                       </p>
                     </div>
                   </div>
-                  
-                  {/* <div className="flex items-start gap-3">
-                    <Clock className="text-teal-600 w-5 h-5 mt-1 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-semibold text-gray-800 mb-1">Office Hours</h3>
-                      <p className="text-gray-700 leading-relaxed">
-                        Monday - Friday: 9:00 AM - 5:00 PM<br />
-                        Saturday: 10:00 AM - 2:00 PM<br />
-                        Sunday: Closed
-                      </p>
-                    </div>
-                  </div> */}
                 </div>
               </div>
             </section>
 
             {/* Contact Form Section */}
-            <section>
-              <h2 data-aos="fade-up" className="text-2xl font-bold text-teal-700 mb-6 flex items-center gap-2">
-                <Mail className="text-teal-600 w-6 h-6" />
-                Send us a Message
-              </h2>
-              <div className="bg-gray-50 rounded-lg p-6">
-                <div className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div data-aos="fade-up" >
-                      <label className="block text-sm font-medium text-gray-700 mb-2">First Name</label>
-                      <input 
-                        type="text" 
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
-                        placeholder="Enter your first name"
-                      />
-                    </div>
-                    <div data-aos="fade-up">
-                      <label  className="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
-                      <input 
-                        type="text" 
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
-                        placeholder="Enter your last name"
-                      />
-                    </div>
-                  </div>
-                  
-                  <div data-aos="fade-up">
-                    <label data-aos="fade-up" className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-                    <input 
-                      type="email" 
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
-                      placeholder="Enter your email address"
-                    />
-                  </div>
-                  
-                  <div data-aos="fade-up">
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Subject</label>
-                    <select className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-white">
-                      <option value="">Select a subject</option>
-                      <option value="membership">Membership Enquiry</option>
-                      <option value="general">General Information</option>
-                      <option value="events">Events & Networking</option>
-                      <option value="support">Technical Support</option>
-                      <option value="feedback">Feedback</option>
-                    </select>
-                  </div>
-                  
-                  <div data-aos="fade-up">
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
-                    <textarea 
-                      rows={5}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent resize-vertical"
-                      placeholder="Enter your message here..."
-                    ></textarea>
-                  </div>
-                  
-                  <Square_Button data-aos="fade-up"
-                    type="button"
-                    
-                    onClick={() => alert('Message sent successfully!')}
-                  >
-                    Send Message
-                  </Square_Button>
-                </div>
-              </div>
-            </section>
+            
+    <section>
+      <h2 data-aos="fade-up" className="text-2xl font-bold text-teal-700 mb-6 flex items-center gap-2">
+        <Mail className="text-teal-600 w-6 h-6" /> Send us a Message
+      </h2>
+
+      <div className="bg-gray-50 rounded-lg p-6">
+        <div className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div data-aos="fade-up">
+              <label className="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+              <input
+                type="text"
+                name="firstName"
+                value={form.firstName}
+                onChange={handleChange}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+                placeholder="Enter your first name"
+              />
+            </div>
+            <div data-aos="fade-up">
+              <label className="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+              <input
+                type="text"
+                name="lastName"
+                value={form.lastName}
+                onChange={handleChange}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+                placeholder="Enter your last name"
+              />
+            </div>
+          </div>
+
+          <div data-aos="fade-up">
+            <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+            <input
+              type="email"
+              name="email"
+              value={form.email}
+              onChange={handleChange}
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
+              placeholder="Enter your email address"
+            />
+          </div>
+
+          <div data-aos="fade-up">
+            <label className="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+            <select
+              name="subject"
+              value={form.subject}
+              onChange={handleChange}
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 bg-white"
+            >
+              <option value="">Select a subject</option>
+              <option value="Membership Enquiry">Membership Enquiry</option>
+              <option value="General Information">General Information</option>
+              <option value="Events & Networking">Events & Networking</option>
+              <option value="Technical Support">Technical Support</option>
+              <option value="Feedback">Feedback</option>
+            </select>
+          </div>
+
+          <div data-aos="fade-up">
+            <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
+            <textarea
+              rows={5}
+              name="message"
+              value={form.message}
+              onChange={handleChange}
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 resize-vertical"
+              placeholder="Enter your message here..."
+            ></textarea>
+          </div>
+
+          {error && <p className="text-red-600 text-sm">{error}</p>}
+          {success && <p className="text-green-600 text-sm">Message sent successfully!</p>}
+
+          <Square_Button data-aos="fade-up" type="button" onClick={handleSubmit}>
+            {loading ? "Sending..." : "Send Message"}
+          </Square_Button>
+        </div>
+      </div>
+    </section>
           </div>
 
 
@@ -260,44 +322,14 @@ const ContactUsPage = () => {
         {/* Sidebar Section - Second on mobile/tablet, first on desktop */}
         <div className="w-full lg:w-1/4 order-2 lg:order-1 pt-10 pl-1 bg-gradient-to-br from-gray-50 to-gray-100 border-t lg:border-t-0 lg:border-r border-gray-200">
 
-        {/* In this section */}
-            {/* <div data-aos="fade-up"  className="lg:hidden mb-8">
-              <h3 className="text-xl font-bold text-gray-800 mb-4">In this section</h3>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                {[
-                  { label: "Our Vision", href: "#vision" },
-                  { label: "Our Mission", href: "#mission" },
-                  { label: "Who We Are", href: "#who-we-are" },
-                  { label: "What We Do", href: "#what-we-do" }
-                ].map((item, index) => (
-                  <a key={index} href={item.href} className="block">
-                    <button className="w-full text-center text-sm border border-green-500 text-green-900 hover:text-white px-3 py-2 rounded-md bg-green-200 hover:bg-green-600 hover:border-green-600 transition-all duration-200 font-medium">
-                      {item.label}
-                    </button>
-                  </a>
-                ))}
-              </div>
-            </div> */}
+        
 
             {/* In this section - Desktop */}
             <div data-aos="fade-up"  className="hidden lg:block mb-8 px-6">
               <h3 className="text-2xl font-bold text-gray-800 mb-6 border-b border-gray-300 pb-3">
                 In this section
               </h3>
-              {/* <div className="space-y-3">
-                {[
-                  { label: "Our Vision", href: "#vision" },
-                  { label: "Our Mission", href: "#mission" },
-                  { label: "Who We Are", href: "#who-we-are" },
-                  { label: "What We Do", href: "#what-we-do" }
-                ].map((item, index) => (
-                  <a key={index} href={item.href} className="block w-full">
-                    <button className="w-full text-left border border-green-500 text-green-900 hover:text-white px-4 py-3 rounded-mdbg-green-200 hover:bg-green-600 hover:border-green-600 transition-all duration-200 font-medium">
-                      {item.label}
-                    </button>
-                  </a>
-                ))}
-              </div> */}
+        
             </div>
 
 
