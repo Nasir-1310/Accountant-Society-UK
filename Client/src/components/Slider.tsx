@@ -10,10 +10,9 @@ const slides = [
   {
     id: 1,
     title: "Connecting the Excellence of British Bangladeshi Chartered Accountants",
-    description:
-      "Empowering a community of finance professionals through networking, mentorship, and recognition.",
+    description: "Empowering a community of finance professionals through networking, mentorship, and recognition.",
     img: "/slide1.jpg",
-    url: "/news/ceo-appointment",
+    url: "/about-us",
     dotColor: "bg-purple-500",
   },
   {
@@ -21,7 +20,7 @@ const slides = [
     title: "Driving Impact Through Collaboration and Innovation ",
     description: "Uniting expertise and forward-thinking to shape the future of accountancy and empower our professional community.",
     img: "/slide2.jpg",
-    url: "/news/second",
+    url: "/cpd-and-training/inspiring-futures-changing-lives",
     dotColor: "bg-green-500",
   },
   // {
@@ -82,7 +81,7 @@ const Slider = () => {
             <p className="text-xs hidden md:block sm:hidden xm:text-sm md:text-base text-gray-700 mb-3 sm:mb-4 md:mb-5 line-clamp-2 sm:line-clamp-3 lg:line-clamp-none leading-relaxed break-words">
               {slides[current].description}
             </p>
-            <Link href="/" className="border border-green-500 bg-white text-green-600 px-3 sm:px-4 md:px-5 py-1.5 sm:py-2 rounded hover:bg-green-400 hover:border-green-600 hover:text-white transition w-fit text-sm  font-medium whitespace-nowrap">
+            <Link href={slides[current].url} className="border border-green-500 bg-white text-green-600 px-3 sm:px-4 md:px-5 py-1.5 sm:py-2 rounded hover:bg-green-400 hover:border-green-600 hover:text-white transition w-fit text-sm  font-medium whitespace-nowrap">
               
                 Read more
              

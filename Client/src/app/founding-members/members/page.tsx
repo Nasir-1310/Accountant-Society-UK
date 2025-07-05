@@ -56,7 +56,7 @@ export default function FoundingMembersPage() {
                 <div className="w-32 h-32 relative mb-6">
                   <Image
                     src={member.image}
-                    alt={`Portrait of ${member.name}`}
+                    alt={`Photo of ${member.name}`}
                     width={128}
                     height={128}
                     className="rounded-full border-4 border-white object-cover shadow-md bg-gray-100"

@@ -35,23 +35,23 @@ const FoundingMembers = [
   },
     {
     name: "Kazi Farhana Akhter",
-    title: "Designation will be update.",
-    image: "/founding_members/",
+    title: "ACCA",
+    image: "/founding_members/farhana.jpg",
     linkedin: "https://www.linkedin.com/in/example-iftekharul/",
 
   },
       {
     name: "Afroza Amin Jhuma",
-    title: "Designation will be updated.",
+    title: " FCCA, MBA, MSc Financial leader| Chartered Certified Accountant| Strategic Advisor",
     image: "/founding_members/",
     linkedin: "https://www.linkedin.com/in/example-iftekharul/",
 
   },
        {
     name: "Nazmul Hossain",
-    title: "Designation will be update.",
-    image: "/founding_members/",
-    linkedin: "https://www.linkedin.com/in/example-iftekharul/",
+    title: "FCCA, MBA, MSc Financial leader| Chartered Certified Accountant| Strategic Advisor",
+    image: "/founding_members/nazmul.jpg",
+    linkedin: "https://www.linkedin.com/in/mohammad-sarfaraz-ninad-acca-iap-65902b169?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
 
   },
        {
@@ -77,16 +77,16 @@ const FoundingMembers = [
   },
        {
     name: "Md Tofazzel Hossain",
-    title: "Designation will be updated.",
-    image: "/founding_members/",
-    linkedin: "https://www.linkedin.com/in/example-iftekharul/",
+    title: "MBA, ACCA",
+    image: "/founding_members/tofazzel.jpg",
+    linkedin: "http://www.linkedin.com/in/tofazzel/ ",
 
   },
        {
     name: "Anam Mahmud",
-    title: "Designation will be updated.",
-    image: "/founding_members/",
-    linkedin: "https://www.linkedin.com/in/example-iftekharul/",
+    title: "Bsc (Hons) M Sc , FCCA Company Accountant",
+    image: "/founding_members/anam.jpg",
+    linkedin: "https://www.linkedin.com/in/a-mahmud-fcca-48086134?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
 
   },
        {
@@ -112,16 +112,16 @@ const FoundingMembers = [
   },
    {
     name: "Md Alinur Rahman",
-    title: "Designation will be updated.",
+    title: "Bsc (Hons), MBA, FCCA",
     image: "/founding_members/",
     linkedin: "https://www.linkedin.com/in/example-iftekharul/",
 
   },
    {
     name: "F M Raisul Ferdous",
-    title: "Designation will be updated.",
-    image: "/founding_members/",
-    linkedin: "https://www.linkedin.com/in/example-iftekharul/",
+    title: "Qualification: BSc (Hons) | MBA | ACCA",
+    image: "/founding_members/raisul.jpg",
+    linkedin: "https://www.linkedin.com/in/raisul-ferdous-acca/",
 
   },
    {

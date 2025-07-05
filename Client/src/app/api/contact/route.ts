@@ -10,19 +10,26 @@ export async function POST(req: Request) {
 
   try {
     const transporter = nodemailer.createTransport({
-      service: "gmail",
+      host: process.env.MAIL_HOST,
+    port: Number(process.env.MAIL_PORT),
+    secure: true,
       auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_PASS,
+        user: process.env.MAIL_USER, // e.g., mohammed@accountantssociety.org
+        pass: process.env.MAIL_PASS, // your real GoDaddy email password
       },
     });
 
     await transporter.sendMail({
-      from: `"${firstName} ${lastName}" <${email}>`,
-      to: process.env.GMAIL_USER,
+      from: `"${firstName} ${lastName}" <${process.env.MAIL_USER}>`,
+      to: process.env.MAIL_USER, // send to same inbox
       subject: `📬 ${subject} from ${firstName}`,
-      text: message,
-      html: `<p>Hi I am ${firstName} ${lastName},</p><p>${message}</p><p>Reply to: ${email}</p>`,
+      replyTo: email,
+      html: `
+        <p><strong>Name:</strong> ${firstName} ${lastName}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Subject:</strong> ${subject}</p>
+        <p><strong>Message:</strong><br>${message}</p>
+      `,
     });
 
     return NextResponse.json({ success: true });
