@@ -14,8 +14,8 @@ const FoundingMembers = [
   },
   {
     name: "Mohammed Ali Ashraf Chowdhury",
-    title: "Designation will be updated",
-    image: "/founding_members/z.jpg",
+    title: "FCCA",
+    image: "/founding_members/ali.jpg",
     linkedin: "https://www.linkedin.com/in/example-iftekharul/",
 
   },
@@ -28,8 +28,8 @@ const FoundingMembers = [
   },
   {
     name: "Hossain Al-Mamun",
-    title: "Designation will be updated",
-    image: "/founding_members/ir.jpg",
+    title: "ACA, FCCA, MBA",
+    image: "/founding_members/al_mamun.jpg",
     linkedin: "https://www.linkedin.com/in/example-iftekharul/",
 
   },
