@@ -11,19 +11,22 @@ export async function POST(req: Request) {
   try {
     const transporter = nodemailer.createTransport({
       host: process.env.MAIL_HOST,
-    port: Number(process.env.MAIL_PORT),
-    secure: true,
+      port: Number(process.env.MAIL_PORT),
+      secure: false, // Office 365 uses STARTTLS, so set secure to false
       auth: {
-        user: process.env.MAIL_USER, // e.g., mohammed@accountantssociety.org
-        pass: process.env.MAIL_PASS, // your real GoDaddy email password
+        user: process.env.MAIL_USER,
+        pass: process.env.MAIL_PASS,
+      },
+      tls: {
+        ciphers: "SSLv3",
       },
     });
 
     await transporter.sendMail({
       from: `"${firstName} ${lastName}" <${process.env.MAIL_USER}>`,
-      to: process.env.MAIL_USER, // send to same inbox
-      subject: `📬 ${subject} from ${firstName}`,
+      to: process.env.MAIL_USER, // Send to same email (you)
       replyTo: email,
+      subject: `📬 ${subject} from ${firstName} ${lastName}`,
       html: `
         <p><strong>Name:</strong> ${firstName} ${lastName}</p>
         <p><strong>Email:</strong> ${email}</p>
