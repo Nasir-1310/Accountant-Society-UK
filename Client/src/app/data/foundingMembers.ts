@@ -28,7 +28,7 @@ const FoundingMembers = [
   },
   {
     name: "Hossain Al-Mamun",
-    title: "ACA, FCCA, MBA",
+    title: "ACA FCCA FTA MBA",
     image: "/founding_members/al_mamun.jpg",
     linkedin: "https://www.linkedin.com/in/hossain-al-mamun-aca-fcca-mba-a74974108",
 
@@ -126,9 +126,9 @@ const FoundingMembers = [
   },
    {
     name: "Dabir Uddin Ahmed",
-    title: "Designation will be updated.",
-    image: "/founding_members/",
-    linkedin: "https://www.linkedin.com/in/example-iftekharul/",
+    title: "FCCA, ACCA UK",
+    image: "/founding_members/dabir.jpg",
+    linkedin: "https://www.linkedin.com/in/dabir-ahmed-31aa7a69",
 
   },
   
