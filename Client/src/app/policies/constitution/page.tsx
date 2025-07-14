@@ -1135,7 +1135,7 @@ const ConstitutionPage = () => {
               <li>Mohammad Sarfaraz Ninad</li>
               <li>Md Alinur Rahman</li>
               <li>F M Raisul Ferdous</li>
-              <li>Dabir Uddin Ahmed</li>
+              <li>Dabir Ahmed</li>
             </ol>
           </section>
 
