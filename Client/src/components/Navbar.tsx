@@ -9,7 +9,6 @@ import SignIn from "./SignIn";
 import ContactUs from "./ContactUs";
 import AboutUs from "./AboutUs";
 import HomePage from "./HomePage";
-// import FindAccountantNavbar from "./FindAccountantNavbar";
 import Container from "./Container";
 import FindAccountantNavbar from "./FindAccountantNavbar";
 
@@ -43,7 +42,7 @@ const Navbar = () => {
             <div className="flex-shrink-0">
               <Link href="/">
                 <Image
-                  src="/Logo200_70px.svg"
+                  src="/logo/logo-laptop.svg"
                   alt="Company Logo"
                   height={70}
                   width={180}

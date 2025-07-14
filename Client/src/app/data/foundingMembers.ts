@@ -125,8 +125,8 @@ const FoundingMembers = [
 
   },
    {
-    name: "Dabir Uddin Ahmed",
-    title: "FCCA, ACCA UK",
+    name: "Dabir Ahmed",
+    title: "FCCA, CPFA, FHEA",
     image: "/founding_members/dabir.jpg",
     linkedin: "https://www.linkedin.com/in/dabir-ahmed-31aa7a69",
 
