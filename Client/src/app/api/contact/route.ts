@@ -10,23 +10,18 @@ export async function POST(req: Request) {
 
   try {
     const transporter = nodemailer.createTransport({
-      host: process.env.MAIL_HOST,
-      port: Number(process.env.MAIL_PORT),
-      secure: false, // Office 365 uses STARTTLS, so set secure to false
+      service: "gmail", // ✔️ Use Gmail service
       auth: {
-        user: process.env.MAIL_USER,
-        pass: process.env.MAIL_PASS,
-      },
-      tls: {
-        ciphers: "SSLv3",
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_PASS,
       },
     });
 
     await transporter.sendMail({
-      from: `"${firstName} ${lastName}" <${process.env.MAIL_USER}>`,
-      to: process.env.MAIL_USER, // Send to same email (you)
+      from: `"${firstName} ${lastName}" <${process.env.GMAIL_USER}>`,
+      to: process.env.GMAIL_USER,
+      subject: `📬 ${subject} from ${firstName}`,
       replyTo: email,
-      subject: `📬 ${subject} from ${firstName} ${lastName}`,
       html: `
         <p><strong>Name:</strong> ${firstName} ${lastName}</p>
         <p><strong>Email:</strong> ${email}</p>
