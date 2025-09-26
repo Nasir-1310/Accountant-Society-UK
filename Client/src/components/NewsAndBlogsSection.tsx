@@ -1,410 +1,160 @@
-"use client";
+// //src/components/NewsAndBlogsSection.tsx
 
-import Link from "next/link";
-import { useState, ChangeEvent } from "react";
-import Container from "./Container";
+// "use client";
 
-interface NewsItem {
-  id: number;
-  type: "news" | "blog" | "event";
-  title: string;
-  category: string;
-  date: string;
-  description: string;
-  icon: string;
-  link: string;
-  tags?: string[];
-}
+// import Link from "next/link";
+// import { useState, useEffect, ChangeEvent } from "react";
+// import Container from "./Container";
 
-interface FormData {
-  type: "news" | "blog" | "event";
-  title: string;
-  category: string;
-  date: string;
-  description: string;
-  tags: string;
-  link: string;
-}
+// interface NewsItem {
+//   _id: string;          // MongoDB ID
+//   type: "news" | "blog" | "event";
+//   title: string;
+//   category: string;
+//   date: string;
+//   description: string;
+//   icon: string;
+//   link: string;
+//   tags?: string[];
+// }
 
-interface NewsAndBlogsSectionProps {
-  isAdmin?: boolean;
-  userRole?: string;
-}
+// interface FormData {
+//   type: "news" | "blog" | "event";
+//   title: string;
+//   category: string;
+//   date: string;
+//   description: string;
+//   tags: string;
+//   link: string;
+// }
 
+// interface NewsAndBlogsSectionProps {
+//   isAdmin?: boolean;
+//   userRole?: string;
+// }
 
-
-
-const initialNewsBlogs: NewsItem[] = [
-  {
-    id: 1,
-    type: "news",
-    title: "Concerned about a compliance check? Use our new tool to find support and what to do next.",
-    category: "Government News",
-    date: "23rd May 2025",
-    description: "HMRC’s new free online Interactive Compliance Guidance tool can help businesses and individuals understand HMRC compliance checks. It provides information and support about compliance checks - supporting the government’s Plan for Change to deliver economic growth.",
-    icon: "📄",
-    link: "https://www.gov.uk/government/news/hmrc-launches-new-online-interactive-help-for-compliance-checks"
-  },
-  {
-    id: 2,
-    type: "blog",
-    title: "Sole traders and landlords urged to act now, with one year until Making Tax Digital for Income Tax launches",
-    category: "News",
-    date: "20th May 2025",
-    description: "Making Tax Digital for Income Tax goes live on 6 April 2026 – supporting the government’s Plan for Change to deliver economic growth Eligible taxpayers encouraged to sign up to a testing programme now to get ahead of the changes Digital record-keeping will deliver time-saving benefits for taxpayers",
-    icon: "✏️",
-    link: "https://www.gov.uk/government/news/one-year-until-making-tax-digital-for-income-tax-launches"
-  },
-  {
-    id: 3,
-    type: "event",
-    title: "Child Benefit boost for millions of families",
-    category: "News",
-    date: "27th May 2025 09:30 - 12:00",
-    description: "Child Benefit payments to increase from next week Parents encouraged to claim and manage Child Benefit via the HMRC app 1.2 million parents have used the digital service to claim their Child Benefit",
-    tags: ["CPD & training events", "Conference", "Wills, executries and trusts", "Civil court work"],
-    icon: "📅",
-    link: "https://www.gov.uk/government/news/child-benefit-boost-for-millions-of-families"
-  }
-];
-
-const NewsAndBlogsSection: React.FC<NewsAndBlogsSectionProps> = ({ 
-  isAdmin = false, 
-  userRole = "user" 
-}) => {
-  const [newsBlogs, setNewsBlogs] = useState<NewsItem[]>(initialNewsBlogs);
-  const [showAddForm, setShowAddForm] = useState<boolean>(false);
-  const [editingItem, setEditingItem] = useState<number | null>(null);
+// const NewsAndBlogsSection: React.FC<NewsAndBlogsSectionProps> = ({ 
+//   isAdmin = false, 
+//   userRole = "user" 
+// }) => {
+//   const [newsBlogs, setNewsBlogs] = useState<NewsItem[]>([]);
+//   const [showAddForm, setShowAddForm] = useState<boolean>(false);
+//   const [editingItem, setEditingItem] = useState<string | null>(null);
   
-  const [formData, setFormData] = useState<FormData>({
-    type: "news",
-    title: "",
-    category: "",
-    date: "",
-    description: "",
-    tags: "",
-    link: ""
-  });
+//   const [formData, setFormData] = useState<FormData>({
+//     type: "news",
+//     title: "",
+//     category: "",
+//     date: "",
+//     description: "",
+//     tags: "",
+//     link: ""
+//   });
 
-  // Check if user has admin privileges
-  const hasAdminAccess = isAdmin || userRole === "admin" || userRole === "super_admin";
+//   const hasAdminAccess = isAdmin || userRole === "admin" || userRole === "super_admin";
 
-  const typeOptions = [
-    { value: "news" as const, label: "News", icon: "📄" },
-    { value: "blog" as const, label: "Blog", icon: "✏️" },
-    { value: "event" as const, label: "Event", icon: "📅" }
-  ];
+//   const typeOptions = [
+//     { value: "news" as const, label: "News", icon: "📄" },
+//     { value: "blog" as const, label: "Blog", icon: "✏️" },
+//     { value: "event" as const, label: "Event", icon: "📅" }
+//   ];
 
-  const getIcon = (type: string): string => {
-    const typeOption = typeOptions.find(option => option.value === type);
-    return typeOption ? typeOption.icon : "📄";
-  };
+//   const getIcon = (type: string): string => {
+//     const typeOption = typeOptions.find(option => option.value === type);
+//     return typeOption ? typeOption.icon : "📄";
+//   };
 
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
+//   const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+//     const { name, value } = e.target;
+//     setFormData(prev => ({ ...prev, [name]: value }));
+//   };
 
-  const handleAddItem = () => {
-    if (!formData.title || !formData.category || !formData.date || !formData.description) return;
-    
-    const newItem: NewsItem = {
-      ...formData,
-      id: Date.now(),
-      icon: getIcon(formData.type),
-      tags: formData.tags ? formData.tags.split(',').map(tag => tag.trim()) : []
-    };
-    
-    setNewsBlogs(prev => [newItem, ...prev]);
-    resetForm();
-  };
+//   const resetForm = () => {
+//     setShowAddForm(false);
+//     setEditingItem(null);
+//     setFormData({
+//       type: "news",
+//       title: "",
+//       category: "",
+//       date: "",
+//       description: "",
+//       tags: "",
+//       link: ""
+//     });
+//   };
 
-  const handleEditItem = (item: NewsItem) => {
-    setEditingItem(item.id);
-    setFormData({
-      ...item,
-      tags: item.tags ? item.tags.join(', ') : ''
-    });
-    setShowAddForm(true);
-  };
+//   const formatDate = (dateString: string): string => dateString;
 
-  const handleUpdateItem = () => {
-    if (editingItem === null) return;
-    
-    setNewsBlogs(prev => 
-      prev.map(item => 
-        item.id === editingItem 
-          ? { 
-              ...formData, 
-              id: editingItem, 
-              icon: getIcon(formData.type),
-              tags: formData.tags ? formData.tags.split(',').map(tag => tag.trim()) : []
-            }
-          : item
-      )
-    );
-    resetForm();
-  };
+//   // ✅ Fetch news/blogs from backend API
+//   useEffect(() => {
+//     const fetchNewsBlogs = async () => {
+//       try {
+//         const res = await fetch("/api/admin/news-blogs");
+//         if (!res.ok) throw new Error("Failed to fetch news/blogs");
+//         const data = await res.json();
+//         if (data.success && Array.isArray(data.data)) {
+//           setNewsBlogs(data.data); // ✅ Correct field
+//         } else {
+//           setNewsBlogs([]);
+//         }
+//       } catch (error) {
+//         console.error(error);
+//         setNewsBlogs([]);
+//       }
+//     };
+//     fetchNewsBlogs();
+//   }, []);
 
-  const handleDeleteItem = (id: number) => {
-    if (window.confirm("Are you sure you want to delete this item?")) {
-      setNewsBlogs(prev => prev.filter(item => item.id !== id));
-    }
-  };
+//   return (
+//     <Container>
+//       <section data-aos="fade-up" className="bg-white py-10">
+//         <div>
+//           {/* Section Header */}
+//           <div className="text-center mb-12">
+//             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+//               Latest news and blogs
+//             </h2>
+//             <div className="w-24 h-1 bg-blue-600 mx-auto"></div>
+//           </div>
 
-  const resetForm = () => {
-    setShowAddForm(false);
-    setEditingItem(null);
-    setFormData({
-      type: "news",
-      title: "",
-      category: "",
-      date: "",
-      description: "",
-      tags: "",
-      link: ""
-    });
-  };
+//           {/* News and Blogs List */}
+//           <div className="space-y-2">
+//             {newsBlogs.map((item, index) => (
+//               <article
+//                 key={item._id}
+//                 className="relative bg-white border border-gray-300 rounded-lg p-3 hover:shadow-lg transition-shadow duration-300 group"
+//               >
+//                 <div data-aos="fade-up" className="flex flex-col lg:flex-row lg:items-start gap-4">
+//                   <div className="flex-shrink-0">
+//                     <div className="w-12 h-12 bg-blue-400 rounded-lg flex items-center justify-center text-2xl">
+//                       {item.icon || getIcon(item.type)}
+//                     </div>
+//                   </div>
+//                   <div className="flex-1">
+//                     <h3 className="text-xl md:text-2xl font-bold text-blue-600 hover:text-blue-900 mb-0.5">
+//                       <Link href={item.link} className="hover:underline">{item.title}</Link>
+//                     </h3>
+//                     <div className="flex flex-wrap items-center gap-2 text-sm text-gray-600 mb-0.5">
+//                       <span className="font-medium">{item.category}</span>
+//                       <span className="flex items-center gap-1">📅 {formatDate(item.date)}</span>
+//                     </div>
+//                     <p className="text-gray-700 leading-relaxed mb-0">{item.description}</p>
+//                   </div>
+//                 </div>
+//                 {index < newsBlogs.length - 1 && <div className="mt-8 border-b border-gray-300"></div>}
+//               </article>
+//             ))}
+//           </div>
 
-  const formatDate = (dateString: string): string => {
-    // Handle both simple dates and date ranges
-    return dateString.includes('-') ? dateString : dateString;
-  };
+//           {newsBlogs.length === 0 && (
+//             <div className="text-center py-12">
+//               <div className="text-gray-500 text-lg mb-4">No news or blogs available</div>
+//             </div>
+//           )}
+//         </div>
+//       </section>
+//     </Container>
+//   );
+// };
 
-
-  return (
-    <Container>
-
-    
-    <section data-aos="fade-up" className="bg-white py-10">
-      <div className="
-      ">
-        
-        {/* Section Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-            Latest news and blogs
-          </h2>
-          <div className="w-24 h-1 bg-blue-600 mx-auto"></div>
-        </div>
-
-        {/* Admin Controls */}
-        {hasAdminAccess && (
-          <div className="mb-8 p-6 bg-blue-50 rounded-lg border border-blue-200">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-xl font-semibold text-gray-800">Content Management</h3>
-              <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
-                Role: {userRole}
-              </span>
-            </div>
-            
-            {!showAddForm ? (
-              <button
-                onClick={() => setShowAddForm(true)}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md transition-colors duration-200 font-medium flex items-center gap-2"
-              >
-                <span>+</span> Add News/Blog/Event
-              </button>
-            ) : (
-              <div className="bg-white p-6 rounded-lg border">
-                <h4 className="text-lg font-medium mb-4">
-                  {editingItem ? "Edit Item" : "Add New Item"}
-                </h4>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                  <select
-                    name="type"
-                    value={formData.type}
-                    onChange={handleInputChange}
-                    className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  >
-                    {typeOptions.map(option => (
-                      <option key={option.value} value={option.value}>
-                        {option.icon} {option.label}
-                      </option>
-                    ))}
-                  </select>
-                  
-                  <input
-                    type="text"
-                    name="category"
-                    placeholder="Category (e.g., Law Society news)"
-                    value={formData.category}
-                    onChange={handleInputChange}
-                    className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-                
-                <input
-                  type="text"
-                  name="title"
-                  placeholder="Title"
-                  value={formData.title}
-                  onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
-                />
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                  <input
-                    type="text"
-                    name="date"
-                    placeholder="Date (e.g., 23rd May 2025)"
-                    value={formData.date}
-                    onChange={handleInputChange}
-                    className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                  
-                  <input
-                    type="text"
-                    name="link"
-                    placeholder="Link URL"
-                    value={formData.link}
-                    onChange={handleInputChange}
-                    className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-                
-                <textarea
-                  name="description"
-                  placeholder="Description"
-                  value={formData.description}
-                  onChange={handleInputChange}
-                  rows={3}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
-                />
-                
-                <input
-                  type="text"
-                  name="tags"
-                  placeholder="Tags (comma-separated, for events only)"
-                  value={formData.tags}
-                  onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
-                />
-                
-                <div className="flex gap-3">
-                  <button
-                    onClick={editingItem ? handleUpdateItem : handleAddItem}
-                    className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-md transition-colors duration-200 font-medium"
-                  >
-                    {editingItem ? "Update" : "Add"} Item
-                  </button>
-                  <button
-                    onClick={resetForm}
-                    className="bg-gray-500 hover:bg-gray-600 text-white px-6 py-2 rounded-md transition-colors duration-200 font-medium"
-                  >
-                    Cancel
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
-        )}
-
-        {/* News and Blogs List */}
-        <div className="space-y-2">
-          {newsBlogs.map((item, index) => (
-            <article
-              key={item.id}
-              className="relative bg-white border border-gray-300 rounded-lg p-3 hover:shadow-lg transition-shadow duration-300 group"
-            >
-              {/* Admin Controls */}
-              {hasAdminAccess && (
-                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                  <div className="flex gap-2">
-                    <button
-                      onClick={() => handleEditItem(item)}
-                      className="bg-yellow-500 hover:bg-yellow-600 text-white p-2 rounded text-sm"
-                      title="Edit"
-                    >
-                      ✏️
-                    </button>
-                    <button
-                      onClick={() => handleDeleteItem(item.id)}
-                      className="bg-red-500 hover:bg-red-600 text-white p-2 rounded text-sm"
-                      title="Delete"
-                    >
-                      🗑️
-                    </button>
-                  </div>
-                </div>
-              )}
-
-              <div data-aos="fade-up" className="flex flex-col lg:flex-row lg:items-start gap-4">
-                {/* Icon */}
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-blue-400 rounded-lg flex items-center justify-center text-2xl">
-                    {item.icon}
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="flex-1">
-                  {/* Title */}
-                  <h3 className="text-xl md:text-2xl font-bold text-blue-600 hover:text-blue-900 mb-0.5">
-                    <Link href={item.link} className="hover:underline">
-                      {item.title}
-                    </Link>
-                  </h3>
-
-                  {/* Meta Information */}
-                  <div className="flex flex-wrap items-center gap-2 text-sm text-gray-600 mb-0.5">
-                    <span className="font-medium">{item.category}</span>
-                    <span className="flex items-center gap-1">
-                      📅 {formatDate(item.date)}
-                    </span>
-                  </div>
-
-                  {/* Description */}
-                  <p className="text-gray-700 leading-relaxed mb-0">
-                    {item.description}
-                  </p>
-
-                  {/* Tags (for events) */}
-                  {item.tags && item.tags.length > 0 && (
-                    <div className="flex flex-wrap gap-2">
-                      {item.tags.map((tag, tagIndex) => (
-                        <span
-                          key={tagIndex}
-                          className="px-3 py-0.5 bg-blue-100 text-blue-800 text-xs rounded-full font-medium"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              {/* Separator line (except for last item) */}
-              {index < newsBlogs.length - 1 && (
-                <div className="mt-8 border-b border-gray-300"></div>
-              )}
-            </article>
-          ))}
-        </div>
-
-        {/* Empty State */}
-        {newsBlogs.length === 0 && (
-          <div className="text-center py-12">
-            <div className="text-gray-500 text-lg mb-4">No news or blogs available</div>
-            {hasAdminAccess && (
-              <button
-                onClick={() => setShowAddForm(true)}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md transition-colors duration-200 font-medium"
-              >
-                Add Your First Item
-              </button>
-            )}
-          </div>
-        )}
-      </div>
-    </section>
-    </Container>
-  );
-};
-
-export default NewsAndBlogsSection;
+// export default NewsAndBlogsSection;

@@ -1,4 +1,5 @@
-// Use 800x500 or 1200x675 for sharp display jpg or webp for fast load
+// Use 800x500 or 1200x675 for sharp display jpg or webp for fast 
+//src/app/data/latestNews.ts
 const latestNews = [
   {
     image: "/latest_news/news1.jpg",

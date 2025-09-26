@@ -1,4 +1,4 @@
-// src/app/news/page.tsx
+// src/app/news-and-events/latest-news /page.tsx
 import Container from "@/components/Container";
 import { Metadata } from "next";
 import Image from "next/image";
