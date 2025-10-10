@@ -20,7 +20,8 @@ export const menuItems = [
       { label: "Latest news", href: "/news-and-events/latest-news" },
       { label: "Upcoming Events", href: "/news-and-events/upcoming-events" },
       { label: "Gallery", href: "/news-and-events/gallery" },
-       { label: "CPD & Networking", href: "/members/cpd-training" },
+      { label: "Magazine", href: "/news-and-events/magazine" },
+      { label: "CPD & Networking", href: "/members/cpd-training" },
     ],
   },
   {

@@ -1,3 +1,4 @@
+///src/app/news-and-events/gallary/page.tsx
 import Container from "@/components/Container";
 import Link from "next/link";
 import Image from "next/image";
