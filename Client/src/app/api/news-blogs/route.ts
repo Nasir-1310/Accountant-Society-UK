@@ -4,17 +4,17 @@ import { dbConnect } from "@/lib/dbConnect";
 import NewsBlogs from "@/models/NewsBlogs";
 import jwt from "jsonwebtoken";
 
-// 📍 GET - Public route - Fetch all published news/blogs
+// ✅ GET - PUBLIC ROUTE - No authentication required
 export async function GET(request: NextRequest) {
   try {
     await dbConnect();
 
     const { searchParams } = new URL(request.url);
     const type = searchParams.get("type");
-    const limit = parseInt(searchParams.get("limit") || "10");
+    const limit = parseInt(searchParams.get("limit") || "50"); // Increased default limit
     const page = parseInt(searchParams.get("page") || "1");
 
-    // ✅ Only show published items publicly
+    // Only show published items to public
     const query: Record<string, unknown> = { isPublished: true };
 
     if (type && ["news", "blog", "event"].includes(type)) {
@@ -25,9 +25,12 @@ export async function GET(request: NextRequest) {
       .sort({ createdAt: -1 })
       .limit(limit)
       .skip((page - 1) * limit)
-      .populate("createdBy", "email");
+      .select('-__v') // Exclude version key
+      .lean(); // Use lean() for better performance on public route
 
     const total = await NewsBlogs.countDocuments(query);
+
+    console.log(`✅ Public GET: Found ${total} published items`);
 
     return NextResponse.json({
       success: true,
@@ -39,19 +42,18 @@ export async function GET(request: NextRequest) {
         pages: Math.ceil(total / limit),
       },
     });
-  } catch (error) {
-    console.error("❌ Error fetching news/blogs:", error);
-    return NextResponse.json(
-      { success: false, error: "Failed to fetch news/blogs" },
-      { status: 500 }
-    );
-  }
+  }  catch {
+      return NextResponse.json(
+        { success: false, error: "Invalid or expired token" },
+        { status: 401 }
+      );
+    }
 }
 
-// 📍 POST - Admin only - Create new news/blog
+// ✅ POST - ADMIN ONLY - Create new news/blog
 export async function POST(request: NextRequest) {
   try {
-    // ✅ Verify admin
+    // Verify admin authentication
     const token = request.cookies.get("adminToken")?.value;
     if (!token) {
       return NextResponse.json(
@@ -64,16 +66,23 @@ export async function POST(request: NextRequest) {
       id: string;
       [key: string]: unknown;
     }
-    const decoded = jwt.verify(
-      token,
-      process.env.JWT_SECRET!
-    ) as JwtPayload;
+    
+    let decoded: JwtPayload;
+    try {
+      decoded = jwt.verify(token, process.env.JWT_SECRET!) as JwtPayload;
+    } catch {
+      return NextResponse.json(
+        { success: false, error: "Invalid or expired token" },
+        { status: 401 }
+      );
+    }
 
     await dbConnect();
 
     const body = await request.json();
     const { type, title, category, date, description, link, tags } = body;
 
+    // Validation
     if (!type || !title || !category || !date || !description || !link) {
       return NextResponse.json(
         { success: false, error: "All required fields must be provided" },
@@ -81,7 +90,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // ✅ Automatically set icon based on type
+    // Set icon based on type
     const iconMap = {
       news: "📄",
       blog: "✏️",
@@ -95,22 +104,24 @@ export async function POST(request: NextRequest) {
       date: date.trim(),
       description: description.trim(),
       link: link.trim(),
-      tags: tags
+      tags: Array.isArray(tags)
         ? tags.map((tag: string) => tag.trim()).filter(Boolean)
         : [],
-      icon: iconMap[type as keyof typeof iconMap],
+      icon: iconMap[type as keyof typeof iconMap] || "📄",
       createdBy: decoded.id,
-      isPublished: true, // ✅ important for public visibility
+      isPublished: true, // Auto-publish
     });
 
     await newItem.save();
     await newItem.populate("createdBy", "email");
 
+    console.log(`✅ Created new ${type}:`, newItem.title);
+
     return NextResponse.json(
       {
         success: true,
         data: newItem,
-        message: "✅ News/blog created successfully",
+        message: "News/blog created successfully",
       },
       { status: 201 }
     );

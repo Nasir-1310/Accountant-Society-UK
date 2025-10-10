@@ -34,31 +34,33 @@ export default function NewsForm({ postId, initialData }: NewsFormProps) {
   });
 
   useEffect(() => {
-    if (postId && !initialData) fetchPost();
-  }, [postId]);
-
-  const fetchPost = async () => {
-    try {
-      const response = await fetch(`/api/admin/news-blogs/${postId}`, {
-        credentials: "include",
-      });
-      const result = await response.json();
-      if (result.success) {
-        setFormData({
-          type: result.data.type,
-          title: result.data.title,
-          category: result.data.category,
-          date: result.data.date,
-          description: result.data.description,
-          icon: result.data.icon || "📄",
-          link: result.data.link || "",
+    const fetchPost = async () => {
+      if (!postId || initialData) return;
+      
+      try {
+        const response = await fetch(`/api/admin/news-blogs/${postId}`, {
+          credentials: "include",
         });
+        const result = await response.json();
+        if (result.success) {
+          setFormData({
+            type: result.data.type,
+            title: result.data.title,
+            category: result.data.category,
+            date: result.data.date,
+            description: result.data.description,
+            icon: result.data.icon || "📄",
+            link: result.data.link || "",
+          });
+        }
+      } catch (error) {
+        console.error("Error fetching post:", error);
+        alert("Failed to fetch post data");
       }
-    } catch (error) {
-      console.error("Error fetching post:", error);
-      alert("Failed to fetch post data");
-    }
-  };
+    };
+
+    fetchPost();
+  }, [postId, initialData]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

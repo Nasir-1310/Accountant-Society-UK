@@ -20,24 +20,21 @@ export async function GET(request: NextRequest) {
 
     // Calculate stats
     const totalPosts = await NewsBlogs.countDocuments();
-    const publishedPosts = await NewsBlogs.countDocuments({ isPublished: true });
-    const unpublishedPosts = await NewsBlogs.countDocuments({ isPublished: false });
+
 
     const byType = {
       news: await NewsBlogs.countDocuments({ type: 'news' }),
       blog: await NewsBlogs.countDocuments({ type: 'blog' }),
       event: await NewsBlogs.countDocuments({ type: 'event' })
     };
-
-    return NextResponse.json({
-      success: true,
-      stats: {
-        totalPosts,
-        publishedPosts,
-        unpublishedPosts,
-        byType
-      }
-    });
+// ✅ NEW
+return NextResponse.json({
+  success: true,
+  stats: {
+    totalPosts,
+    byType
+  }
+});
 
   } catch (error) {
     console.error("Error fetching stats:", error);

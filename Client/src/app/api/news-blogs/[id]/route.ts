@@ -5,7 +5,7 @@ import NewsBlogs from "@/models/NewsBlogs";
 import jwt from "jsonwebtoken";
 
 interface RouteParams {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 // GET - Fetch single news/blog item
@@ -13,7 +13,9 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
   try {
     await dbConnect();
 
-    const newsItem = await NewsBlogs.findById(params.id).populate('createdBy', 'email');
+    const { id } = await params;
+
+    const newsItem = await NewsBlogs.findById(id).populate('createdBy', 'email');
     
     if (!newsItem) {
       return NextResponse.json(
@@ -51,6 +53,8 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
     
     await dbConnect();
 
+    const { id } = await params;
+
     const body = await request.json();
     const { type, title, category, date, description, link, tags, isPublished } = body;
 
@@ -85,7 +89,7 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
     };
 
     const updatedItem = await NewsBlogs.findByIdAndUpdate(
-      params.id,
+      id,
       updateData,
       { new: true, runValidators: true }
     ).populate('createdBy', 'email');
@@ -128,7 +132,9 @@ export async function DELETE(request: NextRequest, { params }: RouteParams) {
     
     await dbConnect();
 
-    const deletedItem = await NewsBlogs.findByIdAndDelete(params.id);
+    const { id } = await params;
+
+    const deletedItem = await NewsBlogs.findByIdAndDelete(id);
 
     if (!deletedItem) {
       return NextResponse.json(

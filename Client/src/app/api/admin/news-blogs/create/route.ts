@@ -1,6 +1,4 @@
-// =================================================================
-// 7. CREATE: src/app/api/admin/news-blogs/create/route.ts
-// =================================================================
+// src/app/api/admin/news-blogs/create/route.ts
 import { NextRequest, NextResponse } from "next/server";
 import { dbConnect } from "@/lib/dbConnect";
 import { authenticateAdmin } from "@/lib/authMiddleware";
@@ -29,13 +27,13 @@ export async function POST(request: NextRequest) {
       description,
       icon,
       link,
-      isPublished = false
+      tags
     } = body;
 
     // Validation
-    if (!title || !type || !category || !date || !description) {
+    if (!title || !type || !category || !date || !description || !link) {
       return NextResponse.json(
-        { success: false, error: "Title, type, category, date, and description are required" },
+        { success: false, error: "Title, type, category, date, description, and link are required" },
         { status: 400 }
       );
     }
@@ -47,29 +45,23 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Create slug from title
-    const slug = title.toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/(^-|-$)/g, '');
-
-    // Ensure slug is unique
-    let uniqueSlug = slug;
-    let counter = 1;
-    while (await NewsBlogs.findOne({ slug: uniqueSlug })) {
-      uniqueSlug = `${slug}-${counter}`;
-      counter++;
-    }
+    // ✅ Set icon based on type if not provided
+    const iconMap = {
+      news: "📄",
+      blog: "✏️",
+      event: "📅"
+    };
 
     const newPost = new NewsBlogs({
-      title,
-      slug: uniqueSlug,
+      title: title.trim(),
       type,
-      category,
-      date,
-      description,
-      icon: icon || '',
-      link: link || '',
-      isPublished,
+      category: category.trim(),
+      date: date.trim(),
+      description: description.trim(),
+      icon: icon || iconMap[type as keyof typeof iconMap],
+      link: link.trim(),
+      tags: Array.isArray(tags) ? tags.map((tag: string) => tag.trim()).filter(Boolean) : [],
+      isPublished: true, // 🔴 CHANGED: Auto-publish (was false)
       createdBy: adminId
     });
 
@@ -78,8 +70,8 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: true,
       data: newPost,
-      message: `${type.charAt(0).toUpperCase() + type.slice(1)} created successfully`
-    });
+      message: `${type.charAt(0).toUpperCase() + type.slice(1)} created and published successfully`
+    }, { status: 201 });
 
   } catch (error) {
     console.error("Error creating news/blog:", error);

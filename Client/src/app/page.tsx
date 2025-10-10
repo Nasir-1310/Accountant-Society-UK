@@ -1,6 +1,6 @@
 // import FindAccountant from "@/components/FindAccountant";
 import FeatureSection from "@/components/FeatureSection";
-// import NewsAndBlogsSection from "@/components/NewsAndBlogsSection";
+import NewsAndBlogsSection from "@/components/NewsAndBlogsSection";
 // import Hero from "@/components/Hero";
 import Slider from "@/components/Slider";
 // import LandingPage from "@/components/LandingPage";
@@ -14,7 +14,7 @@ export default function Home() {
       <Slider></Slider>
       {/* <FindAccountant></FindAccountant> */}
       <FeatureSection></FeatureSection>
-      {/* <NewsAndBlogsSection></NewsAndBlogsSection> */}
+      <NewsAndBlogsSection></NewsAndBlogsSection>
        
     </div>
   );

@@ -1,34 +1,54 @@
-// src/app/signin/page.tsx
-import { Metadata } from "next";
-import Container from "@/components/Container";
+//src/app/signin/page.tsx
 import Link from "next/link";
-import SigninForm from "@/components/SigninForm";
+import { Metadata } from "next";
+import { ArrowRight } from "lucide-react";
+import Container from "@/components/Container";
+import { Square_Button } from "@/components/Square_Button";
 
 export const metadata: Metadata = {
-  title: "Sign In | Society of Professional Accountants",
-  description: "Sign in securely with your email to access exclusive member benefits.",
+  title: "Sign In | Accountants Society UK",
+  description: "Choose your sign in option: Admin or Member. Access your Accountants Society UK dashboard securely.",
 };
 
 export default function SignInPage() {
   return (
     <Container>
-      <main className="min-h-screen flex items-center justify-center bg-gray-50 px-4 py-12">
-        <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
-          <h1 className="text-3xl font-bold text-center text-gray-900">Sign In</h1>
-          <p className="mt-2 text-sm text-center text-gray-600">
-            Don’t have an account?{" "}
-            <Link href="/register" className="text-green-600 font-medium hover:underline">
-              Register
-            </Link>
-          </p>
-          <SigninForm />
-          <div className="text-center mt-4 text-sm">
-            <Link href="/forgot-password" className="text-green-600 hover:underline">
-              Forgot password?
-            </Link>
-          </div>
+
+    
+    <section data-aos="fade-up" className="m-3 border-xl flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-gray-50 to-gray-100 px-6">
+      <div className="text-center">
+        <h1 className="text-3xl font-bold text-gray-800 mb-3">
+          Welcome to Accountants&apos; Society.
+        </h1>
+        <p className="text-gray-600 mb-8">
+          Please select your sign in type below
+        </p>
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          {/* Admin Sign In */}
+          <Square_Button>
+
+          
+          <Link
+            href="/admin/login"
+            className="group w-40 text-lg   flex items-center justify-center"
+          >
+            Admin Sign In
+            <ArrowRight className="ml-2 transition-transform group-hover:translate-x-1" />
+          </Link>
+          </Square_Button>
+
+          {/* Member Sign In */}
+          {/* <Link
+            href="/member/signin"
+            className="group w-60 rounded-2xl bg-gray-800 px-6 py-4 text-white text-lg font-semibold shadow-md transition-all hover:bg-gray-900 hover:shadow-lg flex items-center justify-center"
+          >
+            Member Sign In
+            <ArrowRight className="ml-2 transition-transform group-hover:translate-x-1" />
+          </Link> */}
         </div>
-      </main>
+      </div>
+    </section>
     </Container>
   );
 }
