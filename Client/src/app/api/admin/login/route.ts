@@ -1,3 +1,4 @@
+//app/api/admin/login/route.ts
 import { NextRequest, NextResponse } from "next/server";
 import { dbConnect } from "@/lib/dbConnect";
 import { comparePassword, signToken } from "@/lib/auth";

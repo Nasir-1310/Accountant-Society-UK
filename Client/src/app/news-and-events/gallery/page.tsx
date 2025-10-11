@@ -1,4 +1,5 @@
-///src/app/news-and-events/gallary/page.tsx
+// src/app/news-and-events/gallery/page.tsx
+
 import Container from "@/components/Container";
 import Link from "next/link";
 import Image from "next/image";
@@ -15,7 +16,10 @@ const GalleryPage = () => {
             Home
           </Link>
           <span className="mx-2">|</span>
-          <Link href="/events" className="hover:text-teal-600 transition-colors">
+          <Link
+            href="/events"
+            className="hover:text-teal-600 transition-colors"
+          >
             News and Events
           </Link>
           <span className="mx-2">|</span>
@@ -33,7 +37,7 @@ const GalleryPage = () => {
         </div>
 
         {/* Gallery Grid */}
-        <div className=" grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {galleryData.map((item) => (
             <div
               key={item.slug}
@@ -42,11 +46,12 @@ const GalleryPage = () => {
               {/* Fixed aspect ratio container */}
               <div className="relative w-full aspect-video overflow-hidden rounded-t-lg">
                 <Image
-                  src={item.imageUrl}
+                  src={item.coverImageUrl}
                   alt={item.title}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover hover:scale-105 transition-transform duration-300"
+                  unoptimized
                 />
               </div>
               <div className="p-5">
@@ -56,11 +61,7 @@ const GalleryPage = () => {
                 <p className="text-gray-600 text-sm mb-3">{item.description}</p>
                 <p className="text-gray-500 text-xs mb-4">{item.date}</p>
                 <Link href={`/news-and-events/gallery/${item.slug}`}>
-                  <Square_Button>
-                         View Details
-                  </Square_Button>
-                   
-                  
+                  <Square_Button>View Details</Square_Button>
                 </Link>
               </div>
             </div>

@@ -1,3 +1,5 @@
+// src/app/news-and-events/gallery/[slug]/page.tsx
+
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -5,18 +7,9 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/Container";
-import galleryData from "@/app/data/galleryData";
+import galleryData, { type GalleryItem } from "@/app/data/galleryData";
 import Masonry from "react-masonry-css";
-
-// Define the gallery item type based on your data structure
-type GalleryItem = {
-  slug: string;
-  title: string;
-  description: string;
-  date: string;
-  imageUrl: string;
-  imageCount: number;
-};
+import { getImagesFromFolder, type DriveImage } from "@/lib/googleDrive";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -26,23 +19,40 @@ const GalleryDetailPage = ({ params }: Props) => {
   const [slug, setSlug] = useState<string | null>(null);
   const [gallery, setGallery] = useState<GalleryItem | null>(null);
   const [loading, setLoading] = useState(true);
+  const [images, setImages] = useState<DriveImage[]>([]);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const resolveParams = async () => {
       try {
         const resolvedParams = await params;
-        const foundGallery = galleryData.find((item) => item.slug === resolvedParams.slug);
-        
+        const foundGallery = galleryData.find(
+          (item) => item.slug === resolvedParams.slug
+        );
+
         if (!foundGallery) {
           notFound();
           return;
         }
-        
+
         setSlug(resolvedParams.slug);
         setGallery(foundGallery);
+
+        // Fetch images from Google Drive folder
+        const folderImages = await getImagesFromFolder(
+          foundGallery.googleDriveFolderId
+        );
+
+        if (folderImages.length === 0) {
+          setError(
+            "No images found. Please check folder permissions and API key."
+          );
+        }
+
+        setImages(folderImages);
       } catch (error) {
         console.error("Error resolving params:", error);
-        notFound();
+        setError("Failed to load gallery. Please try again later.");
       } finally {
         setLoading(false);
       }
@@ -51,11 +61,18 @@ const GalleryDetailPage = ({ params }: Props) => {
     resolveParams();
   }, [params]);
 
+  const breakpointColumnsObj = {
+    default: 3,
+    1100: 3,
+    700: 2,
+    500: 1,
+  };
+
   if (loading) {
     return (
       <Container>
-        <div className="w-full px-4 py-12 flex justify-center items-center">
-          <div className="text-lg">Loading...</div>
+        <div className="w-full px-4 py-12 flex justify-center items-center min-h-screen">
+          <div className="text-lg text-gray-600">Loading gallery...</div>
         </div>
       </Container>
     );
@@ -65,58 +82,66 @@ const GalleryDetailPage = ({ params }: Props) => {
     return notFound();
   }
 
-  // You can now get the image count dynamically from gallery data or folder
-  const imageCount = gallery.imageCount || 15; // fallback to 15 if not set
-
-  const imagePaths = Array.from(
-    { length: imageCount },
-    (_, i) => `/gallery/${slug}/${i + 1}.jpg`
-  );
-
-  const breakpointColumnsObj = {
-    default: 3,
-    1100: 3,
-    700: 2,
-    500: 1,
-  };
-
   return (
     <Container>
       <div className="w-full px-4 py-12">
         {/* Breadcrumb */}
         <div className="text-sm text-gray-500 mb-6">
-          <Link href="/" className="hover:text-teal-600">Home</Link>
+          <Link href="/" className="hover:text-teal-600">
+            Home
+          </Link>
           <span className="mx-2">|</span>
-          <Link href="/news-and-events" className="hover:text-teal-600">News and Events</Link>
+          <Link href="/news-and-events" className="hover:text-teal-600">
+            News and Events
+          </Link>
           <span className="mx-2">|</span>
-          <Link href="/news-and-events/gallery" className="hover:text-teal-600">Gallery</Link>
+          <Link href="/news-and-events/gallery" className="hover:text-teal-600">
+            Gallery
+          </Link>
           <span className="mx-2">|</span>
           <span>{gallery.title}</span>
         </div>
 
         {/* Title */}
-        <h1 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">{gallery.title}</h1>
+        <h1 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
+          {gallery.title}
+        </h1>
         <p className="text-gray-600 mb-6">{gallery.description}</p>
         <p className="text-xs text-gray-400 mb-8">{gallery.date}</p>
 
-        <Masonry
-          breakpointCols={breakpointColumnsObj}
-          className="flex w-auto -ml-4"
-          columnClassName="pl-4 bg-clip-padding"
-        >
-          {imagePaths.map((src, index) => (
-            <div key={index} className="mb-6 overflow-hidden rounded shadow-md">
-              <Image
-                src={src}
-                alt={`Photo ${index + 1}`}
-                width={600}
-                height={400}
-                layout="responsive"
-                className="rounded w-full h-auto object-cover"
-              />
-            </div>
-          ))}
-        </Masonry>
+        {/* Error Message */}
+        {error && (
+          <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded mb-6">
+            {error}
+          </div>
+        )}
+
+        {/* Images */}
+        {images.length === 0 && !error ? (
+          <p className="text-gray-500">No images found in this gallery.</p>
+        ) : (
+          <Masonry
+            breakpointCols={breakpointColumnsObj}
+            className="flex w-auto -ml-4"
+            columnClassName="pl-4 bg-clip-padding"
+          >
+            {images.map((image, index) => (
+              <div
+                key={image.id}
+                className="mb-6 overflow-hidden rounded shadow-md hover:shadow-lg transition-shadow"
+              >
+                <Image
+                  src={image.url}
+                  alt={image.name || `Photo ${index + 1}`}
+                  width={600}
+                  height={400}
+                  className="rounded w-full h-auto object-cover"
+                  unoptimized
+                />
+              </div>
+            ))}
+          </Masonry>
+        )}
       </div>
     </Container>
   );
