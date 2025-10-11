@@ -12,9 +12,9 @@ type Magazine = {
 const magazines: Magazine[] = [
   {
     slug: "TPAS-Magazine-Accountant's-day-2025",
-    title: "TPAS Magazine - Accountant's day-2025",
+    title: "TPAS Magazine -British Bangladeshi Accountant's day-2025",
     cover: "/magazine/images/magazine1_cover.png",
-    pdf: "https://drive.google.com/file/d/1X0ZpbAtMGVNKEOlQvZ3CJGB-wxqsbkZW/view?usp=sharing",
+    pdf: "https://drive.google.com/file/d/1pAxUHBPSy3LsdXRL1wO6ISysIplVkwIe/view?usp=sharing",
     date: "2025-10-07",
     description:
       "This year magazine covers Sustainability, Personal Finance, Halal Mortgage and British Bangladeshi Accountants’ contributions to the UK and Bangladesh Economy.",
