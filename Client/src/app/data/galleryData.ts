@@ -44,8 +44,8 @@ const galleryData: GalleryItem[] = [
     description:
       "This year magazine covers Sustainability, Personal Finance, Halal Mortgage and British Bangladeshi Accountants’ contributions to the UK and Bangladesh Economy.",
     date: "Septembar, 2025",
-    coverImageUrl: "https://drive.google.com/thumbnail?id=1Lvxr5kYeZd6O-T1r0w8CTsuOu1FHFjPD&sz=w2000",
-    googleDriveFolderId: "1hwANP7zt3uPyDBy7w9XhUR9Ah70bgNZX",
+    coverImageUrl: "https://drive.google.com/thumbnail?id=1vBKtuhXqSaJxBVdPRB3p-Eas0-99ZpVB&sz=w2000",
+    googleDriveFolderId: "1M_90O5O8SgDVuf6f_7gNi9YaYkdO0ru-",
     
   },
 ];
