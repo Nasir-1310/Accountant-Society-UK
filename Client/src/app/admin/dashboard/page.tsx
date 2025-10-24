@@ -6,13 +6,15 @@ import { useRouter } from "next/navigation";
 import { 
   Users, 
   Calendar, 
-  FileText
+  FileText,
+  Newspaper
 } from "lucide-react";
 
 interface DashboardStats {
   totalPosts: number;
   totalEvents: number;
   totalMembers: number;
+  totalLatestNews: number;
 }
 
 export default function AdminDashboard() {
@@ -23,10 +25,10 @@ export default function AdminDashboard() {
   const [stats, setStats] = useState<DashboardStats>({
     totalPosts: 0,
     totalEvents: 0,
-    totalMembers: 0
+    totalMembers: 0,
+    totalLatestNews: 0
   });
 
-  // Prevent hydration mismatch
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -50,18 +52,7 @@ export default function AdminDashboard() {
         setAdminName(data.admin?.name || data.admin?.email || "Admin");
 
         // Fetch dashboard stats
-        try {
-          const statsRes = await fetch("/api/admin/stats", {
-            method: "GET",
-            credentials: "include",
-          });
-          if (statsRes.ok) {
-            const statsData = await statsRes.json();
-            setStats(statsData);
-          }
-        } catch (statsErr) {
-          console.warn("Could not fetch stats:", statsErr);
-        }
+        await fetchStats();
 
       } catch (err) {
         console.error("Auth check error:", err);
@@ -73,6 +64,61 @@ export default function AdminDashboard() {
 
     checkAuth();
   }, [mounted, router]);
+
+  const fetchStats = async () => {
+    try {
+      // Fetch all data in parallel
+      const [newsBlogsRes, latestNewsRes, statsRes] = await Promise.all([
+        fetch("/api/admin/news-blogs", { method: "GET", credentials: "include" }),
+        fetch("/api/admin/latest-news", { method: "GET", credentials: "include" }),
+        fetch("/api/admin/stats", { method: "GET", credentials: "include" }).catch(() => null)
+      ]);
+
+      // Handle news-blogs response
+      if (newsBlogsRes.ok) {
+        const newsBlogsData = await newsBlogsRes.json();
+        console.log("📝 News-Blogs data:", newsBlogsData);
+        
+        // Extract stats from the response
+        const totalPosts = newsBlogsData.stats?.total || 0;
+        const totalEvents = newsBlogsData.stats?.byType?.event || 0;
+        
+        setStats(prev => ({
+          ...prev,
+          totalPosts,
+          totalEvents,
+        }));
+      }
+
+      // Handle latest news response - it returns an array directly
+      if (latestNewsRes.ok) {
+        const newsData = await latestNewsRes.json();
+        console.log("📰 Latest news data:", newsData);
+        
+        // newsData is an array, so count its length
+        const newsCount = Array.isArray(newsData) ? newsData.length : 0;
+        
+        setStats(prev => ({ 
+          ...prev, 
+          totalLatestNews: newsCount 
+        }));
+      }
+
+      // Handle stats response (if exists)
+      if (statsRes && statsRes.ok) {
+        const statsData = await statsRes.json();
+        console.log("📊 Additional stats data:", statsData);
+        
+        setStats(prev => ({
+          ...prev,
+          totalMembers: statsData.totalMembers || prev.totalMembers,
+        }));
+      }
+
+    } catch (statsErr) {
+      console.error("❌ Could not fetch stats:", statsErr);
+    }
+  };
 
   const dashboardCards = [
     {
@@ -86,12 +132,21 @@ export default function AdminDashboard() {
     },
     {
       title: "Latest News",
-      description: "Post and manage the latest news.",
-      icon: Calendar,
+      description: "Manage latest news with images stored in S3.",
+      icon: Newspaper,
       color: "bg-green-500",
       hoverColor: "hover:bg-green-600",
-      count: stats.totalMembers,
+      count: stats.totalLatestNews,
       href: "/admin/latest-news"
+    },
+    {
+      title: "Events",
+      description: "Post and manage upcoming events.",
+      icon: Calendar,
+      color: "bg-orange-500",
+      hoverColor: "hover:bg-orange-600",
+      count: stats.totalEvents,
+      href: "/admin/events"
     },
     {
       title: "Members",
@@ -104,7 +159,6 @@ export default function AdminDashboard() {
     }
   ];
 
-  // Show loading state during hydration and auth check
   if (!mounted || loading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -118,9 +172,7 @@ export default function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Welcome Section */}
         <div className="mb-8">
           <h2 className="text-xl font-semibold text-gray-900 mb-2">
             Welcome back, {adminName}!
@@ -130,7 +182,6 @@ export default function AdminDashboard() {
           </p>
         </div>
 
-        {/* Dashboard Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {dashboardCards.map((card, index) => {
             const IconComponent = card.icon;
@@ -145,9 +196,7 @@ export default function AdminDashboard() {
                   <div className={`p-3 rounded-lg ${card.color} group-hover:scale-110 transition-transform`}>
                     <IconComponent className="h-6 w-6 text-white" />
                   </div>
-                  {card.count !== null && (
-                    <span className="text-2xl font-bold text-gray-900">{card.count}</span>
-                  )}
+                  <span className="text-2xl font-bold text-gray-900">{card.count}</span>
                 </div>
                 
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">{card.title}</h3>
