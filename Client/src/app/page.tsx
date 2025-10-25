@@ -1,3 +1,4 @@
+//src/app/page.tsx
 // import FindAccountant from "@/components/FindAccountant";
 import FeatureSection from "@/components/FeatureSection";
 import NewsAndBlogsSection from "@/components/NewsAndBlogsSection";
