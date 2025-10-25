@@ -4,7 +4,7 @@
 import { ReactNode, useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import Container from "@/components/Container";
-import { Shield, LogOut } from "lucide-react";
+import { Shield, LogOut, Menu, X } from "lucide-react";
 
 interface AdminData {
   email: string;
@@ -18,6 +18,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
   const [mounted, setMounted] = useState(false);
   const [loading, setLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Don't show header on login page
   const isLoginPage = pathname === "/admin/login";
@@ -114,11 +115,12 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
   return (
     <Container>
       <div className="min-h-screen bg-gray-100 flex flex-col">
-        {/* Admin Header - Show on all pages except login */}
+        {/* Admin Header - Responsive */}
         {!isLoginPage && isAuthenticated && (
           <header className="bg-white shadow-sm border-b border-gray-200">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex justify-between items-center py-4">
+              {/* Desktop Header */}
+              <div className="hidden md:flex justify-between items-center py-4">
                 <div className="flex items-center">
                   <Shield className="h-8 w-8 text-blue-600 mr-3" />
                   <h1 className="text-2xl font-bold text-gray-900">Admin Dashboard</h1>
@@ -143,12 +145,55 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
                   </div>
                 )}
               </div>
+
+              {/* Mobile Header */}
+              <div className="md:hidden">
+                <div className="flex justify-between items-center py-3">
+                  <div className="flex items-center">
+                    <Shield className="h-6 w-6 text-blue-600 mr-2" />
+                    <h1 className="text-lg font-bold text-gray-900">Admin</h1>
+                  </div>
+                  
+                  <button
+                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                    className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
+                  >
+                    {mobileMenuOpen ? (
+                      <X className="h-6 w-6" />
+                    ) : (
+                      <Menu className="h-6 w-6" />
+                    )}
+                  </button>
+                </div>
+
+                {/* Mobile Menu */}
+                {mobileMenuOpen && adminData && (
+                  <div className="pb-3 pt-2 border-t border-gray-200">
+                    <div className="px-2 space-y-3">
+                      <div className="px-3 py-2 bg-gray-50 rounded-md">
+                        <p className="text-sm font-medium text-gray-900 truncate">
+                          {adminData.name || adminData.email || "Admin"}
+                        </p>
+                        <p className="text-xs text-gray-500 mt-1">Administrator</p>
+                      </div>
+                      
+                      <button
+                        onClick={handleLogout}
+                        className="w-full inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors"
+                      >
+                        <LogOut className="h-4 w-4 mr-2" />
+                        Logout
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </header>
         )}
 
         {/* Main Content */}
-        <main className="flex-1 p-6">
+        <main className="flex-1 p-4 sm:p-6">
           {children}
         </main>
       </div>
