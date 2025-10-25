@@ -20,15 +20,13 @@ export const Square_Button: React.FC<ButtonProps> = ({
 
   const finalClass = `${baseClass} ${className}`;
 
-  if (href) {
-    return (
-      <Link href={href} passHref legacyBehavior>
-        <a className={finalClass} {...rest}>
-          {children}
-        </a>
-      </Link>
-    );
-  }
+ if (href) {
+  return (
+    <Link href={href} className={finalClass} {...rest}>
+      {children}
+    </Link>
+  );
+}
 
   return (
     <button type={type} className={finalClass} {...rest}>

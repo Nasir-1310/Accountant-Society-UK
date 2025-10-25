@@ -7,7 +7,8 @@ import {
   Users, 
   Calendar, 
   FileText,
-  Newspaper
+  Newspaper,
+  ImageIcon // ✅ Import ImageIcon from lucide-react
 } from "lucide-react";
 
 interface DashboardStats {
@@ -15,6 +16,7 @@ interface DashboardStats {
   totalEvents: number;
   totalMembers: number;
   totalLatestNews: number;
+  totalSliders: number;
 }
 
 export default function AdminDashboard() {
@@ -26,7 +28,8 @@ export default function AdminDashboard() {
     totalPosts: 0,
     totalEvents: 0,
     totalMembers: 0,
-    totalLatestNews: 0
+    totalLatestNews: 0,
+    totalSliders: 0
   });
 
   useEffect(() => {
@@ -68,9 +71,10 @@ export default function AdminDashboard() {
   const fetchStats = async () => {
     try {
       // Fetch all data in parallel
-      const [newsBlogsRes, latestNewsRes, statsRes] = await Promise.all([
+      const [newsBlogsRes, latestNewsRes, slidersRes, statsRes] = await Promise.all([
         fetch("/api/admin/news-blogs", { method: "GET", credentials: "include" }),
         fetch("/api/admin/latest-news", { method: "GET", credentials: "include" }),
+        fetch("/api/admin/sliders", { method: "GET", credentials: "include" }),
         fetch("/api/admin/stats", { method: "GET", credentials: "include" }).catch(() => null)
       ]);
 
@@ -101,6 +105,20 @@ export default function AdminDashboard() {
         setStats(prev => ({ 
           ...prev, 
           totalLatestNews: newsCount 
+        }));
+      }
+
+      // Handle sliders response - it returns an array directly
+      if (slidersRes.ok) {
+        const slidersData = await slidersRes.json();
+        console.log("🖼️ Sliders data:", slidersData);
+        
+        // slidersData is an array, so count its length
+        const slidersCount = Array.isArray(slidersData) ? slidersData.length : 0;
+        
+        setStats(prev => ({ 
+          ...prev, 
+          totalSliders: slidersCount 
         }));
       }
 
@@ -140,6 +158,15 @@ export default function AdminDashboard() {
       href: "/admin/latest-news"
     },
     {
+      title: "Sliders",
+      description: "Manage homepage slider images and content.",
+      icon: ImageIcon, // ✅ Use ImageIcon from lucide-react
+      color: "bg-indigo-500",
+      hoverColor: "hover:bg-indigo-600",
+      count: stats.totalSliders,
+      href: "/admin/sliders"
+    },
+    {
       title: "Events",
       description: "Post and manage upcoming events.",
       icon: Calendar,
@@ -159,7 +186,11 @@ export default function AdminDashboard() {
     }
   ];
 
-  if (!mounted || loading) {
+  if (!mounted) {
+    return null;
+  }
+
+  if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
@@ -189,20 +220,27 @@ export default function AdminDashboard() {
             return (
               <div
                 key={index}
-                className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow cursor-pointer group"
-                onClick={() => router.push(card.href)}
+                className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow group"
               >
                 <div className="flex items-center justify-between mb-4">
                   <div className={`p-3 rounded-lg ${card.color} group-hover:scale-110 transition-transform`}>
                     <IconComponent className="h-6 w-6 text-white" />
                   </div>
-                  <span className="text-2xl font-bold text-gray-900">{card.count}</span>
+                  {card.count !== null && (
+                    <span className="text-2xl font-bold text-gray-900">{card.count}</span>
+                  )}
                 </div>
                 
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">{card.title}</h3>
                 <p className="text-gray-600 text-sm mb-4">{card.description}</p>
                 
-                <button className={`w-full ${card.color} ${card.hoverColor} text-white font-medium py-2 px-4 rounded-md transition-colors`}>
+                <button 
+                  onClick={() => {
+                    console.log("Navigating to:", card.href);
+                    router.push(card.href);
+                  }}
+                  className={`w-full ${card.color} ${card.hoverColor} text-white font-medium py-2 px-4 rounded-md transition-colors`}
+                >
                   Manage
                 </button>
               </div>
