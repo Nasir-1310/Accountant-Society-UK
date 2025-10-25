@@ -1,14 +1,16 @@
 // src/components/ConditionalHeader.tsx
 "use client";
 
-import { usePathname } from "next/navigation";
+// import { usePathname } from "next/navigation";
 import Navbar from "@/components/Navbar";
 
 export default function ConditionalHeader() {
-  const pathname = usePathname();
+//   const pathname = usePathname();
   
-  // Hide header on admin routes
-//   if (pathname.startsWith("/admin")) {
+  // Don't show navbar on admin routes
+//   const isAdminRoute = pathname.startsWith("/admin");
+  
+//   if (isAdminRoute) {
 //     return null;
 //   }
 
