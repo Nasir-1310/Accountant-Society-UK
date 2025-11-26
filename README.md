@@ -114,32 +114,6 @@ yarn dev
 
 Create a `.env.local` file in the root directory:
 
-```env
-# Database
-DATABASE_URL="postgresql://username:password@localhost:5432/accountants_society"
-
-# NextAuth
-NEXTAUTH_URL="http://localhost:3000"
-NEXTAUTH_SECRET="your-secret-key-generate-using-openssl"
-
-# Email (SendGrid)
-SENDGRID_API_KEY="your-sendgrid-api-key"
-EMAIL_FROM="noreply@accountantssociety.org"
-
-# AWS S3
-AWS_ACCESS_KEY_ID="your-aws-access-key"
-AWS_SECRET_ACCESS_KEY="your-aws-secret-key"
-AWS_REGION="eu-west-2"
-AWS_S3_BUCKET="accountants-society-assets"
-
-# Stripe
-STRIPE_PUBLIC_KEY="your-stripe-public-key"
-STRIPE_SECRET_KEY="your-stripe-secret-key"
-STRIPE_WEBHOOK_SECRET="your-stripe-webhook-secret"
-
-# App Settings
-NEXT_PUBLIC_APP_URL="http://localhost:3000"
-```
 
 ## 📁 Project Structure
 
@@ -167,69 +141,12 @@ accountants-society-uk/
 ├── public/               # Static assets
 ├── styles/               # Global styles
 └── types/                # TypeScript type definitions
+:
+:
+:
 ```
 
-## 🔌 API Routes
 
-### Authentication
-- `POST /api/auth/register` - User registration
-- `POST /api/auth/login` - User login
-- `POST /api/auth/logout` - User logout
-
-### Members
-- `GET /api/members` - Get all members
-- `GET /api/members/:id` - Get member by ID
-- `PUT /api/members/:id` - Update member profile
-- `DELETE /api/members/:id` - Delete member
-
-### Events
-- `GET /api/events` - Get all events
-- `GET /api/events/:id` - Get event details
-- `POST /api/events` - Create new event (admin)
-- `PUT /api/events/:id` - Update event (admin)
-- `POST /api/events/:id/register` - Register for event
-
-### Resources
-- `GET /api/resources` - Get all resources
-- `GET /api/resources/:id` - Get resource details
-- `POST /api/resources` - Upload resource (admin)
-
-### Payments
-- `POST /api/payments/create-checkout` - Create Stripe checkout session
-- `POST /api/payments/webhook` - Handle Stripe webhooks
-
-## 🗄 Database Schema
-
-Key models in the Prisma schema:
-
-- **User**: Member accounts and authentication
-- **Profile**: Extended member information
-- **Membership**: Membership tier and status
-- **Event**: Professional development events
-- **EventRegistration**: Event attendance tracking
-- **Resource**: Documents and learning materials
-- **Post**: Forum discussions
-- **CPDRecord**: Continuous Professional Development tracking
-
-## 🌐 Deployment
-
-The application is deployed on Vercel with the following configuration:
-
-1. Push your code to GitHub
-2. Connect your repository to Vercel
-3. Configure environment variables in Vercel dashboard
-4. Deploy automatically on push to main branch
-
-### Production Checklist
-- [ ] Set all environment variables
-- [ ] Configure custom domain
-- [ ] Set up SSL certificate
-- [ ] Configure PostgreSQL production database
-- [ ] Set up monitoring and error tracking
-- [ ] Configure email service
-- [ ] Set up automated backups
-- [ ] Test payment integration
-- [ ] Enable CDN for static assets
 
 ## 📸 Screenshots
 
@@ -266,7 +183,7 @@ Developed and maintained by me[Nasir-1310].
 
 For questions or support, please contact:
 - Email: nasir.iit.du@gmail.com
-- Website: [accountantssociety.org](https://accountantssociety.org)
+- Website: [[accountantssociety.org](https://accountantssociety.org)]
 
 ---
 
