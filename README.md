@@ -2,7 +2,7 @@
 
 A comprehensive web platform for the Accountants Society UK, built to connect accounting professionals, provide resources, and facilitate professional development.
 
-🔗 **Live Site**: [accountantssociety.org](https://accountantssociety.org)
+🔗 **Live Site**: [[www.accountantssociety.org](https://www.accountantssociety.org/)]
 
 ## 📋 Table of Contents
 
