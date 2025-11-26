@@ -10,14 +10,9 @@ A comprehensive web platform for the Accountants Society UK, built to connect ac
 - [Features](#features)
 - [Tech Stack](#tech-stack)
 - [Getting Started](#getting-started)
-- [Installation](#installation)
-- [Environment Variables](#environment-variables)
 - [Project Structure](#project-structure)
-- [API Routes](#api-routes)
-- [Database Schema](#database-schema)
-- [Deployment](#deployment)
 - [Contributing](#contributing)
-- [License](#license)
+
 
 ## 🎯 Overview
 
@@ -151,7 +146,8 @@ accountants-society-uk/
 ## 📸 Screenshots
 
 Home page: 
-<img width="990" height="590" alt="image" src="https://github.com/user-attachments/assets/8cf7972e-7d5b-48a6-87f3-710bcbfbf27c" />
+<img width="869" height="579" alt="image" src="https://github.com/user-attachments/assets/69650b4c-3b28-461f-9836-e3195cd95ff8" />
+
 About Us:
 <img width="884" height="598" alt="image" src="https://github.com/user-attachments/assets/2ae04622-c000-4e17-ad88-038c34b160ba" />
 Contact Us:
@@ -171,9 +167,6 @@ We welcome contributions from the community! Please follow these guidelines:
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 👥 Team
 
