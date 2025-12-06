@@ -43,7 +43,7 @@ const FoundingMembers = [
       {
     name: "Afroza Amin Jhuma",
     title: " FCCA, MBA, MSc Financial leader| Chartered Certified Accountant| Strategic Advisor",
-    image: "/founding_members/",
+    image: "/founding_members/juma.png",
     linkedin: "https://www.linkedin.com/in/example-iftekharul/",
 
   },
@@ -57,21 +57,21 @@ const FoundingMembers = [
        {
     name: "Md Mijanur Rahman",
     title: "Designation will be updated.",
-    image: "/founding_members/",
+    image: "/founding_members/mizanur_rahman.png",
     linkedin: "https://www.linkedin.com/in/example-iftekharul/",
 
   },
       {
     name: "Mohammed Kamrul Aziz",
     title: "Designation will be updated.",
-    image: "/founding_members/",
+    image: "/founding_members/kamrun.png",
     linkedin: "https://www.linkedin.com/in/example-iftekharul/",
 
   },
       {
     name: "Harisa Islam",
     title: "Designation will be updated.",
-    image: "/founding_members/",
+    image: "/founding_members/harsina.png",
     linkedin: "https://www.linkedin.com/in/example-iftekharul/",
 
   },
@@ -99,7 +99,7 @@ const FoundingMembers = [
        {
     name: "MD Sultanul Abedin",
     title: "Designation will be updated.",
-    image: "/founding_members/",
+    image: "/founding_members/sultanul.png",
     linkedin: "https://www.linkedin.com/in/example-iftekharul/",
 
   },
@@ -113,7 +113,7 @@ const FoundingMembers = [
    {
     name: "Md Alinur Rahman",
     title: "Bsc (Hons), MBA, FCCA",
-    image: "/founding_members/",
+    image: "/founding_members/alinur.png",
     linkedin: "https://www.linkedin.com/in/example-iftekharul/",
 
   },
