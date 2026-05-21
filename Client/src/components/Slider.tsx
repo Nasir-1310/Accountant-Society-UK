@@ -161,15 +161,15 @@ const Slider = () => {
 
               {/* ── Left: Text Section ── */}
               <div className="w-full lg:w-2/5 px-4 sm:px-6 py-5 sm:py-8 flex flex-col justify-center gap-3 relative order-2 lg:order-1"
-                style={{ background: "linear-gradient(135deg, #0a2818 0%, #14532d 60%, #1a3a0a 100%)" }}>
+                style={{ background: "linear-gradient(160deg, #1e3a6e 0%, #1a4fa8 50%, #1565c0 100%)" }}>
 
                 {/* Event badge */}
-                <div className="flex items-center gap-2 w-fit bg-white/10 border border-white/20 px-3 py-1 rounded-full">
+                {/* <div className="flex items-center gap-2 w-fit bg-white/10 border border-white/20 px-3 py-1 rounded-full">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse inline-block" />
                   <span className="text-xs font-semibold text-emerald-300 tracking-widest uppercase">
                     British Bangladeshi
                   </span>
-                </div>
+                </div> */}
 
                 <h2 className="text-2xl sm:text-3xl font-bold text-white leading-tight break-words hyphens-auto">
                   {slides[current].title}
@@ -182,14 +182,15 @@ const Slider = () => {
                 {/* Register button */}
                 <button
                   onClick={() => setShowModal(true)}
-                  className="inline-flex items-center gap-2 w-fit px-5 py-2.5 rounded-lg text-sm font-semibold text-white transition-all duration-300 hover:scale-105 hover:brightness-110"
+                  className="inline-flex items-center gap-2 w-fit px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 hover:scale-105 hover:bg-blue-50"
                   style={{
-                    background: "linear-gradient(90deg, #166534 0%, #15803d 50%, #92400e 100%)",
-                    boxShadow: "0 4px 18px rgba(21,128,61,0.5)",
+                    background: "#ffffff",
+                    color: "#0a3681",
+                    boxShadow: "0 4px 18px rgba(0,0,0,0.2)",
                   }}
                 >
                   🎓 Register Now
-                  <span className="bg-white/15 border border-white/25 text-[10px] px-2 py-0.5 rounded-full tracking-wide">
+                  <span className="bg-blue-100 border border-blue-200 text-blue-700 text-[10px] px-2 py-0.5 rounded-full tracking-wide font-semibold">
                     FREE
                   </span>
                 </button>
@@ -295,7 +296,7 @@ const Slider = () => {
               <>
                 <div className="mb-5">
                   <span className="inline-block bg-green-100 text-green-700 text-xs font-semibold px-3 py-1 rounded-full mb-2 tracking-wide">
-                    🎓 BBCA 2026
+                    BBAD 2026
                   </span>
                   <h3 className="text-lg font-bold text-gray-800">
                     Register for Accountants&apos; Day 2026
@@ -409,9 +410,9 @@ const Slider = () => {
                     )}
                   </button>
 
-                  <p className="text-center text-xs text-gray-400 pt-1">
+                  {/* <p className="text-center text-xs text-gray-400 pt-1">
                     Your information will be sent to tpasbd@gmail.com
-                  </p>
+                  </p> */}
                 </form>
               </>
             )}
