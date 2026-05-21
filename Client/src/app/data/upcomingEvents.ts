@@ -1,11 +1,11 @@
 // Use 800x500 or 1200x675 for sharp display jpg or webp for fast load
 const upcomingEvents = [
   {
-    image: "/upcoming_events/event11.jpg",
-    title: "Signature Event scheduled for 27 September 2025",
-    date: " Saturday, 27 September 2025",
+    image: "/upcoming_events/acc-day-2026.jpeg",
+    title: "We are Celebrating Brithis Bangladeshi Accountants' Day 2026",
+    date: " Saturday, 26 September 2026",
     description:
-      "Join us for the most anticipated gathering of the year — The 2025 Signature Event — a celebration of innovation, community, and shared vision. This hallmark occasion brings together leaders, changemakers, and passionate individuals from across the country to connect, collaborate, and inspire.",
+      "Join us for the most anticipated gathering of the year — Brithis Bangladeshi Accountants' Day 2026",
   },
   {
     image: "/upcoming_events/event2.jpg",

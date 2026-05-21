@@ -9,6 +9,23 @@ const s3Client = new S3Client({
   },
 });
 
+function assertS3Env() {
+  const missing = [
+    "AWS_REGION",
+    "AWS_ACCESS_KEY_ID",
+    "AWS_SECRET_ACCESS_KEY",
+    "AWS_S3_BUCKET_NAME",
+  ].filter((key) => !process.env[key]);
+
+  if (missing.length > 0) {
+    throw new Error(`Missing required AWS environment variables: ${missing.join(", ")}`);
+  }
+
+  const accessKeyId = process.env.AWS_ACCESS_KEY_ID || "";
+  const accessKeySuffix = accessKeyId.slice(-4).padStart(4, "*");
+  console.log(`✅ S3 env loaded. AWS_ACCESS_KEY_ID ends with: ${accessKeySuffix}`);
+}
+
 /**
  * Upload a file to AWS S3
  * @param file - Buffer containing the file data
@@ -21,11 +38,13 @@ export async function uploadToS3(
   fileName: string,
   contentType: string
 ): Promise<string> {
+  assertS3Env();
+
   const sanitizedFileName = fileName
     .replace(/\s+/g, "-")
     .replace(/[^a-zA-Z0-9.\-_]/g, "");
 
-  const key = `latest-news/${Date.now()}-${sanitizedFileName}`;
+  const key = `sliders/${Date.now()}-${sanitizedFileName}`;
 
   const command = new PutObjectCommand({
     Bucket: process.env.AWS_S3_BUCKET_NAME!,
@@ -44,7 +63,7 @@ export async function uploadToS3(
     const message =
       error instanceof Error ? error.message : JSON.stringify(error);
     console.error("❌ S3 upload failed:", message);
-    throw new Error("Failed to upload image to S3");
+    throw new Error(`Failed to upload image to S3: ${message}`);
   }
 }
 
@@ -54,6 +73,8 @@ export async function uploadToS3(
  */
 export async function deleteFromS3(imageUrl: string): Promise<void> {
   try {
+    assertS3Env();
+
     const url = new URL(imageUrl);
     const key = url.pathname.substring(1); // remove leading '/'
 
@@ -68,7 +89,7 @@ export async function deleteFromS3(imageUrl: string): Promise<void> {
     const message =
       error instanceof Error ? error.message : JSON.stringify(error);
     console.error("❌ S3 delete failed:", message);
-    throw new Error("Failed to delete image from S3");
+    throw new Error(`Failed to delete image from S3: ${message}`);
   }
 }
 
