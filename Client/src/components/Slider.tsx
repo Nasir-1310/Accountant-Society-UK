@@ -532,9 +532,9 @@ const Slider = () => {
                     )}
                   </button>
 
-                  <p className="text-center text-[11px] text-gray-400">
+                  {/* <p className="text-center text-[11px] text-gray-400">
                     Your details will be sent to tpasbd@gmail.com
-                  </p>
+                  </p> */}
                 </form>
               </div>
             )}
