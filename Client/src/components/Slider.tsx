@@ -28,7 +28,7 @@ const Slider = () => {
   const [slides, setSlides] = useState<Slide[]>([]);
   const [current, setCurrent] = useState(0);
   const [loading, setLoading] = useState(true);
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(true);
   const [formData, setFormData] = useState<FormData>({
     first_name: "",
     middle_name: "",
