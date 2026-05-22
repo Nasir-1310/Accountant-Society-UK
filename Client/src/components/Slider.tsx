@@ -24,7 +24,7 @@ interface FormData {
 }
 
 const Slider = () => {
-  const eventName = "Accountants' Day 2026";
+  const eventName = " The British Bangladeshi Accountants’ Day - 2026";
   const eventDate = "2026-09-26";
   const [slides, setSlides] = useState<Slide[]>([]);
   const [current, setCurrent] = useState(0);
