@@ -2,7 +2,6 @@
 import { ChevronLeft, ChevronRight, X, User, Phone, Mail, AlertCircle } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import emailjs from "@emailjs/browser";
 import Container from "./Container";
 
 interface Slide {
@@ -25,6 +24,8 @@ interface FormData {
 }
 
 const Slider = () => {
+  const eventName = "Accountants' Day 2026";
+  const eventDate = "2026-09-26";
   const [slides, setSlides] = useState<Slide[]>([]);
   const [current, setCurrent] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -113,24 +114,32 @@ const Slider = () => {
 
     setSubmitting(true);
     try {
-      await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
-        {
+      const res = await fetch("/api/registrations", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
           first_name: formData.first_name,
-          middle_name: formData.middle_name || "N/A",
+          middle_name: formData.middle_name,
           surname: formData.surname,
           phone: formData.phone,
           email: formData.email,
-          company: formData.company || "N/A",
-        },
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
-      );
+          company: formData.company,
+          eventName,
+          eventDate,
+        }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || "Failed to register");
+      }
+
       setSubmitted(true);
       setFormData({ first_name: "", middle_name: "", surname: "", phone: "", email: "", company: "" });
       setTouched({});
-    } catch {
-      setError("Failed to send registration. Please try again.");
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Failed to register. Please try again.";
+      setError(message);
     } finally {
       setSubmitting(false);
     }
@@ -238,7 +247,7 @@ const Slider = () => {
                   onClick={() => setShowModal(true)}
                   className="reg-btn inline-flex items-center gap-2.5 w-fit px-5 py-2.5 rounded-lg text-sm font-bold transition-all duration-300 hover:scale-105 hover:brightness-105 relative overflow-hidden"
                   style={{
-                    background: "linear-gradient(135deg, #ffffff 0%, #dbeafe 50%, #eff6ff 100%)",
+                    backgroundImage: "linear-gradient(135deg, #ffffff 0%, #dbeafe 50%, #eff6ff 100%)",
                     color: "#1e3a8a",
                     boxShadow: "0 0 0 1.5px rgba(255,255,255,0.8), 0 8px 24px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.9)",
                   }}
@@ -390,7 +399,7 @@ const Slider = () => {
               </div>
 
               <h3 className="text-white font-bold text-base">
-                Register for Accountants&apos; Day 2026
+                Register for {eventName}
               </h3>
               <p className="text-blue-200 text-xs mt-0.5">
                 26 September 2026 — Free Registration
@@ -579,7 +588,7 @@ const Slider = () => {
                     disabled={submitting}
                     className="w-full py-3 rounded-xl text-white text-sm font-semibold transition-all duration-300 hover:scale-[1.02] hover:shadow-xl disabled:opacity-70 disabled:cursor-not-allowed disabled:scale-100 flex items-center justify-center gap-2 mt-1 relative overflow-hidden"
                     style={{
-                      background: submitting
+                      backgroundImage: submitting
                         ? "linear-gradient(90deg, #1a4fa8, #1565c0)"
                         : "linear-gradient(90deg, #1e3a6e 0%, #1a4fa8 30%, #2563eb 60%, #ca8a04 100%)",
                       boxShadow: submitting

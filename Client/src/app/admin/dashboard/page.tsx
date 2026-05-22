@@ -3,9 +3,9 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { 
-  Users, 
-  Calendar, 
+import {
+  Users,
+  Calendar,
   FileText,
   Newspaper,
   ImageIcon // ✅ Import ImageIcon from lucide-react
@@ -17,6 +17,7 @@ interface DashboardStats {
   totalMembers: number;
   totalLatestNews: number;
   totalSliders: number;
+  totalRegistrations: number;
 }
 
 export default function AdminDashboard() {
@@ -29,7 +30,8 @@ export default function AdminDashboard() {
     totalEvents: 0,
     totalMembers: 0,
     totalLatestNews: 0,
-    totalSliders: 0
+    totalSliders: 0,
+    totalRegistrations: 0
   });
 
   useEffect(() => {
@@ -71,22 +73,23 @@ export default function AdminDashboard() {
   const fetchStats = async () => {
     try {
       // Fetch all data in parallel
-      const [newsBlogsRes, latestNewsRes, slidersRes, statsRes] = await Promise.all([
+      const [newsBlogsRes, latestNewsRes, slidersRes, statsRes, registrationsRes] = await Promise.all([
         fetch("/api/admin/news-blogs", { method: "GET", credentials: "include" }),
         fetch("/api/admin/latest-news", { method: "GET", credentials: "include" }),
         fetch("/api/admin/sliders", { method: "GET", credentials: "include" }),
-        fetch("/api/admin/stats", { method: "GET", credentials: "include" }).catch(() => null)
+        fetch("/api/admin/stats", { method: "GET", credentials: "include" }).catch(() => null),
+        fetch("/api/admin/registrations", { method: "GET", credentials: "include" })
       ]);
 
       // Handle news-blogs response
       if (newsBlogsRes.ok) {
         const newsBlogsData = await newsBlogsRes.json();
         console.log("📝 News-Blogs data:", newsBlogsData);
-        
+
         // Extract stats from the response
         const totalPosts = newsBlogsData.stats?.total || 0;
         const totalEvents = newsBlogsData.stats?.byType?.event || 0;
-        
+
         setStats(prev => ({
           ...prev,
           totalPosts,
@@ -98,13 +101,13 @@ export default function AdminDashboard() {
       if (latestNewsRes.ok) {
         const newsData = await latestNewsRes.json();
         console.log("📰 Latest news data:", newsData);
-        
+
         // newsData is an array, so count its length
         const newsCount = Array.isArray(newsData) ? newsData.length : 0;
-        
-        setStats(prev => ({ 
-          ...prev, 
-          totalLatestNews: newsCount 
+
+        setStats(prev => ({
+          ...prev,
+          totalLatestNews: newsCount
         }));
       }
 
@@ -112,13 +115,24 @@ export default function AdminDashboard() {
       if (slidersRes.ok) {
         const slidersData = await slidersRes.json();
         console.log("🖼️ Sliders data:", slidersData);
-        
+
         // slidersData is an array, so count its length
         const slidersCount = Array.isArray(slidersData) ? slidersData.length : 0;
-        
-        setStats(prev => ({ 
-          ...prev, 
-          totalSliders: slidersCount 
+
+        setStats(prev => ({
+          ...prev,
+          totalSliders: slidersCount
+        }));
+      }
+
+      // Handle registrations response - it returns an array directly
+      if (registrationsRes.ok) {
+        const registrationsData = await registrationsRes.json();
+        const registrationsCount = Array.isArray(registrationsData) ? registrationsData.length : 0;
+
+        setStats(prev => ({
+          ...prev,
+          totalRegistrations: registrationsCount,
         }));
       }
 
@@ -126,7 +140,7 @@ export default function AdminDashboard() {
       if (statsRes && statsRes.ok) {
         const statsData = await statsRes.json();
         console.log("📊 Additional stats data:", statsData);
-        
+
         setStats(prev => ({
           ...prev,
           totalMembers: statsData.totalMembers || prev.totalMembers,
@@ -183,6 +197,15 @@ export default function AdminDashboard() {
       hoverColor: "hover:bg-purple-600",
       count: stats.totalMembers,
       href: "/admin/members"
+    },
+    {
+      title: "Registrations",
+      description: "View event registrations and download CSV.",
+      icon: Users,
+      color: "bg-teal-500",
+      hoverColor: "hover:bg-teal-600",
+      count: stats.totalRegistrations,
+      href: "/admin/registrations"
     }
   ];
 
@@ -216,7 +239,7 @@ export default function AdminDashboard() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {dashboardCards.map((card, index) => {
             const IconComponent = card.icon;
-            
+
             return (
               <div
                 key={index}
@@ -230,11 +253,11 @@ export default function AdminDashboard() {
                     <span className="text-2xl font-bold text-gray-900">{card.count}</span>
                   )}
                 </div>
-                
+
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">{card.title}</h3>
                 <p className="text-gray-600 text-sm mb-4">{card.description}</p>
-                
-                <button 
+
+                <button
                   onClick={() => {
                     console.log("Navigating to:", card.href);
                     router.push(card.href);

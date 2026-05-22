@@ -1,7 +1,7 @@
 // Use 800x500 or 1200x675 for sharp display jpg or webp for fast load
 const upcomingEvents = [
   {
-    image: "/upcoming_events/acc-day-2026.jpeg",
+    image: "/upcoming_events/event-26.jpeg",
     title: "We are Celebrating Brithis Bangladeshi Accountants' Day 2026",
     date: " Saturday, 26 September 2026",
     description:
