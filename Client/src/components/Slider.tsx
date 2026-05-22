@@ -191,7 +191,7 @@ const Slider = () => {
                 className="w-full lg:w-2/5 px-4 sm:px-6 py-5 sm:py-8 flex flex-col justify-center gap-3 relative order-2 lg:order-1"
                 style={{ background: "linear-gradient(160deg, #1e3a6e 0%, #1a4fa8 50%, #1565c0 100%)" }}
               >
-                <h2 className="text-2xl sm:text-3xl font-bold text-white leading-tight break-words hyphens-auto">
+                <h2 className="text-lg sm:text-xl md:text-[22px] lg:text-2xl font-bold text-white leading-tight break-words hyphens-auto">
                   {slides[current].title}
                 </h2>
 
@@ -200,19 +200,81 @@ const Slider = () => {
                 </p>
 
                 {/* Register button */}
+                <style>{`
+  @keyframes reg-shimmer {
+    0% { transform: translateX(-150%) skewX(-15deg); }
+    100% { transform: translateX(250%) skewX(-15deg); }
+  }
+  @keyframes reg-border {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  @keyframes reg-arrow {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(4px); }
+  }
+  .reg-btn .reg-shimmer {
+    animation: reg-shimmer 1.6s ease-in-out infinite;
+  }
+  .reg-btn .reg-arrow {
+    animation: reg-arrow 1s ease-in-out infinite;
+  }
+  .reg-btn::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 10px;
+    padding: 2px;
+    background: linear-gradient(90deg, #ffffff, #93c5fd, #ffffff, #fbbf24, #ffffff);
+    background-size: 300% 100%;
+    animation: reg-border 1.5s ease-in-out infinite;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+`}</style>
+
                 <button
                   onClick={() => setShowModal(true)}
-                  className="inline-flex items-center gap-2 w-fit px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 hover:scale-105"
+                  className="reg-btn inline-flex items-center gap-2.5 w-fit px-5 py-2.5 rounded-lg text-sm font-bold transition-all duration-300 hover:scale-105 hover:brightness-105 relative overflow-hidden"
                   style={{
-                    background: "#ffffff",
-                    color: "#0a3681",
-                    boxShadow: "0 4px 18px rgba(0,0,0,0.2)",
+                    background: "linear-gradient(135deg, #ffffff 0%, #dbeafe 50%, #eff6ff 100%)",
+                    color: "#1e3a8a",
+                    boxShadow: "0 0 0 1.5px rgba(255,255,255,0.8), 0 8px 24px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.9)",
                   }}
                 >
-                  Register Now
-                  <span className="bg-blue-100 border border-blue-200 text-blue-700 text-[10px] px-2 py-0.5 rounded-full tracking-wide font-semibold">
+                  {/* Shimmer sweep */}
+                  <span
+                    className="reg-shimmer absolute inset-0 pointer-events-none"
+                    style={{
+                      background: "linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.75) 50%, transparent 65%)",
+                    }}
+                  />
+
+                  {/* Pulsing dot */}
+                  <span className="relative z-10 flex items-center gap-1.5">
+                    <span className="relative flex h-4.5 w-4.5">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-60"></span>
+                      <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-600"></span>
+                    </span>
+                  </span>
+
+                  <span className="relative z-10 font-bold tracking-wide">Register Now</span>
+
+                  {/* FREE badge */}
+                  <span
+                    className="relative z-10 text-[10px] px-2 py-0.5 rounded-full font-bold tracking-widest"
+                    style={{
+                      background: "linear-gradient(90deg, #3e5277, #618ef0)",
+                      color: "#ffffff",
+                      boxShadow: "0 2px 6px rgba(37,99,235,0.4)",
+                    }}
+                  >
                     FREE
                   </span>
+
+                  {/* Animated arrow */}
+                  <span className="reg-arrow relative z-10 text-blue-600 font-bold">→</span>
                 </button>
 
                 {/* Prev arrow */}
@@ -345,9 +407,7 @@ const Slider = () => {
                   Registration Successful!
                 </h3>
                 <p className="text-gray-500 text-sm leading-relaxed">
-                  Thank you for registering. A confirmation has been sent to{" "}
-                  <strong className="text-gray-700">tpasbd@gmail.com</strong>.
-                  We look forward to seeing you on the day!
+                  Thank you for registering. We look forward to seeing you on the day!
                 </p>
                 <button
                   onClick={closeModal}
@@ -513,24 +573,58 @@ const Slider = () => {
                   )}
 
                   {/* Submit */}
+                  {/* Submit */}
                   <button
                     type="submit"
                     disabled={submitting}
-                    className="w-full py-3 rounded-xl text-white text-sm font-semibold transition-all duration-200 hover:brightness-110 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-1"
+                    className="w-full py-3 rounded-xl text-white text-sm font-semibold transition-all duration-300 hover:scale-[1.02] hover:shadow-xl disabled:opacity-70 disabled:cursor-not-allowed disabled:scale-100 flex items-center justify-center gap-2 mt-1 relative overflow-hidden"
                     style={{
-                      background: "linear-gradient(90deg, #1e3a6e 0%, #1a4fa8 60%, #1565c0 100%)",
-                      boxShadow: "0 4px 14px rgba(26,79,168,0.35)",
+                      background: submitting
+                        ? "linear-gradient(90deg, #1a4fa8, #1565c0)"
+                        : "linear-gradient(90deg, #1e3a6e 0%, #1a4fa8 30%, #2563eb 60%, #ca8a04 100%)",
+                      boxShadow: submitting
+                        ? "0 4px 14px rgba(26,79,168,0.2)"
+                        : "0 4px 20px rgba(37,99,235,0.45)",
+                      backgroundSize: "200% 100%",
+                      animation: submitting ? "none" : undefined,
                     }}
                   >
+                    {/* Shimmer effect when idle */}
+                    {!submitting && (
+                      <span
+                        className="absolute inset-0 opacity-20"
+                        style={{
+                          background: "linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.6) 50%, transparent 60%)",
+                          animation: "shimmer 2s infinite",
+                        }}
+                      />
+                    )}
+
                     {submitting ? (
-                      <>
-                        <span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />
-                        Submitting...
-                      </>
+                      <span className="flex items-center gap-2.5 relative z-10">
+                        {/* Triple dot pulse animation */}
+                        <span className="flex gap-1">
+                          <span className="w-2 h-2 bg-white rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
+                          <span className="w-2 h-2 bg-white rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
+                          <span className="w-2 h-2 bg-white rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
+                        </span>
+                        Submitting Registration...
+                      </span>
                     ) : (
-                      "Submit Registration →"
+                      <span className="flex items-center gap-2 relative z-10">
+                        ✉ Submit Registration
+                        <span className="text-base">→</span>
+                      </span>
                     )}
                   </button>
+
+                  {/* Shimmer keyframe */}
+                  <style>{`
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+`}</style>
 
                   {/* <p className="text-center text-[11px] text-gray-400">
                     Your details will be sent to tpasbd@gmail.com
