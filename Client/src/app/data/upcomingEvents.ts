@@ -2,10 +2,10 @@
 const upcomingEvents = [
   {
     image: "/upcoming_events/event-26.jpeg",
-    title: "We are Celebrating Brithis Bangladeshi Accountants' Day 2026",
+    title: "We are Celebrating The British Bangladeshi Accountants' Day 2026",
     date: " Saturday, 26 September 2026",
     description:
-      "Join us for the most anticipated gathering of the year — Brithis Bangladeshi Accountants' Day 2026",
+      "Join us for the most anticipated gathering of the year —The British Bangladeshi Accountants' Day 2026",
   },
   {
     image: "/upcoming_events/event2.jpg",

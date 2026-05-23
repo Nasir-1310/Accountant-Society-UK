@@ -342,6 +342,14 @@ const Slider = () => {
                   >
                     <ChevronLeft size={14} />
                   </button>
+
+                  <p className="text-center text-[10px] text-gray-400">
+                    Note: Your information is private. We never share your details with anyone else.
+                  </p>
+
+                  <p className="text-center text-[10px] text-gray-400">
+                    Note: Your information is private. We never share your details with anyone else.
+                  </p>
                   <button
                     onClick={handleNext}
                     className="bg-black/50 text-white p-1.5 rounded-full hover:bg-black/70 transition"
@@ -364,7 +372,7 @@ const Slider = () => {
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/65 backdrop-blur-sm px-4 py-6"
           onClick={(e) => { if (e.target === e.currentTarget) closeModal(); }}
         >
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md relative overflow-hidden">
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md relative max-h-[90vh] overflow-y-auto scroll-smooth modal-scroll">
 
             {/* Modal top banner with logo */}
             <div
@@ -417,6 +425,9 @@ const Slider = () => {
                 </h3>
                 <p className="text-gray-500 text-sm leading-relaxed">
                   Thank you for registering. We look forward to seeing you on the day!
+                </p>
+                <p className="text-gray-400 text-xs mt-2">
+                  A confirmation email has been sent. Please check your inbox or spam folder.
                 </p>
                 <button
                   onClick={closeModal}
@@ -581,6 +592,10 @@ const Slider = () => {
                     </div>
                   )}
 
+                  <p className="text-center text-[10px] text-gray-400">
+                    Note: Your information is private. We never share your details with anyone else.
+                  </p>
+
                   {/* Submit */}
                   {/* Submit */}
                   <button
@@ -635,15 +650,21 @@ const Slider = () => {
   }
 `}</style>
 
-                  {/* <p className="text-center text-[11px] text-gray-400">
-                    Your details will be sent to tpasbd@gmail.com
-                  </p> */}
                 </form>
               </div>
             )}
           </div>
         </div>
       )}
+      <style>{`
+        .modal-scroll {
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+        }
+        .modal-scroll::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </>
   );
 };
