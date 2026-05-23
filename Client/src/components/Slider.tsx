@@ -29,7 +29,7 @@ const Slider = () => {
   const [slides, setSlides] = useState<Slide[]>([]);
   const [current, setCurrent] = useState(0);
   const [loading, setLoading] = useState(true);
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     first_name: "",
     middle_name: "",
@@ -68,6 +68,14 @@ const Slider = () => {
     }, 4000);
     return () => clearInterval(interval);
   }, [slides.length]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowModal(true);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = showModal ? "hidden" : "";
@@ -343,13 +351,13 @@ const Slider = () => {
                     <ChevronLeft size={14} />
                   </button>
 
-                  <p className="text-center text-[10px] text-gray-400">
+                  {/* <p className="text-center text-[10px] text-gray-400">
                     Note: Your information is private. We never share your details with anyone else.
-                  </p>
+                  </p> */}
 
-                  <p className="text-center text-[10px] text-gray-400">
+                  {/* <p className="text-center text-[10px] text-gray-400">
                     Note: Your information is private. We never share your details with anyone else.
-                  </p>
+                  </p> */}
                   <button
                     onClick={handleNext}
                     className="bg-black/50 text-white p-1.5 rounded-full hover:bg-black/70 transition"
@@ -388,7 +396,7 @@ const Slider = () => {
               </button>
 
               {/* Logo */}
-              <div className="flex items-center gap-3 mb-3">
+              <div className="flex items-center justify-between gap-3 mb-3">
                 <Image
                   src="/logo/logo-mobile.svg"
                   alt="Logo"
@@ -396,14 +404,15 @@ const Slider = () => {
                   height={80}
                   className="object-contain"
                 />
-                {/* <div>
-                  <p className="text-white font-bold text-sm leading-tight">
-                    British Bangladeshi
-                  </p>
-                  <p className="text-blue-200 text-xs">
-                    Chartered Accountants
-                  </p>
-                </div> */}
+                <div className="pr-8">
+                  <Image
+                    src="/logo/logo-acc-day.jpg"
+                    alt="Accountants Day logo"
+                    width={100}
+                    height={80}
+                    className="object-contain"
+                  />
+                </div>
               </div>
 
               <h3 className="text-white font-bold text-base">
@@ -464,7 +473,7 @@ const Slider = () => {
                         value={formData.first_name}
                         onChange={handleChange}
                         onBlur={() => handleBlur("first_name")}
-                        placeholder="Iftekhar"
+                        placeholder="Mohammad"
                         className={`w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:border-transparent transition ${getFieldError("first_name")
                           ? "border-red-300 focus:ring-red-300 bg-red-50"
                           : "border-gray-200 focus:ring-blue-400"
@@ -488,7 +497,7 @@ const Slider = () => {
                         name="middle_name"
                         value={formData.middle_name}
                         onChange={handleChange}
-                        placeholder="Chowdhury"
+                        placeholder="Tanvir"
                         className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition"
                       />
                     </div>
@@ -506,7 +515,7 @@ const Slider = () => {
                       value={formData.surname}
                       onChange={handleChange}
                       onBlur={() => handleBlur("surname")}
-                      placeholder="Zakir"
+                      placeholder="Hossain"
                       className={`w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:border-transparent transition ${getFieldError("surname")
                         ? "border-red-300 focus:ring-red-300 bg-red-50"
                         : "border-gray-200 focus:ring-blue-400"
