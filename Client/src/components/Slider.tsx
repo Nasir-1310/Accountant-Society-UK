@@ -464,7 +464,7 @@ const Slider = () => {
                         value={formData.first_name}
                         onChange={handleChange}
                         onBlur={() => handleBlur("first_name")}
-                        placeholder="John"
+                        placeholder="Iftekhar"
                         className={`w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:border-transparent transition ${getFieldError("first_name")
                           ? "border-red-300 focus:ring-red-300 bg-red-50"
                           : "border-gray-200 focus:ring-blue-400"
@@ -488,7 +488,7 @@ const Slider = () => {
                         name="middle_name"
                         value={formData.middle_name}
                         onChange={handleChange}
-                        placeholder="Robert"
+                        placeholder="Chowdhury"
                         className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition"
                       />
                     </div>
@@ -506,7 +506,7 @@ const Slider = () => {
                       value={formData.surname}
                       onChange={handleChange}
                       onBlur={() => handleBlur("surname")}
-                      placeholder="Ahmed"
+                      placeholder="Zakir"
                       className={`w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:border-transparent transition ${getFieldError("surname")
                         ? "border-red-300 focus:ring-red-300 bg-red-50"
                         : "border-gray-200 focus:ring-blue-400"
@@ -580,7 +580,7 @@ const Slider = () => {
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
-                      placeholder="e.g. ACCA, ICAEW, Self-employed"
+                      placeholder="e.g. ACCA, ICAEW"
                       className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition"
                     />
                   </div>
