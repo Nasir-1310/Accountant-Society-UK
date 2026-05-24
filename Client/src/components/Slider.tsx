@@ -408,7 +408,7 @@ const Slider = () => {
                   <Image
                     src="/logo/logo-acc-day.jpg"
                     alt="Accountants Day logo"
-                    width={100}
+                    width={120}
                     height={80}
                     className="object-contain"
                   />
