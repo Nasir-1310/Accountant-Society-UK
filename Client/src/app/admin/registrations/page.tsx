@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Download, Trash2, Users } from "lucide-react";
+import { Download, Search, Trash2, Users } from "lucide-react";
 
 interface RegistrationItem {
     id: string;
@@ -23,11 +23,14 @@ interface RegistrationItem {
 export default function AdminRegistrationsPage() {
     const [registrations, setRegistrations] = useState<RegistrationItem[]>([]);
     const [loading, setLoading] = useState(true);
+    const [loadError, setLoadError] = useState(false);
+    const [search, setSearch] = useState("");
     const [deletingId, setDeletingId] = useState<string | null>(null);
     const [notice, setNotice] = useState<{ text: string; error: boolean } | null>(null);
 
     const fetchRegistrations = async () => {
         try {
+            setLoadError(false);
             const res = await fetch("/api/admin/registrations", {
                 credentials: "include",
             });
@@ -40,6 +43,7 @@ export default function AdminRegistrationsPage() {
             setRegistrations(data);
         } catch (error) {
             console.error("Error fetching registrations:", error);
+            setLoadError(true);
         } finally {
             setLoading(false);
         }
@@ -81,6 +85,23 @@ export default function AdminRegistrationsPage() {
         }
     };
 
+    const summary = [
+        { label: "Total registered", count: registrations.length },
+        { label: "Business owners", count: registrations.filter((item) => item.profession === "Business Owner").length },
+        { label: "Membership interest", count: registrations.filter((item) => item.interest === "Membership").length },
+        { label: "Sponsorship interest", count: registrations.filter((item) => item.interest === "Sponsorship").length },
+        { label: "Advertising interest", count: registrations.filter((item) => item.interest === "Advertising").length },
+        { label: "Other interests", count: registrations.filter((item) => item.interest === "Other").length },
+    ];
+    const query = search.trim().toLowerCase();
+    const filteredRegistrations = query
+        ? registrations.filter((item) => [
+            item.firstName, item.middleName, item.surname, item.email, item.phone,
+            item.company, item.profession, item.professionOther,
+            item.interest, item.interestOther, item.eventName,
+        ].join(" ").toLowerCase().includes(query))
+        : registrations;
+
     if (loading) {
         return (
             <div className="min-h-screen flex items-center justify-center">
@@ -88,6 +109,21 @@ export default function AdminRegistrationsPage() {
                     <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
                     <p className="text-gray-600">Loading registrations...</p>
                 </div>
+            </div>
+        );
+    }
+
+    if (loadError) {
+        return (
+            <div className="min-h-screen flex flex-col items-center justify-center gap-4 p-6">
+                <p role="alert" className="text-red-700">Could not load registrations.</p>
+                <button
+                    type="button"
+                    onClick={() => { setLoading(true); fetchRegistrations(); }}
+                    className="rounded-lg bg-blue-700 px-4 py-2 text-white hover:bg-blue-800"
+                >
+                    Try again
+                </button>
             </div>
         );
     }
@@ -118,10 +154,42 @@ export default function AdminRegistrationsPage() {
                     </p>
                 )}
 
+                <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 xl:grid-cols-6 mb-6">
+                    {summary.map((item) => (
+                        <div key={item.label} className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+                            <p className="text-xs font-medium text-gray-600">{item.label}</p>
+                            <p className="mt-2 text-2xl font-bold text-gray-900">{item.count}</p>
+                        </div>
+                    ))}
+                </div>
+
+                {registrations.length > 0 && (
+                    <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                        <label className="relative block w-full sm:max-w-sm">
+                            <span className="sr-only">Search registrations</span>
+                            <Search size={17} aria-hidden="true" className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                            <input
+                                type="search"
+                                value={search}
+                                onChange={(event) => setSearch(event.target.value)}
+                                placeholder="Search name, email, profession..."
+                                className="w-full rounded-lg border border-gray-300 bg-white py-2 pl-9 pr-3 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
+                            />
+                        </label>
+                        <p className="text-sm text-gray-600">
+                            Showing {filteredRegistrations.length} of {registrations.length} registrations
+                        </p>
+                    </div>
+                )}
+
                 {registrations.length === 0 ? (
                     <div className="text-center py-16 bg-white rounded-lg">
                         <Users className="w-16 h-16 text-gray-400 mx-auto mb-4" />
                         <p className="text-gray-500 text-lg">No registrations yet</p>
+                    </div>
+                ) : filteredRegistrations.length === 0 ? (
+                    <div className="rounded-lg bg-white py-12 text-center text-gray-600">
+                        No registrations match your search.
                     </div>
                 ) : (
                     <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
@@ -141,7 +209,7 @@ export default function AdminRegistrationsPage() {
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-gray-200 bg-white">
-                                    {registrations.map((item) => (
+                                    {filteredRegistrations.map((item) => (
                                         <tr key={item.id} className="hover:bg-gray-50">
                                             <td className="px-4 py-3 text-sm text-gray-900">
                                                 {item.firstName} {item.middleName} {item.surname}

@@ -592,6 +592,7 @@ const Slider = () => {
                       <option value="Student">Student</option>
                       <option value="Accountant">Accountant</option>
                       <option value="Finance Professional">Finance Professional</option>
+                      <option value="Business Owner">Business Owner</option>
                       <option value="Other">Other</option>
                     </select>
                     {getFieldError("profession") && (

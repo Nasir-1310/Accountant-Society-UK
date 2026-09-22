@@ -107,7 +107,7 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ error: "Profession and interest are required" }, { status: 400 });
         }
 
-        if (!["Student", "Accountant", "Finance Professional", "Other"].includes(professionValue) ||
+        if (!["Student", "Accountant", "Finance Professional", "Business Owner", "Other"].includes(professionValue) ||
             !["Membership", "Sponsorship", "Advertising", "Other"].includes(interestValue) ||
             (professionValue === "Other" && !professionOtherValue) ||
             (interestValue === "Other" && !interestOtherValue)) {
