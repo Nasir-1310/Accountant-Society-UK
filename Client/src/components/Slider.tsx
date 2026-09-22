@@ -20,24 +20,41 @@ interface FormData {
   surname: string;
   phone: string;
   email: string;
-  company: string;
+  profession: string;
+  professionOther: string;
+  interest: string;
+  interestOther: string;
 }
 
+const fallbackSlide: Slide = {
+  id: "accountants-day-2026",
+  title: "The British Bangladeshi Accountants’ Day 2026",
+  description: "Join us on Saturday, 26 September 2026 for a celebration of our community.",
+  image: "/upcoming_events/up-ac-26.jpg",
+  url: "#register",
+  dotColor: "bg-blue-500",
+  order: 0,
+};
+
+const emptyFormData: FormData = {
+  first_name: "",
+  middle_name: "",
+  surname: "",
+  phone: "",
+  email: "",
+  profession: "",
+  professionOther: "",
+  interest: "",
+  interestOther: "",
+};
+
 const Slider = () => {
-  const eventName = " The British Bangladeshi Accountants’ Day - 2026";
+  const eventName = "The British Bangladeshi Accountants’ Day - 2026";
   const eventDate = "2026-09-26";
-  const [slides, setSlides] = useState<Slide[]>([]);
+  const [slides, setSlides] = useState<Slide[]>([fallbackSlide]);
   const [current, setCurrent] = useState(0);
-  const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
-  const [formData, setFormData] = useState<FormData>({
-    first_name: "",
-    middle_name: "",
-    surname: "",
-    phone: "",
-    email: "",
-    company: "",
-  });
+  const [formData, setFormData] = useState<FormData>(emptyFormData);
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
@@ -50,12 +67,10 @@ const Slider = () => {
         const response = await fetch("/api/sliders");
         if (response.ok) {
           const data = await response.json();
-          setSlides(data);
+          if (Array.isArray(data) && data.length > 0) setSlides(data);
         }
-      } catch (error) {
-        console.error("Error fetching slides:", error);
-      } finally {
-        setLoading(false);
+      } catch {
+        // Keep the local event slide available while the database is offline.
       }
     };
     fetchSlides();
@@ -87,8 +102,13 @@ const Slider = () => {
   const handleNext = () =>
     setCurrent(current === slides.length - 1 ? 0 : current + 1);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+      ...(e.target.name === "profession" && e.target.value !== "Other" ? { professionOther: "" } : {}),
+      ...(e.target.name === "interest" && e.target.value !== "Other" ? { interestOther: "" } : {}),
+    }));
     setError("");
   };
 
@@ -105,6 +125,8 @@ const Slider = () => {
       if (!formData.email.trim()) return "Email is required";
       if (!/\S+@\S+\.\S+/.test(formData.email)) return "Enter a valid email address";
     }
+    if (field === "profession" && !formData.profession) return "Profession is required";
+    if (field === "interest" && !formData.interest) return "Please select an interest";
     return "";
   };
 
@@ -112,13 +134,19 @@ const Slider = () => {
     e.preventDefault();
     setError("");
     // Mark all mandatory fields as touched
-    setTouched({ first_name: true, surname: true, phone: true, email: true });
+    setTouched({ first_name: true, surname: true, phone: true, email: true, profession: true, interest: true });
 
     if (!formData.first_name.trim()) return setError("First name is required.");
     if (!formData.surname.trim()) return setError("Surname is required.");
     if (!formData.phone.trim()) return setError("Phone number is required.");
     if (!formData.email.trim() || !/\S+@\S+\.\S+/.test(formData.email))
       return setError("A valid email is required.");
+    if (!formData.profession) return setError("Please select your profession.");
+    if (!formData.interest) return setError("Please select an interest.");
+    if (formData.profession === "Other" && !formData.professionOther.trim())
+      return setError("Please specify your profession.");
+    if (formData.interest === "Other" && !formData.interestOther.trim())
+      return setError("Please tell us what you are interested in.");
 
     setSubmitting(true);
     try {
@@ -131,7 +159,10 @@ const Slider = () => {
           surname: formData.surname,
           phone: formData.phone,
           email: formData.email,
-          company: formData.company,
+          profession: formData.profession,
+          professionOther: formData.professionOther,
+          interest: formData.interest,
+          interestOther: formData.interestOther,
           eventName,
           eventDate,
         }),
@@ -143,7 +174,7 @@ const Slider = () => {
       }
 
       setSubmitted(true);
-      setFormData({ first_name: "", middle_name: "", surname: "", phone: "", email: "", company: "" });
+      setFormData(emptyFormData);
       setTouched({});
     } catch (err) {
       const message = err instanceof Error ? err.message : "Failed to register. Please try again.";
@@ -158,43 +189,8 @@ const Slider = () => {
     setSubmitted(false);
     setError("");
     setTouched({});
-    setFormData({ first_name: "", middle_name: "", surname: "", phone: "", email: "", company: "" });
+    setFormData(emptyFormData);
   };
-
-  // ── Loading ──
-  if (loading) {
-    return (
-      <Container>
-        <div className="bg-white w-full py-0">
-          <div className="px-3 mx-auto w-full max-w-full">
-            <div className="w-full flex flex-col-reverse lg:flex-row bg-white shadow-lg overflow-hidden relative min-h-[280px] sm:min-h-[320px] md:min-h-[350px]">
-              <div className="w-full lg:w-2/5 px-6 py-6 flex bg-gray-200 flex-col justify-center animate-pulse">
-                <div className="h-8 bg-gray-300 rounded w-3/4 mb-4"></div>
-                <div className="h-4 bg-gray-300 rounded w-full mb-2"></div>
-                <div className="h-10 bg-gray-300 rounded w-32"></div>
-              </div>
-              <div className="w-full lg:w-3/5 bg-gray-300 animate-pulse min-h-[180px] sm:min-h-[220px] md:min-h-[260px] lg:min-h-[350px]"></div>
-            </div>
-          </div>
-        </div>
-      </Container>
-    );
-  }
-
-  // ── No slides ──
-  if (slides.length === 0) {
-    return (
-      <Container>
-        <div className="bg-white w-full py-0">
-          <div className="px-3 mx-auto w-full max-w-full">
-            <div className="w-full flex items-center justify-center bg-gray-100 shadow-lg min-h-[280px]">
-              <p className="text-gray-500 text-lg">No slides available</p>
-            </div>
-          </div>
-        </div>
-      </Container>
-    );
-  }
 
   return (
     <>
@@ -380,7 +376,7 @@ const Slider = () => {
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/65 backdrop-blur-sm px-4 py-6"
           onClick={(e) => { if (e.target === e.currentTarget) closeModal(); }}
         >
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md relative max-h-[90vh] overflow-y-auto scroll-smooth modal-scroll">
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md 2xl:max-w-xl relative max-h-[90vh] overflow-y-auto scroll-smooth modal-scroll">
 
             {/* Modal top banner with logo */}
             <div
@@ -577,21 +573,84 @@ const Slider = () => {
                       </p>
                     )}
                   </div>
-                  {/* Company */}
-                  <div>
-                    <label className="block text-xs font-semibold text-gray-600 mb-1">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="inline mr-1 mb-0.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg>
-                      Company / Organisation
-                      <span className="text-gray-300 font-normal text-[10px] ml-1">(optional)</span>
+                  {/* Profession */}
+                  <div className="min-w-0">
+                    <label htmlFor="registration-profession" className="block text-xs font-semibold text-gray-600 mb-1">
+                      Profession <span className="text-red-400">*</span>
                     </label>
-                    <input
-                      type="text"
-                      name="company"
-                      value={formData.company}
+                    <select
+                      id="registration-profession"
+                      name="profession"
+                      value={formData.profession}
                       onChange={handleChange}
-                      placeholder="e.g. ACCA, ICAEW"
-                      className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition"
-                    />
+                      onBlur={() => handleBlur("profession")}
+                      required
+                      aria-invalid={!!getFieldError("profession")}
+                      className={`block w-full min-w-0 max-w-full border rounded-lg px-3 py-2 text-base sm:text-sm bg-white focus:outline-none focus:ring-2 focus:border-transparent transition ${getFieldError("profession") ? "border-red-300 focus:ring-red-300 bg-red-50" : "border-gray-200 focus:ring-blue-400"}`}
+                    >
+                      <option value="">Select your profession</option>
+                      <option value="Student">Student</option>
+                      <option value="Accountant">Accountant</option>
+                      <option value="Finance Professional">Finance Professional</option>
+                      <option value="Other">Other</option>
+                    </select>
+                    {getFieldError("profession") && (
+                      <p className="text-red-400 text-[10px] mt-1 flex items-center gap-1">
+                        <AlertCircle size={10} /> {getFieldError("profession")}
+                      </p>
+                    )}
+                    {formData.profession === "Other" && (
+                      <input
+                        type="text"
+                        name="professionOther"
+                        value={formData.professionOther}
+                        onChange={handleChange}
+                        placeholder="Please specify your profession"
+                        aria-label="Other profession"
+                        required
+                        className="block w-full min-w-0 max-w-full border border-gray-200 rounded-lg px-3 py-2 mt-2 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition"
+                      />
+                    )}
+                  </div>
+
+                  {/* Interest */}
+                  <div className="min-w-0">
+                    <label htmlFor="registration-interest" className="block text-xs font-semibold text-gray-600 mb-1">
+                      You are interested in? <span className="text-red-400">*</span>
+                    </label>
+                    <select
+                      id="registration-interest"
+                      name="interest"
+                      value={formData.interest}
+                      onChange={handleChange}
+                      onBlur={() => handleBlur("interest")}
+                      required
+                      aria-invalid={!!getFieldError("interest")}
+                      className={`block w-full min-w-0 max-w-full border rounded-lg px-3 py-2 text-base sm:text-sm bg-white focus:outline-none focus:ring-2 focus:border-transparent transition ${getFieldError("interest") ? "border-red-300 focus:ring-red-300 bg-red-50" : "border-gray-200 focus:ring-blue-400"}`}
+                    >
+                      <option value="">Select an interest</option>
+                      <option value="Membership">Membership</option>
+                      <option value="Sponsorship">Sponsorship</option>
+                      <option value="Advertising">Advertising</option>
+                      <option value="Other">Other</option>
+                    </select>
+                    {getFieldError("interest") && (
+                      <p className="text-red-400 text-[10px] mt-1 flex items-center gap-1">
+                        <AlertCircle size={10} /> {getFieldError("interest")}
+                      </p>
+                    )}
+                    {formData.interest === "Other" && (
+                      <input
+                        type="text"
+                        name="interestOther"
+                        value={formData.interestOther}
+                        onChange={handleChange}
+                        placeholder="Please tell us your reason"
+                        aria-label="Other interest or reason"
+                        required
+                        className="block w-full min-w-0 max-w-full border border-gray-200 rounded-lg px-3 py-2 mt-2 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition"
+                      />
+                    )}
                   </div>
 
                   {/* Global error */}

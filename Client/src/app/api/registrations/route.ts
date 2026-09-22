@@ -45,10 +45,28 @@ function buildAllDayIcs(params: {
     ].join("\r\n");
 }
 
+function escapeHtml(value: unknown) {
+    return String(value ?? "").replace(/[&<>"']/g, (char) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;",
+    })[char] || char);
+}
+
 export async function POST(request: NextRequest) {
     try {
         await dbConnect();
+    } catch (error) {
+        console.error("Registration database unavailable:", error instanceof Error ? error.message : String(error));
+        return NextResponse.json(
+            { error: "Registration is temporarily unavailable. Please try again later." },
+            { status: 503 }
+        );
+    }
 
+    try {
         const body = await request.json();
         const {
             first_name,
@@ -56,7 +74,10 @@ export async function POST(request: NextRequest) {
             surname,
             phone,
             email,
-            company,
+            profession,
+            professionOther,
+            interest,
+            interestOther,
             eventName,
             eventDate,
         } = body || {};
@@ -77,13 +98,32 @@ export async function POST(request: NextRequest) {
             );
         }
 
+        const professionValue = String(profession || "").trim();
+        const professionOtherValue = professionValue === "Other" ? String(professionOther || "").trim() : "";
+        const interestValue = String(interest || "").trim();
+        const interestOtherValue = interestValue === "Other" ? String(interestOther || "").trim() : "";
+
+        if (!professionValue || !interestValue) {
+            return NextResponse.json({ error: "Profession and interest are required" }, { status: 400 });
+        }
+
+        if (!["Student", "Accountant", "Finance Professional", "Other"].includes(professionValue) ||
+            !["Membership", "Sponsorship", "Advertising", "Other"].includes(interestValue) ||
+            (professionValue === "Other" && !professionOtherValue) ||
+            (interestValue === "Other" && !interestOtherValue)) {
+            return NextResponse.json({ error: "Invalid profession or interest" }, { status: 400 });
+        }
+
         const registration = await EventRegistration.create({
             firstName: first_name,
             middleName: middle_name || "",
             surname,
             phone,
             email,
-            company: company || "",
+            profession: professionValue,
+            professionOther: professionOtherValue,
+            interest: interestValue,
+            interestOther: interestOtherValue,
             eventName,
             eventDate: eventDate ? new Date(eventDate) : undefined,
         });
@@ -112,12 +152,13 @@ export async function POST(request: NextRequest) {
                     subject: `New registration — ${eventName}`,
                     replyTo: attendeeEmail,
                     html: `
-            <p><strong>Event:</strong> ${eventName}</p>
-            <p><strong>Date:</strong> ${eventDate || "N/A"}</p>
-            <p><strong>Name:</strong> ${first_name} ${middle_name || ""} ${surname}</p>
-            <p><strong>Email:</strong> ${attendeeEmail}</p>
-            <p><strong>Phone:</strong> ${phone}</p>
-            <p><strong>Company:</strong> ${company || "N/A"}</p>
+            <p><strong>Event:</strong> ${escapeHtml(eventName)}</p>
+            <p><strong>Date:</strong> ${escapeHtml(eventDate || "N/A")}</p>
+            <p><strong>Name:</strong> ${escapeHtml(first_name)} ${escapeHtml(middle_name)} ${escapeHtml(surname)}</p>
+            <p><strong>Email:</strong> ${escapeHtml(attendeeEmail)}</p>
+            <p><strong>Phone:</strong> ${escapeHtml(phone)}</p>
+            <p><strong>Profession:</strong> ${escapeHtml(professionValue === "Other" ? professionOtherValue : professionValue || "N/A")}</p>
+            <p><strong>Interested in:</strong> ${escapeHtml(interestValue === "Other" ? interestOtherValue : interestValue || "N/A")}</p>
             <p><strong>Registered At:</strong> ${registration.createdAt?.toISOString()}</p>
           `,
                 });
@@ -150,8 +191,8 @@ export async function POST(request: NextRequest) {
                     subject: `Registration confirmed — ${eventName}`,
                     text: `Dear ${first_name} ${surname},\n\nYour registration has been successfully completed for ${eventName}.\nYou can add the event to your calendar using the attached invite.\n\nRegards,\nTPAS Team`,
                     html: `
-            <p>Dear ${first_name} ${surname},</p>
-            <p>Your registration has been successfully completed for <strong>${eventName}</strong>.</p>
+            <p>Dear ${escapeHtml(first_name)} ${escapeHtml(surname)},</p>
+            <p>Your registration has been successfully completed for <strong>${escapeHtml(eventName)}</strong>.</p>
             <p>We are delighted to welcome you. You can add the event to your calendar using the attached invite.</p>
             <p>Regards,<br/>TPAS Team</p>
           `,
@@ -178,6 +219,6 @@ export async function POST(request: NextRequest) {
     } catch (error) {
         const message = error instanceof Error ? error.message : "Failed to register";
         console.error("Error creating registration:", message);
-        return NextResponse.json({ error: message }, { status: 500 });
+        return NextResponse.json({ error: "Failed to register. Please try again." }, { status: 500 });
     }
 }

@@ -27,7 +27,13 @@ const globalCache = global.mongooseCache ?? {
 };
 
 export async function dbConnect() {
-  if (globalCache.conn) return globalCache.conn;
+  if (globalCache.conn?.connection.readyState === 1) return globalCache.conn;
+
+  // A cached Mongoose instance may have disconnected since the last request.
+  globalCache.conn = null;
+  if (mongoose.connection.readyState === 0) {
+    globalCache.promise = null;
+  }
 
   if (!globalCache.promise) {
     globalCache.promise = mongoose.connect(MONGODB_URI, {
@@ -36,7 +42,17 @@ export async function dbConnect() {
     });
   }
 
-  globalCache.conn = await globalCache.promise;
+  try {
+    globalCache.conn = await globalCache.promise;
+    if (globalCache.conn.connection.readyState !== 1) {
+      throw new Error("MongoDB connection is not ready");
+    }
+  } catch (error) {
+    // Allow a later request to retry after a temporary connection failure.
+    globalCache.promise = null;
+    globalCache.conn = null;
+    throw error;
+  }
   global.mongooseCache = globalCache; // Assign to global
 
   return globalCache.conn;

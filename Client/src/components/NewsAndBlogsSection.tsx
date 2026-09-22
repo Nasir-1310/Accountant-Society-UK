@@ -54,21 +54,22 @@ const NewsAndBlogsSection: React.FC = () => {
         const res = await fetch("/api/news-blogs/");
         
         if (!res.ok) {
-          throw new Error(`HTTP error! status: ${res.status}`);
+          const result = await res.json().catch(() => null);
+          setError(result?.error || "News and blogs are temporarily unavailable");
+          setNewsBlogs([]);
+          return;
         }
         
         const result = await res.json();
-        console.log("API Response:", result); // Debug log
         
         if (result.success && Array.isArray(result.data)) {
           setNewsBlogs(result.data);
         } else {
-          console.error("Unexpected response format:", result);
+          setError("News and blogs are temporarily unavailable");
           setNewsBlogs([]);
         }
-      } catch (err) {
-        console.error("Error fetching news/blogs:", err);
-        setError(err instanceof Error ? err.message : "Failed to load content");
+      } catch {
+        setError("News and blogs are temporarily unavailable");
         setNewsBlogs([]);
       } finally {
         setLoading(false);
@@ -95,7 +96,7 @@ const NewsAndBlogsSection: React.FC = () => {
       <Container>
         <section className="bg-white py-10">
           <div className="text-center py-12">
-            <div className="text-red-500 text-lg">Error: {error}</div>
+            <div className="text-gray-500 text-lg">{error}</div>
           </div>
         </section>
       </Container>

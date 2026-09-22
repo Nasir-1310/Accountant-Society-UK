@@ -42,12 +42,13 @@ export async function GET(request: NextRequest) {
         pages: Math.ceil(total / limit),
       },
     });
-  }  catch {
-      return NextResponse.json(
-        { success: false, error: "Invalid or expired token" },
-        { status: 401 }
-      );
-    }
+  } catch (error) {
+    console.error("Error fetching public news/blogs:", error instanceof Error ? error.message : String(error));
+    return NextResponse.json(
+      { success: false, error: "News and blogs are temporarily unavailable" },
+      { status: 503 }
+    );
+  }
 }
 
 // ✅ POST - ADMIN ONLY - Create new news/blog

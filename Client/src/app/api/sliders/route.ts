@@ -30,10 +30,10 @@ export async function GET() {
 
     return NextResponse.json(formattedSliders, { status: 200 });
   } catch (error) {
-    console.error("Error fetching sliders:", error);
+    console.error("Error fetching sliders:", error instanceof Error ? error.message : String(error));
     return NextResponse.json(
-      { error: "Failed to fetch sliders" },
-      { status: 500 }
+      { error: "Sliders are temporarily unavailable" },
+      { status: 503 }
     );
   }
 }
