@@ -48,12 +48,20 @@ const emptyFormData: FormData = {
   interestOther: "",
 };
 
-const Slider = () => {
+interface SliderProps {
+  initialRegistrationOpen?: boolean;
+  autoOpenRegistration?: boolean;
+}
+
+const Slider = ({
+  initialRegistrationOpen = false,
+  autoOpenRegistration = true,
+}: SliderProps) => {
   const eventName = "The British Bangladeshi Accountants’ Day - 2026";
   const eventDate = "2026-09-26";
   const [slides, setSlides] = useState<Slide[]>([fallbackSlide]);
   const [current, setCurrent] = useState(0);
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(initialRegistrationOpen);
   const [formData, setFormData] = useState<FormData>(emptyFormData);
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -85,12 +93,14 @@ const Slider = () => {
   }, [slides.length]);
 
   useEffect(() => {
+    if (!autoOpenRegistration || initialRegistrationOpen) return;
+
     const timer = setTimeout(() => {
       setShowModal(true);
     }, 3000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [autoOpenRegistration, initialRegistrationOpen]);
 
   useEffect(() => {
     document.body.style.overflow = showModal ? "hidden" : "";
@@ -310,7 +320,7 @@ const Slider = () => {
                   alt={`${slides[current].title} - Professional accountants slider`}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 60vw"
-                  className="object-cover"
+                  className="object-contain bg-white"
                   priority
                   style={{ objectPosition: "center center" }}
                 />

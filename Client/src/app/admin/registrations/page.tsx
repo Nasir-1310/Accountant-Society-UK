@@ -1,7 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Download, Search, Trash2, Users } from "lucide-react";
+import Image from "next/image";
+import { Download, ExternalLink, QrCode, Search, Trash2, Users } from "lucide-react";
+
+const registrationPath = "/register/accountants-day-2026";
+const registrationQrPath = "/qr/accountants-day-registration-2026.png";
 
 interface RegistrationItem {
     id: string;
@@ -136,13 +140,32 @@ export default function AdminRegistrationsPage() {
                         <h1 className="text-3xl font-bold text-gray-900">Event Registrations</h1>
                         <p className="text-gray-600 mt-1">All event registrations</p>
                     </div>
-                    <button
-                        onClick={handleDownload}
-                        className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium transition-colors"
-                    >
-                        <Download className="w-4 h-4" />
-                        Download CSV
-                    </button>
+                    <div className="flex flex-wrap gap-2">
+                        <a
+                            href={registrationPath}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 rounded-lg border border-blue-200 bg-white px-4 py-2 font-medium text-blue-700 transition-colors hover:bg-blue-50"
+                        >
+                            <ExternalLink className="w-4 h-4" />
+                            View Form
+                        </a>
+                        <a
+                            href={registrationQrPath}
+                            download="accountants-day-registration-2026-qr.png"
+                            className="inline-flex items-center gap-2 rounded-lg bg-blue-700 px-4 py-2 font-medium text-white transition-colors hover:bg-blue-800"
+                        >
+                            <QrCode className="w-4 h-4" />
+                            Download QR
+                        </a>
+                        <button
+                            onClick={handleDownload}
+                            className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium transition-colors"
+                        >
+                            <Download className="w-4 h-4" />
+                            Download CSV
+                        </button>
+                    </div>
                 </div>
 
                 {notice && (
@@ -161,6 +184,25 @@ export default function AdminRegistrationsPage() {
                             <p className="mt-2 text-2xl font-bold text-gray-900">{item.count}</p>
                         </div>
                     ))}
+                </div>
+
+                <div className="mb-6 flex flex-col items-center gap-4 rounded-xl border border-blue-100 bg-blue-50 p-5 sm:flex-row sm:items-start">
+                    <Image
+                        src={registrationQrPath}
+                        alt="QR code for the 2026 event registration form"
+                        width={152}
+                        height={152}
+                        className="rounded-lg border border-white bg-white p-2 shadow-sm"
+                    />
+                    <div className="text-center sm:text-left">
+                        <h2 className="text-lg font-bold text-gray-900">Registration QR Code</h2>
+                        <p className="mt-1 text-sm text-gray-700">
+                            Print or share this QR code. Scanning it opens the registration form directly.
+                        </p>
+                        <p className="mt-2 break-all text-xs text-blue-800">
+                            https://accountantssociety.org{registrationPath}
+                        </p>
+                    </div>
                 </div>
 
                 {registrations.length > 0 && (

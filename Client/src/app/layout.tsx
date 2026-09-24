@@ -1,6 +1,6 @@
 // src/app/layout.tsx
 import type { Metadata } from "next";
-import { Noto_Sans } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
 import AOSInitializer from "@/components/AOSInitealizer";
@@ -9,11 +9,12 @@ import Footer from "@/components/Footer";
 // import Navbar from "@/components/Navbar";
 import TopNews from "@/components/TopNews";
 
-// ✅ Load Google Font
-const notoSans = Noto_Sans({
+// Keep the established Noto Sans typography available without a network request.
+const notoSans = localFont({
+  src: "./fonts/noto-sans-latin.woff2",
   variable: "--font-noto-sans",
-  subsets: ["latin"],
-  weight: ["400", "700"],
+  display: "swap",
+  weight: "100 900",
 });
 
 // ✅ SEO metadata
