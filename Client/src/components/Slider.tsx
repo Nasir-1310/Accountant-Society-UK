@@ -57,11 +57,15 @@ const Slider = ({
   initialRegistrationOpen = false,
   autoOpenRegistration = true,
 }: SliderProps) => {
-  const eventName = "The British Bangladeshi Accountants’ Day - 2026";
-  const eventDate = "2026-09-26";
+  const defaultEventName = "The British Bangladeshi Accountants’ Day - 2026";
+  const defaultEventDate = "2026-09-26";
+  const [eventName, setEventName] = useState(defaultEventName);
+  const [eventDate, setEventDate] = useState(defaultEventDate);
+  // null while we are still checking; false = closed, true = open.
+  const [registrationOpen, setRegistrationOpen] = useState<boolean | null>(null);
   const [slides, setSlides] = useState<Slide[]>([fallbackSlide]);
   const [current, setCurrent] = useState(0);
-  const [showModal, setShowModal] = useState(initialRegistrationOpen);
+  const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState<FormData>(emptyFormData);
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -85,6 +89,30 @@ const Slider = ({
   }, []);
 
   useEffect(() => {
+    const fetchRegistrationStatus = async () => {
+      try {
+        const response = await fetch("/api/registration-status");
+        if (response.ok) {
+          const data = await response.json();
+          setRegistrationOpen(Boolean(data?.open));
+          if (typeof data?.eventName === "string" && data.eventName.trim()) {
+            setEventName(data.eventName.trim());
+          }
+          if (typeof data?.eventDate === "string" && data.eventDate.trim()) {
+            setEventDate(data.eventDate.trim());
+          }
+        } else {
+          setRegistrationOpen(false);
+        }
+      } catch {
+        // If we can't reach the backend, keep registration closed.
+        setRegistrationOpen(false);
+      }
+    };
+    fetchRegistrationStatus();
+  }, []);
+
+  useEffect(() => {
     if (slides.length === 0) return;
     const interval = setInterval(() => {
       setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
@@ -92,15 +120,23 @@ const Slider = ({
     return () => clearInterval(interval);
   }, [slides.length]);
 
+  // Open the form automatically only once we know registration is open.
   useEffect(() => {
-    if (!autoOpenRegistration || initialRegistrationOpen) return;
+    if (registrationOpen !== true) return;
+
+    if (initialRegistrationOpen) {
+      setShowModal(true);
+      return;
+    }
+
+    if (!autoOpenRegistration) return;
 
     const timer = setTimeout(() => {
       setShowModal(true);
     }, 3000);
 
     return () => clearTimeout(timer);
-  }, [autoOpenRegistration, initialRegistrationOpen]);
+  }, [registrationOpen, autoOpenRegistration, initialRegistrationOpen]);
 
   useEffect(() => {
     document.body.style.overflow = showModal ? "hidden" : "";
@@ -257,48 +293,60 @@ const Slider = ({
   }
 `}</style>
 
-                <button
-                  onClick={() => setShowModal(true)}
-                  className="reg-btn inline-flex items-center gap-2.5 w-fit px-5 py-2.5 rounded-lg text-sm font-bold transition-all duration-300 hover:scale-105 hover:brightness-105 relative overflow-hidden"
-                  style={{
-                    backgroundImage: "linear-gradient(135deg, #ffffff 0%, #dbeafe 50%, #eff6ff 100%)",
-                    color: "#1e3a8a",
-                    boxShadow: "0 0 0 1.5px rgba(255,255,255,0.8), 0 8px 24px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.9)",
-                  }}
-                >
-                  {/* Shimmer sweep */}
-                  <span
-                    className="reg-shimmer absolute inset-0 pointer-events-none"
+                {registrationOpen ? (
+                  <button
+                    onClick={() => setShowModal(true)}
+                    className="reg-btn inline-flex items-center gap-2.5 w-fit px-5 py-2.5 rounded-lg text-sm font-bold transition-all duration-300 hover:scale-105 hover:brightness-105 relative overflow-hidden"
                     style={{
-                      background: "linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.75) 50%, transparent 65%)",
-                    }}
-                  />
-
-                  {/* Pulsing dot */}
-                  <span className="relative z-10 flex items-center gap-1.5">
-                    <span className="relative flex h-4.5 w-4.5">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-60"></span>
-                      <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-600"></span>
-                    </span>
-                  </span>
-
-                  <span className="relative z-10 font-bold tracking-wide">Register Now</span>
-
-                  {/* FREE badge */}
-                  <span
-                    className="relative z-10 text-[10px] px-2 py-0.5 rounded-full font-bold tracking-widest"
-                    style={{
-                      background: "linear-gradient(90deg, #3e5277, #618ef0)",
-                      color: "#ffffff",
-                      boxShadow: "0 2px 6px rgba(37,99,235,0.4)",
+                      backgroundImage: "linear-gradient(135deg, #ffffff 0%, #dbeafe 50%, #eff6ff 100%)",
+                      color: "#1e3a8a",
+                      boxShadow: "0 0 0 1.5px rgba(255,255,255,0.8), 0 8px 24px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.9)",
                     }}
                   >
-                    FREE
-                  </span>
+                    {/* Shimmer sweep */}
+                    <span
+                      className="reg-shimmer absolute inset-0 pointer-events-none"
+                      style={{
+                        background: "linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.75) 50%, transparent 65%)",
+                      }}
+                    />
 
-                  {/* Animated arrow */}
-                  <span className="reg-arrow relative z-10 text-blue-600 font-bold">→</span>
-                </button>
+                    {/* Pulsing dot */}
+                    <span className="relative z-10 flex items-center gap-1.5">
+                      <span className="relative flex h-4.5 w-4.5">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-60"></span>
+                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-600"></span>
+                      </span>
+                    </span>
+
+                    <span className="relative z-10 font-bold tracking-wide">Register Now</span>
+
+                    {/* FREE badge */}
+                    <span
+                      className="relative z-10 text-[10px] px-2 py-0.5 rounded-full font-bold tracking-widest"
+                      style={{
+                        background: "linear-gradient(90deg, #3e5277, #618ef0)",
+                        color: "#ffffff",
+                        boxShadow: "0 2px 6px rgba(37,99,235,0.4)",
+                      }}
+                    >
+                      FREE
+                    </span>
+
+                    {/* Animated arrow */}
+                    <span className="reg-arrow relative z-10 text-blue-600 font-bold">→</span>
+                  </button>
+                ) : registrationOpen === false ? (
+                  <div
+                    className="inline-flex items-center gap-2 w-fit px-5 py-2.5 rounded-lg text-sm font-semibold bg-white/10 text-white/80 border border-white/25 cursor-not-allowed select-none"
+                    aria-disabled="true"
+                  >
+                    <span className="relative flex h-2.5 w-2.5">
+                      <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-gray-300"></span>
+                    </span>
+                    Registration Closed
+                  </div>
+                ) : null}
 
                 {/* Prev arrow */}
                 <button

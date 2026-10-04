@@ -38,6 +38,16 @@ const GalleryDetailPage = ({ params }: Props) => {
         setSlug(resolvedParams.slug);
         setGallery(foundGallery);
 
+        // Folder not configured yet (placeholder) — show a friendly message.
+        if (
+          !foundGallery.googleDriveFolderId ||
+          foundGallery.googleDriveFolderId.startsWith("REPLACE_")
+        ) {
+          setError("Photos from this event will be added soon. Please check back later.");
+          setLoading(false);
+          return;
+        }
+
         // Fetch images from Google Drive folder
         const folderImages = await getImagesFromFolder(
           foundGallery.googleDriveFolderId

@@ -31,6 +31,8 @@ export default function AdminRegistrationsPage() {
     const [search, setSearch] = useState("");
     const [deletingId, setDeletingId] = useState<string | null>(null);
     const [notice, setNotice] = useState<{ text: string; error: boolean } | null>(null);
+    const [registrationOpen, setRegistrationOpen] = useState<boolean | null>(null);
+    const [savingStatus, setSavingStatus] = useState(false);
 
     const fetchRegistrations = async () => {
         try {
@@ -53,9 +55,58 @@ export default function AdminRegistrationsPage() {
         }
     };
 
+    const fetchRegistrationStatus = async () => {
+        try {
+            const res = await fetch("/api/admin/registration-status", {
+                credentials: "include",
+            });
+            if (res.ok) {
+                const data = await res.json();
+                setRegistrationOpen(Boolean(data?.open));
+            }
+        } catch (error) {
+            console.error("Error fetching registration status:", error);
+        }
+    };
+
     useEffect(() => {
         fetchRegistrations();
+        fetchRegistrationStatus();
     }, []);
+
+    const handleToggleRegistration = async () => {
+        if (registrationOpen === null) return;
+        const next = !registrationOpen;
+        setSavingStatus(true);
+        setNotice(null);
+        try {
+            const res = await fetch("/api/admin/registration-status", {
+                method: "PUT",
+                credentials: "include",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ open: next }),
+            });
+            if (!res.ok) {
+                const data = await res.json().catch(() => null);
+                throw new Error(data?.error || "Failed to update registration status");
+            }
+            const data = await res.json();
+            setRegistrationOpen(Boolean(data?.open));
+            setNotice({
+                text: data?.open
+                    ? "Registration is now OPEN. The form is live on the website."
+                    : "Registration is now CLOSED. Visitors will see “Registration Closed”.",
+                error: false,
+            });
+        } catch (error) {
+            setNotice({
+                text: error instanceof Error ? error.message : "Failed to update registration status",
+                error: true,
+            });
+        } finally {
+            setSavingStatus(false);
+        }
+    };
 
     const handleDownload = () => {
         window.location.href = "/api/admin/registrations/export";
@@ -176,6 +227,48 @@ export default function AdminRegistrationsPage() {
                         {notice.text}
                     </p>
                 )}
+
+                <div className="mb-6 flex flex-col gap-3 rounded-xl border border-gray-200 bg-white p-5 shadow-sm sm:flex-row sm:items-center sm:justify-between">
+                    <div>
+                        <h2 className="text-lg font-bold text-gray-900">Registration Form</h2>
+                        <p className="mt-1 text-sm text-gray-600">
+                            {registrationOpen === null
+                                ? "Checking current status…"
+                                : registrationOpen
+                                    ? "The form is OPEN — visitors can register from the website."
+                                    : "The form is CLOSED — visitors see “Registration Closed” and cannot submit."}
+                        </p>
+                    </div>
+                    <div className="flex items-center gap-3">
+                        <span
+                            className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold ${registrationOpen
+                                ? "bg-green-100 text-green-700"
+                                : "bg-gray-200 text-gray-600"
+                                }`}
+                        >
+                            <span className={`h-2 w-2 rounded-full ${registrationOpen ? "bg-green-500" : "bg-gray-400"}`} />
+                            {registrationOpen === null ? "…" : registrationOpen ? "Open" : "Closed"}
+                        </span>
+                        <button
+                            type="button"
+                            onClick={handleToggleRegistration}
+                            disabled={registrationOpen === null || savingStatus}
+                            role="switch"
+                            aria-checked={registrationOpen === true}
+                            aria-label="Toggle registration form"
+                            className={`relative inline-flex h-7 w-12 flex-shrink-0 items-center rounded-full transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-60 ${registrationOpen ? "bg-green-500" : "bg-gray-300"
+                                }`}
+                        >
+                            <span
+                                className={`inline-block h-5 w-5 transform rounded-full bg-white shadow transition-transform ${registrationOpen ? "translate-x-6" : "translate-x-1"
+                                    }`}
+                            />
+                        </button>
+                        <span className="text-sm font-medium text-gray-700 w-20">
+                            {savingStatus ? "Saving…" : registrationOpen ? "Close form" : "Open form"}
+                        </span>
+                    </div>
+                </div>
 
                 <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 xl:grid-cols-6 mb-6">
                     {summary.map((item) => (

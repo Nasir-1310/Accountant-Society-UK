@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { dbConnect } from "@/lib/dbConnect";
 import EventRegistration from "@/models/EventRegistration";
+import { getRegistrationSettings } from "@/lib/registrationSettings";
 import nodemailer from "nodemailer";
 
 function buildAllDayIcs(params: {
@@ -67,6 +68,15 @@ export async function POST(request: NextRequest) {
     }
 
     try {
+        // Reject submissions while the admin has the form closed.
+        const settings = await getRegistrationSettings();
+        if (!settings.open) {
+            return NextResponse.json(
+                { error: "Registration is currently closed." },
+                { status: 403 }
+            );
+        }
+
         const body = await request.json();
         const {
             first_name,

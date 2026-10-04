@@ -11,6 +11,19 @@ export type GalleryItem = {
 
 const galleryData: GalleryItem[] = [
   {
+    slug: "british-bangladeshi-accountants-day-2026",
+    title: "British Bangladeshi Accountants' Day 2026",
+    description:
+      "Highlights from The British Bangladeshi Accountants' Day 2026, held on 26 September 2026 — a celebration of our community's achievements and contributions.",
+    date: "26 September, 2026",
+    // Local cover for now. Replace with a Google Drive thumbnail URL if preferred.
+    coverImageUrl: "/upcoming_events/acc-day-2026.jpeg",
+    // TODO: Replace with the real Google Drive folder ID once the 2026 photos
+    // (downloaded from the Aftershoot portal) have been uploaded to Drive and
+    // the folder is shared publicly ("Anyone with the link").
+    googleDriveFolderId: "REPLACE_WITH_2026_DRIVE_FOLDER_ID",
+  },
+  {
     slug: "meet_the_press",
     title: "Meet the press, 04 April 2025",
     description:
