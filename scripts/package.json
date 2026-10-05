@@ -1,0 +1,13 @@
+{
+  "name": "gallery-drive-uploader",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "One-off helper to upload a folder of event photos to Google Drive for the website gallery.",
+  "scripts": {
+    "upload": "node upload-to-drive.mjs"
+  },
+  "dependencies": {
+    "googleapis": "^144.0.0"
+  }
+}

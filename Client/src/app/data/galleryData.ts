@@ -18,10 +18,9 @@ const galleryData: GalleryItem[] = [
     date: "26 September, 2026",
     // Local cover for now. Replace with a Google Drive thumbnail URL if preferred.
     coverImageUrl: "/upcoming_events/acc-day-2026.jpeg",
-    // TODO: Replace with the real Google Drive folder ID once the 2026 photos
-    // (downloaded from the Aftershoot portal) have been uploaded to Drive and
-    // the folder is shared publicly ("Anyone with the link").
-    googleDriveFolderId: "REPLACE_WITH_2026_DRIVE_FOLDER_ID",
+    // Photos live in this Google Drive folder. It must be shared
+    // "Anyone with the link: Viewer" for the website to read it.
+    googleDriveFolderId: "1-Dxcl1dkPH-zTAMqwo14xUhzuT9VyEl0",
   },
   {
     slug: "meet_the_press",
