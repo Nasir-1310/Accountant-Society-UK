@@ -10,6 +10,7 @@ import Container from "@/components/Container";
 import galleryData, { type GalleryItem } from "@/app/data/galleryData";
 import Masonry from "react-masonry-css";
 import { getImagesFromFolder, type DriveImage } from "@/lib/googleDrive";
+import { getVideoEmbedUrl } from "@/lib/videoEmbed";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -92,6 +93,8 @@ const GalleryDetailPage = ({ params }: Props) => {
     return notFound();
   }
 
+  const videoEmbedUrl = getVideoEmbedUrl(gallery.videoUrl);
+
   return (
     <Container>
       <div className="w-full px-4 py-12">
@@ -118,6 +121,25 @@ const GalleryDetailPage = ({ params }: Props) => {
         </h1>
         <p className="text-gray-600 mb-6">{gallery.description}</p>
         <p className="text-xs text-gray-400 mb-8">{gallery.date}</p>
+
+        {/* Event video */}
+        {videoEmbedUrl && (
+          <div className="mx-auto mb-10 w-full max-w-5xl">
+            <div
+              className="relative w-full overflow-hidden rounded-lg bg-black shadow-md"
+              style={{ aspectRatio: "16 / 9" }}
+            >
+              <iframe
+                src={videoEmbedUrl}
+                title={`${gallery.title} video`}
+                allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+                allowFullScreen
+                loading="lazy"
+                className="absolute inset-0 h-full w-full border-0"
+              />
+            </div>
+          </div>
+        )}
 
         {/* Error Message */}
         {error && (

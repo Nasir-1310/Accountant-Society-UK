@@ -2,8 +2,16 @@
 // src/app/admin/sliders/page.tsx
 import { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
-import { Plus, Edit, Trash2, Eye, EyeOff } from "lucide-react";
+import { Plus, Edit, Trash2, Eye, EyeOff, Video, ImageIcon } from "lucide-react";
 import Image from "next/image";
+import { getVideoEmbedUrl } from "@/lib/videoEmbed";
+
+interface SliderVideoSettings {
+  enabled: boolean;
+  videoUrl: string;
+  title: string;
+  description: string;
+}
 
 interface SliderItem {
   id: string;
@@ -82,7 +90,7 @@ export default function AdminSlidersPage() {
   return (
     <div className="w-full">
       {/* Header */}
-      <div className="mb-8 flex justify-between items-center">
+      <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-center">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">Slider Management</h1>
           <p className="text-gray-600 mt-2">Manage homepage slider images and content</p>
@@ -92,12 +100,15 @@ export default function AdminSlidersPage() {
             setEditingSlider(null);
             setShowForm(true);
           }}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg flex items-center gap-2 transition-colors"
+          className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg flex items-center justify-center gap-2 transition-colors"
         >
           <Plus className="w-5 h-5" />
           Add Slide
         </button>
       </div>
+
+      {/* Image slider or video on the homepage */}
+      <SliderDisplaySettings />
 
       {/* Sliders List */}
       {sliders.length === 0 ? (
@@ -239,6 +250,222 @@ export default function AdminSlidersPage() {
         />
       )}
     </div>
+  );
+}
+
+// Choose what the homepage slider shows: the image slides or a video.
+function SliderDisplaySettings() {
+  const emptySettings: SliderVideoSettings = { enabled: false, videoUrl: "", title: "", description: "" };
+  const [saved, setSaved] = useState<SliderVideoSettings | null>(null);
+  const [form, setForm] = useState<SliderVideoSettings>(emptySettings);
+  const [loadError, setLoadError] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [notice, setNotice] = useState<{ text: string; error: boolean } | null>(null);
+
+  useEffect(() => {
+    const load = async () => {
+      try {
+        const res = await fetch("/api/admin/slider-video", { credentials: "include" });
+        if (!res.ok) throw new Error("Failed to load");
+        const data: SliderVideoSettings = await res.json();
+        setSaved(data);
+        setForm(data);
+      } catch {
+        setLoadError(true);
+      }
+    };
+    load();
+  }, []);
+
+  const previewUrl = getVideoEmbedUrl(form.videoUrl);
+  const linkInvalid = form.videoUrl.trim() !== "" && !previewUrl;
+  const dirty =
+    saved !== null &&
+    (form.enabled !== saved.enabled ||
+      form.videoUrl.trim() !== saved.videoUrl ||
+      form.title.trim() !== saved.title ||
+      form.description.trim() !== saved.description);
+  const canSave = dirty && !saving && !linkInvalid && !(form.enabled && !previewUrl);
+
+  const handleSave = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!canSave) return;
+    setSaving(true);
+    setNotice(null);
+    try {
+      const res = await fetch("/api/admin/slider-video", {
+        method: "PUT",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json().catch(() => null);
+      if (!res.ok) throw new Error(data?.error || "Failed to save");
+      setSaved(data);
+      setForm(data);
+      setNotice({
+        text: data.enabled
+          ? "Saved. The homepage slider now shows the video."
+          : "Saved. The homepage slider now shows the image slides.",
+        error: false,
+      });
+    } catch (error) {
+      setNotice({ text: error instanceof Error ? error.message : "Failed to save", error: true });
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const modes = [
+    { enabled: false, label: "Image slider", hint: "Show the slides listed below", Icon: ImageIcon },
+    { enabled: true, label: "Video", hint: "Show a video instead of the slides", Icon: Video },
+  ];
+
+  return (
+    <section className="mb-8 rounded-lg border border-gray-200 bg-white p-4 shadow-sm sm:p-6">
+      <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <h2 className="text-lg font-bold text-gray-900">Homepage Slider Display</h2>
+          <p className="text-sm text-gray-600">Choose what visitors see at the top of the homepage.</p>
+        </div>
+        {saved && (
+          <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">
+            {saved.enabled ? <Video className="h-3.5 w-3.5" /> : <ImageIcon className="h-3.5 w-3.5" />}
+            Live now: {saved.enabled ? "Video" : "Image slider"}
+          </span>
+        )}
+      </div>
+
+      {loadError ? (
+        <p role="alert" className="text-sm text-red-700">Could not load the display setting. Refresh the page to try again.</p>
+      ) : !saved ? (
+        <p className="text-sm text-gray-500">Loading display setting…</p>
+      ) : (
+        <form onSubmit={handleSave} className="space-y-5">
+          <div role="radiogroup" aria-label="Homepage slider shows" className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            {modes.map(({ enabled, label, hint, Icon }) => {
+              const selected = form.enabled === enabled;
+              return (
+                <button
+                  key={label}
+                  type="button"
+                  role="radio"
+                  aria-checked={selected}
+                  onClick={() => setForm({ ...form, enabled })}
+                  className={`flex items-start gap-3 rounded-lg border-2 p-4 text-left transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 ${selected ? "border-blue-600 bg-blue-50" : "border-gray-200 hover:border-gray-300"}`}
+                >
+                  <Icon className={`mt-0.5 h-5 w-5 flex-shrink-0 ${selected ? "text-blue-600" : "text-gray-400"}`} />
+                  <span>
+                    <span className="block font-semibold text-gray-900">{label}</span>
+                    <span className="block text-sm text-gray-600">{hint}</span>
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          {form.enabled && (
+            <div className="space-y-4">
+              <div>
+                <label htmlFor="slider-video-url" className="mb-2 block text-sm font-medium text-gray-700">
+                  Video link <span className="text-red-500">*</span>
+                </label>
+                <input
+                  id="slider-video-url"
+                  type="text"
+                  inputMode="url"
+                  autoComplete="off"
+                  value={form.videoUrl}
+                  onChange={(e) => setForm({ ...form, videoUrl: e.target.value })}
+                  placeholder="https://drive.google.com/file/d/.../view"
+                  aria-invalid={linkInvalid}
+                  className={`w-full rounded-lg border px-4 py-2 focus:border-transparent focus:ring-2 ${linkInvalid ? "border-red-300 bg-red-50 focus:ring-red-300" : "border-gray-300 focus:ring-blue-500"}`}
+                />
+                <p className={`mt-1 text-xs ${linkInvalid ? "text-red-600" : "text-gray-500"}`}>
+                  {linkInvalid
+                    ? "This doesn't look like a Google Drive or YouTube video link."
+                    : "Paste a Google Drive or YouTube link. Drive videos must be shared “Anyone with the link”."}
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                <div>
+                  <label htmlFor="slider-video-title" className="mb-2 block text-sm font-medium text-gray-700">
+                    Heading <span className="font-normal text-gray-400">(optional)</span>
+                  </label>
+                  <input
+                    id="slider-video-title"
+                    type="text"
+                    maxLength={200}
+                    value={form.title}
+                    onChange={(e) => setForm({ ...form, title: e.target.value })}
+                    placeholder="e.g. Highlights: Accountants' Day 2026"
+                    className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="slider-video-description" className="mb-2 block text-sm font-medium text-gray-700">
+                    Description <span className="font-normal text-gray-400">(optional)</span>
+                  </label>
+                  <textarea
+                    id="slider-video-description"
+                    rows={2}
+                    maxLength={500}
+                    value={form.description}
+                    onChange={(e) => setForm({ ...form, description: e.target.value })}
+                    placeholder="A short line shown beside the video"
+                    className="w-full resize-none rounded-lg border border-gray-300 px-4 py-2 focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+              </div>
+              <p className="text-xs text-gray-500">
+                With a heading or description, the video shows beside it like the image slides. Without them, the video fills the banner.
+              </p>
+
+              {previewUrl && (
+                <div>
+                  <p className="mb-2 text-sm font-medium text-gray-700">Preview</p>
+                  <div
+                    className="relative w-full max-w-xl overflow-hidden rounded-lg bg-black"
+                    style={{ aspectRatio: "16 / 9" }}
+                  >
+                    <iframe
+                      src={previewUrl}
+                      title="Video preview"
+                      allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+                      allowFullScreen
+                      className="absolute inset-0 h-full w-full border-0"
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
+          {notice && (
+            <p
+              role={notice.error ? "alert" : "status"}
+              className={`rounded-lg px-4 py-3 text-sm ${notice.error ? "bg-red-50 text-red-700" : "bg-green-50 text-green-700"}`}
+            >
+              {notice.text}
+            </p>
+          )}
+
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+            <button
+              type="submit"
+              disabled={!canSave}
+              className="rounded-lg bg-blue-600 px-6 py-2.5 font-medium text-white transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              {saving ? "Saving…" : "Save display setting"}
+            </button>
+            {dirty && !saving && (
+              <span className="text-sm text-amber-700">You have unsaved changes.</span>
+            )}
+          </div>
+        </form>
+      )}
+    </section>
   );
 }
 

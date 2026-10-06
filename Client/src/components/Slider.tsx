@@ -3,6 +3,14 @@ import { ChevronLeft, ChevronRight, X, User, Phone, Mail, AlertCircle } from "lu
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import Container from "./Container";
+import { getVideoEmbedUrl } from "@/lib/videoEmbed";
+
+interface SliderVideo {
+  enabled: boolean;
+  videoUrl: string;
+  title: string;
+  description: string;
+}
 
 interface Slide {
   id: string;
@@ -48,6 +56,8 @@ const emptyFormData: FormData = {
   interestOther: "",
 };
 
+const heroGradient = "linear-gradient(160deg, #1e3a6e 0%, #1a4fa8 50%, #1565c0 100%)";
+
 interface SliderProps {
   initialRegistrationOpen?: boolean;
   autoOpenRegistration?: boolean;
@@ -65,6 +75,8 @@ const Slider = ({
   const [registrationOpen, setRegistrationOpen] = useState<boolean | null>(null);
   const [slides, setSlides] = useState<Slide[]>([fallbackSlide]);
   const [current, setCurrent] = useState(0);
+  // Admin can swap the image slides for a video (Admin → Sliders).
+  const [sliderVideo, setSliderVideo] = useState<SliderVideo | null>(null);
   const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState<FormData>(emptyFormData);
   const [submitting, setSubmitting] = useState(false);
@@ -113,12 +125,30 @@ const Slider = ({
   }, []);
 
   useEffect(() => {
-    if (slides.length === 0) return;
+    const fetchSliderVideo = async () => {
+      try {
+        const response = await fetch("/api/slider-video");
+        if (response.ok) setSliderVideo(await response.json());
+      } catch {
+        // Keep the image slider if the setting can't be read.
+      }
+    };
+    fetchSliderVideo();
+  }, []);
+
+  const videoEmbedUrl = sliderVideo?.enabled ? getVideoEmbedUrl(sliderVideo.videoUrl) : null;
+  // The dedicated registration page always keeps the normal slider.
+  const showVideo = Boolean(videoEmbedUrl) && !initialRegistrationOpen;
+  const videoTitle = sliderVideo?.title || "";
+  const videoDescription = sliderVideo?.description || "";
+
+  useEffect(() => {
+    if (slides.length === 0 || showVideo) return;
     const interval = setInterval(() => {
       setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
     }, 4000);
     return () => clearInterval(interval);
-  }, [slides.length]);
+  }, [slides.length, showVideo]);
 
   // Open the form automatically only once we know registration is open.
   useEffect(() => {
@@ -238,17 +268,116 @@ const Slider = ({
     setFormData(emptyFormData);
   };
 
+  const registerButton = (
+    <button
+      onClick={() => setShowModal(true)}
+      className="reg-btn inline-flex items-center gap-2.5 w-fit px-5 py-2.5 rounded-lg text-sm font-bold transition-all duration-300 hover:scale-105 hover:brightness-105 relative overflow-hidden"
+      style={{
+        backgroundImage: "linear-gradient(135deg, #ffffff 0%, #dbeafe 50%, #eff6ff 100%)",
+        color: "#1e3a8a",
+        boxShadow: "0 0 0 1.5px rgba(255,255,255,0.8), 0 8px 24px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.9)",
+      }}
+    >
+      {/* Shimmer sweep */}
+      <span
+        className="reg-shimmer absolute inset-0 pointer-events-none"
+        style={{
+          background: "linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.75) 50%, transparent 65%)",
+        }}
+      />
+
+      {/* Pulsing dot */}
+      <span className="relative z-10 flex items-center gap-1.5">
+        <span className="relative flex h-4.5 w-4.5">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-60"></span>
+          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-600"></span>
+        </span>
+      </span>
+
+      <span className="relative z-10 font-bold tracking-wide">Register Now</span>
+
+      {/* FREE badge */}
+      <span
+        className="relative z-10 text-[10px] px-2 py-0.5 rounded-full font-bold tracking-widest"
+        style={{
+          background: "linear-gradient(90deg, #3e5277, #618ef0)",
+          color: "#ffffff",
+          boxShadow: "0 2px 6px rgba(37,99,235,0.4)",
+        }}
+      >
+        FREE
+      </span>
+
+      {/* Animated arrow */}
+      <span className="reg-arrow relative z-10 text-blue-600 font-bold">→</span>
+    </button>
+  );
+
+  const closedBadge = (
+    <div
+      className="inline-flex items-center gap-2 w-fit px-5 py-2.5 rounded-lg text-sm font-semibold bg-white/10 text-white/80 border border-white/25 cursor-not-allowed select-none"
+      aria-disabled="true"
+    >
+      <span className="relative flex h-2.5 w-2.5">
+        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-gray-300"></span>
+      </span>
+      Registration Closed
+    </div>
+  );
+
+  // In video mode the text panel only appears when there is something to show.
+  const hasVideoText = Boolean(videoTitle || videoDescription || registrationOpen);
+
   return (
     <>
       <Container>
         <div className="bg-white w-full py-0">
           <div className="px-3 mx-auto w-full max-w-full">
+            {showVideo && videoEmbedUrl ? (
+              <div
+                className="w-full flex flex-col lg:flex-row shadow-lg overflow-hidden"
+                style={{ background: heroGradient }}
+              >
+                {hasVideoText && (
+                  <div className="w-full lg:w-2/5 px-4 sm:px-6 py-5 sm:py-8 flex flex-col justify-center gap-3 order-2 lg:order-1">
+                    {videoTitle && (
+                      <h2 className="text-lg sm:text-xl md:text-[22px] lg:text-2xl font-bold text-white leading-tight break-words hyphens-auto">
+                        {videoTitle}
+                      </h2>
+                    )}
+                    {videoDescription && (
+                      <p className="text-sm text-white/70 leading-relaxed line-clamp-4 lg:line-clamp-none">
+                        {videoDescription}
+                      </p>
+                    )}
+                    {registrationOpen && registerButton}
+                  </div>
+                )}
+
+                <div
+                  className={`w-full order-1 lg:order-2 ${hasVideoText ? "lg:w-3/5" : "mx-auto max-w-5xl p-2 sm:p-4"}`}
+                >
+                  <div
+                    className={`relative w-full bg-black ${hasVideoText ? "" : "overflow-hidden rounded-lg shadow-xl"}`}
+                    style={{ aspectRatio: "16 / 9" }}
+                  >
+                    <iframe
+                      src={videoEmbedUrl}
+                      title={videoTitle || "Featured video"}
+                      allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+                      allowFullScreen
+                      className="absolute inset-0 h-full w-full border-0"
+                    />
+                  </div>
+                </div>
+              </div>
+            ) : (
             <div className="w-full group flex flex-col lg:flex-row shadow-lg overflow-hidden relative">
 
               {/* ── Left: Text Section ── */}
               <div
                 className="w-full lg:w-2/5 px-4 sm:px-6 py-5 sm:py-8 flex flex-col justify-center gap-3 relative order-2 lg:order-1"
-                style={{ background: "linear-gradient(160deg, #1e3a6e 0%, #1a4fa8 50%, #1565c0 100%)" }}
+                style={{ background: heroGradient }}
               >
                 <h2 className="text-lg sm:text-xl md:text-[22px] lg:text-2xl font-bold text-white leading-tight break-words hyphens-auto">
                   {slides[current].title}
@@ -259,94 +388,7 @@ const Slider = ({
                 </p>
 
                 {/* Register button */}
-                <style>{`
-  @keyframes reg-shimmer {
-    0% { transform: translateX(-150%) skewX(-15deg); }
-    100% { transform: translateX(250%) skewX(-15deg); }
-  }
-  @keyframes reg-border {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
-  }
-  @keyframes reg-arrow {
-    0%, 100% { transform: translateX(0); }
-    50% { transform: translateX(4px); }
-  }
-  .reg-btn .reg-shimmer {
-    animation: reg-shimmer 1.6s ease-in-out infinite;
-  }
-  .reg-btn .reg-arrow {
-    animation: reg-arrow 1s ease-in-out infinite;
-  }
-  .reg-btn::before {
-    content: '';
-    position: absolute;
-    inset: -2px;
-    border-radius: 10px;
-    padding: 2px;
-    background: linear-gradient(90deg, #ffffff, #93c5fd, #ffffff, #fbbf24, #ffffff);
-    background-size: 300% 100%;
-    animation: reg-border 1.5s ease-in-out infinite;
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-  }
-`}</style>
-
-                {registrationOpen ? (
-                  <button
-                    onClick={() => setShowModal(true)}
-                    className="reg-btn inline-flex items-center gap-2.5 w-fit px-5 py-2.5 rounded-lg text-sm font-bold transition-all duration-300 hover:scale-105 hover:brightness-105 relative overflow-hidden"
-                    style={{
-                      backgroundImage: "linear-gradient(135deg, #ffffff 0%, #dbeafe 50%, #eff6ff 100%)",
-                      color: "#1e3a8a",
-                      boxShadow: "0 0 0 1.5px rgba(255,255,255,0.8), 0 8px 24px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.9)",
-                    }}
-                  >
-                    {/* Shimmer sweep */}
-                    <span
-                      className="reg-shimmer absolute inset-0 pointer-events-none"
-                      style={{
-                        background: "linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.75) 50%, transparent 65%)",
-                      }}
-                    />
-
-                    {/* Pulsing dot */}
-                    <span className="relative z-10 flex items-center gap-1.5">
-                      <span className="relative flex h-4.5 w-4.5">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-60"></span>
-                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-600"></span>
-                      </span>
-                    </span>
-
-                    <span className="relative z-10 font-bold tracking-wide">Register Now</span>
-
-                    {/* FREE badge */}
-                    <span
-                      className="relative z-10 text-[10px] px-2 py-0.5 rounded-full font-bold tracking-widest"
-                      style={{
-                        background: "linear-gradient(90deg, #3e5277, #618ef0)",
-                        color: "#ffffff",
-                        boxShadow: "0 2px 6px rgba(37,99,235,0.4)",
-                      }}
-                    >
-                      FREE
-                    </span>
-
-                    {/* Animated arrow */}
-                    <span className="reg-arrow relative z-10 text-blue-600 font-bold">→</span>
-                  </button>
-                ) : registrationOpen === false ? (
-                  <div
-                    className="inline-flex items-center gap-2 w-fit px-5 py-2.5 rounded-lg text-sm font-semibold bg-white/10 text-white/80 border border-white/25 cursor-not-allowed select-none"
-                    aria-disabled="true"
-                  >
-                    <span className="relative flex h-2.5 w-2.5">
-                      <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-gray-300"></span>
-                    </span>
-                    Registration Closed
-                  </div>
-                ) : null}
+                {registrationOpen ? registerButton : registrationOpen === false ? closedBadge : null}
 
                 {/* Prev arrow */}
                 <button
@@ -424,6 +466,7 @@ const Slider = ({
                 <div className="absolute inset-0 bg-gray-200 -z-10" />
               </div>
             </div>
+            )}
           </div>
         </div>
       </Container>
@@ -784,6 +827,37 @@ const Slider = ({
         </div>
       )}
       <style>{`
+        @keyframes reg-shimmer {
+          0% { transform: translateX(-150%) skewX(-15deg); }
+          100% { transform: translateX(250%) skewX(-15deg); }
+        }
+        @keyframes reg-border {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.4; }
+        }
+        @keyframes reg-arrow {
+          0%, 100% { transform: translateX(0); }
+          50% { transform: translateX(4px); }
+        }
+        .reg-btn .reg-shimmer {
+          animation: reg-shimmer 1.6s ease-in-out infinite;
+        }
+        .reg-btn .reg-arrow {
+          animation: reg-arrow 1s ease-in-out infinite;
+        }
+        .reg-btn::before {
+          content: '';
+          position: absolute;
+          inset: -2px;
+          border-radius: 10px;
+          padding: 2px;
+          background: linear-gradient(90deg, #ffffff, #93c5fd, #ffffff, #fbbf24, #ffffff);
+          background-size: 300% 100%;
+          animation: reg-border 1.5s ease-in-out infinite;
+          -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+        }
         .modal-scroll {
           scrollbar-width: none;
           -ms-overflow-style: none;

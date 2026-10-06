@@ -7,6 +7,8 @@ export type GalleryItem = {
   date: string;
   coverImageUrl: string;
   googleDriveFolderId: string;
+  // Optional event video shown above the photos (Google Drive or YouTube link).
+  videoUrl?: string;
 };
 
 const galleryData: GalleryItem[] = [
@@ -21,6 +23,8 @@ const galleryData: GalleryItem[] = [
     // Photos live in this Google Drive folder. It must be shared
     // "Anyone with the link: Viewer" for the website to read it.
     googleDriveFolderId: "1-Dxcl1dkPH-zTAMqwo14xUhzuT9VyEl0",
+    // Must be shared "Anyone with the link" to play on the website.
+    videoUrl: "https://drive.google.com/file/d/1nxOaQE5ZUzweiOoxYrW8PBKy0kAtwPOw/view?usp=sharing",
   },
   {
     slug: "meet_the_press",
