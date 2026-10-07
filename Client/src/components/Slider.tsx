@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import Container from "./Container";
 import { getVideoEmbedUrl } from "@/lib/videoEmbed";
+import type { HomeHeroData } from "@/lib/homeHero";
 
 interface SliderVideo {
   enabled: boolean;
@@ -61,22 +62,29 @@ const heroGradient = "linear-gradient(160deg, #1e3a6e 0%, #1a4fa8 50%, #1565c0 1
 interface SliderProps {
   initialRegistrationOpen?: boolean;
   autoOpenRegistration?: boolean;
+  // Slides/video loaded on the server so the first paint is already correct.
+  initialData?: HomeHeroData | null;
 }
 
 const Slider = ({
   initialRegistrationOpen = false,
   autoOpenRegistration = true,
+  initialData = null,
 }: SliderProps) => {
   const defaultEventName = "The British Bangladeshi Accountants’ Day - 2026";
   const defaultEventDate = "2026-09-26";
   const [eventName, setEventName] = useState(defaultEventName);
   const [eventDate, setEventDate] = useState(defaultEventDate);
   // null while we are still checking; false = closed, true = open.
-  const [registrationOpen, setRegistrationOpen] = useState<boolean | null>(null);
-  const [slides, setSlides] = useState<Slide[]>([fallbackSlide]);
+  const [registrationOpen, setRegistrationOpen] = useState<boolean | null>(
+    initialData ? initialData.registrationOpen : null
+  );
+  const [slides, setSlides] = useState<Slide[]>(
+    initialData && initialData.slides.length > 0 ? initialData.slides : [fallbackSlide]
+  );
   const [current, setCurrent] = useState(0);
   // Admin can swap the image slides for a video (Admin → Sliders).
-  const [sliderVideo, setSliderVideo] = useState<SliderVideo | null>(null);
+  const [sliderVideo, setSliderVideo] = useState<SliderVideo | null>(initialData?.video ?? null);
   const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState<FormData>(emptyFormData);
   const [submitting, setSubmitting] = useState(false);
@@ -86,6 +94,7 @@ const Slider = ({
   const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
+    if (initialData) return; // Already loaded on the server.
     const fetchSlides = async () => {
       try {
         const response = await fetch("/api/sliders");
@@ -98,7 +107,7 @@ const Slider = ({
       }
     };
     fetchSlides();
-  }, []);
+  }, [initialData]);
 
   useEffect(() => {
     const fetchRegistrationStatus = async () => {
@@ -125,6 +134,7 @@ const Slider = ({
   }, []);
 
   useEffect(() => {
+    if (initialData) return; // Already loaded on the server.
     const fetchSliderVideo = async () => {
       try {
         const response = await fetch("/api/slider-video");
@@ -134,7 +144,7 @@ const Slider = ({
       }
     };
     fetchSliderVideo();
-  }, []);
+  }, [initialData]);
 
   const videoEmbedUrl = sliderVideo?.enabled ? getVideoEmbedUrl(sliderVideo.videoUrl) : null;
   // The dedicated registration page always keeps the normal slider.

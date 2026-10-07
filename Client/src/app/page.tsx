@@ -2,6 +2,11 @@ import type { Metadata } from "next";
 import FeatureSection from "@/components/FeatureSection";
 import NewsAndBlogsSection from "@/components/NewsAndBlogsSection";
 import Slider from "@/components/Slider";
+import { getHomeHeroData } from "@/lib/homeHero";
+
+// Render per request so the slider (images or video) is correct on first
+// paint and admin changes show immediately.
+export const dynamic = "force-dynamic";
 
 // ✅ Page Metadata for SEO
 export const metadata: Metadata = {
@@ -44,12 +49,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Home() {
+export default async function Home() {
+  const heroData = await getHomeHeroData();
+
   return (
     <main className="bg-white text-gray-900">
       {/* ✅ Use semantic sections for SEO */}
       <section aria-label="Homepage Banner">
-        <Slider />
+        <Slider initialData={heroData} />
       </section>
 
       <section aria-label="Features of the Society">
