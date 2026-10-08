@@ -43,5 +43,3 @@ yarn-error.log*
 next-env.d.ts
 .env*.local
 
-# Large magazine PDFs are hosted on Google Drive (GitHub rejects files over 100 MB)
-/public/magazine/pdf/magazine2.pdf
