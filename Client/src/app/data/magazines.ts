@@ -16,7 +16,7 @@ const magazines: Magazine[] = [
     cover: "/magazine/images/magazine2_cover.png",
     // PDFs live in the "All magazines" Google Drive folder, not in the repo.
     pdf: "https://drive.google.com/file/d/1N7O4qUBzsaszlw4I0uUpCljozfpblBiZ/view?usp=sharing",
-    date: "2026-10-08",
+    date: "2026-09-26",
     description:
       "The 2026 edition of the TPAS Magazine, published for The British Bangladeshi Accountants' Day 2026.",
   },
