@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight, X, User, Phone, Mail, AlertCircle } from "lu
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import Container from "./Container";
+import VideoEmbed from "./VideoEmbed";
 import { getVideoEmbedUrl } from "@/lib/videoEmbed";
 import type { HomeHeroData } from "@/lib/homeHero";
 
@@ -368,16 +369,10 @@ const Slider = ({
                   className={`w-full order-1 lg:order-2 ${hasVideoText ? "lg:w-3/5" : "mx-auto max-w-5xl p-2 sm:p-4"}`}
                 >
                   <div
-                    className={`relative w-full bg-black ${hasVideoText ? "" : "overflow-hidden rounded-lg shadow-xl"}`}
+                    className={`relative w-full ${hasVideoText ? "" : "overflow-hidden rounded-lg shadow-xl"}`}
                     style={{ aspectRatio: "16 / 9" }}
                   >
-                    <iframe
-                      src={videoEmbedUrl}
-                      title={videoTitle || "Featured video"}
-                      allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
-                      allowFullScreen
-                      className="absolute inset-0 h-full w-full border-0"
-                    />
+                    <VideoEmbed url={sliderVideo?.videoUrl || ""} title={videoTitle || "Featured video"} />
                   </div>
                 </div>
               </div>

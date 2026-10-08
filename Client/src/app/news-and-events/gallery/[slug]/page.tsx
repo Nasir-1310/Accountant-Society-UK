@@ -11,6 +11,7 @@ import galleryData, { type GalleryItem } from "@/app/data/galleryData";
 import Masonry from "react-masonry-css";
 import { getImagesFromFolder, type DriveImage } from "@/lib/googleDrive";
 import { getVideoEmbedUrl } from "@/lib/videoEmbed";
+import VideoEmbed from "@/components/VideoEmbed";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -126,17 +127,10 @@ const GalleryDetailPage = ({ params }: Props) => {
         {videoEmbedUrl && (
           <div className="mx-auto mb-10 w-full max-w-5xl">
             <div
-              className="relative w-full overflow-hidden rounded-lg bg-black shadow-md"
+              className="relative w-full overflow-hidden rounded-lg shadow-md"
               style={{ aspectRatio: "16 / 9" }}
             >
-              <iframe
-                src={videoEmbedUrl}
-                title={`${gallery.title} video`}
-                allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
-                allowFullScreen
-                loading="lazy"
-                className="absolute inset-0 h-full w-full border-0"
-              />
+              <VideoEmbed url={gallery.videoUrl || ""} title={`${gallery.title} video`} />
             </div>
           </div>
         )}

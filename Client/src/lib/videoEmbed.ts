@@ -40,6 +40,24 @@ function getDriveId(input: string): string | null {
     return null;
 }
 
+// A still image of the video, shown while the player loads.
+export function getVideoPosterUrl(input: string | null | undefined): string | null {
+    const value = (input || "").trim();
+    if (!value) return null;
+
+    const youTubeId = getYouTubeId(value);
+    if (youTubeId && ID_PATTERN.test(youTubeId)) {
+        return `https://i.ytimg.com/vi/${youTubeId}/hqdefault.jpg`;
+    }
+
+    const driveId = getDriveId(value);
+    if (driveId && ID_PATTERN.test(driveId)) {
+        return `https://drive.google.com/thumbnail?id=${driveId}&sz=w1280`;
+    }
+
+    return null;
+}
+
 export function getVideoEmbedUrl(input: string | null | undefined): string | null {
     const value = (input || "").trim();
     if (!value) return null;
