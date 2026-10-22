@@ -6,18 +6,18 @@ import Link from "next/link";
 import { FaLinkedin } from "react-icons/fa";
 
 export const metadata: Metadata = {
-  title: "Founding Members | Society of Professional Accountants",
+  title: "Founding Members",
   description:
-    "Meet the founding members of the Society of Professional Accountants. Learn about their experience, expertise, and dedication to ethical finance and leadership.",
+    "Meet the founding members of The Professional Accountants' Society. Learn about their experience, expertise, and dedication to ethical finance and leadership.",
   openGraph: {
-    title: "Founding Members | Society of Professional Accountants",
+    title: "Founding Members | The Professional Accountants' Society",
     description:
-      "Meet the founding members of the Society of Professional Accountants. Learn about their experience, expertise, and dedication to ethical finance and leadership.",
+      "Meet the founding members of The Professional Accountants' Society. Learn about their experience, expertise, and dedication to ethical finance and leadership.",
     type: "website",
     url: "https://www.accountantssoceity.org/founding-members",
     images: [
       {
-        url: "https://yourdomain.com/og/founding-members.jpg",
+        url: "/OG_image.png",
         width: 1200,
         height: 630,
         alt: "Founding Members of the Society",
@@ -31,7 +31,7 @@ export default function FoundingMembersPage() {
     <Container>
       <div className="max-w-7xl py-12 px-4 sm:px-6 lg:px-8 border-l border-r border-b border-gray-200 mx-[12px] rounded-xl shadow-sm bg-white">
         {/* Breadcrumb */}
-        <div data-aos="fade-up" className="text-[10px] md:text-sm text-gray-500 mb-6">
+        <div data-aos="fade-up" className="text-sm text-gray-500 mb-6">
           <Link href="/" className="hover:text-teal-600 transition-colors">Home</Link>
           <span className="mx-2">|</span>
           <Link href="/members" className="hover:text-teal-600 transition-colors">Founding Members</Link>
@@ -40,7 +40,7 @@ export default function FoundingMembersPage() {
         </div>
 
         {/* Title */}
-        <h1 data-aos="fade-up" className="text-2xl md:text-4xl font-bold text-gray-900 mb-2">Our Founding Members</h1>
+        <h1 data-aos="fade-up" className="text-2xl md:text-4xl font-bold text-brand-950 mb-2">Our Founding Members</h1>
         <p className="mb-12 text-[14px] md:text-base text-gray-600">Introducing the individuals who laid the cornerstone of our mission.</p>
 
         {/* Grid */}
@@ -74,7 +74,7 @@ export default function FoundingMembersPage() {
                     href={member.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-md text-sm font-medium text-white bg-blue-600 border border-gray-300 shadow-sm transition-all duration-200 hover:bg-green-200 hover:text-black hover:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-opacity-50"
+                    className="inline-flex items-center justify-center gap-2 w-full px-4 py-2 rounded-md text-sm font-medium text-white bg-brand-900 border border-transparent shadow-sm transition-all duration-200 hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-opacity-50"
 
                   >
                     <FaLinkedin className="text-base" />

@@ -9,7 +9,7 @@ import Link from "next/link";
 // SEO Metadata
 export const metadata: Metadata = {
   metadataBase: new URL("https://accountantssociety.org"), // ✅ Set your domain here
-  title: "Membership & Fees | The Professional Accountants Society",
+  title: "Membership & Fees",
   description: "Explore inclusive membership types and fees...",
   openGraph: {
     title: "Membership & Fees | Professional Accountants Society",
@@ -41,7 +41,7 @@ const MembershipAndFees = () => {
       <div className="w-full flex justify-center mt-12 px-4">
         <div className="w-full flex flex-col lg:flex-row bg-white shadow-lg overflow-hidden">
           {/* Main Content */}
-          <main className="w-full lg:w-3/4 order-1 lg:order-2 px-4 sm:px-6 lg:px-10 py-8">
+          <div className="w-full lg:w-3/4 order-1 lg:order-2 px-4 sm:px-6 lg:px-10 py-8">
             {/* Breadcrumb */}
             <nav aria-label="Breadcrumb" data-aos="fade-up" className="text-sm text-gray-500 mb-6">
               <Link href="/" className="hover:text-teal-600">Home</Link>
@@ -53,7 +53,7 @@ const MembershipAndFees = () => {
 
             {/* Page Title */}
             <header data-aos="fade-up" className="border-b border-gray-200 pb-6 mb-8">
-              <h1 className="text-2xl lg:text-4xl font-bold text-gray-800 mb-2">
+              <h1 className="text-2xl lg:text-4xl font-bold text-brand-950 mb-2">
                 Membership & Fees
               </h1>
             </header>
@@ -125,7 +125,7 @@ const MembershipAndFees = () => {
                 ))}
               </div>
             </section>
-          </main>
+          </div>
 
           {/* Sidebar */}
           <aside data-aos="fade-up" className="w-full lg:w-1/4 order-2 lg:order-1 bg-gradient-to-br from-gray-200 to-gray-100 border-t lg:border-t-0 lg:border-r border-gray-200">

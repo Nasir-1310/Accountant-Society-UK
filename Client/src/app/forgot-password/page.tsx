@@ -4,7 +4,7 @@ import Container from "@/components/Container";
 import ForgotPasswordForm from "@/components/ForgotPassForm";
 
 export const metadata: Metadata = {
-  title: "Forgot Password | Society of Professional Accountants",
+  title: "Forgot Password",
   description:
     "Recover your password securely by entering your registered email. A reset link will be sent to your inbox.",
 };
@@ -12,9 +12,9 @@ export const metadata: Metadata = {
 export default function ForgotPasswordPage() {
   return (
     <Container>
-      <main className="min-h-screen flex items-center justify-center bg-gray-50 px-4 py-12">
+      <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4 py-12">
         <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
-          <h1 className="text-3xl font-bold text-center text-gray-900">
+          <h1 className="text-3xl font-bold text-center text-brand-950">
             Forgot Password
           </h1>
           <p className="mt-2 text-sm text-center text-gray-600">
@@ -27,7 +27,7 @@ export default function ForgotPasswordPage() {
             </Link>
           </div>
         </div>
-      </main>
+      </div>
     </Container>
   );
 }

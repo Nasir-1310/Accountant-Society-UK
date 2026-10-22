@@ -4,7 +4,7 @@ import { Metadata } from "next";
 
 // SEO Metadata
 export const metadata: Metadata = {
-  title: "Rules and Guidance | The Professional Accountants' Society (TPAS)",
+  title: "Rules and Guidance",
   description:
     "Explore the rules and ethical guidance for members of TPAS. Upholding integrity, professionalism, and community values for a trusted accounting network.",
   keywords: [
@@ -20,11 +20,11 @@ export const metadata: Metadata = {
     title: "Rules and Guidance | The Professional Accountants' Society",
     description:
       "Discover TPAS's guidelines on professional conduct, practice standards, and community participation.",
-    url: "https://professionalssocitey.org/members/rules-and-guidance",
+    url: "/members/rules-and-guidance",
     siteName: "The Professional Accountants' Society",
     images: [
       {
-        url: "https://professionalssocitey.org/images/tpas-cover.png",
+        url: "/OG_image.png",
         width: 1200,
         height: 630,
         alt: "TPAS Rules and Guidance Cover Image",
@@ -37,10 +37,10 @@ export const metadata: Metadata = {
     title: "Rules and Guidance | TPAS",
     description:
       "Read the rules and ethical standards members of TPAS follow to promote trust and excellence.",
-    images: ["https://professionalssocitey.org/images/tpas-cover.png"],
+    images: ["/OG_image.png"],
   },
   alternates: {
-    canonical: "https://professionalssocitey.org/members/rules-and-guidance",
+    canonical: "/members/rules-and-guidance",
   },
 };
 
@@ -68,12 +68,12 @@ const RulesAndGuidance = () => {
               data-aos="fade-up"
               className="border-b  border-gray-400 pb-6 mb-8"
             >
-              <h1 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-2">
+              <h1 className="text-3xl lg:text-4xl font-bold text-brand-950 mb-2">
                 Rules and guidance
               </h1>
-               <h1 className="text-xl sm:text-3xl font-bold text-blue-900 mb-10 mt-8" id="purpose">
+               <h2 className="text-xl sm:text-3xl font-bold text-blue-900 mb-10 mt-8" id="purpose">
                 1. Purpose 
-              </h1>
+              </h2>
               <p className="text-lg text-gray-600">
                 These rules and guidance have been developed to ensure that all members of the Professional Accountants&apos; Society (TPAS) uphold the highest standards of professionalism, integrity, and collaboration. They apply to all TPAS events, platforms, and communications.
               </p>
@@ -285,7 +285,7 @@ const RulesAndGuidance = () => {
                     { label: "Member Agreement", href: "#member_agreement" },
                   ].map((item, index) => (
                     <Link key={index} href={item.href} className="block w-full">
-                      <span className="w-full inline-block text-left border border-green-500 text-green-900 hover:text-white px-4 py-3 rounded-md bg-green-200 hover:bg-green-600 hover:border-green-600 transition-all duration-200 font-medium">
+                      <span className="w-full inline-block text-left border border-brand-200 text-brand-900 hover:text-white px-4 py-3 rounded-lg bg-brand-50 hover:bg-brand-900 hover:border-brand-900 transition-all duration-200 font-medium">
                         {item.label}
                       </span>
                     </Link>
@@ -308,7 +308,7 @@ const RulesAndGuidance = () => {
                     { label: "Member Agreement", href: "#member_agreement" },
                   ].map((item, index) => (
                     <a key={index} href={item.href} className="block w-full">
-                      <button className="w-full text-left border border-green-500 text-green-900 hover:text-white px-4 py-3 rounded-md bg-green-200 hover:bg-green-600 hover:border-green-600 transition-all duration-200 font-medium">
+                      <button className="w-full text-left border border-brand-200 text-brand-900 hover:text-white px-4 py-3 rounded-lg bg-brand-50 hover:bg-brand-900 hover:border-brand-900 transition-all duration-200 font-medium">
                         {item.label}
                       </button>
                     </a>

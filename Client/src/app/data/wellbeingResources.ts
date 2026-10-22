@@ -7,7 +7,7 @@ const cpdCards = [
     link: "/webinars",
     buttonText: "View Details",
     bgColor: "bg-red-300",
-    titleColor: "text-purple-600",
+    titleColor: "text-brand-900",
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ const cpdCards = [
     link: "/education/cpd",
     buttonText: "Find out more",
     bgColor: "bg-orange-400",
-    titleColor: "text-green-600",
+    titleColor: "text-brand-900",
   },
   {
     id: 3,
@@ -27,7 +27,7 @@ const cpdCards = [
     link: "/rules-guidance",
     buttonText: "Explore Toolkit",
     bgColor: "bg-teal-500",
-    titleColor: "text-blue-600",
+    titleColor: "text-brand-900",
   },
 ];
 export default cpdCards;

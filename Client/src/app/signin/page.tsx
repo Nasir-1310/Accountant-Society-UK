@@ -6,8 +6,8 @@ import Container from "@/components/Container";
 import { Square_Button } from "@/components/Square_Button";
 
 export const metadata: Metadata = {
-  title: "Sign In | Accountants Society UK",
-  description: "Choose your sign in option: Admin or Member. Access your Accountants Society UK dashboard securely.",
+  title: "Sign In",
+  description: "Choose your sign in option: Admin or Member. Access your TPAS account securely.",
 };
 
 export default function SignInPage() {
@@ -15,7 +15,7 @@ export default function SignInPage() {
     <Container>
     <section data-aos="fade-up" className="m-3 border-xl flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-gray-50 to-gray-100 px-6">
       <div className="text-center">
-        <h1 className="text-3xl font-bold text-gray-800 mb-3">
+        <h1 className="text-3xl font-bold text-brand-950 mb-3">
           Welcome to Accountants&apos; Society.
         </h1>
         <p className="text-gray-600 mb-8">

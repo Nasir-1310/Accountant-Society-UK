@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import { Square_Button } from "@/components/Square_Button";
 
 export const metadata: Metadata = {
-  title: "Constitution | The Professional Accountants' Society (TPAS)",
+  title: "Constitution",
   description:
     "Review the official constitution of TPAS outlining its definitions, structure, and guiding principles.",
   keywords: [
@@ -20,11 +20,11 @@ export const metadata: Metadata = {
     title: "Constitution | The Professional Accountants' Society",
     description:
       "Explore the official constitution of TPAS defining its mission, structure, and operational principles.",
-    url: "https://professionalssocitey.org/members/constitution",
+    url: "/policies/constitution",
     siteName: "The Professional Accountants' Society",
     images: [
       {
-        url: "https://professionalssocitey.org/images/tpas-cover.png",
+        url: "/OG_image.png",
         width: 1200,
         height: 630,
         alt: "TPAS Constitution Cover Image",
@@ -37,10 +37,10 @@ export const metadata: Metadata = {
     title: "Constitution | TPAS",
     description:
       "Discover TPAS's constitutional principles governing its membership and activities.",
-    images: ["https://professionalssocitey.org/images/tpas-cover.png"],
+    images: ["/OG_image.png"],
   },
   alternates: {
-    canonical: "https://professionalssocitey.org/members/constitution",
+    canonical: "/policies/constitution",
   },
 };
 
@@ -189,14 +189,14 @@ const ConstitutionPage = () => {
 
           {/* Page Title */}
           <div className="border-b border-gray-400 pb-6 mb-8">
-            <h1 className=" text-xl sm:text-3xl lg:text-4xl font-bold text-gray-800 mb-2">
+            <h1 className=" text-xl sm:text-3xl lg:text-4xl font-bold text-brand-950 mb-2">
               Constitution
             </h1>
           </div>
           <div className="border-b border-gray-400 pb-6 mb-8 flex flex-col items-center text-center">
-            <h1 className="text-lg sm:text-2xl lg:text-3xl font-bold text-gray-800 mb-2">
+            <p className="text-lg sm:text-2xl lg:text-3xl font-bold text-gray-800 mb-2">
                 THE PROFESSIONAL ACCOUNTANTS’ SOCIETY(TPAS)
-            </h1>
+            </p>
             <p><strong className="text-[14px] sm:text-base">Articles of association and memorandum</strong> </p>
             
           </div>

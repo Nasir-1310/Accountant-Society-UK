@@ -6,21 +6,21 @@ import { Square_Button } from "@/components/Square_Button";
 import journal from "@/app/data/journal";
 
 export const metadata: Metadata = {
-  title: "Journal | Society of Professional Accountants",
+  title: "Journal",
   description:
-    "Explore peer-contributed articles, research findings, and thought leadership from the Society of Professional Accountants.",
+    "Explore peer-contributed articles, research findings, and thought leadership from The Professional Accountants' Society.",
   openGraph: {
-    title: "Journal | Society of Professional Accountants",
+    title: "Journal | The Professional Accountants' Society",
     description:
-      "The official journal of the Society of Professional Accountants. Read in-depth articles, original research, and expert insights contributed by our members.",
+      "The official journal of The Professional Accountants' Society. Read in-depth articles, original research, and expert insights contributed by our members.",
     type: "website",
     url: "https://www.accountantssociety.org/journal",
     images: [
       {
-        url: "https://www.accountantssociety.org/og/journal.jpg",
+        url: "/OG_image.png",
         width: 1200,
         height: 630,
-        alt: "Professional Journal - Society of Professional Accountants",
+        alt: "Professional Journal - The Professional Accountants' Society",
       },
     ],
   },
@@ -31,7 +31,7 @@ export default function Journal() {
     <Container>
       <div className="max-w-7xl py-12 px-4 sm:px-6 lg:px-8 border-l border-r border-b mx-[12px]">
         {/* Breadcrumb */}
-        <div data-aos="fade-up" className="text-[10px] md:text-sm text-gray-500 mb-6">
+        <div data-aos="fade-up" className="text-sm text-gray-500 mb-6">
           <Link href="/" className="hover:text-teal-600">Home</Link>
           <span className="mx-2">|</span>
           <Link href="/members" className="hover:text-teal-600">For Members</Link>
@@ -46,7 +46,7 @@ export default function Journal() {
 
         {/* Title */}
         <div data-aos="fade-up" className="mb-10">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold text-brand-950 mb-4">
             The Journal of TPAS
           </h1>
           <p className="text-lg text-gray-700 ">

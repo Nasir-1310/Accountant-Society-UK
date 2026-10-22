@@ -7,7 +7,7 @@ import Link from "next/link";
 
 // SEO Metadata
 export const metadata: Metadata = {
-  title: "Professional Support |The Professional Accountants Society",
+  title: "Professional Support",
   description:
     "Discover tailored professional support for members of the Professional Accountants Society. Access mentoring, legal advice, career guidance, and more.",
   keywords: [
@@ -44,7 +44,7 @@ const Professional_Support = () => {
       <div className="w-full flex justify-center mt-12 px-4">
         <div className="w-full flex flex-col lg:flex-row bg-white shadow-lg overflow-hidden">
           {/* Main Content */}
-          <main className="w-full lg:w-3/4 order-1 lg:order-2 px-6 lg:px-10 py-8">
+          <div className="w-full lg:w-3/4 order-1 lg:order-2 px-6 lg:px-10 py-8">
             {/* Breadcrumb */}
             <nav aria-label="Breadcrumb" data-aos="fade-up" className="text-sm text-gray-500 mb-6">
               <Link href="/" className="hover:text-teal-600">Home</Link>
@@ -56,7 +56,7 @@ const Professional_Support = () => {
 
             {/* Page Title */}
             <header data-aos="fade-up" className="border-b border-gray-200 pb-6 mb-8">
-              <h1 className="text-2xl lg:text-4xl font-bold text-gray-800 mb-2">
+              <h1 className="text-2xl lg:text-4xl font-bold text-brand-950 mb-2">
                 Professional Support
               </h1>
             </header>
@@ -122,7 +122,7 @@ const Professional_Support = () => {
                 ))}
               </div>
             </section>
-          </main>
+          </div>
 
           {/* Sidebar */}
           <aside data-aos="fade-up" className="w-full lg:w-1/4 order-2 lg:order-1 bg-gradient-to-br from-gray-200 to-gray-100 border-t lg:border-t-0 lg:border-r border-gray-200">

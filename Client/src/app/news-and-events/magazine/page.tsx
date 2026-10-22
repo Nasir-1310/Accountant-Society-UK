@@ -1,115 +1,89 @@
-// ============================================
-// FILE 2: src/app/news-and-events/magazine/page.tsx
-// ============================================
-
-import Container from "@/components/Container";
+// src/app/news-and-events/magazine/page.tsx
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { FileText } from "lucide-react";
+import { ArrowRight, CalendarDays } from "lucide-react";
 import magazines from "@/app/data/magazines";
-import { Square_Button } from "@/components/Square_Button";
+import PageHeader from "@/components/PageHeader";
 
 export const metadata: Metadata = {
-  title: "TPAS Magazine | The Professional Accountants' Society",
+  title: "TPAS Magazine",
   description:
     "Explore TPAS Magazines featuring insights, industry trends, and thought leadership articles from the Professional Accountants' Society.",
+  alternates: { canonical: "/news-and-events/magazine" },
   openGraph: {
     title: "TPAS Magazine | The Professional Accountants' Society",
     description:
       "Browse the official TPAS Magazines filled with professional insights, community updates, and expert contributions.",
-    url: "https://www.accountantssociety.org/news-and-events/magazine",
+    url: "/news-and-events/magazine",
     type: "website",
-    images: [
-      {
-        url: "https://www.accountantssociety.org/og/magazine.jpg",
-        width: 1200,
-        height: 630,
-        alt: "TPAS Magazine - Cover",
-      },
-    ],
+    images: [{ url: "/OG_image.png", width: 1200, height: 630, alt: "TPAS Magazine" }],
   },
 };
 
 export default function MagazinePage() {
   return (
-    <Container>
-      <div className="mx-3 px-5 border-l border-r border-gray-200 bg-white">
-        <main className="w-full py-20 max-w-full">
-          {/* Header */}
-          <div data-aos="fade-up" className="mb-12">
-            <div className="text-[10px] md:text-sm text-gray-500 mb-6">
-              <Link href="/" className="hover:text-teal-600">
-                Home
-              </Link>
-              <span className="mx-2">|</span>
-              <Link href="/news-and-events" className="hover:text-teal-600">
-                News & Events
-              </Link>
-              <span className="mx-2">|</span>
-              <span className="text-gray-700">Magazine</span>
-            </div>
+    <>
+      <PageHeader
+        eyebrow="News & events"
+        title="TPAS Magazines"
+        description="Discover our curated collection of TPAS Magazines featuring in-depth articles, professional insights, and updates from our community of accountants and thought leaders."
+        breadcrumbs={[{ label: "News & Events", href: "/news-and-events" }, { label: "Magazine" }]}
+      />
 
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              TPAS Magazines
-            </h2>
-            <p className="text-base sm:text-lg text-gray-700 max-w-7xl">
-              Discover our curated collection of TPAS Magazines featuring
-              in-depth articles, professional insights, and updates from our
-              community of accountants and thought leaders.
-            </p>
-          </div>
-
-          {/* Featured Magazine Layout */}
-          <div className="space-y-16">
-            {magazines.map((mag, idx) => (
-              <div
-                key={idx}
-                data-aos="fade-up"
-                className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12 bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition duration-200 overflow-hidden"
-              >
-                {/* Left: Cover Image */}
-                <div className="relative w-full md:w-1/2 h-[400px] md:h-[500px] flex-shrink-0 bg-gray-50">
+      <div className="site-container py-12  sm:py-16">
+        <ul className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+          {magazines.map((mag, idx) => (
+            <li key={mag.slug}>
+              <article className="card card-hover group flex h-full flex-col overflow-hidden sm:flex-row">
+                <Link
+                  href={`/news-and-events/magazine/${mag.slug}`}
+                  tabIndex={-1}
+                  aria-hidden="true"
+                  className="relative block aspect-[3/4] w-full flex-shrink-0 bg-surface sm:aspect-auto sm:w-56"
+                >
                   <Image
                     src={mag.cover}
-                    alt={mag.title}
+                    alt=""
                     fill
-                    className="object-contain md:object-contain"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    priority
+                    sizes="(max-width: 640px) 100vw, 224px"
+                    className="object-contain p-4 transition-transform duration-500 group-hover:scale-[1.02] sm:object-cover sm:p-0"
+                    priority={idx === 0}
                   />
-                </div>
+                </Link>
 
-                {/* Right: Magazine Info */}
-                <div className="flex flex-col justify-center p-6 md:p-10 md:w-1/2">
-                  <h3 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-3">
-                    {mag.title}
-                  </h3>
-
-                  <div className="flex items-center text-sm text-gray-500 mb-4">
-                    <FileText className="w-4 h-4 mr-2 text-teal-600" />
-                    {new Date(mag.date).toLocaleDateString("en-GB", {
-                      month: "long",
-                      year: "numeric",
-                    })}
-                  </div>
-
-                  <p className="text-gray-700 text-base leading-relaxed mb-6">
-                    {mag.description}
+                <div className="flex flex-1 flex-col p-6 sm:p-8">
+                  {idx === 0 && (
+                    <span className="mb-3 w-fit rounded-full bg-accent-50 px-2.5 py-1 text-xs font-semibold text-accent-700">
+                      Latest issue
+                    </span>
+                  )}
+                  <h2 className="text-xl font-bold text-brand-950 sm:text-2xl">
+                    <Link href={`/news-and-events/magazine/${mag.slug}`} className="hover:text-brand-700">
+                      {mag.title}
+                    </Link>
+                  </h2>
+                  <p className="mt-3 flex items-center gap-2 text-sm text-slate-500">
+                    <CalendarDays aria-hidden="true" className="h-4 w-4 text-brand-500" />
+                    {new Date(mag.date).toLocaleDateString("en-GB", { month: "long", year: "numeric" })}
                   </p>
-
-                  <Link
-                    href={`/news-and-events/magazine/${mag.slug}`}
-                    className="inline-block"
-                  >
-                    <Square_Button>Read Full Magazine</Square_Button>
-                  </Link>
+                  <p className="mt-4 leading-relaxed text-slate-600">{mag.description}</p>
+                  <div className="mt-auto pt-6">
+                    <Link
+                      href={`/news-and-events/magazine/${mag.slug}`}
+                      className="btn-primary w-fit"
+                      aria-label={`Read ${mag.title}`}
+                    >
+                      Read the magazine
+                      <ArrowRight aria-hidden="true" className="h-4 w-4" />
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </main>
+              </article>
+            </li>
+          ))}
+        </ul>
       </div>
-    </Container>
+    </>
   );
 }

@@ -9,7 +9,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "TPAS Wellbeing | The Professional Accountants Society",
+  title: "TPAS Wellbeing",
   description:
     "Fostering mental health and resilience in accounting. Access resources on stress, work-life balance, and peer support tailored for TPAS members.",
   openGraph: {
@@ -41,7 +41,7 @@ export default function TPASWellbeingPage() {
     <Container>
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-blue-100 to-blue-200 py-16 px-4 mx-3 text-center ">
-        <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4">
+        <h1 className="text-2xl sm:text-3xl font-bold text-brand-950 mb-4">
           Welcome to TPAS Wellbeing
         </h1>
         <p className="text-lg text-black mb-6 max-w-2xl mx-auto">

@@ -7,7 +7,7 @@ const inspiring_futures_changing_livesCarts = [
     link: "/webinars",
     buttonText: "View Details",
     bgColor: "bg-red-300",
-    titleColor: "text-purple-600",
+    titleColor: "text-brand-900",
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ const inspiring_futures_changing_livesCarts = [
     link: "/education/cpd",
     buttonText: "Find out more",
     bgColor: "bg-orange-400",
-    titleColor: "text-green-600",
+    titleColor: "text-brand-900",
   },
   {
     id: 3,
@@ -27,7 +27,7 @@ const inspiring_futures_changing_livesCarts = [
     link: "/rules-guidance",
     buttonText: "Read more",
     bgColor: "bg-teal-500",
-    titleColor: "text-blue-600",
+    titleColor: "text-brand-900",
   },
 ];
 export default inspiring_futures_changing_livesCarts;

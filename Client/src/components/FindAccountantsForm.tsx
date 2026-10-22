@@ -25,12 +25,12 @@ export default function FindAccountantForm({ onSearch }: FindAccountantFormProps
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-white shadow-md rounded-lg p-6 w-full max-w-4xl mx-auto mt-10 space-y-6"
+      className="card mx-auto w-full max-w-4xl space-y-6 p-6 sm:p-8"
     >
-      <h2 className="text-2xl font-bold text-gray-800">Find an Accountant</h2>
+      <h2 className="text-xl font-bold text-brand-950">Search for an accountant</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div>
-          <label htmlFor="name" className="block font-medium text-gray-700 mb-1">
+          <label htmlFor="name" className="mb-1.5 block text-sm font-semibold text-slate-700">
             Name
           </label>
           <input
@@ -39,11 +39,11 @@ export default function FindAccountantForm({ onSearch }: FindAccountantFormProps
             placeholder="Enter name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
           />
         </div>
         <div>
-          <label htmlFor="location" className="block font-medium text-gray-700 mb-1">
+          <label htmlFor="location" className="mb-1.5 block text-sm font-semibold text-slate-700">
             Postcode or City/Town
           </label>
           <input
@@ -52,11 +52,11 @@ export default function FindAccountantForm({ onSearch }: FindAccountantFormProps
             placeholder="Enter location"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
-            className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
           />
         </div>
         <div>
-          <label htmlFor="area" className="block font-medium text-gray-700 mb-1">
+          <label htmlFor="area" className="mb-1.5 block text-sm font-semibold text-slate-700">
             Area of Accountants
           </label>
           <input
@@ -65,15 +65,15 @@ export default function FindAccountantForm({ onSearch }: FindAccountantFormProps
             placeholder="e.g. Tax, Audit"
             value={area}
             onChange={(e) => setArea(e.target.value)}
-            className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full rounded-lg border border-slate-300 px-4 py-2.5 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
           />
         </div>
       </div>
 
-      <div className="text-center">
+      <div className="flex justify-end">
         <button
           type="submit"
-          className="bg-blue-600 text-white px-8 py-2 rounded font-semibold hover:bg-blue-900 transition duration-300"
+          className="btn-primary px-8"
         >
           Search
         </button>

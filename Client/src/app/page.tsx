@@ -3,6 +3,10 @@ import FeatureSection from "@/components/FeatureSection";
 import NewsAndBlogsSection from "@/components/NewsAndBlogsSection";
 import Slider from "@/components/Slider";
 import { getHomeHeroData } from "@/lib/homeHero";
+import { getPublishedNewsBlogs } from "@/lib/newsBlogs";
+import AboutIntro from "@/components/home/AboutIntro";
+import EventsPreview from "@/components/home/EventsPreview";
+import Highlights from "@/components/home/Highlights";
 
 // Render per request so the slider (images or video) is correct on first
 // paint and admin changes show immediately.
@@ -10,7 +14,7 @@ export const dynamic = "force-dynamic";
 
 // ✅ Page Metadata for SEO
 export const metadata: Metadata = {
-  title: "The Professional Accountants' Society | Official Website",
+  title: { absolute: "The Professional Accountants' Society | Official Website" },
   description:
     "Welcome to The Professional Accountants' Society — fostering excellence in the accounting profession through news, events, and resources for members.",
   keywords: [
@@ -50,22 +54,27 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  const heroData = await getHomeHeroData();
+  const [heroData, newsBlogs] = await Promise.all([getHomeHeroData(), getPublishedNewsBlogs(6)]);
 
   return (
-    <main className="bg-white text-gray-900">
-      {/* ✅ Use semantic sections for SEO */}
-      <section aria-label="Homepage Banner">
+    <>
+      <h1 className="sr-only">The Professional Accountants&apos; Society — British Bangladeshi accountants in the UK</h1>
+
+      <section aria-label="Homepage banner" className="pt-4 sm:pt-6">
         <Slider initialData={heroData} />
       </section>
 
-      <section aria-label="Features of the Society">
+      <div className="mt-8 sm:mt-10">
         <FeatureSection />
-      </section>
+      </div>
 
-      <section aria-label="Latest News and Blogs">
-        <NewsAndBlogsSection />
-      </section>
-    </main>
+      <AboutIntro />
+
+      <EventsPreview />
+
+      <NewsAndBlogsSection items={newsBlogs} />
+
+      <Highlights />
+    </>
   );
 }

@@ -1,61 +1,45 @@
-"use client";
-
 import Link from "next/link";
-import Image from "next/image";
-import Container from "./Container";
+import { ArrowRight, BookOpen, GraduationCap, LogIn, Scale } from "lucide-react";
 import featureCards from "@/app/data/featureCards";
 
-
+// Short, navigational summaries for each quick link (keyed by link).
+const details: Record<string, { icon: typeof LogIn; summary: string }> = {
+  "/signin": { icon: LogIn, summary: "Access your member account and resources." },
+  "/members/cpd-training": { icon: GraduationCap, summary: "Keep your CPD on track with training and events." },
+  "/members/rules-and-guidance": { icon: Scale, summary: "The standards and guidance our members follow." },
+  "/members/journal": { icon: BookOpen, summary: "Articles and insight from the profession." },
+};
 
 const FeatureSection = () => {
   return (
-    <Container>
-
-   
-    <section data-aos="fade-up" className="w-full bg-white py-10">
-      <div className="w-full px-2">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-          {featureCards.map((card) => (
-            <div
-              key={card.id}
-              className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden group"
-            >
-              {/* Image Container with aspect ratio */}
-              <div
-                className={`relative ${card.bgColor}`}
-                style={{ aspectRatio: "400 / 250" }}
+    <section aria-label="Quick links" className="site-container ">
+      <ul className="relative z-10 -mt-2 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+        {featureCards.map((card) => {
+          const detail = details[card.link];
+          const Icon = detail?.icon ?? ArrowRight;
+          return (
+            <li key={card.id}>
+              <Link
+                href={card.link}
+                className="card card-hover group flex h-full items-start gap-4 p-5 sm:flex-col sm:p-6"
               >
-                <Image
-                  src={card.image}
-                  alt={card.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-
-              {/* Content Section */}
-              <div className="p-6">
-                <h3 data-aos="fade-up" className="mb-4">
-                  <Link
-                    href={card.link}
-                    className={`text-xl font-semibold ${card.titleColor} hover:underline transition-colors duration-200`}
-                  >
-                    {card.title}
-                  </Link>
-                </h3>
-                <button data-aos="fade-up" className=" px-4 py-2 border border-gray-700 text-gray-900 bg-white hover:bg-green-700  hover:text-white hover:border-yellow-900 transition-colors duration-200 font-medium">
-                  <Link href={card.link}>
-                  {card.buttonText}
-                  </Link>
-                  
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+                <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-brand-50 text-brand-800 transition-colors group-hover:bg-brand-900 group-hover:text-white">
+                  <Icon aria-hidden="true" className="h-5 w-5" />
+                </span>
+                <span className="flex flex-1 flex-col">
+                  <span className="text-base font-bold text-brand-950">{card.title}</span>
+                  {detail && <span className="mt-1 text-sm text-slate-600">{detail.summary}</span>}
+                  <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-brand-800">
+                    {card.buttonText}
+                    <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  </span>
+                </span>
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
     </section>
-     </Container>
   );
 };
 

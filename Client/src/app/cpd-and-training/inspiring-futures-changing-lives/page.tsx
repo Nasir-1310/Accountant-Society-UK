@@ -115,13 +115,13 @@ const CPD_and_Training = () => {
                 <div className="flex flex-col sm:flex-row justify-center gap-4">
                   <Link
                     href="/"
-                    className="bg-white text-green-700 font-semibold py-2 px-6 rounded-full shadow hover:bg-gray-100 transition"
+                    className="bg-white text-brand-900 font-semibold py-2 px-6 rounded-full shadow hover:bg-brand-50 transition"
                   >
                     Learn More
                   </Link>
                   <Link
                     href="/"
-                    className="bg-green-700 text-white font-semibold py-2 px-6 rounded-full shadow hover:bg-green-800 transition"
+                    className="bg-accent-600 text-white font-semibold py-2 px-6 rounded-full shadow hover:bg-accent-700 transition"
                   >
                     Apply Now
                   </Link>
@@ -275,7 +275,7 @@ const CPD_and_Training = () => {
                         <p className="text-[12px] xs:text-xl 2xl:text-[17px]  leading-relaxed mb-2">
                           “{item.text}”
                         </p>
-                        <button data-aos="fade-up" className=" px-4 py-2 border border-gray-700 text-gray-900 bg-green-50 hover:bg-green-700  hover:text-white hover:border-yellow-900 transition-colors duration-200 font-medium">
+                        <button data-aos="fade-up" className=" px-4 py-2 border border-brand-200 rounded-lg text-brand-900 bg-brand-50 hover:bg-brand-900 hover:text-white hover:border-brand-900 transition-colors duration-200 font-medium">
                       <Link href={item.link}>
                         {item.buttonText}
                        </Link>

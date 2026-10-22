@@ -34,13 +34,14 @@ export async function generateMetadata({
 
   if (!magazine) {
     return {
-      title: "Magazine Not Found | TPAS",
+      title: "Magazine Not Found",
       description: "The requested magazine could not be found.",
     };
   }
 
   return {
-    title: `${magazine.title} | TPAS Magazine`,
+    title: magazine.title,
+    alternates: { canonical: `/news-and-events/magazine/${encodeURIComponent(magazine.slug)}` },
     description: magazine.description,
     openGraph: {
       title: `${magazine.title} | TPAS Magazine`,
@@ -75,7 +76,7 @@ export default async function MagazineDetailsPage({ params }: PageProps) {
   return (
     <Container>
       <div className="mx-3 px-5 border-l border-r border-gray-200 bg-white">
-        <main className="w-full py-20 max-w-full">
+        <div className="w-full py-20 max-w-full">
           {/* Breadcrumbs */}
           <div
             data-aos="fade-up"
@@ -101,9 +102,9 @@ export default async function MagazineDetailsPage({ params }: PageProps) {
 
           {/* Header */}
           <div data-aos="fade-up" className="mb-10 text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
+            <h1 className="text-3xl sm:text-4xl font-bold text-brand-950 mb-3">
               {magazine.title}
-            </h2>
+            </h1>
             <div className="flex justify-center items-center text-sm text-gray-500 mb-4">
               <FileText className="w-4 h-4 mr-2 text-teal-600" />
               {new Date(magazine.date).toLocaleDateString("en-GB", {
@@ -150,7 +151,7 @@ export default async function MagazineDetailsPage({ params }: PageProps) {
               ← Back to Magazines
             </Link>
           </div>
-        </main>
+        </div>
       </div>
     </Container>
   );

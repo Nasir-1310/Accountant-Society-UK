@@ -7,18 +7,18 @@ import Link from "next/link";
 import { Square_Button } from "@/components/Square_Button";
 
 export const metadata: Metadata = {
-  title: "Strategic Partners | Society of Professional Accountants",
+  title: "Strategic Partners",
   description:
     "Discover our trusted strategic partners who empower TPAS members with exclusive services and benefits, including insurance, tax support, and professional tools.",
   openGraph: {
-    title: "Strategic Partners | Society of Professional Accountants",
+    title: "Strategic Partners | The Professional Accountants' Society",
     description:
       "Explore TPAS's strategic partnerships that bring added value to our community of professionals.",
     type: "website",
-    url: "https://yourdomain.com/strategic-partners",
+    url: "/members/strategic-partners",
     images: [
       {
-        url: "https://yourdomain.com/og/strategic-partners.jpg",
+        url: "/OG_image.png",
         width: 1200,
         height: 630,
         alt: "TPAS Strategic Partners",
@@ -54,7 +54,7 @@ export default function StrategicPartnersPage() {
         {/* Breadcrumb */}
         <div
           data-aos="fade-up"
-          className=" text-[10px] md:text-sm text-gray-500 mb-6"
+          className=" text-sm text-gray-500 mb-6"
         >
           <Link href="/" className="hover:text-teal-600">
             Home
@@ -69,7 +69,7 @@ export default function StrategicPartnersPage() {
 
         {/* Title */}
         <div data-aos="fade-up" className="mb-10 ">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold text-brand-950 mb-4">
             See Who We Work With
           </h1>
           <p className="text-lg text-gray-700 w-auto ">

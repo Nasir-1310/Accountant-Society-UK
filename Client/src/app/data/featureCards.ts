@@ -6,7 +6,7 @@ const featureCards = [
     link: "/signin",
     buttonText: "Sign in",
     bgColor: "bg-red-300",
-    titleColor: "text-purple-600",
+    titleColor: "text-brand-900",
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ const featureCards = [
     link: "/members/cpd-training",
     buttonText: "Find out more",
     bgColor: "bg-orange-400",
-    titleColor: "text-green-600",
+    titleColor: "text-brand-900",
   },
   {
     id: 3,
@@ -24,7 +24,7 @@ const featureCards = [
     link: "/members/rules-and-guidance",
     buttonText: "Read more",
     bgColor: "bg-teal-500",
-    titleColor: "text-blue-600",
+    titleColor: "text-brand-900",
   },
   {
     id: 4,
@@ -33,7 +33,7 @@ const featureCards = [
     link: "/members/journal",
     buttonText: "Read more",
     bgColor: "bg-blue-500",
-    titleColor: "text-red-600",
+    titleColor: "text-brand-900",
   },
 ];
 export default featureCards;

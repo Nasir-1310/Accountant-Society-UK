@@ -5,7 +5,7 @@
 import React, { useEffect, useState } from "react";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import Link from "next/link";
+import PageHeader from "@/components/PageHeader";
 import Container from "@/components/Container";
 import galleryData, { type GalleryItem } from "@/app/data/galleryData";
 import Masonry from "react-masonry-css";
@@ -97,31 +97,19 @@ const GalleryDetailPage = ({ params }: Props) => {
   const videoEmbedUrl = getVideoEmbedUrl(gallery.videoUrl);
 
   return (
+    <>
+      <PageHeader
+        eyebrow={gallery.date}
+        title={gallery.title}
+        description={gallery.description}
+        breadcrumbs={[
+          { label: "News & Events", href: "/news-and-events" },
+          { label: "Gallery", href: "/news-and-events/gallery" },
+          { label: gallery.title },
+        ]}
+      />
     <Container>
       <div className="w-full px-4 py-12">
-        {/* Breadcrumb */}
-        <div className="text-sm text-gray-500 mb-6">
-          <Link href="/" className="hover:text-teal-600">
-            Home
-          </Link>
-          <span className="mx-2">|</span>
-          <Link href="/news-and-events" className="hover:text-teal-600">
-            News and Events
-          </Link>
-          <span className="mx-2">|</span>
-          <Link href="/news-and-events/gallery" className="hover:text-teal-600">
-            Gallery
-          </Link>
-          <span className="mx-2">|</span>
-          <span>{gallery.title}</span>
-        </div>
-
-        {/* Title */}
-        <h1 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
-          {gallery.title}
-        </h1>
-        <p className="text-gray-600 mb-6">{gallery.description}</p>
-        <p className="text-xs text-gray-400 mb-8">{gallery.date}</p>
 
         {/* Event video */}
         {videoEmbedUrl && (
@@ -170,6 +158,7 @@ const GalleryDetailPage = ({ params }: Props) => {
         )}
       </div>
     </Container>
+    </>
   );
 };
 

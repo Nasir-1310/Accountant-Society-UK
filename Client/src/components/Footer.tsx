@@ -1,190 +1,157 @@
-import React from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import {
-  Phone,
-  Mail,
-  MapPin,
-  Facebook,
-  Twitter,
-  Linkedin,
-  ExternalLink,
-} from 'lucide-react';
-import Container from './Container';
+import React from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { Phone, Mail, MapPin, Facebook, Linkedin, ArrowRight } from "lucide-react";
+
+const linkGroups = [
+  {
+    title: "About us",
+    links: [
+      { name: "Who we are", href: "/about-us" },
+      { name: "Founding members", href: "/founding-members/members" },
+      { name: "Constitution", href: "/policies/constitution" },
+      { name: "Strategic partners", href: "/members/strategic-partners" },
+      { name: "Contact us", href: "/contact-us" },
+    ],
+  },
+  {
+    title: "For members",
+    links: [
+      { name: "Member benefits", href: "/members/benefits" },
+      { name: "Membership & fees", href: "/members/membership-and-fees" },
+      { name: "CPD & training", href: "/members/cpd-training" },
+      { name: "Rules & guidance", href: "/members/rules-and-guidance" },
+      { name: "Professional support", href: "/members/professional-support" },
+      { name: "TPAS Wellbeing", href: "/members/wellbeing" },
+    ],
+  },
+  {
+    title: "News & events",
+    links: [
+      { name: "Latest news", href: "/news-and-events/latest-news" },
+      { name: "Upcoming events", href: "/news-and-events/upcoming-events" },
+      { name: "Gallery", href: "/news-and-events/gallery" },
+      { name: "Magazine", href: "/news-and-events/magazine" },
+      { name: "Journal", href: "/members/journal" },
+      { name: "Find an accountant", href: "/find-an-accountants" },
+    ],
+  },
+];
+
+const socialLinks = [
+  { icon: Facebook, href: "https://www.facebook.com/share/1B1fzAS6ru/?mibextid=wwXIfr", label: "Facebook" },
+  { icon: Linkedin, href: "http://www.linkedin.com/in/the-professional-accountants-society-12700035a", label: "LinkedIn" },
+];
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
-  const quickLinks = [
-    { name: 'About us', href: '/about-us' },
-    { name: 'Contact us', href: '/contact-us' },
-    { name: 'Who we are', href: '/about-us' },
-    { name: 'Journal', href: '/members/journal' },
-    { name: 'Help and advice', href: '/members/professional-support' },
-    { name: 'Constitution', href: '/policies/constitution' },
-    { name: 'TPAS Wellbeing', href: '/members/wellbeing' },
-    { name: 'Strategic Partners', href: '/members/strategic-partners' },
-  ];
-
-  const usefulLinks = [
-    { name: 'Find an Accountant', href: '/find-an-accountants' },
-    { name: 'Sign in', href: '/signin' },
-    { name: 'CPD & Training', href: '/members/cpd-training' },
-    { name: 'Rules and guidance', href: '/members/rules-and-guidance' },
-    { name: 'Member benefits', href: '/members/benefits' },
-  ];
-
-  const socialLinks = [
-    { icon: Facebook, href: 'https://www.facebook.com/share/1B1fzAS6ru/?mibextid=wwXIfr', label: 'Facebook' },
-    { icon: Twitter, href: '/', label: 'Twitter' },
-    { icon: Linkedin, href: 'http://www.linkedin.com/in/the-professional-accountants-society-12700035a', label: 'LinkedIn' },
-  ];
-
   return (
-    <Container>
-      <footer className="bg-[#4a4948] text-white relative overflow-hidden mx-3">
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-green-500 via-yellow-500 to-red-500"></div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
-
-            {/* Organization Info Section */}
-            <div data-aos="fade-up" className="space-y-6">
-              <div className="flex items-center space-x-3">
-                <div className="w-180 h-70 px-2 rounded-lg flex items-center justify-center">
-                  <Image src="/Logofooter114_50px.svg" alt="Logo" width={180} height={70} priority />
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                <div className="flex items-start space-x-3 group cursor-pointer">
-                  <MapPin className="w-5 h-5 text-slate-400 mt-0.5 group-hover:text-blue-400 transition-colors" />
-                  <address className="not-italic text-slate-200 group-hover:text-white transition-colors">
-                    513 London Road, Cheam,<br />
-                    Sutton, SM3 8JR
-                  </address>
-                </div>
-
-                <div className="flex items-center space-x-3 group cursor-pointer">
-                  <Phone className="w-5 h-5 text-slate-400 group-hover:text-blue-400 transition-colors" />
-                  <a href="tel:07988834395" className="text-slate-200 hover:text-white transition-colors">
-                    07988 834395
-                  </a>
-                </div>
-
-                <div className="flex items-center space-x-3 group cursor-pointer">
-                  <Mail className="w-5 h-5 text-slate-400 group-hover:text-blue-400 transition-colors" />
-                  <a href="mailto:admin@accountantssociety.org" className="text-slate-200 hover:text-white transition-colors">
-                    admin@accountantssociety.org
-                  </a>
-                </div>
-              </div>
-
-              <div className="pt-4">
-                <p className="text-slate-400 text-sm leading-relaxed">
-                  NOT MEMBER YET? &nbsp;
-                  <Link
-                    href="/contact-us"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-400 hover:text-white transition-colors inline-flex items-center"
-                  >
-                    JOIN US
-                    <ExternalLink className="w-3 h-3 ml-1" />
-                  </Link>
-                </p>
-              </div>
-            </div>
-
-            {/* Quick Links Section */}
-            <div data-aos="fade-up" className="space-y-6">
-              <h3 className="text-lg font-semibold text-white relative pb-3">
-                About us
-                <span className="absolute bottom-0 left-0 w-10 h-0.5 bg-gradient-to-r from-blue-500 to-green-500 rounded-full"></span>
-              </h3>
-              <nav className="space-y-3">
-                {quickLinks.map((link, index) => (
-                  <Link
-                    key={index}
-                    href={link.href}
-                    className="block text-slate-200 hover:text-white hover:translate-x-1 transition-all duration-200 text-sm"
-                  >
-                    {link.name}
-                  </Link>
-                ))}
-              </nav>
-            </div>
-
-            {/* Useful Links Section */}
-            <div data-aos="fade-up" className="space-y-6">
-              <h3 className="text-lg font-semibold text-white relative pb-3">
-                Useful links
-                <span className="absolute bottom-0 left-0 w-10 h-0.5 bg-gradient-to-r from-green-500 to-yellow-500 rounded-full"></span>
-              </h3>
-              <nav className="space-y-3">
-                {usefulLinks.map((link, index) => (
-                  <Link
-                    key={index}
-                    href={link.href}
-                    className="flex items-center text-slate-200 hover:text-white hover:translate-x-1 transition-all duration-200 text-sm group"
-                  >
-                    {link.name}
-                  </Link>
-                ))}
-              </nav>
-
-              {/* Social Links */}
-              <div className="pt-6">
-                <h4 className="text-sm font-medium text-slate-400 mb-4">Follow us</h4>
-                <div className="flex space-x-4">
-                  {socialLinks.map((social, index) => {
-                    const IconComponent = social.icon;
-                    return (
-                      <a
-                        key={index}
-                        href={social.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={social.label}
-                        className="w-10 h-10 bg-slate-800 hover:bg-gradient-to-br hover:from-blue-500 hover:to-green-500 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg"
-                      >
-                        <IconComponent className="w-6 h-6" />
-                      </a>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
+    <footer className="mt-16 bg-brand-950 text-slate-300">
+      {/* Join call to action */}
+      <div className="border-b border-white/10">
+        <div className="site-container flex flex-col gap-6 py-10  lg:flex-row lg:items-center lg:justify-between">
+          <div className="max-w-2xl">
+            <p className="eyebrow text-accent-400">Not a member yet?</p>
+            <h2 className="mt-2 text-2xl font-bold text-white sm:text-3xl">
+              Join a growing network of British Bangladeshi accountants
+            </h2>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/members/membership-and-fees" className="btn-accent">
+              Become a member
+              <ArrowRight aria-hidden="true" className="h-4 w-4" />
+            </Link>
+            <Link href="/contact-us" className="btn-ghost-light">
+              Contact us
+            </Link>
           </div>
         </div>
+      </div>
 
-        {/* Bottom section */}
-        <div className="border-t border-slate-700/50 bg-slate-900/50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-            <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
-              <div className="text-slate-400 text-sm">
-                © {currentYear} The Professional Accountants&apos; Society United Kingdom. All rights reserved.
-              </div>
-              <div className="text-slate-500 text-xs">
-                Made by{' '}
-                <Link
-                  href="https://www.linkedin.com/in/nasir-uddin-2a6498269/"
+      <div className="site-container py-14 ">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+          {/* Organisation */}
+          <div className="space-y-5">
+            <Image
+              src="/Logofooter114_50px.svg"
+              alt="The Professional Accountants' Society"
+              width={180}
+              height={70}
+              className="h-14 w-auto"
+            />
+            <ul className="space-y-3 text-sm">
+              <li className="flex items-start gap-3">
+                <MapPin aria-hidden="true" className="mt-0.5 h-4 w-4 flex-shrink-0 text-accent-400" />
+                <address className="not-italic">
+                  513 London Road, Cheam,
+                  <br />
+                  Sutton, SM3 8JR
+                </address>
+              </li>
+              <li className="flex items-center gap-3">
+                <Phone aria-hidden="true" className="h-4 w-4 flex-shrink-0 text-accent-400" />
+                <a href="tel:+447988834395" className="hover:text-white">
+                  07988 834395
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
+                <Mail aria-hidden="true" className="h-4 w-4 flex-shrink-0 text-accent-400" />
+                <a href="mailto:admin@accountantssociety.org" className="break-all hover:text-white">
+                  admin@accountantssociety.org
+                </a>
+              </li>
+            </ul>
+            <div className="flex gap-3 pt-1">
+              {socialLinks.map(({ icon: Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-slate-400 hover:text-white transition-colors cursor-pointer"
+                  aria-label={`TPAS on ${label} (opens in a new tab)`}
+                  className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-slate-300 ring-1 ring-white/10 transition-colors hover:bg-white hover:text-brand-900"
                 >
-                  N3 Journey
-                </Link>
-              </div>
+                  <Icon aria-hidden="true" className="h-5 w-5" />
+                </a>
+              ))}
             </div>
           </div>
-        </div>
 
-        {/* Background decoration */}
-        <div className="absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-blue-500/5 to-green-500/5 rounded-full blur-3xl pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 transform -translate-x-1/2 translate-y-1/2 w-64 h-64 bg-gradient-to-tr from-yellow-500/5 to-red-500/5 rounded-full blur-3xl pointer-events-none"></div>
-      </footer>
-    </Container>
+          {linkGroups.map((group) => (
+            <nav key={group.title} aria-label={group.title}>
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-white">{group.title}</h3>
+              <ul className="mt-4 space-y-2.5 text-sm">
+                {group.links.map((link) => (
+                  <li key={link.href + link.name}>
+                    <Link href={link.href} className="transition-colors hover:text-white">
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ))}
+        </div>
+      </div>
+
+      <div className="border-t border-white/10">
+        <div className="site-container flex flex-col gap-3 py-6 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between ">
+          <p>© {currentYear} The Professional Accountants&apos; Society United Kingdom. All rights reserved.</p>
+          <p>
+            Made by{" "}
+            <a
+              href="https://www.linkedin.com/in/nasir-uddin-2a6498269/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-300 hover:text-white"
+            >
+              N3 Journey
+            </a>
+          </p>
+        </div>
+      </div>
+    </footer>
   );
 };
 

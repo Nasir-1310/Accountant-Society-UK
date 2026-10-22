@@ -37,7 +37,7 @@ const collapsibleSections = [
             </p>
             <p className="flex items-center gap-2 text-gray-700">
               <Mail className="w-4 h-4 text-teal-600" />
-              Email: <a href="mailto:practice@profaccountants.org.uk" className="text-teal-600 hover:underline">admin@accountantssociety.org</a>
+              Email: <a href="mailto:admin@accountantssociety.org" className="text-teal-600 hover:underline">admin@accountantssociety.org</a>
             </p>
           </div>
         </div>
@@ -57,7 +57,7 @@ const collapsibleSections = [
             </p>
             <p className="flex items-center gap-2 text-gray-700">
               <Mail className="w-4 h-4 text-teal-600" />
-              Email: <a href="mailto:admin@accountantssociety.org" className="text-teal-600 hover:underline">mailto:admin@accountantssociety.org</a>
+              Email: <a href="mailto:admin@accountantssociety.org" className="text-teal-600 hover:underline">admin@accountantssociety.org</a>
             </p>
           </div>
         </div>

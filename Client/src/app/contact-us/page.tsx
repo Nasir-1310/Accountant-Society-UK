@@ -117,7 +117,7 @@ const ContactUsPage = () => {
               data-aos="fade-up"
               className="border-b border-gray-200 pb-6 mb-8"
             >
-              <h1 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-2">
+              <h1 className="text-3xl lg:text-4xl font-bold text-brand-950 mb-2">
                 Contact Us
               </h1>
               <p className="text-lg text-gray-600">
@@ -467,9 +467,9 @@ const ContactUsPage = () => {
                       <option value="management">Management Accounting</option>
                     </select>
 
-                    <button className="w-full px-4 py-3 border border-white text-white rounded-md hover:bg-white hover:text-teal-600 transition-all duration-200 font-semibold">
+                    <Link href="/find-an-accountants" className="block w-full text-center px-4 py-3 border border-white text-white rounded-md hover:bg-white hover:text-teal-600 transition-all duration-200 font-semibold">
                       Search for an Accountant
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>

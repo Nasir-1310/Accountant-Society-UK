@@ -1,8 +1,0 @@
-import Link from "next/link";
-const FindAccountantNavbar=()=>{
-    return(
-       
-        <Link href="/find-an-accountants" className="cursor-pointer text-black font-bold text-base link-underline">Find an Accountant</Link>
-    )
-}
-export default FindAccountantNavbar;

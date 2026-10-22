@@ -2,6 +2,14 @@ import Container from "@/components/Container";
 import { Square_Button } from "@/components/Square_Button";
 import { Pen, Users, Handshake, Trophy, Heart } from "lucide-react";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About Us",
+  description:
+    "The Professional Accountants' Society is a UK-based organisation representing British Bangladeshi accountants, fostering collaboration, professional excellence and community impact.",
+  alternates: { canonical: "/about-us" },
+};
 
 const AboutUsPage = () => {
   return (
@@ -25,7 +33,7 @@ const AboutUsPage = () => {
               data-aos="fade-up"
               className="border-b border-gray-200 pb-6 mb-8"
             >
-              <h1 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-2">
+              <h1 className="text-3xl lg:text-4xl font-bold text-brand-950 mb-2">
                 About Us
               </h1>
               <p className="text-lg text-gray-600 pb-6">
@@ -274,7 +282,7 @@ const AboutUsPage = () => {
               {/* Join our community Card */}
               <div
                 data-aos="fade-up"
-                className="bg-gradient-to-br from-teal-50 to-green-50 border border-teal-200 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6 flex flex-col md:col-span-2 xl:col-span-1"
+                className="bg-gradient-to-br from-brand-50 to-white border border-teal-200 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6 flex flex-col md:col-span-2 xl:col-span-1"
               >
                 <div className="flex items-center gap-3 mb-4">
                   <Pen className="text-teal-600 w-8 h-8" />
@@ -293,7 +301,7 @@ const AboutUsPage = () => {
                   network.
                 </p>
                 <a href="/contact-us" className="inline-block">
-                  <button className="bg-blue-300 text-gray-800 border rounded-md  px-6 py-3 rounded-lg hover:bg-green-900 hover:text-white transition-colors font-semibold">
+                  <button className="btn-primary px-6 py-3">
                     Join Now →
                   </button>
                 </a>
@@ -320,7 +328,7 @@ const AboutUsPage = () => {
                     { label: "What We Do", href: "#what-we-do" },
                   ].map((item, index) => (
                     <Link key={index} href={item.href} className="block w-full">
-                      <span className="w-full inline-block text-left border border-green-500 text-green-900 hover:text-white px-4 py-3 rounded-md bg-green-200 hover:bg-green-600 hover:border-green-600 transition-all duration-200 font-medium">
+                      <span className="w-full inline-block text-left border border-brand-200 text-brand-900 hover:text-white px-4 py-3 rounded-lg bg-brand-50 hover:bg-brand-900 hover:border-brand-900 transition-all duration-200 font-medium">
                         {item.label}
                       </span>
                     </Link>
@@ -341,7 +349,7 @@ const AboutUsPage = () => {
                     { label: "What We Do", href: "#what-we-do" },
                   ].map((item, index) => (
                     <a key={index} href={item.href} className="block w-full">
-                      <button className="w-full text-left border border-green-500 text-green-900 hover:text-white px-4 py-3 rounded-md bg-green-200 hover:bg-green-600 hover:border-green-600 transition-all duration-200 font-medium">
+                      <button className="w-full text-left border border-brand-200 text-brand-900 hover:text-white px-4 py-3 rounded-lg bg-brand-50 hover:bg-brand-900 hover:border-brand-900 transition-all duration-200 font-medium">
                         {item.label}
                       </button>
                     </a>
@@ -398,9 +406,9 @@ const AboutUsPage = () => {
                       <option value="option 02">Transfer Pricing </option>
                     </select>
 
-                    <button className="w-full px-4 py-3 border border-white text-white rounded-md hover:bg-white hover:text-teal-600 transition-all duration-200 font-semibold">
+                    <Link href="/find-an-accountants" className="block w-full text-center px-4 py-3 border border-white text-white rounded-md hover:bg-white hover:text-teal-600 transition-all duration-200 font-semibold">
                       Search for an Accountant
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>

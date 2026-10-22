@@ -6,9 +6,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Member Benefits | The Professionals' Accountants",
+  title: "Member Benefits",
   description:
-    "Explore the exclusive member benefits of the Society of Professional Accountants including webinars, tax resources, networking, and expert advice.",
+    "Explore the exclusive member benefits of The Professional Accountants' Society including webinars, tax resources, networking, and expert advice.",
 };
 
 const benefits = [
@@ -60,15 +60,15 @@ const benefits = [
 export default function MemberBenefitsPage() {
   return (
     <Container>
-      <div className="mx-3 px-5 border-l border-r border-gray-200 bg-white">
-        <main className="w-full py-20 max-w-full">
+      <div className="mx-3 px-5 bg-white">
+        <div className="w-full py-20 max-w-full">
           <div data-aos="fade-up" className="mb-10">
-            <h1 className="text-xs sm:text-sm font-semibold text-gray-500 tracking-widest uppercase mb-2">
+            <p className="text-sm font-semibold text-slate-500 tracking-widest uppercase mb-2">
               Home | Member Benefits
-            </h1>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
+            </p>
+            <h1 className="text-3xl sm:text-4xl font-bold text-brand-950 mb-6">
               Join the TPAS
-            </h2>
+            </h1>
             <p className="text-base sm:text-lg text-gray-700 mb-4">
               Membership with the Professional Accountants’ Society gives you
               access to a growing network of British Bangladeshi finance
@@ -111,7 +111,7 @@ export default function MemberBenefitsPage() {
             
             </Link>
           </div>
-        </main>
+        </div>
       </div>
     </Container>
   );

@@ -18,6 +18,7 @@ export const metadata: Metadata = {
 export default function AccountantsDayRegistrationPage() {
   return (
     <section aria-label="British Bangladeshi Accountants’ Day registration" className="bg-white py-6">
+      <h1 className="sr-only">British Bangladeshi Accountants’ Day 2026 registration</h1>
       <Slider initialRegistrationOpen autoOpenRegistration={false} />
     </section>
   );

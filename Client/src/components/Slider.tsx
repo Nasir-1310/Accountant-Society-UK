@@ -343,10 +343,10 @@ const Slider = ({
     <>
       <Container>
         <div className="bg-white w-full py-0">
-          <div className="px-3 mx-auto w-full max-w-full">
+          <div className="px-4 md:px-3 mx-auto w-full max-w-full">
             {showVideo && videoEmbedUrl ? (
               <div
-                className="w-full flex flex-col lg:flex-row shadow-lg overflow-hidden"
+                className="w-full flex flex-col lg:flex-row rounded-2xl shadow-lift overflow-hidden"
                 style={{ background: heroGradient }}
               >
                 {hasVideoText && (
@@ -377,7 +377,7 @@ const Slider = ({
                 </div>
               </div>
             ) : (
-            <div className="w-full group flex flex-col lg:flex-row shadow-lg overflow-hidden relative">
+            <div className="w-full group flex flex-col lg:flex-row rounded-2xl shadow-lift overflow-hidden relative">
 
               {/* ── Left: Text Section ── */}
               <div

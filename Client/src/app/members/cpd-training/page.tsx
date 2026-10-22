@@ -6,9 +6,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "CPD & Training | The Professional Accountants' Society",
+  title: "CPD & Training",
   description:
-    "Advance your accounting career with CPD and training programs from the Society of Professional Accountants. Access expert-led courses, webinars, and up-to-date industry knowledge to meet your professional development goals.",
+    "Advance your accounting career with CPD and training programs from The Professional Accountants' Society. Access expert-led courses, webinars, and up-to-date industry knowledge to meet your professional development goals.",
   keywords: [
     "CPD for accountants",
     "TPAC",
@@ -17,14 +17,14 @@ export const metadata: Metadata = {
     "professional development for accountants",
     "accounting webinars",
     "accounting courses",
-    "Society of Professional Accountants CPD",
+    "The Professional Accountants' Society CPD",
   ],
   openGraph: {
-    title: "CPD & Training | Society of Professional Accountants",
+    title: "CPD & Training | The Professional Accountants' Society",
     description:
-      "Advance your accounting career with CPD and training programs from the Society of Professional Accountants. Access expert-led courses, webinars, and up-to-date industry knowledge to meet your professional development goals.",
+      "Advance your accounting career with CPD and training programs from The Professional Accountants' Society. Access expert-led courses, webinars, and up-to-date industry knowledge to meet your professional development goals.",
     url: "https://accountantssociety.org/members/cpd-and-training",
-    siteName: "Society of Professional Accountants",
+    siteName: "The Professional Accountants' Society",
     type: "website",
   },
 };
@@ -54,7 +54,7 @@ const CPD_and_Training = () => {
               data-aos="fade-up"
               className="border-b border-gray-200 pb-6 mb-8"
             >
-              <h1 className="text-2xl lg:text-4xl font-bold text-gray-800 mb-2">
+              <h1 className="text-2xl lg:text-4xl font-bold text-brand-950 mb-2">
                 CPD & Training: Get more out of your CPD
               </h1>
             </div>

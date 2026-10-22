@@ -59,6 +59,116 @@ body {
   @apply font-sans;
 }
 
+@layer base {
+  html {
+    /* Keep anchored sections clear of the sticky header. */
+    scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply text-slate-800;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply tracking-tight;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    @apply bg-brand-100 text-brand-950;
+  }
+
+  /* Clear, consistent keyboard focus everywhere. */
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand-500 ring-offset-2;
+  }
+}
+
+@layer components {
+  /* Page-width container for the redesigned sections: same width as
+     .container-wrapper, with comfortable side padding on phones. */
+  .site-container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: calc(100vw - clamp(0px, var(--fluid-margin) * 2, 1240px));
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .site-container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-brand-900 focus:shadow-lift;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.14em] text-accent-600;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .btn-primary {
+    @apply btn bg-brand-900 text-white hover:bg-brand-700;
+  }
+
+  .btn-accent {
+    @apply btn bg-accent-600 text-white hover:bg-accent-700;
+  }
+
+  .btn-outline {
+    @apply btn border border-brand-200 bg-white text-brand-900 hover:border-brand-300 hover:bg-brand-50;
+  }
+
+  .btn-ghost-light {
+    @apply btn border border-white/40 text-white hover:bg-white hover:text-brand-900;
+  }
+
+  .card {
+    @apply rounded-2xl border border-slate-200/80 bg-white shadow-soft;
+  }
+
+  .card-hover {
+    @apply transition duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-lift;
+  }
+}
+
+/* Respect visitors who prefer less motion. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
 /* Utility: fluid margin container */
 @layer utilities {
   .container-wrapper {
@@ -92,7 +202,7 @@ body {
   bottom: 0;
   height: 2px;
   width: 0;
-  background-color: rgb(64, 194, 64);
+  background-color: #ed1c24;
   transition: width 0.3s ease;
 }
 

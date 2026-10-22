@@ -43,7 +43,7 @@ export default function SigninForm() {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
-        className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"
+        className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-brand-200 focus:border-brand-500"
         placeholder="Email Address"
       />
       <input
@@ -52,13 +52,13 @@ export default function SigninForm() {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         required
-        className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"
+        className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-brand-200 focus:border-brand-500"
         placeholder="Password"
       />
       <button
         type="submit"
         disabled={loading}
-        className="w-full py-3 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-md transition"
+        className="w-full py-3 bg-brand-900 hover:bg-brand-700 text-white font-semibold rounded-md transition"
       >
         {loading ? "Signing in..." : "Sign In"}
       </button>

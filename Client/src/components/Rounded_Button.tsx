@@ -1,5 +1,4 @@
-// src/components/Button.tsx
-
+// src/components/Rounded_Button.tsx
 import React from "react";
 import Link from "next/link";
 
@@ -17,7 +16,7 @@ export const Rounded_Button = ({
   type = "button",
 }: ButtonProps) => {
   const baseClass =
-    "px-4 py-2 border border-gray-300 text-gray-700 text-white hover:text-black bg-blue-800 hover:bg-white hover:border-teal-500 transition-all text-sm font-medium focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-opacity-50 rounded-3xl";
+    "inline-flex items-center justify-center gap-2 rounded-full border border-transparent bg-brand-900 px-5 py-2.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-brand-700";
 
   const finalClass = `${baseClass} ${className}`;
 

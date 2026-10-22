@@ -54,4 +54,27 @@ const upcomingEvents: UpcomingEvent[] = [
   },
 ];
 
+export const parseEventDate = (value: string) => new Date(`${value}T00:00:00Z`);
+
+export const formatEventDateRange = (event: UpcomingEvent) => {
+  const opts: Intl.DateTimeFormatOptions = { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" };
+  const start = parseEventDate(event.date);
+  if (!event.endDate) return start.toLocaleDateString("en-GB", opts);
+  const end = parseEventDate(event.endDate);
+  const sameMonth =
+    start.getUTCMonth() === end.getUTCMonth() && start.getUTCFullYear() === end.getUTCFullYear();
+  return sameMonth
+    ? `${start.getUTCDate()}–${end.toLocaleDateString("en-GB", opts)}`
+    : `${start.toLocaleDateString("en-GB", opts)} – ${end.toLocaleDateString("en-GB", opts)}`;
+};
+
+/** Events that haven't finished yet, soonest first. */
+export const getUpcomingEvents = () => {
+  const today = new Date();
+  today.setUTCHours(0, 0, 0, 0);
+  return upcomingEvents
+    .filter((event) => parseEventDate(event.endDate || event.date) >= today)
+    .sort((a, b) => parseEventDate(a.date).getTime() - parseEventDate(b.date).getTime());
+};
+
 export default upcomingEvents;

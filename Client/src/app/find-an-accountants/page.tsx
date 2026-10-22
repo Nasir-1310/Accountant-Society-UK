@@ -1,26 +1,28 @@
-// app/find/page.tsx
+// src/app/find-an-accountants/page.tsx
 import { Metadata } from "next";
 import FindAccountantWrapper from "@/components/FindAccountantsWrapper";
-import Container from "@/components/Container";
+import PageHeader from "@/components/PageHeader";
 
 export const metadata: Metadata = {
-  title: "Find an Accountant | the Professional Accountants' Society",
-  description: "Locate qualified professional accountants by name, postcode, or area of expertise.",
+  title: "Find an Accountant",
+  description: "Find qualified professional accountants who are members of The Professional Accountants' Society.",
+  alternates: { canonical: "/find-an-accountants" },
 };
 
-const FindPage=()=> {
+const FindPage = () => {
   return (
-    <Container>
-    <div className="mx-3 px-2 sm:px-6 border  border-t border-gray-200 bg-white">
-      <main data-aos="fade-up"   className="py-20 w-full max-w-full">
-        <h1 className="text-xs sm:text-sm font-semibold text-gray-500 tracking-widest uppercase mb-2">
-          Home | Find an Accountant
-        </h1>
+    <>
+      <PageHeader
+        eyebrow="Directory"
+        title="Find an Accountant"
+        description="Search for qualified accountants by name, location or area of expertise."
+        breadcrumbs={[{ label: "Find an Accountant" }]}
+      />
+      <div className="site-container py-12  sm:py-16">
         <FindAccountantWrapper />
-      </main>
-    </div>
-    </Container>
-    
+      </div>
+    </>
   );
-}
+};
+
 export default FindPage;
