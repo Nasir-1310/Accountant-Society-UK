@@ -7,6 +7,7 @@ import Container from "./Container";
 import VideoEmbed from "./VideoEmbed";
 import { getVideoEmbedUrl } from "@/lib/videoEmbed";
 import type { HomeHeroData } from "@/lib/homeHero";
+import galleryData from "@/app/data/galleryData";
 
 interface SliderVideo {
   enabled: boolean;
@@ -337,6 +338,10 @@ const Slider = ({
     </div>
   );
 
+  // "View all photos" goes to the latest gallery album that has a video.
+  const videoAlbum = galleryData.find((album) => album.videoUrl);
+  const videoAlbumHref = videoAlbum ? `/news-and-events/gallery/${videoAlbum.slug}` : "/news-and-events/gallery";
+
   // Always-available link to the TPAS Magazines page.
   const readMoreButton = (
     <Link
@@ -360,19 +365,32 @@ const Slider = ({
                 style={{ background: heroGradient }}
               >
                 <div className="w-full lg:w-2/5 px-4 sm:px-6 py-5 sm:py-8 flex flex-col justify-center gap-3 order-2 lg:order-1">
+                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-accent-300">Event highlights</p>
                   {videoTitle && (
                     <h2 className="text-lg sm:text-xl md:text-[22px] lg:text-2xl font-bold text-white leading-tight break-words hyphens-auto">
                       {videoTitle}
                     </h2>
                   )}
                   {videoDescription && (
-                    <p className="text-sm text-white/70 leading-relaxed line-clamp-4 lg:line-clamp-none">
+                    <p className="text-sm text-white/75 leading-relaxed line-clamp-4 lg:line-clamp-none">
                       {videoDescription}
                     </p>
                   )}
-                  <div className="flex flex-wrap items-center gap-3">
+                  <div className="mt-1 flex flex-wrap items-center gap-3">
                     {registrationOpen && registerButton}
-                    {readMoreButton}
+                    <Link
+                      href={videoAlbumHref}
+                      className="inline-flex items-center gap-2 w-fit px-5 py-2.5 rounded-lg text-sm font-semibold text-white bg-accent-600 transition-colors hover:bg-accent-700"
+                    >
+                      View all photos
+                      <ArrowRight aria-hidden="true" size={16} />
+                    </Link>
+                    <Link
+                      href="/news-and-events/magazine"
+                      className="inline-flex items-center gap-2 w-fit px-5 py-2.5 rounded-lg text-sm font-semibold text-white border border-white/40 transition-colors hover:bg-white hover:text-brand-900"
+                    >
+                      Read the magazine
+                    </Link>
                   </div>
                 </div>
 
