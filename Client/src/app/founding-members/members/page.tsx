@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     description:
       "Meet the founding members of The Professional Accountants' Society. Learn about their experience, expertise, and dedication to ethical finance and leadership.",
     type: "website",
-    url: "https://www.accountantssoceity.org/founding-members",
+    url: "/founding-members/members",
     images: [
       {
         url: "/OG_image.png",

@@ -182,10 +182,10 @@ const ContactUsPage = () => {
                         </h3>
                         <p className="text-gray-700">
                           <a
-                            href="admin@accountantssociety.org"
+                            href="mohammed@accountantssociety.org"
                             className=" text-black hover:text-teal-500 transition-colors"
                           >
-                            admin@accountantssociety.org
+                            mohammed@accountantssociety.org
                           </a>
                         </p>
                       </div>

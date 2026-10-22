@@ -1,5 +1,6 @@
 "use client";
-import { ChevronLeft, ChevronRight, X, User, Phone, Mail, AlertCircle } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, X, User, Phone, Mail, AlertCircle } from "lucide-react";
+import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import Container from "./Container";
@@ -336,8 +337,17 @@ const Slider = ({
     </div>
   );
 
-  // In video mode the text panel only appears when there is something to show.
-  const hasVideoText = Boolean(videoTitle || videoDescription || registrationOpen);
+  // Always-available link to the TPAS Magazines page.
+  const readMoreButton = (
+    <Link
+      href="/news-and-events/magazine"
+      className="inline-flex items-center gap-2 w-fit px-5 py-2.5 rounded-lg text-sm font-semibold text-white border border-white/40 transition-colors hover:bg-white hover:text-brand-900"
+    >
+      Read more
+      <ArrowRight aria-hidden="true" size={16} />
+      <span className="sr-only">in the TPAS Magazines</span>
+    </Link>
+  );
 
   return (
     <>
@@ -349,29 +359,25 @@ const Slider = ({
                 className="w-full flex flex-col lg:flex-row rounded-2xl shadow-lift overflow-hidden"
                 style={{ background: heroGradient }}
               >
-                {hasVideoText && (
-                  <div className="w-full lg:w-2/5 px-4 sm:px-6 py-5 sm:py-8 flex flex-col justify-center gap-3 order-2 lg:order-1">
-                    {videoTitle && (
-                      <h2 className="text-lg sm:text-xl md:text-[22px] lg:text-2xl font-bold text-white leading-tight break-words hyphens-auto">
-                        {videoTitle}
-                      </h2>
-                    )}
-                    {videoDescription && (
-                      <p className="text-sm text-white/70 leading-relaxed line-clamp-4 lg:line-clamp-none">
-                        {videoDescription}
-                      </p>
-                    )}
+                <div className="w-full lg:w-2/5 px-4 sm:px-6 py-5 sm:py-8 flex flex-col justify-center gap-3 order-2 lg:order-1">
+                  {videoTitle && (
+                    <h2 className="text-lg sm:text-xl md:text-[22px] lg:text-2xl font-bold text-white leading-tight break-words hyphens-auto">
+                      {videoTitle}
+                    </h2>
+                  )}
+                  {videoDescription && (
+                    <p className="text-sm text-white/70 leading-relaxed line-clamp-4 lg:line-clamp-none">
+                      {videoDescription}
+                    </p>
+                  )}
+                  <div className="flex flex-wrap items-center gap-3">
                     {registrationOpen && registerButton}
+                    {readMoreButton}
                   </div>
-                )}
+                </div>
 
-                <div
-                  className={`w-full order-1 lg:order-2 ${hasVideoText ? "lg:w-3/5" : "mx-auto max-w-5xl p-2 sm:p-4"}`}
-                >
-                  <div
-                    className={`relative w-full ${hasVideoText ? "" : "overflow-hidden rounded-lg shadow-xl"}`}
-                    style={{ aspectRatio: "16 / 9" }}
-                  >
+                <div className="w-full order-1 lg:order-2 lg:w-3/5">
+                  <div className="relative w-full" style={{ aspectRatio: "16 / 9" }}>
                     <VideoEmbed url={sliderVideo?.videoUrl || ""} title={videoTitle || "Featured video"} />
                   </div>
                 </div>
@@ -392,8 +398,11 @@ const Slider = ({
                   {slides[current].description}
                 </p>
 
-                {/* Register button */}
-                {registrationOpen ? registerButton : registrationOpen === false ? closedBadge : null}
+                {/* Register button + Read more */}
+                <div className="flex flex-wrap items-center gap-3">
+                  {registrationOpen ? registerButton : registrationOpen === false ? closedBadge : null}
+                  {readMoreButton}
+                </div>
 
                 {/* Prev arrow */}
                 <button
