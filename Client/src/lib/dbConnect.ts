@@ -1,11 +1,9 @@
 // src/lib/dbConnect.ts
 import mongoose from "mongoose";
 
-const MONGODB_URI = process.env.MONGODB_URI!;
-
-if (!MONGODB_URI) {
-  throw new Error("Please define MONGODB_URI in your .env.local");
-}
+// Checked when connecting (not at import), so a build without the variable
+// — e.g. a Vercel preview — still compiles; database calls then fail safely.
+const MONGODB_URI = process.env.MONGODB_URI || "";
 
 // Define cache type
 interface MongooseCache {
@@ -27,6 +25,10 @@ const globalCache = global.mongooseCache ?? {
 };
 
 export async function dbConnect() {
+  if (!MONGODB_URI) {
+    throw new Error("Please define MONGODB_URI in your environment variables");
+  }
+
   if (globalCache.conn?.connection.readyState === 1) return globalCache.conn;
 
   // A cached Mongoose instance may have disconnected since the last request.
