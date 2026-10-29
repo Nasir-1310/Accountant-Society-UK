@@ -4,6 +4,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { createPortal } from "react-dom";
 import { ChevronDown, Menu as MenuIcon, X } from "lucide-react";
 import { menuItems } from "@/app/data/menuItems";
 
@@ -218,8 +219,10 @@ export default function SiteHeader() {
         </nav>
       </div>
 
-      {/* Mobile / tablet menu */}
-      {mobileOpen && (
+      {/* Mobile / tablet menu. Rendered into <body> through a portal: the
+          header's backdrop blur would otherwise trap this fixed overlay inside
+          the 64px-tall header. */}
+      {mobileOpen && createPortal(
         <div className="fixed inset-0 z-50 xl:hidden" role="dialog" aria-modal="true" aria-label="Site menu">
           <button
             type="button"
@@ -311,7 +314,8 @@ export default function SiteHeader() {
               </Link>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </header>
   );
