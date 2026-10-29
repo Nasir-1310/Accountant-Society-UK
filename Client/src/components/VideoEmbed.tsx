@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { Volume2, VolumeX } from "lucide-react";
 import { getVideoEmbedUrl, getVideoPosterUrl } from "@/lib/videoEmbed";
 
 interface VideoEmbedProps {
@@ -21,9 +22,29 @@ export default function VideoEmbed({ url, title, autoPlay = false }: VideoEmbedP
   const embedUrl = getVideoEmbedUrl(url, { autoplay: autoPlay });
   const posterUrl = getVideoPosterUrl(url);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
   const [mounted, setMounted] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [poster, setPoster] = useState(posterUrl);
+  const [muted, setMuted] = useState(true);
+  // Auto-play YouTube runs as a clean "background" video: YouTube's own
+  // controls are hidden and a transparent layer stops hover/clicks from
+  // bringing up its title bar or "More videos". Our button handles sound.
+  const backgroundMode = autoPlay && !!embedUrl?.includes("youtube");
+
+  const toggleSound = () => {
+    const player = iframeRef.current?.contentWindow;
+    if (!player) return;
+    const send = (func: string) =>
+      player.postMessage(JSON.stringify({ event: "command", func, args: [] }), "*");
+    if (muted) {
+      send("unMute");
+      send("playVideo");
+    } else {
+      send("mute");
+    }
+    setMuted(!muted);
+  };
 
   useEffect(() => {
     // Auto-play videos load only when near the viewport, so the player
@@ -58,13 +79,33 @@ export default function VideoEmbed({ url, title, autoPlay = false }: VideoEmbedP
     <div ref={wrapperRef} className="absolute inset-0">
       {mounted && (
         <iframe
+          ref={iframeRef}
           src={embedUrl}
           title={title}
           allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
-          allowFullScreen
-          onLoad={() => setLoaded(true)}
+          allowFullScreen={!backgroundMode}
+          // In background mode, keep the poster up briefly so YouTube's
+          // start-up title never flashes before playback begins.
+          onLoad={() => (backgroundMode ? setTimeout(() => setLoaded(true), 1500) : setLoaded(true))}
           className="absolute inset-0 h-full w-full border-0"
         />
+      )}
+
+      {backgroundMode && (
+        <>
+          <div aria-hidden="true" className="absolute inset-0 z-[1]" />
+          {loaded && (
+            <button
+              type="button"
+              onClick={toggleSound}
+              aria-pressed={!muted}
+              className="absolute bottom-3 right-3 z-[2] inline-flex items-center gap-1.5 rounded-full bg-black/60 px-3 py-2 text-xs font-semibold text-white backdrop-blur transition-colors hover:bg-black/80 focus-visible:ring-2 focus-visible:ring-white"
+            >
+              {muted ? <VolumeX aria-hidden="true" className="h-4 w-4" /> : <Volume2 aria-hidden="true" className="h-4 w-4" />}
+              {muted ? "Sound on" : "Mute"}
+            </button>
+          )}
+        </>
       )}
 
       <div

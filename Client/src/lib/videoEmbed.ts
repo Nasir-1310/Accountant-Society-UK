@@ -68,9 +68,11 @@ export function getVideoEmbedUrl(
 
     const youTubeId = getYouTubeId(value);
     if (youTubeId && ID_PATTERN.test(youTubeId)) {
-        // Browsers only allow auto-play when muted; loop needs `playlist`.
+        // Background-style player: browsers only allow auto-play when muted;
+        // loop needs `playlist`; controls=0 hides YouTube's title bar, control
+        // bar and "More videos"; enablejsapi lets our own sound button work.
         const autoplay = options.autoplay
-            ? `&autoplay=1&mute=1&loop=1&playlist=${youTubeId}&playsinline=1`
+            ? `&autoplay=1&mute=1&loop=1&playlist=${youTubeId}&playsinline=1&controls=0&disablekb=1&fs=0&iv_load_policy=3&enablejsapi=1`
             : "";
         return `https://www.youtube-nocookie.com/embed/${youTubeId}?rel=0${autoplay}`;
     }
