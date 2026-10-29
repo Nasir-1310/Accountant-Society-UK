@@ -18,16 +18,20 @@ export default function Highlights() {
         {magazine && (
           <Link
             href={`/news-and-events/magazine/${magazine.slug}`}
-            className="card card-hover group flex overflow-hidden"
+            className="card card-hover group flex flex-col overflow-hidden sm:flex-row"
           >
-            <div className="relative w-32 flex-shrink-0 bg-brand-50 sm:w-40">
-              <Image
-                src={magazine.cover}
-                alt=""
-                fill
-                sizes="160px"
-                className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-              />
+            {/* Phones: full cover on top. Wider screens: cover beside the text.
+                The frame keeps the cover's own proportions, so it is never cropped. */}
+            <div className="flex flex-shrink-0 justify-center bg-surface p-5 sm:w-44 sm:items-start sm:p-4">
+              <div className="relative aspect-[395/561] w-44 overflow-hidden rounded-md shadow-soft sm:w-full">
+                <Image
+                  src={magazine.cover}
+                  alt=""
+                  fill
+                  sizes="(max-width: 640px) 176px, 176px"
+                  className="object-contain transition-transform duration-500 group-hover:scale-[1.03]"
+                />
+              </div>
             </div>
             <div className="flex flex-1 flex-col p-6">
               <p className="eyebrow inline-flex items-center gap-1.5">

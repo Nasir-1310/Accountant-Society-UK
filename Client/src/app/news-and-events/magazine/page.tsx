@@ -36,20 +36,24 @@ export default function MagazinePage() {
           {magazines.map((mag, idx) => (
             <li key={mag.slug}>
               <article className="card card-hover group flex h-full flex-col overflow-hidden sm:flex-row">
+                {/* Phones: full cover on top. Wider screens: cover beside the
+                    text in a frame with the cover's own proportions (no cropping). */}
                 <Link
                   href={`/news-and-events/magazine/${mag.slug}`}
                   tabIndex={-1}
                   aria-hidden="true"
-                  className="relative block aspect-[3/4] w-full flex-shrink-0 bg-surface sm:aspect-auto sm:w-56"
+                  className="flex flex-shrink-0 justify-center bg-surface p-5 sm:w-56 sm:items-start"
                 >
-                  <Image
-                    src={mag.cover}
-                    alt=""
-                    fill
-                    sizes="(max-width: 640px) 100vw, 224px"
-                    className="object-contain p-4 transition-transform duration-500 group-hover:scale-[1.02] sm:object-cover sm:p-0"
-                    priority={idx === 0}
-                  />
+                  <span className="relative block aspect-[395/561] w-full max-w-xs overflow-hidden rounded-md shadow-soft">
+                    <Image
+                      src={mag.cover}
+                      alt=""
+                      fill
+                      sizes="(max-width: 640px) 320px, 184px"
+                      className="object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+                      priority={idx === 0}
+                    />
+                  </span>
                 </Link>
 
                 <div className="flex flex-1 flex-col p-6 sm:p-8">

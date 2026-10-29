@@ -32,11 +32,26 @@ export default function VideoEmbed({ url, title, autoPlay = false }: VideoEmbedP
   // bringing up its title bar or "More videos". Our button handles sound.
   const backgroundMode = autoPlay && !!embedUrl?.includes("youtube");
 
+  const sendCommand = (func: string, args: unknown[] = []) =>
+    iframeRef.current?.contentWindow?.postMessage(JSON.stringify({ event: "command", func, args }), "*");
+
+  // YouTube may switch on auto-generated captions for muted playback; turn
+  // them off once the player is running (retry while it finishes loading).
+  useEffect(() => {
+    if (!backgroundMode || !loaded) return;
+    const hideCaptions = () => {
+      sendCommand("unloadModule", ["captions"]);
+      sendCommand("unloadModule", ["cc"]);
+    };
+    hideCaptions();
+    const timers = [1000, 3000, 6000].map((ms) => setTimeout(hideCaptions, ms));
+    return () => timers.forEach(clearTimeout);
+  }, [backgroundMode, loaded]);
+
   const toggleSound = () => {
     const player = iframeRef.current?.contentWindow;
     if (!player) return;
-    const send = (func: string) =>
-      player.postMessage(JSON.stringify({ event: "command", func, args: [] }), "*");
+    const send = (func: string) => sendCommand(func);
     if (muted) {
       send("unMute");
       send("playVideo");
