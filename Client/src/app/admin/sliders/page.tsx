@@ -699,7 +699,7 @@ function SliderFormModal({
               </div>
             )}
             <p className="text-sm text-gray-500 mt-2">
-              Recommended size: 1920x800px (16:9 aspect ratio) for best quality
+              Recommended size: 1920x1080px (16:9). Photos fill the frame, so keep key content near the centre.
             </p>
           </div>
 

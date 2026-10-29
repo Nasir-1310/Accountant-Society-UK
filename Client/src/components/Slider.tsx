@@ -40,8 +40,9 @@ interface FormData {
 
 const fallbackSlide: Slide = {
   id: "accountants-day-2026",
-  title: "The British Bangladeshi Accountants’ Day 2026",
-  description: "Join us on Saturday, 26 September 2026 for a celebration of our community.",
+  title: "British Bangladeshi Accountants’ Day 2026",
+  description:
+    "Highlights from The British Bangladeshi Accountants’ Day 2026, held on 26 September 2026 — a celebration of our community’s achievements and contributions.",
   image: "/upcoming_events/up-ac-26.jpg",
   url: "#register",
   dotColor: "bg-blue-500",
@@ -326,17 +327,6 @@ const Slider = ({
     </button>
   );
 
-  const closedBadge = (
-    <div
-      className="inline-flex items-center gap-2 w-fit px-5 py-2.5 rounded-lg text-sm font-semibold bg-white/10 text-white/80 border border-white/25 cursor-not-allowed select-none"
-      aria-disabled="true"
-    >
-      <span className="relative flex h-2.5 w-2.5">
-        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-gray-300"></span>
-      </span>
-      Registration Closed
-    </div>
-  );
 
   // "View all photos" goes to the latest gallery album that has a video.
   const videoAlbum = galleryData.find((album) => album.videoUrl);
@@ -416,9 +406,9 @@ const Slider = ({
                   {slides[current].description}
                 </p>
 
-                {/* Register button + Read more */}
+                {/* Register button (only while registration is open) + Read more */}
                 <div className="flex flex-wrap items-center gap-3">
-                  {registrationOpen ? registerButton : registrationOpen === false ? closedBadge : null}
+                  {registrationOpen && registerButton}
                   {readMoreButton}
                 </div>
 
@@ -435,14 +425,14 @@ const Slider = ({
               {/* ── Right: Image Section ── */}
               <div
                 className="w-full lg:w-3/5 relative order-1 lg:order-2"
-                style={{ aspectRatio: "8/3" }}
+                style={{ aspectRatio: "16/9" }}
               >
                 <Image
                   src={slides[current].image}
                   alt={`${slides[current].title} - Professional accountants slider`}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 60vw"
-                  className="object-contain bg-white"
+                  className="object-cover bg-slate-200"
                   priority
                   style={{ objectPosition: "center center" }}
                 />

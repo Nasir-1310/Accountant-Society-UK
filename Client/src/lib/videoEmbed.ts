@@ -47,7 +47,8 @@ export function getVideoPosterUrl(input: string | null | undefined): string | nu
 
     const youTubeId = getYouTubeId(value);
     if (youTubeId && ID_PATTERN.test(youTubeId)) {
-        return `https://i.ytimg.com/vi/${youTubeId}/hqdefault.jpg`;
+        // Full-HD thumbnail; VideoEmbed falls back to hqdefault if missing.
+        return `https://i.ytimg.com/vi/${youTubeId}/maxresdefault.jpg`;
     }
 
     const driveId = getDriveId(value);
@@ -58,13 +59,20 @@ export function getVideoPosterUrl(input: string | null | undefined): string | nu
     return null;
 }
 
-export function getVideoEmbedUrl(input: string | null | undefined): string | null {
+export function getVideoEmbedUrl(
+    input: string | null | undefined,
+    options: { autoplay?: boolean } = {}
+): string | null {
     const value = (input || "").trim();
     if (!value) return null;
 
     const youTubeId = getYouTubeId(value);
     if (youTubeId && ID_PATTERN.test(youTubeId)) {
-        return `https://www.youtube-nocookie.com/embed/${youTubeId}?rel=0`;
+        // Browsers only allow auto-play when muted; loop needs `playlist`.
+        const autoplay = options.autoplay
+            ? `&autoplay=1&mute=1&loop=1&playlist=${youTubeId}&playsinline=1`
+            : "";
+        return `https://www.youtube-nocookie.com/embed/${youTubeId}?rel=0${autoplay}`;
     }
 
     const driveId = getDriveId(value);

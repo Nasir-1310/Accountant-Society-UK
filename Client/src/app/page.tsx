@@ -7,6 +7,7 @@ import { getPublishedNewsBlogs } from "@/lib/newsBlogs";
 import AboutIntro from "@/components/home/AboutIntro";
 import EventsPreview from "@/components/home/EventsPreview";
 import Highlights from "@/components/home/Highlights";
+import VideoHighlight from "@/components/home/VideoHighlight";
 
 // Render per request so the slider (images or video) is correct on first
 // paint and admin changes show immediately.
@@ -67,6 +68,8 @@ export default async function Home() {
       <div className="mt-8 sm:mt-10">
         <FeatureSection />
       </div>
+
+      <VideoHighlight />
 
       <AboutIntro />
 
